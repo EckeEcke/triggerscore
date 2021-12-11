@@ -1,12 +1,12 @@
 <template>
     
-    <div class="container mx-auto mt-4 mb-16 px-1 md:px-4 xl:w-10/12">
+    <div class="container mx-auto md:mt-4 mb-16 px-1 md:px-4 xl:w-10/12">
         <svg v-if="isLoading" class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
         <!-- ... -->
         </svg>
         <div v-else>
-            <div class="flex justify-around md:mb-4 flex-col md:flex-row">
-                <div class="flex mx-auto h-12 self-center w-full md:w-96">
+        <div class="flex justify-around mt-1 mb-2 md:mb-4 flex-col md:flex-row p-4 md:p-0 bg-white md:bg-transparent">
+            <div class="flex mx-auto my-3 h-8 md:h-12 self-center w-full md:w-96">
                 <div class="rounded shadow-md flex w-full md:w-auto">
                     <button class="flex items-center justify-center px-4 border-r bg-red-600 rounded-l">
                         <svg class="w-6 h-6 text-gray-600" fill="white" xmlns="http://www.w3.org/2000/svg"
@@ -19,8 +19,8 @@
                     <input type="text" v-model="searchTerm" class="px-4 w-full rounded-r outline-none transition focus:bg-red-50" placeholder="Search...">
                 </div>
             </div>
-            <div class="flex justify-end w-full my-6">
-                <select v-model="selectedSortOption" class="w-full md:w-auto h-12 border bg-white rounded px-3 py-2 outline-none shadow-md" @change="sortMovies">
+            <div class="flex justify-end w-full my-3">
+                <select v-model="selectedSortOption" class="w-full md:w-auto h-8 md:h-12 border bg-white rounded px-3 py-2 outline-none shadow-md text-sm md:text-base" @change="sortMovies">
                     <option class="py-1" value="a-z">A-Z</option>
                     <option class="py-1" value="z-a">Z-A</option>
                     <option class="py-1" value="date-desc">Veröffentlichung absteigend</option>
