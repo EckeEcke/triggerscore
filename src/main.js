@@ -27,7 +27,14 @@ const router = new VueRouter({
      name: "movie",
      params: true,
      component: Detailpage}
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    if (savedPosition) {
+      return savedPosition
+    } else {
+      return { x: 0, y: 0 }
+    }
+  }
 })
 
 new Vue({
