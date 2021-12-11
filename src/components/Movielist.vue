@@ -1,13 +1,13 @@
 <template>
     
-    <div class="container mx-auto md:mt-4 mb-16 px-1 md:px-4 xl:w-10/12">
+    <div class="container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12">
         <svg v-if="isLoading" class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
         <!-- ... -->
         </svg>
         <div v-else>
-        <div class="flex justify-around mt-1 mb-2 md:mb-4 flex-col md:flex-row p-4 md:p-0 bg-white md:bg-transparent">
-            <div class="flex mx-auto my-3 h-8 md:h-12 self-center w-full md:w-96">
-                <div class="rounded shadow-md flex w-full md:w-auto">
+        <div class="flex justify-around mb-2 md:mb-4 flex-col md:flex-row p-4 md:p-0 bg-white md:bg-transparent">
+            <div class="flex mx-auto my-3 h-8 md:h-12 self-center w-full md:w-96 shadow-md">
+                <div class="rounded flex w-full md:w-auto">
                     <button class="flex items-center justify-center px-4 border-r bg-red-600 rounded-l">
                         <svg class="w-6 h-6 text-gray-600" fill="white" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24">
@@ -16,7 +16,7 @@
                             </path>
                         </svg>
                     </button>
-                    <input type="text" v-model="searchTerm" class="px-4 w-full rounded-r outline-none transition focus:bg-red-50" placeholder="Search...">
+                    <input type="text" v-model="searchTerm" class="px-4 w-full rounded-r outline-none transition focus:bg-red-50 border" placeholder="Search...">
                 </div>
             </div>
             <div class="flex justify-end w-full my-3">
