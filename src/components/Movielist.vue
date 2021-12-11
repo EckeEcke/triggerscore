@@ -7,7 +7,7 @@
         <div v-else>
             <div class="flex justify-around md:mb-4 flex-col md:flex-row">
                 <div class="flex mx-auto h-12 self-center w-full md:w-96">
-                <div class="border rounded shadow-md flex w-full md:w-auto">
+                <div class="rounded shadow-md flex w-full md:w-auto">
                     <button class="flex items-center justify-center px-4 border-r bg-red-600 rounded-l">
                         <svg class="w-6 h-6 text-gray-600" fill="white" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24">

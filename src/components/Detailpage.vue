@@ -8,7 +8,7 @@
             
             <img :src=poster class="w-2/5 mx-auto lg:ml-0 lg:w-60 h-auto lg:rounded-lg lg:rounded-r-none" />
             <div class="flex flex-col xl:flex-row">
-                <div class="text-left px-4 md:px-8 pb-8 pt-2 flex flex-col">
+                <div class="text-left px-4 md:px-8 py-2 flex flex-col">
                     <div class="flex justify-between">
                         <h2 class="text-xl md:text-2xl self-center w-4/5">
                         {{ movie.original_title }}
@@ -25,7 +25,7 @@
                     <article class="my-4 text-sm md:text-md">
                         {{ movie.overview }}
                     </article>
-                    <div class="flex justify-between my-3 align-end">
+                    <div class="flex justify-between my-4 align-end">
                         <div class="streaming-services flex">
                             <img v-if="onNetflix" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                             <img v-if="onAmazon" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
