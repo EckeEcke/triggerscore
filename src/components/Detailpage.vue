@@ -13,7 +13,7 @@
                         <h2 class="text-xl md:text-2xl self-center w-4/5">
                         {{ movie.original_title }}
                         </h2>
-                        <div class="h-12 w-12 md:h-20 md:w-20 bg-red-700 text-white rounded-full">
+                        <div class="h-12 w-12 md:h-20 md:w-20 bg-gradient-to-b from-red-700 to-red-600 text-white rounded-full">
                             <div class="relative w-full h-full">
                                 <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">7.9</span>
                             </div>

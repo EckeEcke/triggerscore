@@ -2,7 +2,7 @@
     <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-white shadow-md flex relative md:rounded-lg transform transition duration-300 md:hover:scale-105 container-xl">
         <img load="lazy" class="h-full md:rounded-l-lg" :src=poster />
         <div class="w-full p-3">
-            <div class="absolute top-1 right-1 h-12 w-12 bg-red-700 text-white rounded-full">
+            <div class="absolute top-1 right-1 h-12 w-12 bg-gradient-to-b from-red-700 to-red-600 text-white rounded-full">
                 <div class="relative w-full h-full">
                     <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">7.9</span>
                 </div>
