@@ -6,7 +6,7 @@
         </svg>
         <div v-else>
         <div class="flex justify-around mb-2 md:mb-4 flex-col md:flex-row p-4 md:p-0 bg-white md:bg-transparent">
-            <div class="flex mx-auto my-3 h-8 md:h-12 self-center w-full md:w-96 shadow-md">
+            <div class="flex mx-auto my-3 h-8 md:h-12 self-center w-full md:w-96">
                 <div class="rounded flex w-full md:w-auto">
                     <button class="flex items-center justify-center px-4 border-r bg-red-600 rounded-l">
                         <svg class="w-6 h-6 text-gray-600" fill="white" xmlns="http://www.w3.org/2000/svg"
@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="flex justify-end w-full my-3">
-                <select v-model="selectedSortOption" class="w-full md:w-auto h-8 md:h-12 border bg-white rounded px-3 py-2 outline-none shadow-md text-sm md:text-base" @change="sortMovies">
+                <select v-model="selectedSortOption" class="w-full md:w-auto h-8 md:h-12 border bg-white rounded px-3 py-2 outline-none text-sm md:text-base" @change="sortMovies">
                     <option class="py-1" value="a-z">A-Z</option>
                     <option class="py-1" value="z-a">Z-A</option>
                     <option class="py-1" value="date-desc">Veröffentlichung absteigend</option>
