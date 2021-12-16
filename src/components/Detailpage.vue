@@ -4,14 +4,14 @@
         <div class="w-full mb-8 flex justify-between">
             <button class="bg-red-500 p-3 rounded-lg text-white" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Back</button>
         </div>
-        <div class="flex flex-col w-100 lg:flex-row bg-white my-4 rounded-lg justify-start">
+        <div class="flex flex-col w-100 lg:flex-row bg-white mt-4 rounded-t-lg justify-start">
             
-            <img :src=poster class="w-2/5 mx-auto lg:ml-0 lg:w-60 h-auto lg:rounded-lg lg:rounded-r-none" />
+            <img :src=poster class="w-2/5 mx-auto lg:ml-0 lg:w-60 h-auto lg:rounded-lg lg:rounded-r-none lg:rounded-bl-none" />
             <div class="flex flex-col xl:flex-row">
                 <div class="text-left px-4 md:px-8 py-2 flex flex-col">
                     <div class="flex justify-between">
-                        <h2 class="text-xl md:text-2xl self-center w-4/5">
-                        {{ movie.original_title }}
+                        <h2 class="text-xl font-semibold md:text-2xl self-center w-4/5">
+                        {{ movie.title }}
                         </h2>
                         <div class="h-12 w-12 md:h-20 md:w-20 bg-gradient-to-b from-red-700 to-red-600 text-white rounded-full">
                             <div class="relative w-full h-full">
@@ -30,24 +30,26 @@
                             <img v-if="onNetflix" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                             <img v-if="onAmazon" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
                         </div>
-                        <button class="bg-red-500 text-white p-3 rounded-lg">Bewerten</button>
+                        <button class="bg-red-500 text-white p-3 rounded-lg" @click="scrollToRating">Bewerten</button>
                     </div> 
                 </div>
-                
-                
-
+            
             </div>
+            
         </div>
-        
+        <Ratingpage :title="movie.title" :id="movie.id" />
     </div>
     </section>
     
 </template>
 
 <script>
-
+import Ratingpage from './Ratingpage.vue'
 export default {
   name: 'Detailpage',
+  components: {
+      Ratingpage
+  },
   data(){
       return {
           movie: {},
@@ -89,6 +91,10 @@ export default {
           catch {
               console.log("ooops")
           }
+      },
+      scrollToRating: function() {
+          const rating = document.getElementById("rating")
+          rating.scrollIntoView({behavior: 'smooth'})
       }
   }
 }

@@ -5,7 +5,7 @@
         <!-- ... -->
         </svg>
         <div v-else>
-        <div class="flex justify-around mb-2 md:mb-4 flex-col md:flex-row p-4 md:p-0 bg-red-500">
+        <div class="flex justify-around mb-2 md:mb-4 flex-col md:flex-row p-4 md:p-0 bg-red-700">
             <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12">
                 <div class="flex mx-auto my-3 h-8 md:h-10 self-center w-full md:w-96">
                 <div class="rounded flex w-full md:w-auto justify-start">

@@ -20,13 +20,17 @@ Vue.config.productionTip = false
 const router = new VueRouter({
   mode: 'history',
   routes: [
-    {path: "/", 
+    {
+     path: "/", 
      name: "home",
-     component: Movielist},
-    {path: "/movie/:id", 
+     component: Movielist
+    },
+    {
+     path: "/movie/:id", 
      name: "movie",
      params: true,
-     component: Detailpage}
+     component: Detailpage
+    }
   ],
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {
