@@ -1,12 +1,12 @@
 <template>
-    <section class="w-full bg-center bg-cover" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backdrop}`}">
+    <section class="w-full bg-center bg-cover bg-fixed" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backdrop}`}">
         <div class="container mx-auto pt-8 pb-28 px-1 lg:px-16 xl:px-60">
         <div class="w-full mb-8 flex justify-between">
             <button class="bg-red-500 p-3 rounded-lg text-white" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Back</button>
         </div>
         <div class="flex flex-col w-100 lg:flex-row bg-white mt-4 rounded-t-lg justify-start">
             
-            <img :src=poster class="w-2/5 mx-auto lg:ml-0 lg:w-60 h-auto lg:rounded-lg lg:rounded-r-none lg:rounded-bl-none" />
+            <img :src=poster class="w-2/5 mx-auto lg:ml-0 lg:w-60 h-auto lg:rounded-lg lg:rounded-r-none lg:rounded-bl-none object-contain self-start" />
             <div class="flex flex-col xl:flex-row">
                 <div class="text-left px-4 md:px-8 py-2 flex flex-col">
                     <div class="flex justify-between">
@@ -21,19 +21,22 @@
                     </div>
                     
                     <p class="mb-4 text-xs md:text-md">Veröffentlicht: {{ movie.release_date.substring(0,4) }}</p>
+                    
                     <i v-if="movie.tagline && movie.tagline.length > 1" class="text-sm md: text-md">"{{ movie.tagline }}"</i>
+                    <p class="my-4">
+                        <span class="text-xs bg-gray-400 text-white p-2 mr-1 rounded" v-for="genre in genres" :key="genre">{{ genre }}</span>
+                    </p>
                     <article class="my-4 text-sm md:text-md">
                         {{ movie.overview }}
                     </article>
                     <div class="flex justify-between my-4 align-end">
                         <div class="streaming-services flex">
-                            <img v-if="onNetflix" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
-                            <img v-if="onAmazon" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
+                            <img v-if="onNetflix" class="w-12 mr-1" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
+                            <img v-if="onAmazon" class="w-12 mr-1" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
                         </div>
                         <button class="bg-red-500 text-white p-3 rounded-lg" @click="scrollToRating">Bewerten</button>
                     </div> 
                 </div>
-            
             </div>
             
         </div>
@@ -65,6 +68,9 @@ export default {
   computed: {
       poster: function() {
           return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
+      },
+      genres: function() {
+          return this.movie.genres.map(genre => genre.name)
       }
   },
   methods: {
