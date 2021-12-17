@@ -1,7 +1,7 @@
 <template>
 <div class="bg-white rounded-b-lg pt-6">
     <div class="mx-auto overflow-hidden">
-        <h2 class="text-xl md:text-white bg-red-600 py-4" id="rating">Bewertung abgeben für<br><i class="font-semibold">"{{ title }}"</i></h2>
+        <h2 class="text-xl text-white bg-red-600 py-4" id="rating">Bewertung abgeben für<br><i class="font-semibold">"{{ title }}"</i></h2>
                     <label class="my-3 block text-lg font-semibold">Sexismus</label>
                     <p class="mb-4">Werden veraltete Rollenbilder vermittelt? </p>
                     <div class="hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
