@@ -2,7 +2,7 @@
     <section class="w-full bg-center bg-cover bg-fixed" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backdrop}`}">
         <div class="container mx-auto pt-8 pb-28 px-1 lg:px-16 xl:px-60">
         <div class="w-full mb-8 flex justify-between">
-            <button class="bg-red-500 p-3 rounded-lg text-white" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Back</button>
+            <button class="bg-red-500 p-3 rounded-lg text-white font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Back</button>
         </div>
         <div class="flex flex-col w-100 lg:flex-row bg-white mt-4 rounded-t-lg justify-start">
             

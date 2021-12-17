@@ -9,7 +9,7 @@
             <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12">
                 <div class="flex mx-auto my-3 h-8 md:h-10 self-center w-full md:w-96">
                 <div class="rounded flex w-full md:w-auto justify-start">
-                    <button class="flex items-center justify-center px-4 border-r bg-red-800 rounded-l">
+                    <button class="flex items-center justify-center px-4 border-r rounded-l" :class="searchTerm.length == 0 ? 'bg-red-500' : 'bg-red-600'">
                         <svg class="w-6 h-6 text-gray-600" fill="white" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24">
                             <path
@@ -17,7 +17,7 @@
                             </path>
                         </svg>
                     </button>
-                    <input type="text" v-model="searchTerm" class="px-4 w-full rounded-r outline-none transition focus:bg-red-50 border" placeholder="Search...">
+                    <input type="text" v-model="searchTerm" class="px-4 w-full rounded-r outline-none transition border" placeholder="Search...">
                 </div>
             </div>
             <div class="flex justify-end w-full my-3">
