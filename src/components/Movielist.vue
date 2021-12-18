@@ -5,19 +5,19 @@
         <!-- ... -->
         </svg>
         <div v-else>
-        <div class="flex justify-around mb-2 md:mb-4 flex-col md:flex-row p-4 md:p-0 bg-red-700">
+        <div class="flex justify-around flex-col md:flex-row p-4 md:p-0 bg-red-500 sticky top-0 z-10">
             <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12">
                 <div class="flex mx-auto my-3 h-8 md:h-10 self-center w-full md:w-96">
                 <div class="rounded flex w-full md:w-auto justify-start">
-                    <button class="flex items-center justify-center px-4 border-r rounded-l" :class="searchTerm.length == 0 ? 'bg-red-500' : 'bg-red-600'" @click="searchMovie">
-                        <svg class="w-6 h-6 text-gray-600" fill="white" xmlns="http://www.w3.org/2000/svg"
+                    <button class="flex items-center justify-center px-4 border-r rounded-l" :class="searchTerm.length == 0 ? 'bg-yellow-500' : 'bg-yellow-400'" @click="searchMovie">
+                        <svg class="w-6 h-6 text-gray-600" fill="#111827" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24">
                             <path
                                 d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
                             </path>
                         </svg>
                     </button>
-                    <input type="text" v-model="searchTerm" @input="()=>{searchResults = [];searchError = false}" v-on:keyup.enter="searchMovie" class="px-4 w-full rounded-r outline-none transition border" placeholder="Search...">
+                    <input type="text" v-model="searchTerm" @input="()=>{searchResults = [];searchError = false}" v-on:keyup.enter="searchMovie" class="px-4 w-full rounded-r outline-none transition border" placeholder="Film suchen...">
                 </div>
             </div>
             <div class="flex justify-end w-full my-3">
@@ -33,13 +33,28 @@
             </div>
             
         </div>
-            <div v-if="searchResults.length > 0" class="bg-gray-500 bg-opacity-95 text-white text-lg md:text-2xl pt-6 pb-4 md:rounded-lg container mx-auto my-2 md:my-8 md:px-4 xl:w-10/12">
-                <p>Deine Suche nach "{{ searchTerm }}" ergab {{ searchResults.length}} Treffer</p>
-                <button class="bg-red-600 p-4 w-32 text-base rounded-lg mt-4" @click="searchResults=[]">Zurück</button>
+            <div v-if="searchResults.length > 0" class="bg-gray-900 bg-opacity-95 text-white text-lg md:text-2xl pt-6 pb-4 md:rounded-lg container mx-auto my-2 md:my-8 md:px-4 xl:w-10/12">
+                <p>Deine Suche nach <b>"{{ searchTerm }}"</b> ergab {{ searchResults.length}} Treffer</p>
+                <button class="bg-yellow-500 text-gray-900 p-4 w-32 text-base rounded-lg mt-4" @click="searchResults=[]"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
             </div>
-            <div v-if="searchError" class="bg-gray-500 bg-opacity-95 text-white text-lg md:text-2xl pt-6 pb-4 md:rounded-lg container mx-auto my-2 md:my-8 md:px-4 xl:w-10/12">
-                <p>Deine Suche nach "{{ searchTerm}}" ergab leider keine Treffer. Bitte versuche es erneut.</p>
-                <button class="bg-red-600 p-4 w-32 text-base rounded-lg mt-4" @click="searchError = false">Zurück</button>
+            <div v-if="searchError" class="bg-gray-900 bg-opacity-95 text-white text-lg md:text-2xl pt-6 pb-4 md:rounded-lg container mx-auto my-2 md:my-8 md:px-4 xl:w-10/12">
+                <p>Deine Suche nach <b>"{{ searchTerm }}"</b> ergab leider keine Treffer. Bitte versuche es erneut.</p>
+                <button class="bg-yellow-500 text-gray-900 p-4 w-32 text-base rounded-lg mt-4" @click="searchError = false"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
+            </div>
+            <div v-if="searchResults.length == 0 && !searchError" class="w-full bg-gray-900 bg-opacity-95 px-4 py-8 mb-8">
+                <div class="font-semibold mb-4 container mx-auto xl:w-10/12">
+                    <h2 class="text-2xl text-yellow-500 text-left text-underline mb-2">James Bond Special</h2>
+                    <p class="text-left text-white">Lizenz zum Triggern: Film anklicken und Triggerscore vergeben</p>
+                </div>
+                
+                <div id="highlight-container" class="hide-scrollbar flex flex-none flex-row  overflow-x-scroll py-4 px-0 md:px-4">
+                    <MovieHighlightsItem v-for="movie in bondMovies" :key="movie.id" :movie="movie"/>
+                </div>
+                <div class="flex justify-between md:px-4 container mx-auto xl:w-10/12">
+                    <button @click="scrollHighlightContainer('left')"><font-awesome-icon class="text-yellow-500 text-3xl" :icon="['fas', 'arrow-circle-left']" /></button>
+                    <button @click="scrollHighlightContainer('right')"><font-awesome-icon class="text-yellow-500 text-3xl" :icon="['fas', 'arrow-circle-right']" /></button>
+                </div>
+                
             </div>
             <transition-group v-if="!isLoading && searchResults.length > 0" tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
                 enter-active-class="duration-500 ease-out"
@@ -71,16 +86,20 @@
 
 <script>
 import MovieListitem from './MovieListitem.vue'
+import MovieHighlightsItem from './MovieHighlightsItem.vue'
 
 export default {
   name: 'Movielist',
   components: {
-      MovieListitem
+      MovieListitem,
+      MovieHighlightsItem
   },
   data() {
     return {
       movieIDs: [620, 744, 2978, 9527,1915,4232,9279,9876, 4247, 4248, 9336, 9622, 2105, 11806, 9602, 9657,9595,37136, 10112],
+      bondMovieIDs: [646,657,658,660,667,668,681,253,682,691,698,699,700,707,708,709,710,714,36643,36669],
       movies: [],
+      bondMovies: [],
       selectedSortOption: "a-z",
       searchTerm: "",
       isLoading: true,
@@ -90,6 +109,7 @@ export default {
   },
   mounted: function(){
       this.loadMovies()
+      this.loadBondMovies()
   },
   computed: {
       filteredMovies: function(){
@@ -105,6 +125,21 @@ export default {
               .catch(console.log("Something went wrong"))
           ))
           loadedMovies.then(res => this.movies = res.sort(this.sortAtoZ))
+      },
+      loadBondMovies: function() {
+          const loadedMovies = Promise.all(this.bondMovieIDs.map(id => 
+              fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
+              .then((res) => res.json())
+              .then(this.isLoading = false)
+              .catch(console.log("Something went wrong"))
+          ))
+          loadedMovies.then(res => this.bondMovies = res)
+      },
+      scrollHighlightContainer: function(direction){
+          const highlight = document.getElementById("highlight-container")
+          if(direction == 'left'){
+              highlight.scrollBy({top: 0, left: -window.innerWidth/2, behavior : "smooth"})
+          } else highlight.scrollBy({top: 0, left: window.innerWidth/2, behavior : "smooth"})
       },
       sortAtoZ: function(x,y) {
           const titleX = x.title ? x.title : x.original_title

@@ -2,7 +2,7 @@
     <section class="w-full bg-center bg-cover bg-fixed" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backdrop}`}">
         <div class="container mx-auto pt-8 pb-28 px-1 lg:px-16 xl:px-60">
         <div class="w-full mb-8 flex justify-between">
-            <button class="bg-red-500 p-3 rounded-lg text-white font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Back</button>
+            <button class="bg-yellow-500 p-3 rounded-lg text-gray-900 font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
         </div>
         <div class="flex flex-col w-100 lg:flex-row bg-white mt-4 rounded-t-lg justify-start">
             
@@ -34,7 +34,7 @@
                             <img v-if="onNetflix" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                             <img v-if="onAmazon" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
                         </div>
-                        <button class="bg-red-500 text-white p-3 rounded-lg md:hidden" @click="scrollToRating">Bewerten</button>
+                        <button class="bg-yellow-500 text-gray-900 p-3 rounded-lg md:hidden font-semibold" @click="scrollToRating">Bewerten</button>
                     </div> 
                 </div>
             </div>

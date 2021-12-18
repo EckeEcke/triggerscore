@@ -37,7 +37,7 @@
                     </div>
                     <hr>
                     <div class="flex justify-center py-4 bg-red-600 rounded-b-lg">
-                        <button class="bg-red-500 border border-white text-white font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-red-700">Bewertung abschicken</button>
+                        <button class="bg-yellow-500 text-gray-900 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-red-700">Bewertung abschicken</button>
                     </div>
     </div>
                     
