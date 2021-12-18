@@ -1,6 +1,6 @@
 <template>
     <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-white shadow-md flex relative md:rounded-lg transform transition duration-300 md:hover:scale-105 container-xl cursor-pointer">
-        <img load="lazy" class="h-full md:rounded-l-lg" :src=poster />
+        <img load="lazy" class="h-full md:rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" />
         <div class="w-full p-3">
             <div class="absolute top-1 right-1 h-12 w-12 bg-gradient-to-b from-red-700 to-red-600 text-white rounded-full">
                 <div class="relative w-full h-full">
@@ -26,7 +26,7 @@ export default {
   },
   computed: {
       poster: function() {
-          return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
+              return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
       },
       overview: function() {
         return  this.movie.overview.length > 100 ? this.movie.overview.substring(0, 100) + "..." : this.movie.overview

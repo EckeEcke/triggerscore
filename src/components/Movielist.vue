@@ -9,7 +9,7 @@
             <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12">
                 <div class="flex mx-auto my-3 h-8 md:h-10 self-center w-full md:w-96">
                 <div class="rounded flex w-full md:w-auto justify-start">
-                    <button class="flex items-center justify-center px-4 border-r rounded-l" :class="searchTerm.length == 0 ? 'bg-red-500' : 'bg-red-600'">
+                    <button class="flex items-center justify-center px-4 border-r rounded-l" :class="searchTerm.length == 0 ? 'bg-red-500' : 'bg-red-600'" @click="searchMovie">
                         <svg class="w-6 h-6 text-gray-600" fill="white" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24">
                             <path
@@ -17,7 +17,7 @@
                             </path>
                         </svg>
                     </button>
-                    <input type="text" v-model="searchTerm" class="px-4 w-full rounded-r outline-none transition border" placeholder="Search...">
+                    <input type="text" v-model="searchTerm" @input="()=>{searchResults = [];searchError = false}" v-on:keyup.enter="searchMovie" class="px-4 w-full rounded-r outline-none transition border" placeholder="Search...">
                 </div>
             </div>
             <div class="flex justify-end w-full my-3">
@@ -33,16 +33,34 @@
             </div>
             
         </div>
-        
-            <transition-group v-if="!isLoading" tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
+            <div v-if="searchResults.length > 0" class="bg-gray-500 bg-opacity-95 text-white text-lg md:text-2xl pt-6 pb-4 md:rounded-lg container mx-auto my-2 md:my-8 md:px-4 xl:w-10/12">
+                <p>Deine Suche nach "{{ searchTerm }}" ergab {{ searchResults.length}} Treffer</p>
+                <button class="bg-red-600 p-4 w-32 text-base rounded-lg mt-4" @click="searchResults=[]">Zurück</button>
+            </div>
+            <div v-if="searchError" class="bg-gray-500 bg-opacity-95 text-white text-lg md:text-2xl pt-6 pb-4 md:rounded-lg container mx-auto my-2 md:my-8 md:px-4 xl:w-10/12">
+                <p>Deine Suche nach "{{ searchTerm}}" ergab leider keine Treffer. Bitte versuche es erneut.</p>
+                <button class="bg-red-600 p-4 w-32 text-base rounded-lg mt-4" @click="searchError = false">Zurück</button>
+            </div>
+            <transition-group v-if="!isLoading && searchResults.length > 0" tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
                 enter-active-class="duration-500 ease-out"
                 enter-class="opacity-0"
                 enter-to-class="opacity-100"
                 leave-active-class="duration-500 ease-in"
                 leave-class="opacity-100"
                 leave-to-class="opacity-0"
-            >        
-                    <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" />
+            >       
+                    <MovieListitem v-for="movie in searchResults" :key="movie.id" :movie="movie" />
+            </transition-group>
+            
+            <transition-group v-if="!isLoading && searchResults.length == 0" tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
+                enter-active-class="duration-500 ease-out"
+                enter-class="opacity-0"
+                enter-to-class="opacity-100"
+                leave-active-class="duration-500 ease-in"
+                leave-class="opacity-100"
+                leave-to-class="opacity-0"
+            >       
+                    <MovieListitem v-for="movie in movies" :key="movie.id" :movie="movie" />
             </transition-group>
 
         </div>
@@ -61,11 +79,13 @@ export default {
   },
   data() {
     return {
-      movieIDs: [744,9527,1915,4232,9279,9876, 4247, 4248, 9336, 9622, 2105, 11806, 9602, 9657,9595,37136, 10112],
+      movieIDs: [620, 744, 2978, 9527,1915,4232,9279,9876, 4247, 4248, 9336, 9622, 2105, 11806, 9602, 9657,9595,37136, 10112],
       movies: [],
       selectedSortOption: "a-z",
       searchTerm: "",
-      isLoading: true
+      isLoading: true,
+      searchResults: [],
+      searchError: false
     }
   },
   mounted: function(){
@@ -87,13 +107,17 @@ export default {
           loadedMovies.then(res => this.movies = res.sort(this.sortAtoZ))
       },
       sortAtoZ: function(x,y) {
-          if (x.original_title < y.original_title) {return -1}
-          if (x.original_title > y.original_title) {return 1}
+          const titleX = x.title ? x.title : x.original_title
+          const titleY = y.title ? y.title : y.original_title
+          if (titleX < titleY) {return -1}
+          if (titleX > titleY) {return 1}
           return 0
       },
       sortZtoA: function(x,y) {
-          if (x.original_title > y.original_title) {return -1}
-          if (x.original_title < y.original_title) {return 1}
+          const titleX = x.title ? x.title : x.original_title
+          const titleY = y.title ? y.title : y.original_title
+          if (titleX > titleY) {return -1}
+          if (titleX < titleY) {return 1}
           return 0
       },
       sortByDateDesc: function(x,y){
@@ -116,6 +140,18 @@ export default {
           if (this.selectedSortOption == "date-asc"){
               this.movies = this.movies.sort(this.sortByDateAsc)
           }
+      },
+      searchMovie: function(){
+          this.searchError = false
+          const fetchedSearchResults = fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de&page=1&include_adult=false&query=${this.searchTerm}`)
+                                .then(res => res.json())
+                                .catch()
+          fetchedSearchResults.then(res => {
+              this.searchResults = res.results.filter(result => {
+                return result.poster_path && result.overview && result.release_date && parseInt(result.release_date.substring(0,4)) < 2010}); 
+                if(this.searchResults.length == 0){
+                    this.searchError = true
+            }})
       }
 
   }

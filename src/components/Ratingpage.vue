@@ -97,36 +97,16 @@ export default {
         .rating button:hover {
         opacity: 1
         }
-        .rating0:hover ~ button {
-            opacity: 1
-        }
-        .rating1:hover ~ button {
-            opacity: 1
-        }
-        .rating2:hover ~ button {
-            opacity: 1
-        }
-        .rating3:hover ~ button {
-            opacity: 1
-        }
-        .rating4:hover ~ button {
-            opacity: 1
-        }
-        .rating5:hover ~ button {
-            opacity: 1
-        }
-        .rating6:hover ~ button {
-            opacity: 1
-        }
-        .rating7:hover ~ button {
-            opacity: 1
-        }
-        .rating8:hover ~ button {
-            opacity: 1
-        }
-        .rating9:hover ~ button {
-            opacity: 1
-        }
+        .rating0:hover ~ button,
+        .rating1:hover ~ button,
+        .rating2:hover ~ button,
+        .rating3:hover ~ button,
+        .rating4:hover ~ button,
+        .rating5:hover ~ button,
+        .rating6:hover ~ button,
+        .rating7:hover ~ button,
+        .rating8:hover ~ button,
+        .rating9:hover ~ button,
         .rating10:hover ~ button {
             opacity: 1
         }
