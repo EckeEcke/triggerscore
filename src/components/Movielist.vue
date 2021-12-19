@@ -9,7 +9,7 @@
             <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12">
                 <div class="flex mx-auto my-3 h-8 md:h-10 self-center w-full md:w-96">
                 <div class="rounded flex w-full md:w-auto justify-start">
-                    <button class="flex items-center justify-center px-4 border-r rounded-l" :class="searchTerm.length == 0 ? 'bg-yellow-500' : 'bg-yellow-400'" @click="searchMovie">
+                    <button class="flex items-center justify-center px-4 rounded-l" :class="searchTerm.length == 0 ? 'bg-yellow-500' : 'bg-yellow-400'" @click="searchMovie">
                         <svg class="w-6 h-6 text-gray-600" fill="#111827" xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24">
                             <path
@@ -17,11 +17,11 @@
                             </path>
                         </svg>
                     </button>
-                    <input type="text" v-model="searchTerm" @input="()=>{searchResults = [];searchError = false}" v-on:keyup.enter="searchMovie" class="px-4 w-full rounded-r outline-none transition border" placeholder="Film suchen...">
+                    <input type="text" v-model="searchTerm" @input="()=>{searchResults = [];searchError = false}" v-on:keyup.enter="searchMovie" class="px-4 w-full rounded-r outline-none transition" placeholder="Film suchen...">
                 </div>
             </div>
             <div class="flex justify-end w-full my-3" :class="{'hidden': !showNavbar, 'md:flex': !showNavbar}">
-                <select v-model="selectedSortOption" class="w-full md:w-auto h-8 md:h-10 border bg-white rounded px-3 py-2 outline-none text-sm md:text-base" @change="sortMovies">
+                <select v-model="selectedSortOption" class="w-full md:w-auto h-8 md:h-10 bg-white rounded px-3 py-2 outline-none text-sm md:text-base" @change="sortMovies">
                     <option class="py-1" value="a-z">A-Z</option>
                     <option class="py-1" value="z-a">Z-A</option>
                     <option class="py-1" value="date-desc">Veröffentlichung absteigend</option>
@@ -67,7 +67,7 @@
                     <MovieListitem v-for="movie in searchResults" :key="movie.id" :movie="movie" />
             </transition-group>
             
-            <transition-group v-if="!isLoading && searchResults.length == 0" tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
+            <transition-group v-if="!isLoading && searchResults.length == 0 && !searchError" tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
                 enter-active-class="duration-500 ease-out"
                 enter-class="opacity-0"
                 enter-to-class="opacity-100"
