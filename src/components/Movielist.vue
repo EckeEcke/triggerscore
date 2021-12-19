@@ -5,7 +5,7 @@
         <!-- ... -->
         </svg>
         <div v-else>
-        <div class="flex justify-around flex-col md:flex-row p-4 md:p-0 bg-red-500 sticky top-0 z-10">
+        <div class="flex justify-around flex-col md:flex-row p-4 md:p-0 bg-gradient-to-b from-red-700 to red-600 to-red-600 sticky top-0 z-10 shadow-lg">
             <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12">
                 <div class="flex mx-auto my-3 h-8 md:h-10 self-center w-full md:w-96">
                 <div class="rounded flex w-full md:w-auto justify-start">
@@ -20,7 +20,7 @@
                     <input type="text" v-model="searchTerm" @input="()=>{searchResults = [];searchError = false}" v-on:keyup.enter="searchMovie" class="px-4 w-full rounded-r outline-none transition border" placeholder="Film suchen...">
                 </div>
             </div>
-            <div class="flex justify-end w-full my-3">
+            <div class="flex justify-end w-full my-3" :class="{'hidden': !showNavbar, 'md:flex': !showNavbar}">
                 <select v-model="selectedSortOption" class="w-full md:w-auto h-8 md:h-10 border bg-white rounded px-3 py-2 outline-none text-sm md:text-base" @change="sortMovies">
                     <option class="py-1" value="a-z">A-Z</option>
                     <option class="py-1" value="z-a">Z-A</option>
@@ -104,12 +104,18 @@ export default {
       searchTerm: "",
       isLoading: true,
       searchResults: [],
-      searchError: false
+      searchError: false,
+      showNavbar: true,
+      lastScrollPosition: 0
     }
   },
   mounted: function(){
       this.loadMovies()
       this.loadBondMovies()
+      window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroy () {
+      window.removeEventListener('scroll', this.onScroll)
   },
   computed: {
       filteredMovies: function(){
@@ -187,8 +193,18 @@ export default {
                 if(this.searchResults.length == 0){
                     this.searchError = true
             }})
+      },
+      onScroll () {
+        const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
+        if (currentScrollPosition < 0) {
+            return
+        }
+        if (Math.abs(currentScrollPosition - this.lastScrollPosition) < 60) {
+            return
+        }
+        this.showNavbar = currentScrollPosition < this.lastScrollPosition
+        this.lastScrollPosition = currentScrollPosition
       }
-
   }
 }
 </script>
