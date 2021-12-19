@@ -51,8 +51,8 @@
                     <MovieHighlightsItem v-for="movie in bondMovies" :key="movie.id" :movie="movie"/>
                 </div>
                 <div class="flex justify-between md:px-4 container mx-auto xl:w-10/12">
-                    <button @click="scrollHighlightContainer('left')"><font-awesome-icon class="text-yellow-500 text-3xl" :icon="['fas', 'arrow-circle-left']" /></button>
-                    <button @click="scrollHighlightContainer('right')"><font-awesome-icon class="text-yellow-500 text-3xl" :icon="['fas', 'arrow-circle-right']" /></button>
+                    <button @click="scrollHighlightContainer('left')"><font-awesome-icon class="text-yellow-500 text-3xl transform hover:scale-105" :icon="['fas', 'arrow-circle-left']" /></button>
+                    <button @click="scrollHighlightContainer('right')"><font-awesome-icon class="text-yellow-500 text-3xl transform hover:scale-105" :icon="['fas', 'arrow-circle-right']" /></button>
                 </div>
                 
             </div>

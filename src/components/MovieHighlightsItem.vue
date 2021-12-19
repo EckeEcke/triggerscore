@@ -5,9 +5,9 @@
         </div>
         
         <div class="w-full p-3">
-            <div class="absolute top-1 right-1 h-12 w-12 bg-gradient-to-b from-red-700 to-red-600 text-white rounded-full">
+            <div class="absolute top-1 right-1 h-12 w-12 bg-red-700 text-white rounded-full" :class="{'bg-red-700': movie.vote_average >= 7, 'bg-yellow-400': movie.vote_average < 7 && movie.vote_average >=4, 'bg-green-500': movie.vote_average < 4}">
                 <div class="relative w-full h-full">
-                    <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">7.9</span>
+                    <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ movie.vote_average }}</span>
                 </div>
             </div>
             <article class="text-left relative w-full h-full">

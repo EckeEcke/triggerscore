@@ -13,9 +13,9 @@
                         <h2 class="text-xl font-semibold md:text-2xl self-center w-4/5">
                         {{ movie.title }}
                         </h2>
-                        <div class="h-12 w-12 md:h-20 md:w-20 bg-gradient-to-b from-red-700 to-red-600 text-white rounded-full">
+                        <div class="h-12 w-12 md:h-20 md:w-20 text-white rounded-full" :class="{'bg-red-700': movie.vote_average >= 7, 'bg-yellow-400': movie.vote_average < 7 && movie.vote_average >=4, 'bg-green-500': movie.vote_average < 4}">
                             <div class="relative w-full h-full">
-                                <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">7.9</span>
+                                <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ movie.vote_average }}</span>
                             </div>
                         </div>
                     </div>
