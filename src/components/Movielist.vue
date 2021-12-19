@@ -17,7 +17,7 @@
                             </path>
                         </svg>
                     </button>
-                    <input type="text" v-model="searchTerm" @input="()=>{searchResults = [];searchError = false}" v-on:keyup.enter="searchMovie" class="px-4 w-full rounded-r outline-none transition" placeholder="Film suchen...">
+                    <input type="text" id="search" v-model="searchTerm" @input="()=>{searchResults = [];searchError = false}" v-on:keyup.enter="searchMovie" class="px-4 w-full rounded-r outline-none transition" placeholder="Film suchen...">
                 </div>
             </div>
             <div class="flex justify-end w-full my-3" :class="{'hidden': !showNavbar, 'md:flex': !showNavbar}">
@@ -41,7 +41,7 @@
                 <p>Deine Suche nach <b>"{{ searchTerm }}"</b> ergab leider keine Treffer. Bitte versuche es erneut.</p>
                 <button class="bg-yellow-500 text-gray-900 p-4 w-32 text-base rounded-lg mt-4" @click="searchError = false"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
             </div>
-            <div v-if="searchResults.length == 0 && !searchError" class="w-full bg-gray-900 bg-opacity-95 px-4 py-8 mb-8">
+            <div v-if="searchResults.length == 0 && !searchError" class="w-full bg-gray-900 bg-opacity-95 px-4 py-8 mb-0">
                 <div class="font-semibold mb-4 container mx-auto xl:w-10/12">
                     <h2 class="text-2xl text-yellow-500 text-left text-underline mb-2">James Bond Special</h2>
                     <p class="text-left text-white">Lizenz zum Triggern: Film anklicken und Triggerscore vergeben</p>
@@ -56,7 +56,14 @@
                 </div>
                 
             </div>
-            <transition-group v-if="!isLoading && searchResults.length > 0" tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
+            <div v-if="!isLoading && searchResults.length == 0 && !searchError" class="bg-red-600 py-8 text-white text-left">
+                <div class="container px-4 xl:w-10/12 mx-auto">
+                    <h2 class="text-2xl font-semibold mb-2">Filme entdecken</h2>
+                    <p class="text-sm">Eine Auswahl an Filmen, die bereits auf Triggerscore bewertet wurden</p>
+                    <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+                </div>
+            </div>
+            <transition-group v-if="!isLoading && searchResults.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
                 enter-active-class="duration-500 ease-out"
                 enter-class="opacity-0"
                 enter-to-class="opacity-100"
@@ -67,7 +74,7 @@
                     <MovieListitem v-for="movie in searchResults" :key="movie.id" :movie="movie" />
             </transition-group>
             
-            <transition-group v-if="!isLoading && searchResults.length == 0 && !searchError" tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
+            <transition-group v-if="!isLoading && searchResults.length == 0 && !searchError" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
                 enter-active-class="duration-500 ease-out"
                 enter-class="opacity-0"
                 enter-to-class="opacity-100"
@@ -96,7 +103,7 @@ export default {
   },
   data() {
     return {
-      movieIDs: [620, 744, 2978, 9527,1915,4232,9279,9876, 4247, 4248, 9336, 9622, 2105, 11806, 9602, 9657,9595,37136, 10112],
+      movieIDs: [620, 744, 2978, 9527,1915,4232,9279,9876, 4247, 4248, 9336, 9622, 2105, 4327,7916, 11806, 9602, 9657,9595,37136, 10112, 14164,11667,9607,9742],
       bondMovieIDs: [646,657,658,660,667,668,681,253,682,691,698,699,700,707,708,709,710,714,36643,36669],
       movies: [],
       bondMovies: [],
@@ -194,7 +201,7 @@ export default {
                     this.searchError = true
             }})
       },
-      onScroll () {
+      onScroll: function () {
         const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop
         if (currentScrollPosition < 0) {
             return
@@ -204,6 +211,11 @@ export default {
         }
         this.showNavbar = currentScrollPosition < this.lastScrollPosition
         this.lastScrollPosition = currentScrollPosition
+      },
+      focusSearch: function() {
+          const search = document.getElementById("search")
+          search.scrollIntoView()
+          search.focus()
       }
   }
 }
