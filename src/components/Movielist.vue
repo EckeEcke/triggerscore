@@ -59,7 +59,6 @@
             <div v-if="!isLoading && searchResults.length == 0 && !searchError" class="bg-red-600 py-8 text-white text-left">
                 <div class="container px-4 xl:w-10/12 mx-auto">
                     <h2 class="text-2xl font-semibold mb-2">Filme entdecken</h2>
-                    <p class="text-sm">Eine Auswahl an Filmen, die bereits auf Triggerscore bewertet wurden</p>
                     <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
                 </div>
             </div>
