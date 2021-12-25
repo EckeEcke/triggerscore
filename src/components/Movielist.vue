@@ -9,14 +9,9 @@
                 <div class="flex mx-auto my-3 h-8 md:h-10 self-center w-full md:w-96">
                 <div class="rounded flex w-full md:w-auto justify-start">
                     <button class="flex items-center justify-center px-4 rounded-l" :class="searchInput.length == 0 ? 'bg-yellow-500' : 'bg-yellow-400'" @click="searchMovie">
-                        <svg class="w-6 h-6 text-gray-600" fill="#111827" xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24">
-                            <path
-                                d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z">
-                            </path>
-                        </svg>
+                        <font-awesome-icon :icon="['fas', 'search']" class="text-lg" />
                     </button>
-                    <input type="text" id="search" v-model="searchInput" v-on:keyup.enter="searchMovie" class="px-4 w-full rounded-r outline-none transition" placeholder="Film suchen...">
+                    <input type="text" id="search" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="px-4 w-full rounded-r outline-none transition" placeholder="Film suchen...">
                 </div>
             </div>
             <div class="flex justify-end w-full my-3" :class="{'hidden': !showNavbar, 'md:flex': !showNavbar}">
@@ -32,11 +27,23 @@
             </div>
             
         </div>
-            <MovieHighlightsContainer />
+            <MovieHighlightsContainer v-if="searchResults.length == 0 && !searchError" />
             <div v-if="!isLoading && searchResults.length == 0 && !searchError" class="bg-red-600 py-8 text-white text-left">
                 <div class="container px-4 xl:w-10/12 mx-auto">
                     <h2 class="text-2xl font-semibold mb-2">Filme entdecken</h2>
                     <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+                </div>
+            </div>
+            <div v-if="searchResults.length > 0 && !searchError" class=" text-center font-semibold container mx-auto md:mt-4 md:mb-12  xl:w-10/12 rounded-lg md:px-4">
+                <div class="bg-gray-900 py-6 px-2">
+                    <p class="text-white text-lg">Deine Suche nach <i>"{{searchInput}}"</i> ergab {{searchResults.length}} Treffer.</p>
+                    <button class="bg-yellow-500 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="resetSearch"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
+                </div>
+            </div>
+            <div v-if="searchResults.length == 0 && searchError" class=" text-center font-semibold container mx-auto md:mt-4 md:mb-12  xl:w-10/12 rounded-lg md:px-4">
+                <div class="bg-gray-900 py-6 px-2">
+                    <p class="text-white text-lg">Deine Suche nach <i>"{{searchInput}}"</i> ergab leider keine Treffer.</p>
+                    <button class="bg-yellow-500 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="resetSearch"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
                 </div>
             </div>
             <transition-group v-if="!isLoading && searchResults.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
@@ -89,6 +96,10 @@ export default {
   mounted: function(){
       this.$store.dispatch("setTriggerscores")
       this.$store.dispatch("setBondMovies")
+      window.addEventListener('scroll', this.onScroll)
+  },
+  beforeDestroy () {
+      window.removeEventListener('scroll', this.onScroll)
   },
   computed: {
       filteredMovies: function(){
@@ -177,6 +188,10 @@ export default {
           search.focus()
       },
       resetSearch: function() {
+          this.searchInput = ""
+          this.$store.dispatch("resetSearch")
+      },
+      resetSearchResults: function() {
           this.$store.dispatch("resetSearch")
       }
   }
