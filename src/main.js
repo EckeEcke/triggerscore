@@ -9,6 +9,7 @@ import Detailpage from './components/Detailpage.vue'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import store from './store'
 
 library.add(fas)
 
@@ -43,5 +44,6 @@ const router = new VueRouter({
 
 new Vue({
   render: h => h(App),
-  router: router
+  router: router,
+  store: store,
 }).$mount('#app')

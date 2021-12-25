@@ -5,9 +5,10 @@
         </div>
         
         <div class="w-full p-3">
-            <div class="absolute top-1 right-1 h-12 w-12 bg-red-700 text-white rounded-full" :class="{'bg-red-700': movie.vote_average >= 7, 'bg-yellow-400': movie.vote_average < 7 && movie.vote_average >=4, 'bg-green-500': movie.vote_average < 4}">
+            <div class="absolute top-1 right-1 h-12 w-12 text-white rounded-full" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && score.rating_total >= 7, 'bg-yellow-400': scoreAvailable && score.rating_total < 7 && score.rating_total >=4, 'bg-green-500': scoreAvailable && score.rating_total < 4}">
                 <div class="relative w-full h-full">
-                    <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ movie.vote_average }}</span>
+                    <span v-if="scoreAvailable" class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ score.rating_total }}</span>
+                    <span v-else class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">-</span>
                 </div>
             </div>
             <article class="text-left relative w-full h-full">
@@ -31,7 +32,11 @@ export default {
       },
       overview: function() {
         return  this.movie.overview.length > 100 ? this.movie.overview.substring(0, 100) + "..." : this.movie.overview
-      } 
+      },
+      scoreAvailable: function() {
+          console.log(this.scores)
+          return this.scores != undefined
+      }  
   }
 }
 </script>

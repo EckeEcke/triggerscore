@@ -13,9 +13,10 @@
                         <h2 class="text-xl font-semibold md:text-2xl self-center w-4/5">
                         {{ movie.title }}
                         </h2>
-                        <div class="h-12 w-12 md:h-20 md:w-20 text-white rounded-full" :class="{'bg-red-700': movie.vote_average >= 7, 'bg-yellow-400': movie.vote_average < 7 && movie.vote_average >=4, 'bg-green-500': movie.vote_average < 4}">
+                        <div class="h-12 w-12 md:h-20 md:w-20 text-white rounded-full" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && score.rating_total >= 7, 'bg-yellow-400': scoreAvailable && score.rating_total < 7 && score.rating_total >=4, 'bg-green-500': scoreAvailable && score.rating_total < 4}">
                             <div class="relative w-full h-full">
-                                <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ movie.vote_average }}</span>
+                                <span v-if="scoreAvailable" class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ score.rating_total }}</span>
+                                <span v-else class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">-</span>
                             </div>
                         </div>
                     </div>
@@ -71,6 +72,15 @@ export default {
       },
       genres: function() {
           return this.movie.genres.map(genre => genre.name)
+      },
+      triggerscores: function() {
+          return this.$store.getters.getTriggerscores
+      },
+      score: function() {
+          return this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(this.movie.id)]
+      },
+      scoreAvailable: function() {
+          return this.score != undefined
       }
   },
   methods: {
