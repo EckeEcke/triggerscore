@@ -5,9 +5,9 @@
         </div>
         
         <div class="w-full p-3">
-            <div class="absolute top-1 right-1 h-12 w-12 text-white rounded-full" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && score.rating_total >= 7, 'bg-yellow-400': scoreAvailable && score.rating_total < 7 && score.rating_total >=4, 'bg-green-500': scoreAvailable && score.rating_total < 4}">
+            <div class="absolute top-1 right-1 h-12 w-12 text-white rounded-full" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && scores.rating_total >= 7, 'bg-yellow-400': scoreAvailable && scores.rating_total < 7 && scores.rating_total >=4, 'bg-green-500': scoreAvailable && scores.rating_total < 4}">
                 <div class="relative w-full h-full">
-                    <span v-if="scoreAvailable" class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ score.rating_total }}</span>
+                    <span v-if="scoreAvailable" class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ scores.rating_total }}</span>
                     <span v-else class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">-</span>
                 </div>
             </div>
@@ -24,7 +24,8 @@
 export default {
   name: 'MovieHighlightsItem',
   props: {
-    movie: Object
+    movie: Object,
+    scores: Object
   },
   computed: {
       poster: function() {
