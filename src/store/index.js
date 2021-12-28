@@ -15,8 +15,8 @@ export default new Vuex.Store({
         bondMovieIDs: [646,657,658,660,667,668,681,253,682,691,698,699,700,707,708,709,710,714,36643,36669],
         filterMoviesByYearMin: null,
         filterMoviesByYearMax: null,
-        filterMoviesByNetflix: true,
-        filterMoviesByPrime: true,
+        filterMoviesByNetflix: false,
+        filterMoviesByPrime: false,
         sortingOption: 'a-z'
     },
     mutations: {

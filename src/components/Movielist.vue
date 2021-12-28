@@ -117,21 +117,20 @@ export default {
       movies: function(){
           this.$store.dispatch("filterMovies")
       },
-      sortMovies: function(array){
+      sortingOption: function(){
           console.log(this.sortingOtion)
           if (this.selectedSortOption == "a-z"){
-              array = array.sort(this.sortAtoZ)
+              this.filteredMovies = this.filteredMovies.sort(this.sortAtoZ)
           }
           if (this.sortingOption == "z-a"){
-              array = array.sort(this.sortZtoA)
+              this.filteredMovies = this.filteredMovies.sort(this.sortZtoA)
           }
           if (this.sortingOption == "date-desc"){
-              array = array.sort(this.sortByDateDesc)
+              this.filteredMovies = this.filteredMovies.sort(this.sortByDateDesc)
           }
           if (this.sortingOption == "date-asc"){
-             array = array.sort(this.sortByDateAsc)
+             this.filteredMovies = this.filteredMovies.sort(this.sortByDateAsc)
           }
-          return array
       }
   },
   methods: {   
