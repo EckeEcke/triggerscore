@@ -33,7 +33,6 @@ export default {
         return  this.movie.overview.length > 100 ? this.movie.overview.substring(0, 100) + "..." : this.movie.overview
       },
       scoreAvailable: function() {
-          console.log(this.scores)
           return this.scores != undefined
       } 
   }

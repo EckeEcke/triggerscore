@@ -8,10 +8,11 @@
         <div id="highlight-container" class="hide-scrollbar flex flex-none flex-row  overflow-x-scroll py-4 px-0 md:px-4">
             <MovieHighlightItem v-for="movie in bondMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
         </div>
-        <div class="flex justify-between md:px-4 container mx-auto xl:w-10/12">
+        <div class="justify-between md:px-4 container mx-auto xl:w-10/12 hidden sm:flex">
             <button @click="scrollHighlightContainer('left')"><font-awesome-icon class="text-yellow-500 text-3xl transform hover:scale-105" :icon="['fas', 'arrow-circle-left']" /></button>
             <button @click="scrollHighlightContainer('right')"><font-awesome-icon class="text-yellow-500 text-3xl transform hover:scale-105" :icon="['fas', 'arrow-circle-right']" /></button>
-        </div>
+        </div>    
+        
         
     </div>
 </template>
@@ -22,12 +23,6 @@ export default {
   name: 'MovieHighlightsContainer',
   components: {
       MovieHighlightItem
-  },
-  mounted: function() {
-      window.addEventListener('scroll', this.onScroll)
-  },
-  beforeDestroy () {
-      window.removeEventListener('scroll', this.onScroll)
   },
   computed: {
     bondMovies: function() {

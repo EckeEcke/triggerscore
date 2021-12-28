@@ -4,29 +4,6 @@
         <!-- ... -->
         </svg>
         <div v-else>
-        <div class="flex justify-around flex-col md:flex-row p-4 md:p-0 bg-gradient-to-b from-red-700 to red-600 to-red-600 sticky top-0 z-10 shadow-lg">
-            <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12">
-                <div class="flex mx-auto my-3 h-8 md:h-10 self-center w-full md:w-96">
-                <div class="rounded flex w-full md:w-auto justify-start">
-                    <button class="flex items-center justify-center px-4 rounded-l" :class="searchInput.length == 0 ? 'bg-yellow-500' : 'bg-yellow-400'" @click="searchMovie">
-                        <font-awesome-icon :icon="['fas', 'search']" class="text-lg" />
-                    </button>
-                    <input type="text" id="search" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="px-4 w-full rounded-r outline-none transition" placeholder="Film suchen...">
-                </div>
-            </div>
-            <div class="flex justify-end w-full my-3" :class="{'hidden': !showNavbar, 'md:flex': !showNavbar}">
-                <select v-model="selectedSortOption" class="w-full md:w-auto h-8 md:h-10 bg-white rounded px-3 py-2 outline-none text-sm md:text-base" @change="sortMovies">
-                    <option class="py-1" value="a-z">A-Z</option>
-                    <option class="py-1" value="z-a">Z-A</option>
-                    <option class="py-1" value="date-desc">Jahr absteigend</option>
-                    <option class="py-1" value="date-asc">Jahr aufsteigend</option>
-                    <option disabled class="py-1" value="ts-desc">Triggerscore absteigend</option>
-                    <option disabled class="py-1" value="ts-asc">Triggerscore aufsteigend</option>
-                </select>
-            </div>
-            </div>
-            
-        </div>
             <MovieHighlightsContainer v-if="searchResults.length == 0 && !searchError" />
             <div v-if="!isLoading && searchResults.length == 0 && !searchError" class="bg-red-600 py-8 text-white text-left">
                 <div class="container px-4 xl:w-10/12 mx-auto">
@@ -34,14 +11,14 @@
                     <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
                 </div>
             </div>
-            <div v-if="searchResults.length > 0 && !searchError" class=" text-center font-semibold container mx-auto md:mt-4 md:mb-12  xl:w-10/12 rounded-lg md:px-4">
-                <div class="bg-gray-900 py-6 px-2">
+            <div v-if="searchResults.length > 0 && !searchError" class=" text-center font-semibold container mx-auto md:mt-4 md:mb-12  xl:w-10/12 md:px-4">
+                <div class="bg-gray-900 py-6 px-2 md:rounded-lg">
                     <p class="text-white text-lg">Deine Suche nach <i>"{{searchInput}}"</i> ergab {{searchResults.length}} Treffer.</p>
                     <button class="bg-yellow-500 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="resetSearch"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
                 </div>
             </div>
-            <div v-if="searchResults.length == 0 && searchError" class=" text-center font-semibold container mx-auto md:mt-4 md:mb-12  xl:w-10/12 rounded-lg md:px-4">
-                <div class="bg-gray-900 py-6 px-2">
+            <div v-if="searchResults.length == 0 && searchError" class=" text-center font-semibold container mx-auto md:mt-4 md:mb-12  xl:w-10/12 md:px-4">
+                <div class="bg-gray-900 py-6 px-2 md:rounded-lg">
                     <p class="text-white text-lg">Deine Suche nach <i>"{{searchInput}}"</i> ergab leider keine Treffer.</p>
                     <button class="bg-yellow-500 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="resetSearch"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
                 </div>
@@ -65,7 +42,7 @@
                 leave-class="opacity-100"
                 leave-to-class="opacity-0"
             >       
-                    <MovieListitem v-for="movie in movies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
+                    <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
             </transition-group>
 
         </div>
@@ -96,6 +73,7 @@ export default {
   mounted: function(){
       this.$store.dispatch("setTriggerscores")
       this.$store.dispatch("setBondMovies")
+      this.$store.dispatch("filterMovies")
       window.addEventListener('scroll', this.onScroll)
   },
   beforeDestroy () {
@@ -103,7 +81,7 @@ export default {
   },
   computed: {
       filteredMovies: function(){
-          return this.movies.filter(title => title.original_title.toLowerCase().includes(this.searchInput.toLowerCase()))
+          return this.$store.getters.getFilteredMovies
       },
       triggerscores: function() {
           return this.$store.getters.getTriggerscores
@@ -130,6 +108,30 @@ export default {
               this.$store.commit("setSearchError", value)
           }
           
+      },
+      sortingOption: function(){
+          return this.$store.getters.getSortingOption
+      }
+  },
+  watch: {
+      movies: function(){
+          this.$store.dispatch("filterMovies")
+      },
+      sortMovies: function(array){
+          console.log(this.sortingOtion)
+          if (this.selectedSortOption == "a-z"){
+              array = array.sort(this.sortAtoZ)
+          }
+          if (this.sortingOption == "z-a"){
+              array = array.sort(this.sortZtoA)
+          }
+          if (this.sortingOption == "date-desc"){
+              array = array.sort(this.sortByDateDesc)
+          }
+          if (this.sortingOption == "date-asc"){
+             array = array.sort(this.sortByDateAsc)
+          }
+          return array
       }
   },
   methods: {   
@@ -153,20 +155,21 @@ export default {
       sortByDateAsc: function(x,y){
           return new Date(x.release_date) - new Date(y.release_date)
       },
-      sortMovies: function(){
-          console.log(this.selectedSortOption)
+      sortMovies: function(array){
+          console.log(this.sortingOtion)
           if (this.selectedSortOption == "a-z"){
-              this.movies = this.movies.sort(this.sortAtoZ)
+              array = array.sort(this.sortAtoZ)
           }
-          if (this.selectedSortOption == "z-a"){
-              this.movies = this.movies.sort(this.sortZtoA)
+          if (this.sortingOption == "z-a"){
+              array = array.sort(this.sortZtoA)
           }
-          if (this.selectedSortOption == "date-desc"){
-              this.movies = this.movies.sort(this.sortByDateDesc)
+          if (this.sortingOption == "date-desc"){
+              array = array.sort(this.sortByDateDesc)
           }
-          if (this.selectedSortOption == "date-asc"){
-              this.movies = this.movies.sort(this.sortByDateAsc)
+          if (this.sortingOption == "date-asc"){
+             array = array.sort(this.sortByDateAsc)
           }
+          return array
       },
       searchMovie: function(){
           this.$store.dispatch("setSearchResults")

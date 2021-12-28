@@ -7,11 +7,17 @@ export default new Vuex.Store({
     state: {
         triggerscores: [],
         movies: [],
+        filteredMovies: [],
         searchInput: '',
         searchResults: [],
         searchError: false,
         bondMovies: [],
-        bondMovieIDs: [646,657,658,660,667,668,681,253,682,691,698,699,700,707,708,709,710,714,36643,36669]
+        bondMovieIDs: [646,657,658,660,667,668,681,253,682,691,698,699,700,707,708,709,710,714,36643,36669],
+        filterMoviesByYearMin: null,
+        filterMoviesByYearMax: null,
+        filterMoviesByNetflix: true,
+        filterMoviesByPrime: true,
+        sortingOption: 'a-z'
     },
     mutations: {
         setTriggerscores(state,payload) {
@@ -31,6 +37,24 @@ export default new Vuex.Store({
         },
         setBondMovies(state,payload){
             state.bondMovies = payload
+        },
+        setMovieYearMin(state,payload){
+            state.filterMoviesByYearMin = payload
+        },
+        setMovieYearMax(state,payload){
+            state.filterMoviesByYearMax = payload
+        },
+        setNetflixFilter(state,payload){
+            state.filterMoviesByNetflix = payload
+        },
+        setPrimeFilter(state,payload){
+            state.filterMoviesByPrime = payload
+        },
+        setFilteredMovies(state,payload){
+            state.filteredMovies = payload
+        },
+        setSortingOption(state,payload){
+            state.sortingOption = payload
         }
     },
     actions: {
@@ -78,6 +102,76 @@ export default new Vuex.Store({
                 .catch(console.log("Something went wrong"))
             ))
             loadedMovies.then(res => state.commit("setBondMovies", res))
+        },
+        async filterMovies(state){
+            let clone = [...this.state.movies]
+            console.log(this.state.filterMoviesByNetflix, this.state.filterMoviesByPrime)
+            if (this.state.filterMoviesByNetflix && !this.state.filterMoviesByPrime){
+                let netflixIDs = []
+                Promise.all(this.state.triggerscores.map(entry => 
+                    fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
+                    .then((res) => res.json())
+                    .then(res => {
+                        console.log(res)
+                        if(res.results.DE.flatrate && res.results.DE.flatrate.some(provider => provider.provider_name == "Netflix")){
+                            netflixIDs.push(entry.movie_id)
+                        }
+                        console.log(netflixIDs)
+                    })
+                    .catch(console.log("Something went wrong"))
+                ))
+                .then(()=>
+                    clone = clone.filter(movie => netflixIDs.includes(movie.id)))
+                .then(()=>
+                    state.commit("setFilteredMovies",clone))
+            }
+            if (this.state.filterMoviesByPrime && !this.state.filterMoviesByNetflix){
+                let primeIDs = []
+                Promise.all(this.state.triggerscores.map(entry => 
+                    fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
+                    .then((res) => res.json())
+                    .then(res=>{
+                        console.log(res)
+                        if(res.results.DE.flatrate && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
+                            primeIDs.push(entry.movie_id)
+                            console.log(primeIDs)
+                        }
+                    })
+                    .catch(console.log("Something went wrong"))
+                ))
+                .then(()=>clone = clone.filter(movie => primeIDs.includes(movie.id)))
+                .then(()=>state.commit("setFilteredMovies",clone))
+            }
+            if (this.state.filterMoviesByPrime && this.state.filterMoviesByNetflix){
+                let IDs = []
+                Promise.all(this.state.triggerscores.map(entry => 
+                    fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
+                    .then((res) => res.json())
+                    .then(res=>{
+                        console.log(res)
+                        if(res.results.DE.flatrate && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video" || provider.provider_name == "Netflix")){
+                            IDs.push(entry.movie_id)
+                        }
+                    })
+                    .catch(console.log("Something went wrong"))
+                ))
+                .then(()=>clone = clone.filter(movie => IDs.includes(movie.id)))
+                .then(()=>state.commit("setFilteredMovies",clone))
+            }
+            if (!this.state.filterMoviesByPrime && !this.state.filterMoviesByNetflix){
+                state.commit("setFilteredMovies",clone)
+            }
+            if (this.state.filterByYearMin != null){
+                clone = clone.filter(movie => movie.release_date > this.state.filterMoviesByYearMin)
+            }
+            if (this.state.filterByYearMax != null){
+                clone = clone.filter(movie => movie.release_date < this.state.filterMoviesByYearMax)
+            }
+            
+
+        },
+        setSortingOption(state,payload){
+            state.commit("setSortingOption",payload)
         }
     },
     modules: {
@@ -90,6 +184,8 @@ export default new Vuex.Store({
         getSearchResults: state => state.searchResults,
         getSearchError: state => state.searchError,
         getBondMovies: state => state.bondMovies,
-        getBondMovieIDs: state => state.bondMovieIDs
+        getBondMovieIDs: state => state.bondMovieIDs,
+        getFilteredMovies: state => state.filteredMovies,
+        getSortingOption: state => state.sortingOption
     }
 })
