@@ -6,6 +6,9 @@ import './assets/tailwind.css'
 import './components/Movielist.vue'
 import Movielist from './components/Movielist.vue'
 import Detailpage from './components/Detailpage.vue'
+import Searchresults from './components/Searchresults'
+import About from './components/About'
+import FAQ from './components/FAQ'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -31,7 +34,22 @@ const router = new VueRouter({
      name: "movie",
      params: true,
      component: Detailpage
-    }
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: About
+    },
+    {
+      path: "/faq",
+      name: "faq",
+      component: FAQ
+    },
+    {
+      path: "/search",
+      name: "search",
+      component: Searchresults
+    } 
   ],
   scrollBehavior (to, from, savedPosition) {
     if (savedPosition) {

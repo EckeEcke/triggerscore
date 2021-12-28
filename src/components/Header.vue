@@ -116,7 +116,7 @@ export default {
     searchMovie: function(){
           this.$store.dispatch("setSearchResults")
           this.showSearch = false
-          this.$router.push('/')
+          this.$router.push('/search')
       },
       resetSearchResults: function() {
           this.$store.dispatch("resetSearch")
