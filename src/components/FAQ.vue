@@ -1,6 +1,6 @@
 <template>
     <div class="container-xl bg-white p-6 md:p-12 text-left md:mt-8 text-sm lg:w-10/12 mx-auto md:rounded-lg">
-        <h2 class="font-semibold text-lg mb-2">FAQs</h2>
+        <h2 class="font-semibold text-xl mb-2">FAQs</h2>
         <section class="mt-4">
             <p><b>Was ist Triggerscore?</b></p>
             <p>Triggerscore ist ein Bewertungsportal, auf dem User:innen bewerten können, wie stark alte Filme Zuschauer:innen von heute triggern.</p>

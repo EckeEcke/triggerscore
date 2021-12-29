@@ -1,5 +1,6 @@
 <template>
-    <div class="">  
+    <div class="">
+        <Searchbox />
         <svg v-if="isLoading" class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
             <!-- ... -->
             </svg>
@@ -22,12 +23,14 @@
 <script>
 import MovieListitem from './MovieListitem.vue'
 import MovieHighlightsContainer from './MovieHighlightsContainer.vue'
+import Searchbox from './Searchbox.vue'
 
 export default {
     name: 'Movielist',
     components: {
         MovieListitem,
-        MovieHighlightsContainer
+        MovieHighlightsContainer,
+        Searchbox
     },
     data() {
         return {

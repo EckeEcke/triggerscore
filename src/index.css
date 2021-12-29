@@ -6,3 +6,8 @@
     font-family: Pixel;
     src: url("./assets/Thirteen-Pixel-Fonts.ttf");
 }
+
+html {
+    scroll-behavior: smooth;
+}
+  

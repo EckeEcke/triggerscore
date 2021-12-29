@@ -58,7 +58,7 @@
                 <button class="flex items-center justify-center px-4 rounded-l bg-yellow-500" @click="searchMovie">
                     <font-awesome-icon :icon="['fas', 'search']" class="text-lg" />
                 </button>
-                <input type="text" id="search" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="px-4 w-full rounded-r outline-none transition" placeholder="Film suchen...">
+                <input type="text" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="px-4 w-full rounded-r outline-none transition" placeholder="Film suchen...">
               </div>
             </div>
           </div>
