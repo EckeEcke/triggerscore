@@ -13,6 +13,10 @@
             <p><b>Werden Daten von mir erhoben, wenn ich eine Bewertung abgebe?</b></p>
             <p>Nein, in der Bewertungsdatenbank landen lediglich die vergebenen Scores und eine Film-ID.</p>
         </section>
+        <section class="mt-4">
+            <p><b>Woher kommen die ganzen Daten zu Filmen?</b></p>
+            <p>Triggerscore nutzt die API von The Movie Database. Darüber hinaus greift die Applikation auf Informationen von JustWatch zurück, um die Verfügbarkeit von Filmen auf diversen Streaminganbietern zu checken. Der Triggerscore selbst wird ausschließlich von und für Triggerscore erhoben und bereitgestellt</p>
+        </section>
     </div>
 </template>
 

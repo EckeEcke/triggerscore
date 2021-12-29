@@ -5,7 +5,7 @@
                 Film suchen und <router-link to="/faq" class="text-yellow-500">Triggerscore</router-link> vergeben
             </h1>
             <div class="flex flex-col md:flex-row mx-auto">
-            <div class="flex mx-auto py-4 self-center w-full">
+            <div class="flex mx-auto py-4 self-center w-full opacity-95">
                 <div class="rounded-lg flex w-full justify-start">
                 <button class="flex items-center justify-center px-3 w-16 rounded-l-xl bg-yellow-500" @click="searchMovie">
                     <font-awesome-icon :icon="['fas', 'search']" class="text-lg" />

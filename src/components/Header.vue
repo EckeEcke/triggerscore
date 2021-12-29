@@ -1,15 +1,36 @@
 <template>
-    <header class="w-full h-auto bg-gradient-to-b from-red-700 to red-600 to-red-600 z-10 shadow-md flex flex-col relative sticky top-0">
+    <header class="w-full h-auto bg-red-600 z-10 shadow-md flex flex-col relative sticky top-0">
         <section class="container mx-auto h-full p-4 xl:w-10/12 flex justify-between relative">
-            <router-link to="/" tag="h1" class="text-xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
-              TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
-            </router-link>
+            <div class="flex">
+              <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg self-center mr-3 sm:hidden" @click="showNav = !showNav" />
+              <router-link to="/" tag="h1" class="text-xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+                TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
+              </router-link>
+            </div>
             <div class="flex">
               <router-link to="/about" tag="a" class="text-white font-semibold self-center mr-10 hidden sm:block hover:text-yellow-500">About</router-link>
               <router-link to="/faq" tag="a" class="text-white font-semibold self-center mr-10 hidden sm:block hover:text-yellow-500">FAQ</router-link>
-              <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-yellow-300 mr-10 self-center hover:text-yellow-500" @click="showSearch = !showSearch" />
+              <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-yellow-300 mr-8 md:mr-10 self-center hover:text-yellow-500" @click="showSearch = !showSearch" />
               <font-awesome-icon :icon="['fas', 'ellipsis-v']" class="text-lg text-yellow-300 self-center hover:text-yellow-500" @click="showMenu = !showMenu" />
             </div>
+            <transition  enter-active-class="duration-300 ease-out"
+                enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
+              <nav v-if="showNav" class="w-80 bg-gray-900 h-screen absolute top-0 left-0 shadow-lg sm:hidden">
+                <div class="text-right text-white text-xl p-4">
+                  <font-awesome-icon :icon="['fas', 'times']" @click="showNav = false" />
+                </div>
+                <h1 class="text-2xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer mb-4">
+                TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
+              </h1>
+      
+                <router-link to="/about" tag="div" class="text-white text-2xl font-semibold self-center hover:text-yellow-500 py-8"><span @click="showNav = false">About</span></router-link>
+                <hr>
+                <router-link to="/faq" tag="div" class="text-white text-2xl font-semibold self-center hover:text-yellow-500 py-8"><span @click="showNav = false">FAQ</span></router-link>
+                <hr>
+                <router-link to="/contact" tag="div" class="text-white text-2xl font-semibold self-center hover:text-yellow-500 py-8"><span @click="showNav = false">Kontakt</span></router-link>
+                <hr>
+              </nav>
+            </transition>
             <transition enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
               <div v-if="showMenu" class="bg-white shadow-lg rounded-lg w-64 p-4 absolute top-full right-0 mt-2" >
@@ -84,7 +105,8 @@ export default {
   data(){
     return {
       showSearch: false,
-      showMenu: false
+      showMenu: false,
+      showNav: false
     }
   },
   computed: {
