@@ -37,7 +37,7 @@
               <p class="text-right"><font-awesome-icon :icon="['fas', 'times']" @click="showMenu = false" /></p>
               <h2 class="font-semibold text-left mb-2">Sortieren</h2>
               <div class="flex justify-end w-full my-3 border border-gray-200 rounded">
-                <select v-model="sortingOption" class="w-full md:w-auto h-8 md:h-10 bg-white rounded px-3 py-2 outline-none text-sm md:text-base" @change="sortMovies">
+                <select v-model="sortingOption" class="w-full md:w-auto h-8 md:h-10 bg-white rounded px-3 py-2 outline-none text-sm md:text-base">
                     <option class="py-1" value="a-z">A-Z</option>
                     <option class="py-1" value="z-a">Z-A</option>
                     <option class="py-1" value="date-desc">Jahr absteigend</option>
@@ -63,15 +63,15 @@
               <div class="flex my-4">
                 <div class="w-1/2 mr-2 flex flex-col">
                   <label class="text-left text-sm" for="filter-start">Von</label>
-                  <input type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="1900">
+                  <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="1900">
                 </div>
                 <div class="w-1/2 mr-2 flex flex-col">
                   <label class="text-left text-sm" for="filter-end">Bis</label>
-                  <input type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="2010">  
+                  <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="2010">  
                 </div>
               </div>
               <hr  class="my-3">
-              <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-gray-900 rounded-lg">Filter zurücksetzen</button>
+              <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
             </div>
             </transition>
             
@@ -143,6 +143,24 @@ export default {
       set: function(value){
         this.$store.commit("setSortingOption",value)
       }
+    },
+    filterMin: {
+      get: function(){
+        return this.$store.state.filterMoviesByYearMin
+      },
+      set: function(value){
+        this.$store.commit("setMovieYearMin",value)
+        this.$store.dispatch("filterMovies")
+      }
+    },
+    filterMax: {
+      get: function(){
+        return this.$store.state.filterMoviesByYearMax
+      },
+      set: function(value){
+        this.$store.commit("setMovieYearMax",value)
+        this.$store.dispatch("filterMovies")
+      }
     }
   },
   methods: {
@@ -153,6 +171,9 @@ export default {
       },
       resetSearchResults: function() {
           this.$store.dispatch("resetSearch")
+      },
+      resetFilter: function(){
+        this.$store.dispatch("resetFilter")
       }
   }
 }

@@ -116,7 +116,6 @@ export default new Vuex.Store({
                         if(res.results.DE.flatrate && res.results.DE.flatrate.some(provider => provider.provider_name == "Netflix")){
                             netflixIDs.push(entry.movie_id)
                         }
-                        console.log(netflixIDs)
                     })
                     .catch(console.log("Something went wrong"))
                 ))
@@ -134,7 +133,6 @@ export default new Vuex.Store({
                         console.log(res)
                         if(res.results.DE.flatrate && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
                             primeIDs.push(entry.movie_id)
-                            console.log(primeIDs)
                         }
                     })
                     .catch(console.log("Something went wrong"))
@@ -148,7 +146,6 @@ export default new Vuex.Store({
                     fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
                     .then((res) => res.json())
                     .then(res=>{
-                        console.log(res)
                         if(res.results.DE.flatrate && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video" || provider.provider_name == "Netflix")){
                             IDs.push(entry.movie_id)
                         }
@@ -161,17 +158,33 @@ export default new Vuex.Store({
             if (!this.state.filterMoviesByPrime && !this.state.filterMoviesByNetflix){
                 state.commit("setFilteredMovies",clone)
             }
-            if (this.state.filterByYearMin != null){
+            if (this.state.filterMoviesByYearMin != null && this.state.filterMoviesByYearMin > 1900 && this.state.filterMoviesByYearMin < 2011){
                 clone = clone.filter(movie => movie.release_date > this.state.filterMoviesByYearMin)
+                console.log(clone)
+                state.commit("setFilteredMovies",clone)
             }
-            if (this.state.filterByYearMax != null){
+            if (this.state.filterMoviesByYearMax != null && this.state.filterMoviesByYearMax > 1900 && this.state.filterMoviesByYearMax < 2011){
                 clone = clone.filter(movie => movie.release_date < this.state.filterMoviesByYearMax)
+                state.commit("setFilteredMovies",clone)
             }
             
 
         },
+        resetFilter(state){
+            state.commit("setPrimeFilter", false)
+            state.commit("setNetflixFilter", false)
+            state.commit("setMovieYearMin", null)
+            state.commit("setMovieYearMax", null)
+            state.commit("setFilteredMovies", this.state.movies)
+        },
         setSortingOption(state,payload){
             state.commit("setSortingOption",payload)
+        },
+        setMovieYearMin(state,payload){
+            state.commit("setMovieYearMin",payload)
+        },
+        setMovieYearMax(state,payload){
+            state.commit("setMovieYearMax",payload)
         }
     },
     modules: {
