@@ -1,24 +1,61 @@
 <template>
     <section class="w-full bg-center bg-cover bg-fixed" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backdrop}`}">
-        <div class="container mx-auto pt-8 pb-28 px-1 lg:px-16 xl:px-60">
+        <div class="container mx-auto pt-8 pb-28 px-1 xl:px-20">
         <div class="w-full mb-8 flex justify-between">
             <button class="bg-yellow-500 p-3 rounded-lg text-gray-900 font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
         </div>
-        <div class="flex flex-col w-100 lg:flex-row bg-white mt-4 rounded-t-lg justify-start">
+        <div class="flex flex-col lg:flex-row lg:rounded-b-lg">
+            <div class="flex flex-col w-full bg-white rounded-t-lg lg:rounded-lg justify-start lg:mr-6">
+            <div class="flex bg-gray-900 justify-between w-full lg:rounded-t-lg">
+                <img :src=poster class="w-1/2 lg:w-60 h-auto object-contain self-start rounded-tl-lg" />
+                <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center">
+                    <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
+                        TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
+                    </div>
+                    <div class="mx-auto bg-opacity-90 w-12 sm:w-20 md:w-24 lg:w-20 h-12 sm:h-20 md:h-24 lg:h-20 border border-gray-900 p-2 text-3xl rounded-full flex justify-center my-3" :class="{'bg-red-700': score.rating_total >= 7, 'bg-yellow-400': score.rating_total < 7 && score.rating_total >=4, 'bg-green-500': score.rating_total < 4}">
+                        <p class="self-center text-white text-lg">{{score.rating_total}}</p>
+                    </div>
+                    <div class="text-left w-36 mx-auto text-white">
+                        <div class="flex my-2 md:text-lg lg:text-base">
+                            <div class="flex rounded-full justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2"  :class="{'bg-red-700': score.rating_sexism >= 7, 'bg-yellow-400': score.rating_sexism < 7 && score.rating_sexism >=4, 'bg-green-500': score.rating_sexism < 4}">
+                                <div class="self-center">{{score.rating_sexism}}</div>
+                            </div>
+                            <p class="self-center">Sexismus</p>
+                        </div>
+                        <div class="flex my-2 md:text-lg lg:text-base">
+                            <div class="flex bg-red-500 rounded-full justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_racism >= 7, 'bg-yellow-400': score.rating_racism < 7 && score.rating_racism >=4, 'bg-green-500': score.rating_racism < 4}">
+                                <div class="self-center">{{score.rating_racism}}</div>
+                            </div>
+                            <p class="self-center">Rassismus</p>
+                        </div>
+                        <div class="flex my-2 md:text-lg lg:text-base">
+                            <div class="flex bg-red-500 rounded-full justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_others >= 7, 'bg-yellow-400': score.rating_others < 7 && score.rating_others >=4, 'bg-green-500': score.rating_others < 4}">
+                                <div class="self-center">{{score.rating_others}}</div>
+                            </div>
+                            <p class="self-center">Sonstige</p>
+                        </div>
+                        <div class="flex my-2 md:text-lg lg:text-base">
+                            <div class="flex bg-red-500 rounded-full justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_cringe >= 7, 'bg-yellow-400': score.rating_cringe < 7 && score.rating_cringe >=4, 'bg-green-500': score.rating_cringe < 4}">
+                                <div class="self-center">{{score.rating_cringe}}</div>
+                            </div> 
+                            <p class="self-center">Cringe</p>
+                        </div>
+                    </div>
+                </div>
+                <div v-else class="w-full flex flex-col mx-2 self-center">
+                    <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
+                        TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
+                    </div>
+                    <p class="text-white mt-4">Noch keine Bewertungen</p>
+                </div>
+            </div>
             
-            <img :src=poster class="w-2/5 mx-auto lg:ml-4 lg:my-4 lg:w-60 h-auto object-contain self-start" />
             <div class="flex flex-col xl:flex-row">
                 <div class="text-left px-4 md:px-4 py-2 flex flex-col">
                     <div class="flex justify-between">
-                        <h2 class="text-xl font-semibold md:text-2xl self-center w-4/5">
+                        <h2 class="text-xl font-semibold md:text-2xl self-center">
                         {{ movie.title }}
                         </h2>
-                        <div class="h-12 w-12 md:h-20 md:w-20 text-white rounded-full" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && score.rating_total >= 7, 'bg-yellow-400': scoreAvailable && score.rating_total < 7 && score.rating_total >=4, 'bg-green-500': scoreAvailable && score.rating_total < 4}">
-                            <div class="relative w-full h-full">
-                                <span v-if="scoreAvailable" class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ score.rating_total }}</span>
-                                <span v-else class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">-</span>
-                            </div>
-                        </div>
                     </div>
                     
                     <p class="mb-4 text-xs md:text-md">Veröffentlicht: {{ movie.release_date.substring(0,4) }}</p>
@@ -42,6 +79,8 @@
             
         </div>
         <Ratingpage :title="movie.title" :id="movie.id" />
+        </div>
+        
     </div>
     </section>
     
