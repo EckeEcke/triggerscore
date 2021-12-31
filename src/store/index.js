@@ -158,12 +158,12 @@ export default new Vuex.Store({
             if (!this.state.filterMoviesByPrime && !this.state.filterMoviesByNetflix){
                 state.commit("setFilteredMovies",clone)
             }
-            if (this.state.filterMoviesByYearMin != null && this.state.filterMoviesByYearMin > 1900 && this.state.filterMoviesByYearMin < 2011){
+            if (this.state.filterMoviesByYearMin != null && this.state.filterMoviesByYearMin >= 1900 && this.state.filterMoviesByYearMin <= 2011){
                 clone = clone.filter(movie => movie.release_date > this.state.filterMoviesByYearMin)
                 console.log(clone)
                 state.commit("setFilteredMovies",clone)
             }
-            if (this.state.filterMoviesByYearMax != null && this.state.filterMoviesByYearMax > 1900 && this.state.filterMoviesByYearMax < 2011){
+            if (this.state.filterMoviesByYearMax != null && this.state.filterMoviesByYearMax >= 1900 && this.state.filterMoviesByYearMax <= 2011){
                 clone = clone.filter(movie => movie.release_date < this.state.filterMoviesByYearMax)
                 state.commit("setFilteredMovies",clone)
             }
