@@ -38,7 +38,6 @@
 </template>
 
 <script>
-import axios from 'axios';
 export default {
   name: 'Contact',
   data(){
@@ -59,10 +58,11 @@ export default {
         .join("&");
     },
     handleSubmit () {
+      const form = this.form
       fetch("/",{
           method:"POST",
           headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: encode({"form-name": "contact", form})
+          body: this.encode({"form-name": "contact", form})
       })
       .then(()=>alert("Success"))
     }
