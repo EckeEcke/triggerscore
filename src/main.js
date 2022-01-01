@@ -9,6 +9,7 @@ import Detailpage from './components/Detailpage.vue'
 import Searchresults from './components/Searchresults'
 import About from './components/About'
 import FAQ from './components/FAQ'
+import Contact from './components/Contact'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -49,6 +50,11 @@ const router = new VueRouter({
       path: "/search",
       name: "search",
       component: Searchresults
+    },
+    {
+      path: "/contact",
+      name: "contact",
+      component: Contact
     } 
   ],
   scrollBehavior (to, from, savedPosition) {
