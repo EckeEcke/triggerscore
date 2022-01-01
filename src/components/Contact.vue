@@ -65,12 +65,12 @@ export default {
       axios.post(
         "/",
         this.encode({
-          "form-name": "contact-form",
-          ...this.formData
+          "form-name": "contact",
+          ...this.form
         }),
         axiosConfig
       ).then(() => {
-        this.$router.push('success')
+        this.$router.push('/')
       }).catch(() => {
         this.$router.push('NotFound')
       });
