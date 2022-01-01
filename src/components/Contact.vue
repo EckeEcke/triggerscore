@@ -23,7 +23,7 @@
             <p class="mb-2">
                 <label>Email:</label>
                 <br>
-                 <input v-model="form.mail" type="email" name="email" class="border border-gray-300 p-2 rounded w-52" required />
+                 <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-52" required />
             </p>
             <p class="mb-2">
                 <label>Nachricht:</label>
