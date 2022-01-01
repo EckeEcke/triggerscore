@@ -1,9 +1,10 @@
 <template>
     <div class="">
         <Searchbox />
-        <svg v-if="isLoading" class="animate-spin h-5 w-5 mr-3 ..." viewBox="0 0 24 24">
-            <!-- ... -->
-            </svg>
+        <div v-if="isLoading" class="mt-8">
+            <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
+            <p class="text-white font-semibold animate-bounce mt-8">Lädt Filme</p>
+            </div>
         <div v-else>
             <MovieHighlightsContainer />
             <div v-if="!isLoading" class="bg-red-600 py-8 text-white text-left">
@@ -36,7 +37,6 @@ export default {
         return {
             movieIDs: [620, 744, 2978, 9527, 1915, 4232, 9279, 9876, 4247, 4248, 9336, 9622, 2105, 4327, 7916, 11806, 9602, 9657, 9595, 37136, 10112, 14164, 11667, 9607, 9742],
             selectedSortOption: "a-z",
-            isLoading: false,
             showNavbar: true,
             lastScrollPosition: 0,
         }
@@ -51,6 +51,9 @@ export default {
         window.removeEventListener('scroll', this.onScroll)
     },
     computed: {
+        isLoading: function () {
+            return this.$store.getters.getHighlightsLoading && this.$store.getters.getMoviesLoading 
+        },
         filteredMovies: function() {
             return this.$store.getters.getFilteredMovies
         },

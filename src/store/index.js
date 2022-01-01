@@ -9,6 +9,7 @@ export default new Vuex.Store({
         movies: [],
         filteredMovies: [],
         searchInput: '',
+        searchTerm: '',
         searchResults: [],
         searchError: false,
         bondMovies: [],
@@ -17,7 +18,9 @@ export default new Vuex.Store({
         filterMoviesByYearMax: null,
         filterMoviesByNetflix: false,
         filterMoviesByPrime: false,
-        sortingOption: 'a-z'
+        sortingOption: 'a-z',
+        highlightsLoading: true,
+        moviesLoading: true,
     },
     mutations: {
         setTriggerscores(state,payload) {
@@ -28,6 +31,9 @@ export default new Vuex.Store({
         },
         setSearchInput(state,payload){
             state.searchInput = payload
+        },
+        setSearchTerm(state,payload){
+            state.searchTerm = payload
         },
         setSearchResults(state,payload){
             state.searchResults = payload
@@ -55,6 +61,12 @@ export default new Vuex.Store({
         },
         setSortingOption(state,payload){
             state.sortingOption = payload
+        },
+        setHighlightsLoading(state,payload){
+            state.highlightsLoading = payload
+        },
+        setMoviesLoading(state,payload){
+            state.moviesLoading = payload
         }
     },
     actions: {
@@ -66,16 +78,21 @@ export default new Vuex.Store({
                 fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
                 .then((res) => res.json())
             ))
-            loadedMovies.then(res => state.commit("setMovies", res) )
+            loadedMovies.then(res => {state.commit("setMovies", res);state.commit("setMoviesLoading",false)} )
             
         },
         setSearchInput(state, payload){
             state.commit("setSearchInput", payload)
         },
+        setSearchTerm(state,payload){
+            state.commit("setSearchTerm", payload)
+        },
         setSearchResults(state){
+            state.commit("setSearchResults", [])
             state.commit("setSearchError",false)
-            const searchInput = this.getters.getSearchInput
-            const fetchedSearchResults = fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de&page=1&include_adult=false&query=${searchInput}`)
+            state.commit("setSearchTerm",this.getters.getSearchInput)
+            const searchTerm = this.state.searchTerm
+            const fetchedSearchResults = fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de&page=1&include_adult=false&query=${searchTerm}`)
                                 .then(res => res.json())
                                 .catch()
             fetchedSearchResults.then(res => {
@@ -90,7 +107,6 @@ export default new Vuex.Store({
         },
         resetSearch(state) {
             state.commit("setSearchError",false)
-            state.commit("setSearchResults", [])
         },
         setSearchError(state,payload){
             state.commit("setSearchError",payload)
@@ -101,7 +117,7 @@ export default new Vuex.Store({
                 .then((res) => res.json())
                 .catch(console.log("Something went wrong"))
             ))
-            loadedMovies.then(res => state.commit("setBondMovies", res))
+            loadedMovies.then(res => {state.commit("setBondMovies", res);state.commit("setHighlightsLoading",false)})
         },
         async filterMovies(state){
             let clone = [...this.state.movies]
@@ -194,11 +210,14 @@ export default new Vuex.Store({
         getTriggerscores: state => state.triggerscores,
         getMovies: state => state.movies,
         getSearchInput: state => state.searchInput,
+        getSearchTerm: state => state.searchTerm,
         getSearchResults: state => state.searchResults,
         getSearchError: state => state.searchError,
         getBondMovies: state => state.bondMovies,
         getBondMovieIDs: state => state.bondMovieIDs,
         getFilteredMovies: state => state.filteredMovies,
-        getSortingOption: state => state.sortingOption
+        getSortingOption: state => state.sortingOption,
+        getHighlightsLoading: state => state.highlightsLoading,
+        getMoviesLoading: state => state.moviesLoading
     }
 })

@@ -8,7 +8,7 @@
             <div class="flex flex-col w-full bg-white rounded-t-lg lg:rounded-lg justify-start lg:mr-6">
             <div class="flex bg-gray-900 justify-between w-full lg:rounded-t-lg">
                 <img :src=poster class="w-1/2 lg:w-60 h-auto object-contain self-start rounded-tl-lg" />
-                <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center">
+                <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center rounded-tr-lg">
                     <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
                         TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                     </div>
@@ -42,7 +42,7 @@
                         </div>
                     </div>
                 </div>
-                <div v-else class="w-full flex flex-col mx-2 self-center">
+                <div v-else class="w-full flex flex-col mx-2 self-center rounded-tr-lg">
                     <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
                         TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                     </div>

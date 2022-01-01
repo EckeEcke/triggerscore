@@ -2,13 +2,13 @@
     <main>
         <div v-if="searchResults.length == 0 && searchError" class=" text-center font-semibold container mx-auto md:mt-4 md:mb-12  xl:w-10/12 md:px-4">
                 <div class="bg-gray-900 py-6 px-2 md:rounded-lg">
-                    <p class="text-white text-lg">Deine Suche nach <i>"{{searchInput}}"</i> ergab leider keine Treffer.</p>
+                    <p class="text-white text-lg">Deine Suche nach <i>"{{searchTerm}}"</i> ergab leider keine Treffer.</p>
                     <button class="bg-yellow-500 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="resetSearch"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
                 </div>
             </div>
             <div v-if="searchResults.length > 0 && !searchError" class=" text-center font-semibold container mx-auto md:mt-4 md:mb-12  xl:w-10/12 md:px-4">
                 <div class="bg-gray-900 py-6 px-2 md:rounded-lg">
-                    <p class="text-white text-lg">Deine Suche nach <i>"{{searchInput}}"</i> ergab {{searchResults.length}} Treffer.</p>
+                    <p class="text-white text-lg">Deine Suche nach <i>"{{searchTerm}}"</i> ergab {{searchResults.length}} Treffer.</p>
                     <button class="bg-yellow-500 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="$router.go(-1)"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
                 </div>
             </div>
@@ -36,6 +36,9 @@ export default {
       MovieListitem,
   },
   computed: {
+      searchTerm: function() {
+          return this.$store.getters.getSearchTerm
+      },
       searchResults: function() {
           return this.$store.getters.getSearchResults
       },
