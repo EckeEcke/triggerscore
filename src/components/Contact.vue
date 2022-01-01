@@ -59,21 +59,12 @@ export default {
         .join("&");
     },
     handleSubmit () {
-      const axiosConfig = {
-        header: { "Content-Type": "application/x-www-form-urlencoded" }
-      };
-      axios.post(
-        "/",
-        this.encode({
-          "form-name": "contact",
-          ...this.form
-        }),
-        axiosConfig
-      ).then(() => {
-        this.$router.push('/')
-      }).catch(() => {
-        this.$router.push('NotFound')
-      });
+      fetch("/",{
+          method:"POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: encode({"form-name": "contact", form})
+      })
+      .then(()=>alert("Success"))
     }
   }
 }
