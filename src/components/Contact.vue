@@ -11,7 +11,7 @@
                 <a href="https://www.xing.com/profile/Christian_Eckardt21/cv" target="_blank"><img class="h-10 mr-4" src="../assets/images/xing.svg" /></a>
             </p>
         </div>
-        <form name="contact" data-netlify="true" class="w-full md:w-1/2" @submit.prevent="handleSubmit()">
+        <form name="contact" class="w-full md:w-1/2" @submit.prevent="handleSubmit()">
             <input type="hidden" name="form-name" value="contact" />
             <h1 class="mb-4 text-2xl font-semibold">Feedback senden</h1>
             <p class="mb-4">Schick mir eine Nachricht</p>
