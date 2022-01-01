@@ -12,6 +12,7 @@
             </p>
         </div>
         <form name="contact" method="POST" data-netlify="true" class="w-full md:w-1/2">
+        <input type="hidden" name="form-name" value="contact" />
             <h1 class="mb-4 text-2xl font-semibold">Feedback senden</h1>
             <p class="mb-4">Schick mir eine Nachricht</p>
             <p class="mb-2">
