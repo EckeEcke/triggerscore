@@ -14,24 +14,26 @@
         <div>
             <h1 class="mb-4 text-2xl font-semibold">Feedback senden</h1>
             <p class="mb-4">Schick mir eine Nachricht</p>
-        <form name="contact" class="w-full md:w-1/2" @submit.prevent="handleSubmit">
-        
-                <label>Name:</label>
-                
-                <input v-model="form.name" type="text" name="name" class="border border-gray-300 p-2 rounded w-52" required />   
-            
-            
-                <label>Email:</label>
-                
-                 <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-52" required />
-
-                <label>Nachricht:</label>
-                
-                <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-52" required></textarea>
-
-                <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg" type="submit">Absenden</button>
- 
-        </form>
+            <form name="contact" class="w-full md:w-1/2" @submit.prevent="handleSubmit">
+                <p class="mb-2">
+                    <label>Name:</label>
+                    <br>
+                    <input v-model="form.name" type="text" name="name" class="border border-gray-300 p-2 rounded w-52" required />   
+                </p>
+                <p class="mb-2">
+                    <label>Email:</label>
+                    <br>
+                    <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-52" required />
+                </p>
+                <p class="mb-2">
+                    <label>Nachricht:</label>
+                    <br>
+                    <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-52" required></textarea>
+                </p>
+                <p class="">
+                    <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg" type="submit">Absenden</button>
+                </p>
+            </form>
         </div>
         
     </div>
