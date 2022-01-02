@@ -11,7 +11,7 @@
                 <a href="https://www.xing.com/profile/Christian_Eckardt21/cv" target="_blank"><img class="h-10 mr-4" src="../assets/images/xing.svg" /></a>
             </p>
         </div>
-        <div>
+        <div v-if="!submitted" class="w-full md:w-1/2">
             <h1 class="mb-4 text-2xl font-semibold">Feedback senden</h1>
             <p class="mb-4">Schick mir eine Nachricht</p>
             <form name="contact" class="w-full md:w-1/2" method="post"
@@ -34,7 +34,7 @@
                     <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-52" required></textarea>
                 </p>
                 <p class="">
-                    <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg" type="submit">Absenden</button>
+                    <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg transition hover:bg-yellow-600" type="submit">Absenden</button>
                 </p>
             </form>
         </div>
@@ -52,7 +52,8 @@ export default {
               name: '',
               mail: '',
               message: ''
-          }
+          },
+          submitted: false
       }
   },
   methods: {
@@ -67,7 +68,6 @@ export default {
       const axiosConfig = {
         header: { "Content-Type": "application/x-www-form-urlencoded" }
       };
-      console.log(this.encode({...this.form}))
       axios.post(
         "/",
         this.encode({
@@ -75,7 +75,9 @@ export default {
           ...this.form
         }),
         axiosConfig
-      );
+      )
+      .then(this.submitted = true)
+      .catch(alert("Das hat leider nicht geklappt..."))
     }
   }
   
