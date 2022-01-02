@@ -15,8 +15,9 @@
             <h1 class="mb-4 text-2xl font-semibold">Feedback senden</h1>
             <p class="mb-4">Schick mir eine Nachricht</p>
             <form name="contact" class="w-full md:w-1/2" method="post"
-    data-netlify="true"
-    data-netlify-honeypot="bot-field" @submit.prevent="handleSubmit">
+                data-netlify="true"
+                data-netlify-honeypot="bot-field" @submit.prevent="handleSubmit">
+                <p class="hidden"><input name="bot-field"></p>
                 <p class="mb-2">
                     <label>Name:</label>
                     <br>
