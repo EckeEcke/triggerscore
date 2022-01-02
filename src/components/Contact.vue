@@ -38,6 +38,9 @@
                 </p>
             </form>
         </div>
+        <div v-else class="w-full md:w-1/2">
+            <p class="p-4 bg-green-500 text-white rounded-lg shadow-lg font-semibold text-center">Nachricht erfolgreich versendet <font-awesome-icon :icon="['fas', 'check']" class="text-white" /></p>
+        </div>
         
     </div>
 </template>
@@ -53,7 +56,7 @@ export default {
               mail: '',
               message: ''
           },
-          submitted: false
+          submitted: true
       }
   },
   methods: {
@@ -77,7 +80,7 @@ export default {
         axiosConfig
       )
       .then(this.submitted = true)
-      .catch(alert("Das hat leider nicht geklappt..."))
+      .catch((error)=>console.log(error))
     }
   }
   
