@@ -50,28 +50,25 @@ export default {
           }
       }
   },
-  methods: {
-    encode (data) {
+  encode (data) {
       return Object.keys(data)
-        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+        .map(
+          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
         .join("&");
     },
-    handleSubmit() {
-      const formData = this.encode(this.form)
-      axios.post("/", new URLSearchParams(
-          {formData,"form-name":"contact"}
-      ), {
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded"
-        }
-      }).then(response => {
-        if (response.status === 200) {
-          alert("Success")
-        } else {
-          throw new Error(response.statusText)
-        }
-      }).catch(() =>  alert("nope"));
+    handleSubmit () {
+      const axiosConfig = {
+        header: { "Content-Type": "application/x-www-form-urlencoded" }
+      };
+      axios.post(
+        "/",
+        this.encode({
+          "form-name": "contact",
+          ...this.form
+        }),
+        axiosConfig
+      );
     }
-  }
 }
 </script>
