@@ -1,5 +1,5 @@
 <template>
-    <div class="container-xl bg-white p-6 md:p-12 text-left md:mt-8 md:mb-4 text-sm lg:w-1/2 mx-auto md:rounded-lg flex justify-between flex-wrap">
+    <div class="container-xl bg-white p-6 md:p-12 text-left md:mt-8 md:mb-4 text-sm md:w-8/12 lg:w-1/2 mx-auto md:rounded-lg flex justify-between flex-wrap">
         <div class="w-full md:w-1/2">
             <h1 class="mb-4 text-2xl font-semibold">Kontakt</h1>
             <p class="font-semibold">Christian Eckardt</p>

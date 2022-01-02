@@ -1,5 +1,5 @@
 <template>
-    <div class="container-xl bg-white p-6 md:p-12 text-left md:mt-8 md:mb-4 text-sm lg:w-1/2 mx-auto md:rounded-lg">
+    <div class="container-xl bg-white p-6 md:p-12 text-left md:mt-8 md:mb-4 text-sm md:w-8/12 lg:w-1/2 mx-auto md:rounded-lg">
         <h2 class="font-semibold text-xl mb-2">About</h2>
         <p class="font-semibold">Triggerscore - eine neue Art alte Filme zu schauen</p>
         <p class="mt-2">Die Idee für Triggerscore ging aus meiner neu entdeckten Guilty Pleasure hervor: Netflix nach alten Filmen durchstöbern (insbesondere 90er Jahre) und analysieren, wie sehr diese Filme Zuschauer:innen von heute triggern würden. Triggerscore dient dabei als Portal, auf dem User:innen Filmen den namensgebenden Triggerscore geben können</p>
