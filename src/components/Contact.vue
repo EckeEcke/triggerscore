@@ -57,8 +57,9 @@ export default {
         .join("&");
     },
     handleSubmit() {
+      const formData = this.encode(this.form)
       axios.post("/", new URLSearchParams(
-          this.encode(this.form)
+          {formData,"form-name":"contact"}
       ), {
         header: {
           "Content-Type": "application/x-www-form-urlencoded"
