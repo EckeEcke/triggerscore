@@ -1,6 +1,6 @@
 <template>
     <div class="container-xl bg-white p-6 md:p-12 text-left md:mt-8 md:mb-4 text-sm md:w-8/12 lg:w-1/2 mx-auto md:rounded-lg flex justify-between flex-wrap">
-        <div class="w-full md:w-1/2">
+        <div class="w-full sm:w-1/2">
             <h1 class="mb-4 text-2xl font-semibold">Kontakt</h1>
             <p class="font-semibold">Christian Eckardt</p>
             <p class="mb-8 font-semibold">22301 Hamburg</p>
@@ -11,7 +11,7 @@
                 <a href="https://www.xing.com/profile/Christian_Eckardt21/cv" target="_blank"><img class="h-10 mr-4" src="../assets/images/xing.svg" /></a>
             </p>
         </div>
-        <div v-if="!submitted" class="w-full md:w-1/2">
+        <div v-if="!submitted" class="w-full sm:w-1/2">
             <h1 class="mb-4 text-2xl font-semibold">Feedback senden</h1>
             <p class="mb-4">Schick mir eine Nachricht</p>
             <form name="contact" class="w-full md:w-1/2" method="post"
@@ -38,7 +38,7 @@
                 </p>
             </form>
         </div>
-        <div v-else class="w-full md:w-1/2">
+        <div v-else class="w-full sm:w-1/2">
             <p class="p-4 bg-green-500 text-white rounded-lg shadow-lg font-semibold text-center">Nachricht erfolgreich versendet <font-awesome-icon :icon="['fas', 'check']" class="text-white" /></p>
         </div>
         

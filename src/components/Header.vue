@@ -24,11 +24,11 @@
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
               </h1>     
                 <hr>
-                <router-link to="/faq" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500 py-6"><span @click="showNav = false">FAQ</span></router-link>
+                <router-link to="/faq" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">FAQ</div></router-link>
                 <hr>
-                <router-link to="/about" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500 py-6"><span @click="showNav = false">About</span></router-link>
+                <router-link to="/about" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">About</div></router-link>
                 <hr>
-                <router-link to="/contact" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500 py-6"><span @click="showNav = false">Kontakt</span></router-link>
+                <router-link to="/contact" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">Kontakt</div></router-link>
                 <hr>
               </nav>
             </transition>
