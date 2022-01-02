@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: 'Contact',
   data(){
@@ -52,19 +53,23 @@ export default {
   methods: {
     encode (data) {
       return Object.keys(data)
-        .map(
-          key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
-        )
+        .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
         .join("&");
     },
-    handleSubmit () {
-      const form = this.form
-      fetch("/",{
-          method:"POST",
-          headers: { "Content-Type": "application/x-www-form-urlencoded" },
-          body: this.encode({"form-name": "contact", form})
-      })
-      .then(()=>alert("Success"))
+    handleSubmit() {
+      axios.post("/", new URLSearchParams(
+          this.encode(this.form)
+      ), {
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        }
+      }).then(response => {
+        if (response.status === 200) {
+          alert("Success")
+        } else {
+          throw new Error(response.statusText)
+        }
+      }).catch(() =>  alert("nope"));
     }
   }
 }
