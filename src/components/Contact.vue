@@ -55,7 +55,8 @@ export default {
           }
       }
   },
-  encode (data) {
+  methods: {
+      encode (data) {
       return Object.keys(data)
         .map(
           key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
@@ -66,6 +67,7 @@ export default {
       const axiosConfig = {
         header: { "Content-Type": "application/x-www-form-urlencoded" }
       };
+      console.log(this.encode({...this.form}))
       axios.post(
         "/",
         this.encode({
@@ -75,5 +77,7 @@ export default {
         axiosConfig
       );
     }
+  }
+  
 }
 </script>
