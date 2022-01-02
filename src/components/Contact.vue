@@ -21,17 +21,17 @@
                 <p class="mb-2">
                     <label>Name:</label>
                     <br>
-                    <input v-model="form.name" type="text" name="name" class="border border-gray-300 p-2 rounded w-52" required />   
+                    <input v-model="form.name" type="text" name="name" class="border border-gray-300 p-2 rounded w-52" placeholder="Name eingeben" required />   
                 </p>
                 <p class="mb-2">
                     <label>Email:</label>
                     <br>
-                    <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-52" required />
+                    <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-52" placeholder="Email-Adresse eingeben" required />
                 </p>
                 <p class="mb-2">
                     <label>Nachricht:</label>
                     <br>
-                    <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-52" required></textarea>
+                    <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-52" placeholder="Nachricht eingeben" required></textarea>
                 </p>
                 <p class="">
                     <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg transition hover:bg-yellow-600" type="submit">Absenden</button>
@@ -56,7 +56,7 @@ export default {
               mail: '',
               message: ''
           },
-          submitted: true
+          submitted: false
       }
   },
   methods: {

@@ -10,6 +10,7 @@
             <div class="flex">
               <router-link to="/about" tag="a" class="text-white font-semibold self-center mr-10 hidden sm:block hover:text-yellow-500">About</router-link>
               <router-link to="/faq" tag="a" class="text-white font-semibold self-center mr-10 hidden sm:block hover:text-yellow-500">FAQ</router-link>
+              <router-link to="/contact" tag="a" class="text-white font-semibold self-center mr-10 hidden sm:block hover:text-yellow-500">Kontakt</router-link>
               <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-yellow-300 mr-8 md:mr-10 self-center hover:text-yellow-500" :class="{'animate-bounce': showSearch}" @click="showSearch = !showSearch; showMenu = false;showNav = false" />
               <font-awesome-icon :icon="['fas', 'ellipsis-v']" class="text-lg text-yellow-300 self-center hover:text-yellow-500" :class="{'animate-bounce': showMenu}" @click="showMenu = !showMenu; showSearch = false; showNav = false" />
             </div>
