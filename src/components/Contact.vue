@@ -4,7 +4,7 @@
             <h1 class="mb-4 text-2xl font-semibold">Kontakt</h1>
             <p class="font-semibold">Christian Eckardt</p>
             <p class="mb-8 font-semibold">22301 Hamburg</p>
-            <p class="mb-8 font-semibold"><a href="eckeecke.github.io">eckeecke.github.io</a></p>
+            <p class="mb-8 font-semibold"><a href="https://eckeecke.github.io">eckeecke.github.io</a></p>
             <p class="mb-8 flex">
                 <a href="https://github.com/EckeEcke" target="_blank"><img class="h-10 mr-4" src="../assets/images/github.svg" /></a>
                 <a href="https://www.linkedin.com/in/christian-eckardt-41527216a/" target="_blank"><img class="h-10 mr-4" src="../assets/images/linkedin.svg" /></a>
