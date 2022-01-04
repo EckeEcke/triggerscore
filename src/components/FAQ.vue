@@ -3,7 +3,7 @@
         <h2 class="font-semibold text-xl mb-2">FAQs</h2>
         <section class="mt-4">
             <p><b>Was ist Triggerscore?</b></p>
-            <p>Triggerscore ist ein Bewertungsportal, auf dem User:innen bewerten können, wie stark alte Filme Zuschauer:innen von heute triggern. Der namensgebende Triggerscore setzt sich aus dem Mittelwert der drei Bewertungskategorien Sexismus, Rassismus und Sonstigen zusammen. Die Bonus-Kategorie Crinch fließt nicht in den Triggerscore mit ein.</p>
+            <p>Triggerscore ist ein Bewertungsportal, auf dem User:innen bewerten können, wie stark alte Filme Zuschauer:innen von heute triggern. Der namensgebende Triggerscore setzt sich aus dem Mittelwert der drei Bewertungskategorien Sexismus, Rassismus und Sonstigen zusammen. Die Bonus-Kategorie Cringe fließt nicht in den Triggerscore mit ein.</p>
         </section>
         <section class="mt-4">
             <p><b>Wie kann ich einen Film bewerten?</b></p>
