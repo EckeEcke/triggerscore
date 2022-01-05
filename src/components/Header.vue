@@ -166,9 +166,11 @@ export default {
   },
   methods: {
     searchMovie: function(){
+        if(this.searchInput.length > 0){
           this.$store.dispatch("setSearchResults")
           this.showSearch = false
           this.$router.push('/search')
+        }  
       },
       resetSearchResults: function() {
           this.$store.dispatch("resetSearch")
