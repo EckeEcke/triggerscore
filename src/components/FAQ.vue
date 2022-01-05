@@ -1,5 +1,5 @@
 <template>
-    <div class="container-xl bg-white p-6 md:p-12 text-left md:mt-8 md:mb-4 text-sm md:w-8/12 lg:w-1/2 mx-auto md:rounded-lg">
+    <div class="container-xl bg-white p-6 md:p-12 text-left md:my-8 text-sm md:w-8/12 lg:w-1/2 mx-auto md:rounded-lg">
         <h2 class="font-semibold text-xl mb-2">FAQs</h2>
         <section class="mt-4">
             <p><b>Was ist Triggerscore?</b></p>
@@ -10,7 +10,7 @@
             <p>Um einen Film zu bewerten, einfach über die Suche nach dem gewünschten Film suchen, Film anklicken, in jeder der vier Kategorien einen Score vergeben und die Bewertung absenden. Eine Anmeldung ist nicht erforderlich.</p>
         </section>
         <section class="mt-4">
-            <p><b>Werden Daten von mir erhoben, wenn ich eine Bewertung abgebe?</b></p>
+            <p><b>Werden personenbezogene Daten von mir erhoben, wenn ich eine Bewertung abgebe?</b></p>
             <p>Nein, in der Bewertungsdatenbank landen lediglich die vergebenen Scores und eine Film-ID.</p>
         </section>
         <section class="mt-4">

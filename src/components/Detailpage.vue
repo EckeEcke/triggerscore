@@ -2,7 +2,7 @@
     <section class="w-full bg-center bg-cover bg-fixed" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backdrop}`}">
         <div class="container mx-auto pt-8 pb-28 px-1 xl:px-20">
         <div class="w-full mb-8 flex justify-between">
-            <button class="bg-yellow-500 p-3 rounded-lg text-gray-900 font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
+            <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-gray-900 font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
         </div>
         <div class="flex flex-col lg:flex-row lg:rounded-b-lg">
             <div class="flex flex-col w-full bg-white rounded-t-lg lg:rounded-lg justify-start lg:mr-6">

@@ -20,9 +20,9 @@
                 <div class="text-right text-white text-xl p-4">
                   <font-awesome-icon :icon="['fas', 'times']" @click="showNav = false" />
                 </div>
-                <h1 class="text-2xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer mb-12">
+                <router-link to="/" tag="div" class="text-2xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer mb-12" @click="showNav = false">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
-              </h1>     
+                </router-link>     
                 <hr>
                 <router-link to="/faq" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">FAQ</div></router-link>
                 <hr>
