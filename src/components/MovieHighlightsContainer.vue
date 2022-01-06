@@ -9,8 +9,8 @@
             <MovieHighlightItem v-for="movie in bondMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
         </div>
         <div class="justify-between md:px-4 container mx-auto xl:w-10/12 hidden sm:flex">
-            <button @click="scrollHighlightContainer('left')"><font-awesome-icon class="text-yellow-500 text-3xl transform hover:scale-105" :icon="['fas', 'arrow-circle-left']" /></button>
-            <button @click="scrollHighlightContainer('right')"><font-awesome-icon class="text-yellow-500 text-3xl transform hover:scale-105" :icon="['fas', 'arrow-circle-right']" /></button>
+            <button @click="scrollHighlightContainer('left')"><font-awesome-icon class="text-yellow-500 text-3xl transition transform hover:scale-110" :icon="['fas', 'arrow-circle-left']" /></button>
+            <button @click="scrollHighlightContainer('right')"><font-awesome-icon class="text-yellow-500 text-3xl transition transform hover:scale-110" :icon="['fas', 'arrow-circle-right']" /></button>
         </div>    
         
         

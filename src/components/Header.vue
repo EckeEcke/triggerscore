@@ -37,8 +37,8 @@
               <div v-if="showMenu" class="bg-white shadow-lg rounded-lg w-64 p-4 absolute top-full right-0 mt-2" >
               <p class="text-right"><font-awesome-icon :icon="['fas', 'times']" @click="showMenu = false" /></p>
               <h2 class="font-semibold text-left mb-2">Sortieren</h2>
-              <div class="flex justify-end w-full my-3 border border-gray-200 rounded">
-                <select v-model="sortingOption" class="w-full md:w-auto h-8 md:h-10 bg-white rounded px-3 py-2 outline-none text-sm md:text-base">
+              <div class="flex w-full my-3 border border-gray-200 rounded">
+                <select v-model="sortingOption" class="w-full md:w-auto h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
                     <option class="py-1" value="a-z">A-Z</option>
                     <option class="py-1" value="z-a">Z-A</option>
                     <option class="py-1" value="date-desc">Jahr absteigend</option>

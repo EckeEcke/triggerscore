@@ -10,7 +10,7 @@
             <div v-if="!isLoading" class="bg-red-600 py-8 text-white text-left">
                 <div class="container px-4 xl:w-10/12 mx-auto">
                     <h2 class="text-2xl font-semibold mb-2">Filme entdecken</h2>
-                    <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+                    <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
                 </div>
             </div>    
             <transition-group v-if="!isLoading" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12" enter-active-class="duration-500 ease-out"
