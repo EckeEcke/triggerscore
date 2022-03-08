@@ -43,8 +43,8 @@
                     <option class="py-1" value="z-a">Z-A</option>
                     <option class="py-1" value="date-desc">Jahr absteigend</option>
                     <option class="py-1" value="date-asc">Jahr aufsteigend</option>
-                    <option disabled class="py-1" value="ts-desc">Triggerscore absteigend</option>
-                    <option disabled class="py-1" value="ts-asc">Triggerscore aufsteigend</option>
+                    <option class="py-1" value="ts-desc">Triggerscore absteigend</option>
+                    <option class="py-1" value="ts-asc">Triggerscore aufsteigend</option>
                 </select>
               </div>
               <hr class="my-3">

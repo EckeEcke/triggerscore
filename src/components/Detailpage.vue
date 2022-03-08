@@ -58,7 +58,7 @@
                         </h2>
                     </div>
                     
-                    <p class="mb-4 text-xs md:text-md">Veröffentlicht: {{ movie.release_date.substring(0,4) }}</p>
+                    <p class="mb-4 text-xs md:text-md">Veröffentlicht: {{ releaseDate }}</p>
                     
                     <i v-if="movie.tagline && movie.tagline.length > 1" class="text-sm md: text-md">"{{ movie.tagline }}"</i>
                     <p class="my-4">
@@ -95,10 +95,13 @@ export default {
   },
   data(){
       return {
-          movie: {},
+          movie: {
+              genres: []
+          },
           backdrop: "",
           onNetflix: false,
-          onAmazon: false
+          onAmazon: false,
+          releaseDate: 1900
       }
   },
   mounted: function() {
@@ -128,6 +131,7 @@ export default {
               const response = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
               const loadedMovie = await response.json()
               this.movie = loadedMovie
+              this.releaseDate = this.movie.release_date.substring(0,4)
               this.backdrop = `url(https://image.tmdb.org/t/p/original/${loadedMovie.backdrop_path})`
               console.log(this.movie)
           }

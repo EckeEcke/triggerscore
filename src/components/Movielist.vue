@@ -54,8 +54,13 @@ export default {
         isLoading: function () {
             return this.$store.getters.getHighlightsLoading && this.$store.getters.getMoviesLoading 
         },
-        filteredMovies: function() {
-            return this.$store.getters.getFilteredMovies
+        filteredMovies:  {
+            get: function(){
+                return this.$store.getters.getFilteredMovies
+            },
+            set: function(value){
+                this.$store.commit("setFilteredMovies", value)
+            }
         },
         triggerscores: function() {
             return this.$store.getters.getTriggerscores
@@ -92,7 +97,6 @@ export default {
             this.$store.dispatch("filterMovies")
         },
         sortingOption: function() {
-            console.log(this.sortingOtion)
             if (this.selectedSortOption == "a-z") {
                 this.filteredMovies = this.filteredMovies.sort(this.sortAtoZ)
             }
@@ -105,6 +109,12 @@ export default {
             if (this.sortingOption == "date-asc") {
                 this.filteredMovies = this.filteredMovies.sort(this.sortByDateAsc)
             }
+            if (this.sortingOption == "ts-desc") {
+                this.filteredMovies = this.filteredMovies.sort(this.sortByTsDesc)
+            }
+            if (this.sortingOption == "ts-asc") {
+                this.filteredMovies = this.filteredMovies.sort(this.sortByTsAsc)
+            }
         }
     },
     methods: {
@@ -116,6 +126,7 @@ export default {
             return 0
         },
         sortZtoA: function(x, y) {
+            console.log(x)
             const titleX = x.title ? x.title : x.original_title
             const titleY = y.title ? y.title : y.original_title
             if (titleX > titleY) { return -1 }
@@ -128,8 +139,19 @@ export default {
         sortByDateAsc: function(x, y) {
             return new Date(x.release_date) - new Date(y.release_date)
         },
+        sortByTsDesc: function(x,y){
+            const triggerscoreX = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(x.id)].rating_total
+            const triggerscoreY = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(y.id)].rating_total
+            if (triggerscoreX > triggerscoreY){ return -1}
+            if (triggerscoreX < triggerscoreY){ return 1}
+        },
+        sortByTsAsc: function(x,y){
+            const triggerscoreX = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(x.id)].rating_total
+            const triggerscoreY = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(y.id)].rating_total
+            if (triggerscoreX < triggerscoreY){ return -1}
+            if (triggerscoreX > triggerscoreY){ return 1}
+        },
         sortMovies: function(array) {
-            console.log(this.sortingOtion)
             if (this.selectedSortOption == "a-z") {
                 array = array.sort(this.sortAtoZ)
             }
