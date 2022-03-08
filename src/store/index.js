@@ -128,10 +128,12 @@ export default new Vuex.Store({
                     fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
                     .then((res) => res.json())
                     .then(res => {
-                        console.log(res)
-                        if(res.results.DE.flatrate && res.results.DE.flatrate.some(provider => provider.provider_name == "Netflix")){
-                            netflixIDs.push(entry.movie_id)
+                        if(res.results.DE && res.results.DE.flatrate !== undefined){
+                            if(res.results.DE.flatrate.some(provider => provider.provider_name == "Netflix")){
+                                netflixIDs.push(entry.movie_id)
+                            }
                         }
+                            
                     })
                     .catch(console.log("Something went wrong"))
                 ))
@@ -147,7 +149,7 @@ export default new Vuex.Store({
                     .then((res) => res.json())
                     .then(res=>{
                         console.log(res)
-                        if(res.results.DE.flatrate && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
+                        if(res.results.DE && res.results.DE.flatrate !== undefined && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
                             primeIDs.push(entry.movie_id)
                         }
                     })
@@ -162,7 +164,7 @@ export default new Vuex.Store({
                     fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
                     .then((res) => res.json())
                     .then(res=>{
-                        if(res.results.DE.flatrate && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video" || provider.provider_name == "Netflix")){
+                        if(res.results.DE && res.results.DE.flatrate !== undefined && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video" || provider.provider_name == "Netflix")){
                             IDs.push(entry.movie_id)
                         }
                     })

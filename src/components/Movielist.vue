@@ -6,14 +6,14 @@
             <p class="text-white font-semibold animate-bounce mt-8">Lädt Filme</p>
             </div>
         <div v-else>
-            <MovieHighlightsContainer />
+            <MovieHighlightsContainer v-if="!isLoading" />
             <div v-if="!isLoading" class="bg-red-600 py-8 text-white text-left">
                 <div class="container px-4 xl:w-10/12 mx-auto">
                     <h2 class="text-2xl font-semibold mb-2">Filme entdecken</h2>
                     <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
                 </div>
             </div>    
-            <transition-group v-if="!isLoading" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12" enter-active-class="duration-500 ease-out"
+            <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12" enter-active-class="duration-500 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
             </transition-group> 
