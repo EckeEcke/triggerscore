@@ -1,6 +1,48 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+function sortAtoZ(x, y) {
+    const titleX = x.title ? x.title : x.original_title
+    const titleY = y.title ? y.title : y.original_title
+    if (titleX < titleY) { return -1 }
+    if (titleX > titleY) { return 1 }
+    return 0
+}
+
+function sortZtoA(x, y) {
+    const titleX = x.title ? x.title : x.original_title
+    const titleY = y.title ? y.title : y.original_title
+    if (titleX > titleY) { return -1 }
+    if (titleX < titleY) { return 1 }
+    return 0
+}
+
+function sortByDateDesc(x, y) {
+    return new Date(y.release_date) - new Date(x.release_date)
+}
+
+function sortByDateAsc(x, y) {
+    return new Date(x.release_date) - new Date(y.release_date)
+}
+
+function sortByTsDesc(array){
+    return function(x,y){
+        const triggerscoreX = array[array.map(score => score.movie_id).indexOf(x.id)].rating_total
+        const triggerscoreY = array[array.map(score => score.movie_id).indexOf(y.id)].rating_total
+        if (triggerscoreX > triggerscoreY){ return -1}
+        if (triggerscoreX < triggerscoreY){ return 1}
+    }
+}
+
+function sortByTsAsc(array){
+    return function(x,y){
+        const triggerscoreX = array[array.map(score => score.movie_id).indexOf(x.id)].rating_total
+        const triggerscoreY = array[array.map(score => score.movie_id).indexOf(y.id)].rating_total
+        if (triggerscoreX < triggerscoreY){ return -1}
+        if (triggerscoreX > triggerscoreY){ return 1}
+    }
+}
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -121,7 +163,6 @@ export default new Vuex.Store({
         },
         async filterMovies(state){
             let clone = [...this.state.movies]
-            console.log(this.state.filterMoviesByNetflix, this.state.filterMoviesByPrime)
             if (this.state.filterMoviesByNetflix && !this.state.filterMoviesByPrime){
                 let netflixIDs = []
                 Promise.all(this.state.triggerscores.map(entry => 
@@ -148,7 +189,6 @@ export default new Vuex.Store({
                     fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
                     .then((res) => res.json())
                     .then(res=>{
-                        console.log(res)
                         if(res.results.DE && res.results.DE.flatrate !== undefined && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
                             primeIDs.push(entry.movie_id)
                         }
@@ -178,11 +218,34 @@ export default new Vuex.Store({
             }
             if (this.state.filterMoviesByYearMin != null && this.state.filterMoviesByYearMin >= 1900 && this.state.filterMoviesByYearMin <= 2011){
                 clone = clone.filter(movie => movie.release_date > this.state.filterMoviesByYearMin)
-                console.log(clone)
                 state.commit("setFilteredMovies",clone)
             }
             if (this.state.filterMoviesByYearMax != null && this.state.filterMoviesByYearMax >= 1900 && this.state.filterMoviesByYearMax <= 2011){
                 clone = clone.filter(movie => movie.release_date < this.state.filterMoviesByYearMax)
+                state.commit("setFilteredMovies",clone)
+            }
+            if (this.state.sortingOption == "a-z") {
+                clone = clone.sort(sortAtoZ)
+                state.commit("setFilteredMovies",clone)
+            }
+            if (this.state.sortingOption == "z-a") {
+               clone = clone.sort(sortZtoA)
+               state.commit("setFilteredMovies",clone)
+            }
+            if (this.state.sortingOption == "date-desc") {
+                clone = clone.sort(sortByDateDesc)
+                state.commit("setFilteredMovies",clone)
+            }
+            if (this.state.sortingOption == "date-asc") {
+                clone = clone.sort(sortByDateAsc)
+                state.commit("setFilteredMovies",clone)
+            }
+            if (this.state.sortingOption == "ts-desc") {
+                clone = clone.sort(sortByTsDesc(this.state.triggerscores))
+                state.commit("setFilteredMovies",clone)
+            }
+            if (this.state.sortingOption == "ts-asc") {
+                clone = clone.sort(sortByTsAsc(this.state.triggerscores))
                 state.commit("setFilteredMovies",clone)
             }
             
