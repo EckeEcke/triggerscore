@@ -38,42 +38,35 @@ function filterByYear(filterMax,filterMin,array,state){
     let clonedArray = [...array]
     console.log(filterMax,filterMin,clonedArray)
     if (filterMin != null && filterMin >= 1900 && filterMin <= 2011){
-        clonedArray = clonedArray.filter(movie => movie.release_date > filterMin)
-        console.log(clonedArray)
-        state.commit("setFilteredMovies",clonedArray)
+        clonedArray = clonedArray.filter(movie => movie.release_date >= filterMin)
     }
     if (filterMax != null && filterMax >= 1900 && filterMax <= 2011){
-        clonedArray = clonedArray.filter(movie => movie.release_date < filterMax)
-        state.commit("setFilteredMovies",clonedArray)
+        clonedArray = clonedArray.filter(movie => movie.release_date <= filterMax + 1)      
     }
+    state.commit("setFilteredMovies",clonedArray)
 }
 
 function sortMovies(sortingOption,array,triggerscores,state){
     let clonedArray = [...array]
     if (sortingOption == "a-z") {
-        clonedArray = clonedArray.sort(sortAtoZ)
-        state.commit("setFilteredMovies",clonedArray)
+        clonedArray = clonedArray.sort(sortAtoZ)      
     }
     if (sortingOption == "z-a") {
        clonedArray = clonedArray.sort(sortZtoA)
-       state.commit("setFilteredMovies",clonedArray)
     }
     if (sortingOption == "date-desc") {
         clonedArray = clonedArray.sort(sortByDateDesc)
-        state.commit("setFilteredMovies",clonedArray)
     }
     if (sortingOption == "date-asc") {
         clonedArray = clonedArray.sort(sortByDateAsc)
-        state.commit("setFilteredMovies",clonedArray)
     }
     if (sortingOption == "ts-desc") {
         clonedArray = clonedArray.sort(sortByTsDesc(triggerscores))
-        state.commit("setFilteredMovies",clonedArray)
     }
     if (sortingOption == "ts-asc") {
         clonedArray = clonedArray.sort(sortByTsAsc(triggerscores))
-        state.commit("setFilteredMovies",clonedArray)
     }
+    state.commit("setFilteredMovies",clonedArray)
 }
 
 function sortAtoZ(x, y) {
@@ -241,9 +234,9 @@ export default new Vuex.Store({
             loadedMovies.then(res => {state.commit("setBondMovies", res);state.commit("setHighlightsLoading",false)})
         },
         async filterMovies(state){
-            sortMovies(this.state.sortingOption,this.state.movies,this.state.triggerscores,state)  
-            filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,this.state.filteredMovies,state)
+            sortMovies(this.state.sortingOption,this.state.movies,this.state.triggerscores,state)
             filterByYear(this.state.filterMoviesByYearMax,this.state.filterMoviesByYearMin,this.state.filteredMovies,state)  
+            filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,this.state.filteredMovies,state)
         },
         resetFilter(state){
             state.commit("setPrimeFilter", false)

@@ -16,7 +16,11 @@
             <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12" enter-active-class="duration-500 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
-            </transition-group> 
+            </transition-group>
+            <div class="my-32" v-if="!isLoading && filteredMovies.length == 0">
+                <p class="text-white text-xl font-semibold animate-bounce mb-4">Leider keine Ergebnisse</p>
+                <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
+            </div> 
         </div>  
     </div>
 </template>
@@ -191,6 +195,10 @@ export default {
         },
         resetSearchResults: function() {
             this.$store.dispatch("resetSearch")
+        },
+        resetFilter: function(){
+            this.$store.dispatch("resetFilter")
+            this.$store.dispatch("filterMovies")
         }
     }
 }
