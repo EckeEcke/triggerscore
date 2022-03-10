@@ -290,9 +290,9 @@ export default new Vuex.Store({
         resetFilter(state){
             state.commit("setPrimeFilter", false)
             state.commit("setNetflixFilter", false)
+            state.commit("setDisneyFilter", false)
             state.commit("setMovieYearMin", null)
             state.commit("setMovieYearMax", null)
-            state.commit("setFilteredMovies", this.state.movies)
         },
         setSortingOption(state,payload){
             state.commit("setSortingOption",payload)

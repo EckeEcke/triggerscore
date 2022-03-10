@@ -192,6 +192,7 @@ export default {
       },
       resetFilter: function(){
         this.$store.dispatch("resetFilter")
+        this.$store.dispatch("filterMovies")
       }
   }
 }
