@@ -69,14 +69,15 @@
               </div>
               <div class="flex my-4">
                 <div class="w-1/2 mr-2 flex flex-col">
-                  <label class="text-left text-sm" for="filter-start">Von</label>
+                  <label class="text-left text-sm font-semibold" for="filter-start">Von</label>
                   <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="1900">
                 </div>
                 <div class="w-1/2 mr-2 flex flex-col">
-                  <label class="text-left text-sm" for="filter-end">Bis</label>
+                  <label class="text-left text-sm font-semibold" for="filter-end">Bis</label>
                   <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="2010">  
                 </div>
               </div>
+              <div class="text-sm my-5 font-semibold">{{results}} Ergebnisse</div>
               <hr  class="my-3">
               <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
             </div>
@@ -113,7 +114,7 @@ export default {
     return {
       showSearch: false,
       showMenu: false,
-      showNav: false
+      showNav: false,
     }
   },
   computed: {
@@ -177,6 +178,9 @@ export default {
         this.$store.commit("setMovieYearMax",value)
         this.$store.dispatch("filterMovies")
       }
+    },
+    results: function(){
+      return this.$store.getters.getFilteredMovies.length
     }
   },
   methods: {
