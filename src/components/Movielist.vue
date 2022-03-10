@@ -7,7 +7,7 @@
         </div>
         <div v-else>
             <MovieHighlightsContainer v-if="!isLoading" />
-            <div v-if="!isLoading" class="bg-red-600 py-8 text-white text-left">
+            <div v-if="!isLoading" class="py-8 text-white text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
                 <div class="container px-4 xl:w-10/12 mx-auto">
                     <h2 class="text-2xl font-semibold mb-2">Filme entdecken</h2>
                     <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>

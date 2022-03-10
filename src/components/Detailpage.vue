@@ -4,10 +4,14 @@
         <div class="w-full mb-8 flex justify-between">
             <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-gray-900 font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
         </div>
-        <div class="flex flex-col lg:flex-row lg:rounded-b-lg">
+        <div v-if="triggerscoreLoading" class="mb-8 mt-16">
+            <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
+            <p class="text-white font-semibold animate-bounce mt-8">Lädt Film</p>
+        </div>
+        <div v-else class="flex flex-col lg:flex-row lg:rounded-b-lg">
             <div class="flex flex-col w-full bg-white rounded-t-lg lg:rounded-lg justify-start lg:mr-6">
             <div class="flex bg-gray-900 justify-between w-full lg:rounded-t-lg">
-                <img :src=poster class="w-1/2 lg:w-60 h-auto object-contain self-start rounded-tl-lg" />
+                <img :src=poster class="w-1/2 lg:w-60 h-auto object-contain self-start rounded-tl-lg self-center" />
                 <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center rounded-tr-lg">
                     <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
                         TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
@@ -103,12 +107,15 @@ export default {
           onNetflix: false,
           onAmazon: false,
           onDisney: false,
-          releaseDate: 1900
+          releaseDate: 1900,
+          score: {},
+          triggerscoreLoading: true,
       }
   },
   mounted: function() {
     this.loadMovie()  
     this.loadProviders()
+    this.loadTriggerscore()
   },
   computed: {
       poster: function() {
@@ -118,10 +125,6 @@ export default {
           return this.movie.genres.map(genre => genre.name)
       },
       triggerscores: function() {
-          return this.loadTriggerscore()
-      },
-      score: function() {
-          console.log(this.triggerscores,this.$route.params.id)
           return this.loadTriggerscore()
       },
       scoreAvailable: function() {
@@ -136,7 +139,6 @@ export default {
               this.movie = loadedMovie
               this.releaseDate = this.movie.release_date.substring(0,4)
               this.backdrop = `url(https://image.tmdb.org/t/p/original/${loadedMovie.backdrop_path})`
-              console.log(this.movie)
           }
           catch {
               console.log("oops")
@@ -146,7 +148,6 @@ export default {
           try {
               const response = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
               const providers = await response.json()
-              console.log(providers)
               this.onNetflix = providers.results.DE.flatrate.some(provider => provider.provider_name == "Netflix")
               this.onAmazon = providers.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")
               this.onDisney = providers.results.DE.flatrate.some(provider => provider.provider_name == "Disney Plus")
@@ -156,9 +157,10 @@ export default {
           }
       },
       loadTriggerscore: async function(){
-          const scores = await fetch(`https://triggerscore.herokuapp.com/movie/${this.$route.params.id}`)
-          scores[scores.map(score => score.movie_id).indexOf(this.$route.params.id)]
-          return scores
+          const response = await fetch(`https://triggerscore.herokuapp.com/movie/${this.$route.params.id}`)
+          const scores = await response.json()
+          this.score = scores[0]
+          this.triggerscoreLoading = false
       },
       scrollToRating: function() {
           const rating = document.getElementById("rating")
