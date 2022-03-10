@@ -4,7 +4,7 @@
         <div v-if="isLoading" class="mt-8">
             <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
             <p class="text-white font-semibold animate-bounce mt-8">Lädt Filme</p>
-            </div>
+        </div>
         <div v-else>
             <MovieHighlightsContainer v-if="!isLoading" />
             <div v-if="!isLoading" class="bg-red-600 py-8 text-white text-left">
@@ -12,16 +12,16 @@
                     <h2 class="text-2xl font-semibold mb-2">Filme entdecken</h2>
                     <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
                 </div>
-            </div>    
-            <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12" enter-active-class="duration-500 ease-out"
+            </div>
+            <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
             </transition-group>
             <div class="my-32" v-if="!isLoading && filteredMovies.length == 0">
                 <p class="text-white text-xl font-semibold animate-bounce mb-4">Leider keine Ergebnisse</p>
                 <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
-            </div> 
-        </div>  
+            </div>
+        </div>
     </div>
 </template>
 
@@ -55,14 +55,14 @@ export default {
         window.removeEventListener('scroll', this.onScroll)
     },
     computed: {
-        isLoading: function () {
-            return this.$store.getters.getHighlightsLoading && this.$store.getters.getMoviesLoading 
+        isLoading: function() {
+            return this.$store.getters.getHighlightsLoading || this.$store.getters.getMoviesLoading || this.triggerscores.length == 0
         },
-        filteredMovies:  {
-            get: function(){
+        filteredMovies: {
+            get: function() {
                 return this.$store.getters.getFilteredMovies
             },
-            set: function(value){
+            set: function(value) {
                 this.$store.commit("setFilteredMovies", value)
             }
         },
@@ -143,17 +143,17 @@ export default {
         sortByDateAsc: function(x, y) {
             return new Date(x.release_date) - new Date(y.release_date)
         },
-        sortByTsDesc: function(x,y){
+        sortByTsDesc: function(x, y) {
             const triggerscoreX = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(x.id)].rating_total
             const triggerscoreY = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(y.id)].rating_total
-            if (triggerscoreX > triggerscoreY){ return -1}
-            if (triggerscoreX < triggerscoreY){ return 1}
+            if (triggerscoreX > triggerscoreY) { return -1 }
+            if (triggerscoreX < triggerscoreY) { return 1 }
         },
-        sortByTsAsc: function(x,y){
+        sortByTsAsc: function(x, y) {
             const triggerscoreX = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(x.id)].rating_total
             const triggerscoreY = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(y.id)].rating_total
-            if (triggerscoreX < triggerscoreY){ return -1}
-            if (triggerscoreX > triggerscoreY){ return 1}
+            if (triggerscoreX < triggerscoreY) { return -1 }
+            if (triggerscoreX > triggerscoreY) { return 1 }
         },
         sortMovies: function(array) {
             if (this.selectedSortOption == "a-z") {
@@ -196,7 +196,7 @@ export default {
         resetSearchResults: function() {
             this.$store.dispatch("resetSearch")
         },
-        resetFilter: function(){
+        resetFilter: function() {
             this.$store.dispatch("resetFilter")
             this.$store.dispatch("filterMovies")
         }

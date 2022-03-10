@@ -108,7 +108,7 @@ export default {
   },
   mounted: function() {
     this.loadMovie()  
-    this.loadProviders() 
+    this.loadProviders()
   },
   computed: {
       poster: function() {
@@ -118,10 +118,11 @@ export default {
           return this.movie.genres.map(genre => genre.name)
       },
       triggerscores: function() {
-          return this.$store.getters.getTriggerscores
+          return this.loadTriggerscore()
       },
       score: function() {
-          return this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(this.movie.id)]
+          console.log(this.triggerscores,this.$route.params.id)
+          return this.loadTriggerscore()
       },
       scoreAvailable: function() {
           return this.score != undefined
@@ -153,6 +154,11 @@ export default {
           catch {
               console.log("ooops")
           }
+      },
+      loadTriggerscore: async function(){
+          const scores = await fetch(`https://triggerscore.herokuapp.com/movie/${this.$route.params.id}`)
+          scores[scores.map(score => score.movie_id).indexOf(this.$route.params.id)]
+          return scores
       },
       scrollToRating: function() {
           const rating = document.getElementById("rating")
