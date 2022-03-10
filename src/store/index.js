@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-function filterByProvider(netflix, prime, disney, triggerscores,clonedArray,state){
+async function filterByProvider(netflix, prime, disney, triggerscores,array,state){
+    let clonedArray = [...array]
     if (netflix || prime || disney){
         let providerIDs = []
         Promise.all(triggerscores.map(entry => 
@@ -27,6 +28,51 @@ function filterByProvider(netflix, prime, disney, triggerscores,clonedArray,stat
             clonedArray = clonedArray.filter(movie => providerIDs.includes(movie.id)))
         .then(()=>
             state.commit("setFilteredMovies",clonedArray))
+    }
+    else {
+        state.commit("setFilteredMovies",clonedArray)
+    }
+}
+
+function filterByYear(filterMax,filterMin,array,state){
+    let clonedArray = [...array]
+    console.log(filterMax,filterMin,clonedArray)
+    if (filterMin != null && filterMin >= 1900 && filterMin <= 2011){
+        clonedArray = clonedArray.filter(movie => movie.release_date > filterMin)
+        console.log(clonedArray)
+        state.commit("setFilteredMovies",clonedArray)
+    }
+    if (filterMax != null && filterMax >= 1900 && filterMax <= 2011){
+        clonedArray = clonedArray.filter(movie => movie.release_date < filterMax)
+        state.commit("setFilteredMovies",clonedArray)
+    }
+}
+
+function sortMovies(sortingOption,array,triggerscores,state){
+    let clonedArray = [...array]
+    if (sortingOption == "a-z") {
+        clonedArray = clonedArray.sort(sortAtoZ)
+        state.commit("setFilteredMovies",clonedArray)
+    }
+    if (sortingOption == "z-a") {
+       clonedArray = clonedArray.sort(sortZtoA)
+       state.commit("setFilteredMovies",clonedArray)
+    }
+    if (sortingOption == "date-desc") {
+        clonedArray = clonedArray.sort(sortByDateDesc)
+        state.commit("setFilteredMovies",clonedArray)
+    }
+    if (sortingOption == "date-asc") {
+        clonedArray = clonedArray.sort(sortByDateAsc)
+        state.commit("setFilteredMovies",clonedArray)
+    }
+    if (sortingOption == "ts-desc") {
+        clonedArray = clonedArray.sort(sortByTsDesc(triggerscores))
+        state.commit("setFilteredMovies",clonedArray)
+    }
+    if (sortingOption == "ts-asc") {
+        clonedArray = clonedArray.sort(sortByTsAsc(triggerscores))
+        state.commit("setFilteredMovies",clonedArray)
     }
 }
 
@@ -195,97 +241,9 @@ export default new Vuex.Store({
             loadedMovies.then(res => {state.commit("setBondMovies", res);state.commit("setHighlightsLoading",false)})
         },
         async filterMovies(state){
-            let clone = [...this.state.movies]
-            filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,clone,state)
-            /*
-            if (this.state.filterMoviesByNetflix && !this.state.filterMoviesByPrime){
-                let netflixIDs = []
-                Promise.all(this.state.triggerscores.map(entry => 
-                    fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
-                    .then((res) => res.json())
-                    .then(res => {
-                        if(res.results.DE && res.results.DE.flatrate !== undefined){
-                            if(res.results.DE.flatrate.some(provider => provider.provider_name == "Netflix")){
-                                netflixIDs.push(entry.movie_id)
-                            }
-                        }
-                            
-                    })
-                    .catch(console.log("Something went wrong"))
-                ))
-                .then(()=>
-                    clone = clone.filter(movie => netflixIDs.includes(movie.id)))
-                .then(()=>
-                    state.commit("setFilteredMovies",clone))
-            }
-            if (this.state.filterMoviesByPrime && !this.state.filterMoviesByNetflix){
-                let primeIDs = []
-                Promise.all(this.state.triggerscores.map(entry => 
-                    fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
-                    .then((res) => res.json())
-                    .then(res=>{
-                        if(res.results.DE && res.results.DE.flatrate !== undefined && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
-                            primeIDs.push(entry.movie_id)
-                        }
-                    })
-                    .catch(console.log("Something went wrong"))
-                ))
-                .then(()=>clone = clone.filter(movie => primeIDs.includes(movie.id)))
-                .then(()=>state.commit("setFilteredMovies",clone))
-            }
-            if (this.state.filterMoviesByPrime && this.state.filterMoviesByNetflix){
-                let IDs = []
-                Promise.all(this.state.triggerscores.map(entry => 
-                    fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
-                    .then((res) => res.json())
-                    .then(res=>{
-                        if(res.results.DE && res.results.DE.flatrate !== undefined && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video" || provider.provider_name == "Netflix")){
-                            IDs.push(entry.movie_id)
-                        }
-                    })
-                    .catch(console.log("Something went wrong"))
-                ))
-                .then(()=>clone = clone.filter(movie => IDs.includes(movie.id)))
-                .then(()=>state.commit("setFilteredMovies",clone))
-            }
-            */
-            if (!this.state.filterMoviesByPrime && !this.state.filterMoviesByNetflix){
-                state.commit("setFilteredMovies",clone)
-            }
-            if (this.state.filterMoviesByYearMin != null && this.state.filterMoviesByYearMin >= 1900 && this.state.filterMoviesByYearMin <= 2011){
-                clone = clone.filter(movie => movie.release_date > this.state.filterMoviesByYearMin)
-                state.commit("setFilteredMovies",clone)
-            }
-            if (this.state.filterMoviesByYearMax != null && this.state.filterMoviesByYearMax >= 1900 && this.state.filterMoviesByYearMax <= 2011){
-                clone = clone.filter(movie => movie.release_date < this.state.filterMoviesByYearMax)
-                state.commit("setFilteredMovies",clone)
-            }
-            if (this.state.sortingOption == "a-z") {
-                clone = clone.sort(sortAtoZ)
-                state.commit("setFilteredMovies",clone)
-            }
-            if (this.state.sortingOption == "z-a") {
-               clone = clone.sort(sortZtoA)
-               state.commit("setFilteredMovies",clone)
-            }
-            if (this.state.sortingOption == "date-desc") {
-                clone = clone.sort(sortByDateDesc)
-                state.commit("setFilteredMovies",clone)
-            }
-            if (this.state.sortingOption == "date-asc") {
-                clone = clone.sort(sortByDateAsc)
-                state.commit("setFilteredMovies",clone)
-            }
-            if (this.state.sortingOption == "ts-desc") {
-                clone = clone.sort(sortByTsDesc(this.state.triggerscores))
-                state.commit("setFilteredMovies",clone)
-            }
-            if (this.state.sortingOption == "ts-asc") {
-                clone = clone.sort(sortByTsAsc(this.state.triggerscores))
-                state.commit("setFilteredMovies",clone)
-            }
-            
-
+            sortMovies(this.state.sortingOption,this.state.movies,this.state.triggerscores,state)  
+            filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,this.state.filteredMovies,state)
+            filterByYear(this.state.filterMoviesByYearMax,this.state.filterMoviesByYearMin,this.state.filteredMovies,state)  
         },
         resetFilter(state){
             state.commit("setPrimeFilter", false)
