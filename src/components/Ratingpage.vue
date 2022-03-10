@@ -5,7 +5,7 @@
         <p class="font-bold">Danke für deine Bewertung!</p>
     </div>
     <div v-else class="mx-auto overflow-hidden">
-        <h2 class="text-xl text-white bg-red-600 py-4  lg:rounded-t-lg" id="rating">Bewertung abgeben für<br><i class="font-semibold">"{{ title }}"</i></h2>
+        <h2 class="bg-red-900 bg-opacity-90 text-xl text-white py-4  lg:rounded-t-lg" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))" id="rating">Bewertung abgeben für<br><i class="font-semibold">"{{ title }}"</i></h2>
         <label class="my-3 block text-lg font-semibold">Sexismus</label>
         <p class="mb-4">Werden veraltete Rollenbilder vermittelt? </p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
@@ -40,7 +40,7 @@
             </button>
         </div>
         <hr class="lg:border-white">
-        <div class="flex justify-center py-4 bg-red-600 lg:bg-white rounded-b-lg">
+        <div class="flex justify-center py-4 bg-white rounded-b-lg">
             <button :disabled="!(ratingSexism != null && ratingRacism != null && ratingOthers != null && ratingCringe != null)" class="bg-yellow-500 text-gray-900 disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="submitRating">Bewertung abschicken</button>
         </div>
     </div>                    
