@@ -49,16 +49,22 @@
               </div>
               <hr class="my-3">
               <h2 class="font-semibold text-left mb-2">Filtern</h2>
-              <div class="form-check text-left mb-2">
+              <div class="form-check text-left mb-2 h-8">
                 <input v-model="netflixFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-netflix">
                 <label class="form-check-label inline-block text-gray-800 text-left" for="filter-netflix">
                   <img class="h-4 mt-1 mx-2" src="../assets/images/netflix-logo.svg">
                 </label>
               </div>
-              <div class="form-check text-left mb-2">
+              <div class="form-check text-left mb-2 h-8">
                 <input v-model="primeFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-amazon">
                 <label class="form-check-label inline-block text-gray-800 text-left" for="filter-amazon">
                   <img class="h-4 mt-1 mx-2" src="../assets/images/amazon-prime-logo.svg">
+                </label>
+              </div>
+              <div class="form-check text-left mb-2 h-8">
+                <input v-model="disneyFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-disney">
+                <label class="form-check-label inline-block text-gray-800 text-left" for="filter-disney">
+                  <img class="h-6 ml-2" src="../assets/images/disney+-logo.svg">
                 </label>
               </div>
               <div class="flex my-4">
@@ -134,6 +140,15 @@ export default {
       },
       set: function(value) {
         this.$store.commit("setPrimeFilter", value)
+        this.$store.dispatch("filterMovies")
+      }
+    },
+    disneyFilter: {
+      get: function() {
+        return this.$store.state.filterMoviesByDisney
+      },
+      set: function(value) {
+        this.$store.commit("setDisneyFilter", value)
         this.$store.dispatch("filterMovies")
       }
     },

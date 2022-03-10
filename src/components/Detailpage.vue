@@ -71,6 +71,7 @@
                         <div class="streaming-services flex">
                             <img v-if="onNetflix" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                             <img v-if="onAmazon" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
+                            <img v-if="onDisney" class="w-16 mr-1" src="../assets/images/disney+-logo.svg">
                         </div>
                         <button class="bg-yellow-500 text-gray-900 p-3 rounded-lg md:hidden font-semibold" @click="scrollToRating">Bewerten</button>
                     </div> 
@@ -101,6 +102,7 @@ export default {
           backdrop: "",
           onNetflix: false,
           onAmazon: false,
+          onDisney: false,
           releaseDate: 1900
       }
   },
@@ -146,6 +148,7 @@ export default {
               console.log(providers)
               this.onNetflix = providers.results.DE.flatrate.some(provider => provider.provider_name == "Netflix")
               this.onAmazon = providers.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")
+              this.onDisney = providers.results.DE.flatrate.some(provider => provider.provider_name == "Disney Plus")
           }
           catch {
               console.log("ooops")

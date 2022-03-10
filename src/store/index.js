@@ -1,6 +1,35 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+function filterByProvider(netflix, prime, disney, triggerscores,clonedArray,state){
+    if (netflix || prime || disney){
+        let providerIDs = []
+        Promise.all(triggerscores.map(entry => 
+            fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
+            .then((res) => res.json())
+            .then(res => {
+                if(res.results.DE && res.results.DE.flatrate !== undefined){
+                    if(netflix && res.results.DE.flatrate.some(provider => provider.provider_name == "Netflix")){
+                        providerIDs.push(entry.movie_id)
+                    }
+                    if(prime && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
+                        providerIDs.push(entry.movie_id)
+                    }
+                    if(disney && res.results.DE.flatrate.some(provider => provider.provider_name == "Disney Plus")){
+                        providerIDs.push(entry.movie_id)
+                    }
+                }
+                    
+            })
+            .catch(console.log("Something went wrong"))
+        ))
+        .then(()=>
+            clonedArray = clonedArray.filter(movie => providerIDs.includes(movie.id)))
+        .then(()=>
+            state.commit("setFilteredMovies",clonedArray))
+    }
+}
+
 function sortAtoZ(x, y) {
     const titleX = x.title ? x.title : x.original_title
     const titleY = y.title ? y.title : y.original_title
@@ -60,6 +89,7 @@ export default new Vuex.Store({
         filterMoviesByYearMax: null,
         filterMoviesByNetflix: false,
         filterMoviesByPrime: false,
+        filterMoviesByDisney: false,
         sortingOption: 'a-z',
         highlightsLoading: true,
         moviesLoading: true,
@@ -97,6 +127,9 @@ export default new Vuex.Store({
         },
         setPrimeFilter(state,payload){
             state.filterMoviesByPrime = payload
+        },
+        setDisneyFilter(state,payload){
+            state.filterMoviesByDisney = payload
         },
         setFilteredMovies(state,payload){
             state.filteredMovies = payload
@@ -163,6 +196,8 @@ export default new Vuex.Store({
         },
         async filterMovies(state){
             let clone = [...this.state.movies]
+            filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,clone,state)
+            /*
             if (this.state.filterMoviesByNetflix && !this.state.filterMoviesByPrime){
                 let netflixIDs = []
                 Promise.all(this.state.triggerscores.map(entry => 
@@ -213,6 +248,7 @@ export default new Vuex.Store({
                 .then(()=>clone = clone.filter(movie => IDs.includes(movie.id)))
                 .then(()=>state.commit("setFilteredMovies",clone))
             }
+            */
             if (!this.state.filterMoviesByPrime && !this.state.filterMoviesByNetflix){
                 state.commit("setFilteredMovies",clone)
             }
