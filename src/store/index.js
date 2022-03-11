@@ -36,7 +36,6 @@ async function filterByProvider(netflix, prime, disney, triggerscores,array,stat
 
 function filterByYear(filterMax,filterMin,array,state){
     let clonedArray = [...array]
-    console.log(filterMax,filterMin,clonedArray)
     if (filterMin != null && filterMin >= 1900 && filterMin <= 2011){
         clonedArray = clonedArray.filter(movie => movie.release_date >= filterMin)
     }
@@ -46,7 +45,7 @@ function filterByYear(filterMax,filterMin,array,state){
     state.commit("setFilteredMovies",clonedArray)
 }
 
-function sortMovies(sortingOption,array,triggerscores,state){
+function sortMovies(sortingOption,array,triggerscores,shownScore,state){
     let clonedArray = [...array]
     if (sortingOption == "a-z") {
         clonedArray = clonedArray.sort(sortAtoZ)      
@@ -61,10 +60,10 @@ function sortMovies(sortingOption,array,triggerscores,state){
         clonedArray = clonedArray.sort(sortByDateAsc)
     }
     if (sortingOption == "ts-desc") {
-        clonedArray = clonedArray.sort(sortByTsDesc(triggerscores))
+        clonedArray = clonedArray.sort(sortByTsDesc(triggerscores,shownScore))
     }
     if (sortingOption == "ts-asc") {
-        clonedArray = clonedArray.sort(sortByTsAsc(triggerscores))
+        clonedArray = clonedArray.sort(sortByTsAsc(triggerscores,shownScore))
     }
     state.commit("setFilteredMovies",clonedArray)
 }
@@ -93,19 +92,19 @@ function sortByDateAsc(x, y) {
     return new Date(x.release_date) - new Date(y.release_date)
 }
 
-function sortByTsDesc(array){
+function sortByTsDesc(array,key){
     return function(x,y){
-        const triggerscoreX = array[array.map(score => score.movie_id).indexOf(x.id)].rating_total
-        const triggerscoreY = array[array.map(score => score.movie_id).indexOf(y.id)].rating_total
+        const triggerscoreX = array[array.map(score => score.movie_id).indexOf(x.id)][key]
+        const triggerscoreY = array[array.map(score => score.movie_id).indexOf(y.id)][key]
         if (triggerscoreX > triggerscoreY){ return -1}
         if (triggerscoreX < triggerscoreY){ return 1}
     }
 }
 
-function sortByTsAsc(array){
+function sortByTsAsc(array,key){
     return function(x,y){
-        const triggerscoreX = array[array.map(score => score.movie_id).indexOf(x.id)].rating_total
-        const triggerscoreY = array[array.map(score => score.movie_id).indexOf(y.id)].rating_total
+        const triggerscoreX = array[array.map(score => score.movie_id).indexOf(x.id)][key]
+        const triggerscoreY = array[array.map(score => score.movie_id).indexOf(y.id)][key]
         if (triggerscoreX < triggerscoreY){ return -1}
         if (triggerscoreX > triggerscoreY){ return 1}
     }
@@ -132,6 +131,7 @@ export default new Vuex.Store({
         sortingOption: 'a-z',
         highlightsLoading: true,
         moviesLoading: true,
+        shownScore: "rating_total"
     },
     mutations: {
         setTriggerscores(state,payload) {
@@ -181,6 +181,9 @@ export default new Vuex.Store({
         },
         setMoviesLoading(state,payload){
             state.moviesLoading = payload
+        },
+        setShownScore(state,payload){
+            state.shownScore = payload
         }
     },
     actions: {
@@ -234,7 +237,7 @@ export default new Vuex.Store({
             loadedMovies.then(res => {state.commit("setBondMovies", res);state.commit("setHighlightsLoading",false)})
         },
         async filterMovies(state){
-            sortMovies(this.state.sortingOption,this.state.movies,this.state.triggerscores,state)
+            sortMovies(this.state.sortingOption,this.state.movies,this.state.triggerscores,this.getters.getShownScore,state)
             filterByYear(this.state.filterMoviesByYearMax,this.state.filterMoviesByYearMin,this.state.filteredMovies,state)  
             filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,this.state.filteredMovies,state)
         },
@@ -253,7 +256,10 @@ export default new Vuex.Store({
         },
         setMovieYearMax(state,payload){
             state.commit("setMovieYearMax",payload)
-        }
+        },
+        setShownScore(state,payload){
+            state.commit("setShownScore", payload)
+        },
     },
     modules: {
 
@@ -270,6 +276,7 @@ export default new Vuex.Store({
         getFilteredMovies: state => state.filteredMovies,
         getSortingOption: state => state.sortingOption,
         getHighlightsLoading: state => state.highlightsLoading,
-        getMoviesLoading: state => state.moviesLoading
+        getMoviesLoading: state => state.moviesLoading,
+        getShownScore: state => state.shownScore
     }
 })

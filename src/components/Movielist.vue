@@ -7,12 +7,14 @@
         </div>
         <div v-else>
             <MovieHighlightsContainer v-if="!isLoading" />
-            <div v-if="!isLoading" class="py-8 text-white text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
+            <div v-if="!isLoading" class="py-8 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
                 <div class="container px-4 xl:w-10/12 mx-auto">
-                    <h2 class="text-2xl font-semibold mb-2">Filme entdecken</h2>
-                    <p class="text-sm">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
-                </div>
+                    <h2 class="text-2xl font-semibold mb-2 text-white ">Filme entdecken</h2>
+                    <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+                    
+                </div> 
             </div>
+            <ScoreSelect />
             <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
@@ -29,13 +31,15 @@
 import MovieListitem from './MovieListitem.vue'
 import MovieHighlightsContainer from './MovieHighlightsContainer.vue'
 import Searchbox from './Searchbox.vue'
+import ScoreSelect from './ScoreSelect.vue'
 
 export default {
     name: 'Movielist',
     components: {
         MovieListitem,
         MovieHighlightsContainer,
-        Searchbox
+        Searchbox,
+        ScoreSelect
     },
     data() {
         return {

@@ -159,6 +159,7 @@ export default {
       },
       set: function(value){
         this.$store.commit("setSortingOption",value)
+        this.$store.dispatch("filterMovies")
       }
     },
     filterMin: {
