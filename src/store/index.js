@@ -116,6 +116,7 @@ export default new Vuex.Store({
     state: {
         triggerscores: [],
         movies: [],
+        recentRatings: [],
         filteredMovies: [],
         searchInput: '',
         searchTerm: '',
@@ -139,6 +140,9 @@ export default new Vuex.Store({
         },
         setMovies(state,payload){
             state.movies = payload
+        },
+        setRecentRatings(state,payload){
+            state.recentRatings = payload
         },
         setSearchInput(state,payload){
             state.searchInput = payload
@@ -197,6 +201,15 @@ export default new Vuex.Store({
             ))
             loadedMovies.then(res => {state.commit("setMovies", res);state.commit("setMoviesLoading",false)} )
             
+        },
+        async setRecentRatings(state){
+            const scores = await fetch('https://triggerscore.herokuapp.com/recentratings')
+            const ratings = await scores.json()
+            const recentRatings = Promise.all(ratings.map(entry => 
+                fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
+                .then((res) => res.json())
+            ))
+            recentRatings.then(res => {state.commit("setRecentRatings", res)} )
         },
         setSearchInput(state, payload){
             state.commit("setSearchInput", payload)
@@ -267,6 +280,7 @@ export default new Vuex.Store({
     getters: {
         getTriggerscores: state => state.triggerscores,
         getMovies: state => state.movies,
+        getRecentRatings: state => state.recentRatings,
         getSearchInput: state => state.searchInput,
         getSearchTerm: state => state.searchTerm,
         getSearchResults: state => state.searchResults,
