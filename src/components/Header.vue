@@ -1,5 +1,5 @@
 <template>
-    <header class="w-full h-auto bg-red-600 z-10 shadow-md flex flex-col relative sticky top-0">
+    <header class="w-full h-auto bg-red-800 z-10 shadow-md flex flex-col relative sticky top-0">
         <section class="container mx-auto h-full p-4 xl:w-10/12 flex justify-between relative">
             <div class="flex">
               <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg self-center mr-3 sm:hidden" @click="showNav = !showNav; showMenu = false; showSearch = false" />
