@@ -16,30 +16,30 @@
                     <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
                         TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                     </div>
-                    <div class="mx-auto bg-opacity-90 w-12 sm:w-20 md:w-24 lg:w-20 h-12 sm:h-20 md:h-24 lg:h-20 border border-gray-900 p-2 text-3xl rounded-full flex justify-center my-3" :class="{'bg-red-700': score.rating_total >= 7, 'bg-yellow-400': score.rating_total < 7 && score.rating_total >=4, 'bg-green-500': score.rating_total < 4}">
+                    <div class="mx-auto bg-opacity-90 w-12 sm:w-20 md:w-24 lg:w-20 h-12 sm:h-20 md:h-24 lg:h-20 border border-gray-900 p-2 text-3xl rounded-lg flex justify-center my-3" :class="{'bg-red-700': score.rating_total >= 7, 'bg-yellow-400': score.rating_total < 7 && score.rating_total >=4, 'bg-green-500': score.rating_total < 4}">
                         <p class="self-center text-white text-lg">{{score.rating_total}}</p>
                     </div>
                     <div class="text-left w-36 mx-auto text-white">
                         <div class="flex my-2 md:text-lg lg:text-base">
-                            <div class="flex rounded-full justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2"  :class="{'bg-red-700': score.rating_sexism >= 7, 'bg-yellow-400': score.rating_sexism < 7 && score.rating_sexism >=4, 'bg-green-500': score.rating_sexism < 4}">
+                            <div class="flex rounded-lg justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2"  :class="{'bg-red-700': score.rating_sexism >= 7, 'bg-yellow-400': score.rating_sexism < 7 && score.rating_sexism >=4, 'bg-green-500': score.rating_sexism < 4}">
                                 <div class="self-center">{{score.rating_sexism}}</div>
                             </div>
                             <p class="self-center">Sexismus</p>
                         </div>
                         <div class="flex my-2 md:text-lg lg:text-base">
-                            <div class="flex bg-red-500 rounded-full justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_racism >= 7, 'bg-yellow-400': score.rating_racism < 7 && score.rating_racism >=4, 'bg-green-500': score.rating_racism < 4}">
+                            <div class="flex bg-red-500 rounded-lg justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_racism >= 7, 'bg-yellow-400': score.rating_racism < 7 && score.rating_racism >=4, 'bg-green-500': score.rating_racism < 4}">
                                 <div class="self-center">{{score.rating_racism}}</div>
                             </div>
                             <p class="self-center">Rassismus</p>
                         </div>
                         <div class="flex my-2 md:text-lg lg:text-base">
-                            <div class="flex bg-red-500 rounded-full justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_others >= 7, 'bg-yellow-400': score.rating_others < 7 && score.rating_others >=4, 'bg-green-500': score.rating_others < 4}">
+                            <div class="flex bg-red-500 rounded-lg justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_others >= 7, 'bg-yellow-400': score.rating_others < 7 && score.rating_others >=4, 'bg-green-500': score.rating_others < 4}">
                                 <div class="self-center">{{score.rating_others}}</div>
                             </div>
                             <p class="self-center">Sonstige</p>
                         </div>
                         <div class="flex my-2 md:text-lg lg:text-base">
-                            <div class="flex bg-red-500 rounded-full justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_cringe >= 7, 'bg-yellow-400': score.rating_cringe < 7 && score.rating_cringe >=4, 'bg-green-500': score.rating_cringe < 4}">
+                            <div class="flex bg-red-500 rounded-lg justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_cringe >= 7, 'bg-yellow-400': score.rating_cringe < 7 && score.rating_cringe >=4, 'bg-green-500': score.rating_cringe < 4}">
                                 <div class="self-center">{{score.rating_cringe}}</div>
                             </div> 
                             <p class="self-center">Cringe</p>
