@@ -132,7 +132,11 @@ export default new Vuex.Store({
         sortingOption: 'a-z',
         highlightsLoading: true,
         moviesLoading: true,
-        shownScore: "rating_total"
+        shownScore: "rating_total",
+        top10Sexism: [],
+        top10Racism: [],
+        top10Others: [],
+        top10Cringe: []
     },
     mutations: {
         setTriggerscores(state,payload) {
@@ -188,6 +192,18 @@ export default new Vuex.Store({
         },
         setShownScore(state,payload){
             state.shownScore = payload
+        },
+        setTop10Sexism(state,payload){
+            state.top10Sexism = payload
+        },
+        setTop10Racism(state,payload){
+            state.top10Racism = payload
+        },
+        setTop10Others(state,payload){
+            state.top10Others = payload
+        },
+        setTop10Cringe(state,payload){
+            state.top10Cringe = payload
         }
     },
     actions: {
@@ -210,6 +226,42 @@ export default new Vuex.Store({
                 .then((res) => res.json())
             ))
             recentRatings.then(res => {state.commit("setRecentRatings", res)} )
+        },
+        async setTop10Sexism(state){
+            const scores = await fetch('https://triggerscore.herokuapp.com/top10-sexism')
+            const top10 = await scores.json()
+            const loadedTop10 = Promise.all(top10.map(entry => 
+                fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
+                .then((res) => res.json())
+            ))
+            loadedTop10.then(res => {state.commit("setTop10Sexism", res)} )
+        },
+        async setTop10Racism(state){
+            const scores = await fetch('https://triggerscore.herokuapp.com/top10-racism')
+            const top10 = await scores.json()
+            const loadedTop10 = Promise.all(top10.map(entry => 
+                fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
+                .then((res) => res.json())
+            ))
+            loadedTop10.then(res => {state.commit("setTop10Racism", res)} )
+        },
+        async setTop10Others(state){
+            const scores = await fetch('https://triggerscore.herokuapp.com/top10-others')
+            const top10 = await scores.json()
+            const loadedTop10 = Promise.all(top10.map(entry => 
+                fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
+                .then((res) => res.json())
+            ))
+            loadedTop10.then(res => {state.commit("setTop10Others", res)} )
+        },
+        async setTop10Cringe(state){
+            const scores = await fetch('https://triggerscore.herokuapp.com/top10-cringe')
+            const top10 = await scores.json()
+            const loadedTop10 = Promise.all(top10.map(entry => 
+                fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
+                .then((res) => res.json())
+            ))
+            loadedTop10.then(res => {state.commit("setTop10Cringe", res)} )
         },
         setSearchInput(state, payload){
             state.commit("setSearchInput", payload)
@@ -291,6 +343,10 @@ export default new Vuex.Store({
         getSortingOption: state => state.sortingOption,
         getHighlightsLoading: state => state.highlightsLoading,
         getMoviesLoading: state => state.moviesLoading,
-        getShownScore: state => state.shownScore
+        getShownScore: state => state.shownScore,
+        getTop10Sexism: state => state.top10Sexism,
+        getTop10Racism: state => state.top10Racism,
+        getTop10Others: state => state.top10Others,
+        getTop10Cringe: state => state.top10Cringe,
     }
 })

@@ -5,6 +5,7 @@ import './index.css'
 import './assets/tailwind.css'
 import './components/Movielist.vue'
 import Movielist from './components/Movielist.vue'
+import AllMovies from './components/AllMovies.vue'
 import Detailpage from './components/Detailpage.vue'
 import Searchresults from './components/Searchresults'
 import About from './components/About'
@@ -29,6 +30,11 @@ const router = new VueRouter({
      path: "/", 
      name: "home",
      component: Movielist
+    },
+    {
+      path: "/all",
+      name: "all",
+      component: AllMovies
     },
     {
      path: "/movie/:id", 
