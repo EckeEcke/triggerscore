@@ -16,21 +16,25 @@
             </div>
             <transition  enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-              <nav v-if="showNav" class="w-80 bg-gray-900 h-screen absolute top-0 right-0 shadow-lg md:hidden z-40">
-                <div class="text-right text-white text-xl p-4">
+              <nav v-if="showNav" class="w-80 bg-white h-screen absolute top-0 right-0 shadow-lg md:hidden z-40">
+                <div class="text-right text-xl p-4 bg-gray-900 text-white">
                   <font-awesome-icon :icon="['fas', 'times']" @click="showNav = false" />
                 </div>
-                <router-link to="/" tag="div" class="text-2xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer mb-12" @click="showNav = false">
+                <div class="bg-gray-900">
+                  <router-link to="/" tag="div" class="text-2xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer pb-12" @click="showNav = false">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
-                </router-link>     
+                </router-link> 
+                </div>
                 <hr>
-                <router-link to="/all" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">Alle Filme</div></router-link>
+                <router-link to="/" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">Home</div></router-link>  
                 <hr>
-                <router-link to="/faq" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">FAQ</div></router-link>
+                <router-link to="/all" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">Alle Filme</div></router-link>
                 <hr>
-                <router-link to="/about" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">About</div></router-link>
+                <router-link to="/faq" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">FAQ</div></router-link>
                 <hr>
-                <router-link to="/contact" tag="div" class="text-white text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">Kontakt</div></router-link>
+                <router-link to="/about" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">About</div></router-link>
+                <hr>
+                <router-link to="/contact" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">Kontakt</div></router-link>
                 <hr>
               </nav>
             </transition>
