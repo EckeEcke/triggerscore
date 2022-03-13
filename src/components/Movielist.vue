@@ -21,7 +21,7 @@
               </span></h2>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-4 justify-content-start container mx-auto xl:w-10/12 sm:px-4 ">
-                    <RecentRatingsItem v-for="(rating,index) in recentRatings" :key="index" :movie="rating" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(rating.id)]" />
+                    <RecentRatingsItem v-for="(rating,index) in recentRatings" :key="index" :movie="rating" :scores="recentScores[index]" />
                 </div>
                 
             </section>
@@ -150,6 +150,9 @@ export default {
         },
         recentRatings: function() {
             return this.$store.getters.getRecentRatings
+        },
+        recentScores: function(){
+            return this.$store.getters.getRecentScores
         },
         top10Sexism: function() {
             return this.$store.getters.getTop10Sexism

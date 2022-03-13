@@ -117,6 +117,7 @@ export default new Vuex.Store({
         triggerscores: [],
         movies: [],
         recentRatings: [],
+        recentScores: [],
         filteredMovies: [],
         searchInput: '',
         searchTerm: '',
@@ -204,6 +205,9 @@ export default new Vuex.Store({
         },
         setTop10Cringe(state,payload){
             state.top10Cringe = payload
+        },
+        setRecentScores(state,payload){
+            state.recentScores = payload
         }
     },
     actions: {
@@ -221,11 +225,14 @@ export default new Vuex.Store({
         async setRecentRatings(state){
             const scores = await fetch('https://triggerscore.herokuapp.com/recentratings')
             const ratings = await scores.json()
+            console.log(ratings)
+            state.commit("setRecentScores",ratings)
             const recentRatings = Promise.all(ratings.map(entry => 
                 fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
                 .then((res) => res.json())
             ))
-            recentRatings.then(res => {state.commit("setRecentRatings", res)} )
+            recentRatings.then(res => {state.commit("setRecentRatings", res);state
+        } )
         },
         async setTop10Sexism(state){
             const scores = await fetch('https://triggerscore.herokuapp.com/top10-sexism')
@@ -348,5 +355,6 @@ export default new Vuex.Store({
         getTop10Racism: state => state.top10Racism,
         getTop10Others: state => state.top10Others,
         getTop10Cringe: state => state.top10Cringe,
+        getRecentScores: state => state.recentScores
     }
 })

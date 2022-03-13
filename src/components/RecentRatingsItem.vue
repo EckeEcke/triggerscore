@@ -4,8 +4,8 @@
             <article class="text-left relative w-full h-full">
                 <div class="flex items-center gap-2">
                  
-                <div class="flex rounded-lg justify-center w-10 h-10 lg:w-12 lg:h-12 mr-2" :class="{'bg-red-700': scores.rating_total >= 7, 'bg-yellow-400': scores.rating_total < 7 && scores.rating_total >=4, 'bg-green-500': scores.rating_total < 4}">
-                    <p class="self-center text-white text-lg font-semibold">{{scores.rating_total}}</p>
+                <div class="flex rounded-lg justify-center w-10 h-10 lg:w-12 lg:h-12 mr-2" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-400': scoreTotal < 7 && scoreTotal >=4, 'bg-green-500': scoreTotal < 4}">
+                    <p class="self-center text-white text-lg font-semibold">{{scoreTotal}}</p>
                 </div>
                    <h3 v-if="movie.title.length > 0" class="flex items-center text-base mb-1 font-semibold overflow-hidden inline-block h-12 overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="text-base mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
@@ -53,6 +53,12 @@ export default {
 
       scoreAvailable: function() {
           return this.scores != undefined
+      },
+      scoreTotal: function() {
+          if(this.scores){
+              return Math.floor((this.scores.rating_sexism + this.scores.rating_racism + this.scores.rating_others) / 3 * 10) / 10
+          } else return "-"
+          
       }
   }
 }
