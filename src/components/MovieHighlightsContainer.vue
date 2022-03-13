@@ -1,7 +1,7 @@
 <template>
-    <div  class="w-full bg-gray-900 bg-opacity-95 px-4 py-4 mb-0" :class="{'border-b border-gray-500': showBorder, 'py-8': moreSpacing}">
+    <div  class="w-full bg-gray-900 bg-opacity-95 px-4 py-4 mb-0" :class="{'border-b border-gray-700': showBorder, 'py-8': moreSpacing}">
         <div class="font-semibold mb-4 container mx-auto xl:w-10/12">
-            <h2 class="text-2xl text-yellow-500 text-left text-underline mb-2">{{title}}</h2>
+            <h2 class="text-xl text-yellow-500 text-left text-underline mb-2">{{title}}</h2>
             <p class="text-left text-white">{{subTitle}}</p>
         </div>
         <div class="relative group">

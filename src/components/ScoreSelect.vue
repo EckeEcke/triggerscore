@@ -1,5 +1,5 @@
 <template>
-<div class="bg-gray-900 flex py-2 sm:py-0">
+<div class="bg-gray-900 flex py-2 sm:py-0 mt-4">
 <div class="flex items-center gap-4 justify-end container mx-auto xl:w-10/12 px-4">
                 <h2 class="text-left my-2 text-sm text-yellow-500 font-semibold">Angezeigter Triggerscore</h2>
                 <div class="flex my-3 rounded max-w-md">

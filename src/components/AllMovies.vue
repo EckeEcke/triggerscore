@@ -1,7 +1,7 @@
 <template>
-    <div class="">
+    <div class="bg-gray-900">
         <Searchbox />
-        <div v-if="isLoading" class="mt-8">
+        <div v-if="isLoading" class="py-32">
             <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
             <p class="text-white font-semibold animate-bounce mt-8">Lädt Filme</p>
         </div>
@@ -13,10 +13,10 @@
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
             </transition-group>
-            <div v-if="!isLoading" class="py-8 text-left mb-16" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
+            <div v-if="!isLoading" class="py-8 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
                 <div class="container px-4 xl:w-10/12 mx-auto">
-                    <h2 class="text-2xl font-semibold mb-2 text-white ">Filme entdecken</h2>
-                    <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+                    <h2 class="text-2xl font-semibold mb-2 text-white ">Dein Film ist nicht dabei?</h2>
+                    <p class="text-sm text-white ">Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
                 </div> 
             </div>
             <div class="my-32" v-if="!isLoading && filteredMovies.length == 0">

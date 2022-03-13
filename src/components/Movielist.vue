@@ -1,5 +1,5 @@
 <template>
-    <div class="">
+    <div class="bg-gray-900">
         <Searchbox />
         <div v-if="isLoading" class="mt-8">
             <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
@@ -14,9 +14,9 @@
                 subTitle="Lizenz zum Triggern: Film anklicken und Triggerscore vergeben"
                 moreSpacing
             />
-            <section class="mb-12">
-                <div class="py-8 sm:mb-4" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
-                    <h2 class="text-white text-2xl text-left font-semibold px-4  container mx-auto xl:w-10/12">Neueste <span class="text-xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+            <section class="sm:mb-12">
+                <div class="py-12 sm:mb-12" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
+                    <h2 class="text-white text-xl md:text-2xl text-left font-semibold px-4  container mx-auto xl:w-10/12">Neueste <span class="text-xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RES
               </span></h2>
                 </div>
@@ -25,9 +25,9 @@
                 </div>
                 
             </section>
-            <div v-if="!isLoading" class="py-8 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
+            <div v-if="!isLoading" class="py-12 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
                 <div class="container px-4 xl:w-10/12 mx-auto">
-                    <h2 class="text-2xl font-semibold mb-2 text-white "><span class="text-xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+                    <h2 class="text-xl md:text-2xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
               </span> TOP 10s</h2>
                     <p class="text-sm text-white font-semibold">Trigger-happy: Filme mit höchsten Triggerscores</p>
