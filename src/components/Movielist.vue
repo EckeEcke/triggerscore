@@ -16,9 +16,10 @@
             />
             <section class="sm:mb-12">
                 <div class="py-12 sm:mb-12" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
-                    <h2 class="text-white text-xl md:text-2xl text-left font-semibold px-4  container mx-auto xl:w-10/12">Neueste <span class="text-xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+                    <h2 class="text-white text-xl md:text-2xl text-left font-semibold px-4  container mx-auto xl:w-10/12 mb-2">Neueste <span class="text-xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RES
               </span></h2>
+              <p class="text-sm text-white font-semibold text-left px-4  container mx-auto xl:w-10/12 ">Kürzlich abgegebene Bewertungen</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-4 justify-content-start container mx-auto xl:w-10/12 sm:px-4 ">
                     <RecentRatingsItem v-for="(rating,index) in recentRatings" :key="index" :movie="rating" :scores="recentScores[index]" />
