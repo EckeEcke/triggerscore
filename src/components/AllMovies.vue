@@ -1,7 +1,7 @@
 <template>
     <div class="bg-gray-900">
         <Searchbox />
-        <div v-if="isLoading" class="py-32">
+        <div v-if="isLoading" class="py-32 lg:py-48">
             <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
             <p class="text-white font-semibold animate-bounce mt-8">Lädt Filme</p>
         </div>
@@ -42,7 +42,7 @@
               <hr class="my-3">
               <h2 class="font-semibold text-left mb-2">Score wählen</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
-                  <select v-model="shownScore" class="w-full md:w-auto h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
+                  <select v-model="shownScore" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
                     <option class="py-1" value="rating_total">Gesamtwertung</option>
                     <option class="py-1" value="rating_sexism">Sexismus</option>
                     <option class="py-1" value="rating_racism">Rassismus</option>

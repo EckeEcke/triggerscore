@@ -35,6 +35,9 @@ export default {
   components: {
       MovieListitem,
   },
+  mounted: function() {
+    this.redirectToHome()
+  },
   computed: {
       searchTerm: function() {
           return this.$store.getters.getSearchTerm
@@ -66,6 +69,11 @@ export default {
             this.$store.dispatch("resetSearch")
             this.$router.go(-1)
         },
+        redirectToHome: function() {
+            if(this.$store.getters.getSearchTerm == ""){
+                this.$router.push("/")
+            }
+        }
   }
 }
 
