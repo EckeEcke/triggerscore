@@ -4,7 +4,7 @@
         <div class="w-full mb-8 flex justify-between">
             <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-gray-900 font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
         </div>
-        <div v-if="triggerscoreLoading" class="mb-8 mt-16">
+        <div v-if="triggerscoreLoading" class="mb-8 py-32 lg:py-48">
             <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
             <p class="text-white font-semibold animate-bounce mt-8">Lädt Film</p>
         </div>
