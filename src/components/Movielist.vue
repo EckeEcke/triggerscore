@@ -21,7 +21,7 @@
               </span></h2>
               <p class="text-sm text-white font-semibold text-left px-4  container mx-auto xl:w-10/12 ">Kürzlich abgegebene Bewertungen</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-4 justify-content-start container mx-auto xl:w-10/12 sm:px-4 ">
+                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-5 justify-content-start container mx-auto xl:w-10/12 sm:px-4 ">
                     <RecentRatingsItem v-for="(rating,index) in recentRatings" :key="index" :movie="rating" :scores="recentScores[index]" />
                 </div>
                 
