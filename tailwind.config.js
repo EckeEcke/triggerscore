@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       opacity: ['disabled'],
       display: ["group-hover"],
+      boxShadow: ["focus-within"]
     },
   },
   plugins: [],
