@@ -34,7 +34,7 @@
                     <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-52" placeholder="Nachricht eingeben" required></textarea>
                 </p>
                 <p class="">
-                    <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg transition hover:bg-yellow-600" type="submit">Absenden</button>
+                    <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg transition hover:bg-yellow-600 font-semibold" type="submit">Absenden</button>
                 </p>
             </form>
         </div>

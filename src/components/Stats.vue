@@ -1,5 +1,5 @@
 <template>
-    <section class="container-xl bg-white p-6 md:p-12 text-left md:my-8 text-sm md:w-8/12 lg:w-1/2 mx-auto md:rounded-lg">
+    <section class="container-xl bg-white p-6 md:p-12 text-left text-sm md:w-8/12 lg:w-1/2 mx-auto md:rounded-lg">
         <div class="bg-white rounded-lg font-semibold">
           <div class="flex justify-between items-center border-b border-gray-300 py-4 h-24 gap-4">
             <span class="text-lg">Gesamtzahl abgegebene Bewertungen:</span><span class="text-3xl font-semibold">{{ stats.totalRatings }}</span>
