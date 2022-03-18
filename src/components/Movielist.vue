@@ -65,6 +65,18 @@
                 title="Top 10 Cringe Filme"
                 subTitle="Diese Filme sind einfach nur zum Fremdschämen: Filme mit höchsten Cringe-Ratings"
             />
+            <div v-if="!isLoading" class="py-12 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
+                <div class="container px-4 xl:w-10/12 mx-auto">
+                    <h2 class="text-xl md:text-2xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+                TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
+              </span> Stats</h2>
+                    <p class="text-sm text-white font-semibold">Statistiken für Zahlenbegeisterte</p>
+                </div> 
+            </div>
+            <div class="sm:py-8">
+                <Stats />
+            </div>
+            
             
             <!--
             <div v-if="!isLoading" class="py-8 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
@@ -96,6 +108,7 @@ import MovieHighlightsContainer from './MovieHighlightsContainer.vue'
 import Searchbox from './Searchbox.vue'
 // import ScoreSelect from './ScoreSelect.vue'
 import RecentRatingsItem from './RecentRatingsItem.vue'
+import Stats from './Stats.vue'
 
 export default {
     name: 'Movielist',
@@ -104,7 +117,8 @@ export default {
         MovieHighlightsContainer,
         Searchbox,
         // ScoreSelect,
-        RecentRatingsItem
+        RecentRatingsItem,
+        Stats
     },
     data() {
         return {

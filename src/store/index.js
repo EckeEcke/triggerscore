@@ -137,7 +137,8 @@ export default new Vuex.Store({
         top10Sexism: [],
         top10Racism: [],
         top10Others: [],
-        top10Cringe: []
+        top10Cringe: [],
+        stats: {}
     },
     mutations: {
         setTriggerscores(state,payload) {
@@ -208,6 +209,9 @@ export default new Vuex.Store({
         },
         setRecentScores(state,payload){
             state.recentScores = payload
+        },
+        setStats(state,payload){
+            state.stats = payload
         }
     },
     actions: {
@@ -269,6 +273,11 @@ export default new Vuex.Store({
                 .then((res) => res.json())
             ))
             loadedTop10.then(res => {state.commit("setTop10Cringe", res)} )
+        },
+        async setStats(state){
+            const response = await fetch('https://triggerscore.herokuapp.com/stats')
+            const stats = await response.json()
+            state.commit("setStats",stats)
         },
         setSearchInput(state, payload){
             state.commit("setSearchInput", payload)
@@ -355,6 +364,7 @@ export default new Vuex.Store({
         getTop10Racism: state => state.top10Racism,
         getTop10Others: state => state.top10Others,
         getTop10Cringe: state => state.top10Cringe,
-        getRecentScores: state => state.recentScores
+        getRecentScores: state => state.recentScores,
+        getStats: state => state.stats
     }
 })

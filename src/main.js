@@ -11,6 +11,7 @@ import Searchresults from './components/Searchresults'
 import About from './components/About'
 import FAQ from './components/FAQ'
 import Contact from './components/Contact'
+import Stats from './components/Stats'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -61,6 +62,11 @@ const router = new VueRouter({
       path: "/contact",
       name: "contact",
       component: Contact
+    },
+    {
+      path: "/stats",
+      name: "stats",
+      component: Stats
     } 
   ],
   scrollBehavior (to, from, savedPosition) {
