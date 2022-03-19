@@ -7,14 +7,13 @@
         </div>
         <div v-else>
             <div class="container px-4 xl:w-10/12 mx-auto flex flex-col mt-8 mb-4">
-              <div class="text-left">
-                  <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-yellow-500 ">Filme entdecken</h2>
-                      <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
-              </div>
-              <div class="ml-auto mt-4 -mr-3 sm:mr-0 xl:hidden">
-                  <button class="bg-yellow-500 text-gray-900 disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="showMenu = !showMenu"><font-awesome-icon class="mr-2" :icon="['fas', 'bars']" />Menu</button>
-              </div>
-              
+                <div class="text-left">
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-yellow-500 ">Filme entdecken</h2>
+                        <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+                </div>
+                <div class="ml-auto mt-4 -mr-3 sm:mr-0 xl:hidden">
+                    <button class="bg-yellow-500 text-gray-900 disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="showMenu = !showMenu"><font-awesome-icon class="mr-2" :icon="['fas', 'bars']" />Menu</button>
+                </div>  
             </div>
             <Filtermenu class="hidden xl:block mt-8" />
             <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 sm:pb-8 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
@@ -25,12 +24,10 @@
                 <p class="text-white text-xl font-semibold animate-bounce mb-4">Leider keine Ergebnisse</p>
                 <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
             </div>
-<transition v-if="showMenu" enter-active-class="duration-300 ease-out"
+            <transition v-if="showMenu" enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-<Sidebar @close="showMenu = !showMenu"/>
-</transition>
-
-
+                <Sidebar @close="showMenu = !showMenu"/>
+            </transition>
         </div>
     </div>
 </template>

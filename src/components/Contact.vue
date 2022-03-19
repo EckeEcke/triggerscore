@@ -40,8 +40,7 @@
         </div>
         <div v-else class="w-full sm:w-1/2">
             <p class="p-4 bg-green-500 text-white rounded-lg shadow-lg font-semibold text-center">Nachricht erfolgreich versendet <font-awesome-icon :icon="['fas', 'check']" class="text-white" /></p>
-        </div>
-        
+        </div>  
     </div>
 </template>
 
