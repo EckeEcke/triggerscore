@@ -1,6 +1,6 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-white shadow-md border border-gray-100 flex relative border-b md:border-b-0 rounded-lg transform transition duration-300 container-xl cursor-pointer max-w-md">
-        <img load="lazy" class="h-full md:rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" />
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-white shadow-md border border-gray-200 flex relative border-b md:border-b-0 rounded-lg transform transition duration-300 container-xl cursor-pointer max-w-md">
+        <img load="lazy" class="h-full rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" />
         <div class="w-full p-3">
             <div class="absolute top-1 right-1 h-12 w-12 text-white rounded-lg font-semibold" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && score >= 7, 'bg-yellow-400': scoreAvailable && score < 7 && score >=4, 'bg-green-500': scoreAvailable && score < 4}">
                 <div class="relative w-full h-full">
@@ -8,7 +8,7 @@
                 </div>
             </div>
             <article class="text-left relative w-full h-full">
-                <h3 v-if="movie.title.length > 0" class="text-base w-4/5 h-12 mb-1 font-semibold overflow-hidden">{{ movie.title }}</h3>
+                <h3 v-if="movie.title.length > 0" class="text-base w-4/5 h-12 mb-1 pr-3 font-semibold overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="text-base w-4/5 h-12 mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
                 <p class="text-xs w-4/5">veröffentlicht: {{ movie.release_date.substring(0,4) }}</p>
                 <p v-if="overview.length > 2" class="text-xs absolute top-1/2 italic py-3">"{{ overview }}" </p>

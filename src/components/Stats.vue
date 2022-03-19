@@ -1,6 +1,6 @@
 <template>
     <section>
-      <div class="container bg-white py-6 md:py-12 text-left text-sm xl:w-10/12 mx-auto md:rounded-lg flex flex-col lg:flex-row gap-12">
+      <div class="container bg-white py-6 md:py-8 md:px-6 text-left text-sm xl:w-10/12 mx-auto md:rounded-lg flex flex-col lg:flex-row gap-x-12">
         <div class="w-full lg:w-1/2 px-4">
           <div class="bg-white rounded-lg font-semibold">
           <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
@@ -52,9 +52,9 @@
         </div>
         </div>
         <div class="w-full lg:w-1/2 px-4">
-          <h2 class="font-semibold text-xl my-4 h-14 flex items-center">Niedrigster Triggerscore</h2>
+          <h2 class="font-semibold text-lg my-4 h-14 flex items-center">Niedrigster Triggerscore</h2>
           <StatItem :scores="lowestScoreMovie" :movie="movie[0]" />
-          <h2 class="font-semibold text-xl my-4 flex items-center mt-8">Am häufigsten bewertet ({{mostRatedMovie.ratings}} Bewertungen)</h2>
+          <h2 class="font-semibold text-lg my-4 flex items-center mt-8 border-t border-gray-300 md:border-0 pt-6 ">Am häufigsten bewertet ({{mostRatedMovie.ratings}} Bewertungen)</h2>
           <StatItem :scores="mostRatedMovie" :movie="mostRated[0]" />
         </div>
     </div>
