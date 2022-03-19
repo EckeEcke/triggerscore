@@ -73,50 +73,24 @@
                     <p class="text-sm text-white font-semibold">Statistiken für Zahlenbegeisterte</p>
                 </div> 
             </div>
-            <div class="sm:py-8">
+            <div class="sm:py-8 sm:px-4 container mx-auto">
                 <Stats />
-            </div>
-            
-            
-            <!--
-            <div v-if="!isLoading" class="py-8 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
-                <div class="container px-4 xl:w-10/12 mx-auto">
-                    <h2 class="text-2xl font-semibold mb-2 text-white ">Filme entdecken</h2>
-                    <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
-                </div> 
-            </div>
-            <ScoreSelect />
-            
-            <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
-                enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-                <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
-            </transition-group>
-            <div class="my-32" v-if="!isLoading && filteredMovies.length == 0">
-                <p class="text-white text-xl font-semibold animate-bounce mb-4">Leider keine Ergebnisse</p>
-                <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
-            </div>
-            -->
-                
-            
+            </div>            
         </div>
     </div>
 </template>
 
 <script>
-// import MovieListitem from './MovieListitem.vue'
 import MovieHighlightsContainer from './MovieHighlightsContainer.vue'
 import Searchbox from './Searchbox.vue'
-// import ScoreSelect from './ScoreSelect.vue'
 import RecentRatingsItem from './RecentRatingsItem.vue'
 import Stats from './Stats.vue'
 
 export default {
     name: 'Movielist',
     components: {
-        // MovieListitem,
         MovieHighlightsContainer,
         Searchbox,
-        // ScoreSelect,
         RecentRatingsItem,
         Stats
     },
@@ -209,76 +183,8 @@ export default {
         movies: function() {
             this.$store.dispatch("filterMovies")
         },
-        sortingOption: function() {
-            if (this.selectedSortOption == "a-z") {
-                this.filteredMovies = this.filteredMovies.sort(this.sortAtoZ)
-            }
-            if (this.sortingOption == "z-a") {
-                this.filteredMovies = this.filteredMovies.sort(this.sortZtoA)
-            }
-            if (this.sortingOption == "date-desc") {
-                this.filteredMovies = this.filteredMovies.sort(this.sortByDateDesc)
-            }
-            if (this.sortingOption == "date-asc") {
-                this.filteredMovies = this.filteredMovies.sort(this.sortByDateAsc)
-            }
-            if (this.sortingOption == "ts-desc") {
-                this.filteredMovies = this.filteredMovies.sort(this.sortByTsDesc)
-            }
-            if (this.sortingOption == "ts-asc") {
-                this.filteredMovies = this.filteredMovies.sort(this.sortByTsAsc)
-            }
-        }
     },
     methods: {
-        sortAtoZ: function(x, y) {
-            const titleX = x.title ? x.title : x.original_title
-            const titleY = y.title ? y.title : y.original_title
-            if (titleX < titleY) { return -1 }
-            if (titleX > titleY) { return 1 }
-            return 0
-        },
-        sortZtoA: function(x, y) {
-            console.log(x)
-            const titleX = x.title ? x.title : x.original_title
-            const titleY = y.title ? y.title : y.original_title
-            if (titleX > titleY) { return -1 }
-            if (titleX < titleY) { return 1 }
-            return 0
-        },
-        sortByDateDesc: function(x, y) {
-            return new Date(y.release_date) - new Date(x.release_date)
-        },
-        sortByDateAsc: function(x, y) {
-            return new Date(x.release_date) - new Date(y.release_date)
-        },
-        sortByTsDesc: function(x, y) {
-            const triggerscoreX = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(x.id)].rating_total
-            const triggerscoreY = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(y.id)].rating_total
-            if (triggerscoreX > triggerscoreY) { return -1 }
-            if (triggerscoreX < triggerscoreY) { return 1 }
-        },
-        sortByTsAsc: function(x, y) {
-            const triggerscoreX = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(x.id)].rating_total
-            const triggerscoreY = this.triggerscores[this.triggerscores.map(score => score.movie_id).indexOf(y.id)].rating_total
-            if (triggerscoreX < triggerscoreY) { return -1 }
-            if (triggerscoreX > triggerscoreY) { return 1 }
-        },
-        sortMovies: function(array) {
-            if (this.selectedSortOption == "a-z") {
-                array = array.sort(this.sortAtoZ)
-            }
-            if (this.sortingOption == "z-a") {
-                array = array.sort(this.sortZtoA)
-            }
-            if (this.sortingOption == "date-desc") {
-                array = array.sort(this.sortByDateDesc)
-            }
-            if (this.sortingOption == "date-asc") {
-                array = array.sort(this.sortByDateAsc)
-            }
-            return array
-        },
         searchMovie: function() {
             this.$store.dispatch("setSearchResults")
         },
