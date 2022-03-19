@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="bg-gray-100 min-h-screen min-h-screen relative pb-72 bg-no-repeat bg-center bg-cover bg-fixed" :style="{'background-image': 'linear-gradient(rgba(10, 0, 0, 0.7), rgba(10, 0, 0, 0.7)),' + 'url(' + require('./assets/images/arnold.jpg') + ')'}">
+  <div id="app" class="bg-gray-100 min-h-screen min-h-screen relative pb-72 lg:pb-64 bg-no-repeat bg-center bg-cover bg-fixed" :style="{'background-image': 'linear-gradient(rgba(10, 0, 0, 0.7), rgba(10, 0, 0, 0.7)),' + 'url(' + require('./assets/images/arnold.jpg') + ')'}">
     <Header />
     <transition tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative"
             enter-active-class="duration-100 ease-out"
