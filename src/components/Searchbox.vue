@@ -1,6 +1,6 @@
 <template>
     <div class="py-12 bg-cover" :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
-        <div class="container mx-auto px-2 md:px-4 xl:w-10/12">
+        <div class="container mx-auto px-4 xl:w-10/12">
             <h1 class="text-white text-2xl font-semibold text-left">
                 Film suchen und <router-link to="/faq" class="text-yellow-500 transition hover:text-yellow-600">Triggerscore</router-link> vergeben
             </h1>

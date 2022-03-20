@@ -1,7 +1,7 @@
 <template>
     <footer class="w-full h-72 lg:h-64 py-2
-    bg-red-800 absolute bottom-0 shadow-md">
-      <section class="container mx-auto h-full px-1 md:px-4 xl:w-10/12 flex flex-col md:flex-row justify-around">
+    bg-red-800 shadow-md">
+      <section class="container mx-auto h-full px-1 md:px-4 xl:w-10/12 flex flex-col md:flex-row justify-between">
         
         <div class="self-center my-2 w-full md:w-auto">
           <h2 class="text-2xl font-extrabold text-center lg:text-left text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE</h2>
