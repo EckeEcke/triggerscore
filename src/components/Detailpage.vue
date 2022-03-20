@@ -1,16 +1,16 @@
 <template>
     <section class="w-full bg-center bg-cover bg-fixed" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backdrop}`}">
-        <div class="container mx-auto pt-8 pb-28 px-1 xl:px-20">
-            <div class="w-full mb-8 flex justify-between">
+        <div class="container mx-auto pt-8 pb-28 xl:w-10/12 md:px-4">
+            <div class="w-full mb-8 flex justify-between px-4 md:px-0">
                 <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-gray-900 font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
             </div>
             <div v-if="triggerscoreLoading" class="mb-8 py-32 lg:py-48">
                 <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
                 <p class="text-white font-semibold animate-bounce mt-8">Lädt Film</p>
             </div>
-            <div v-else class="flex flex-col lg:flex-row lg:rounded-b-lg">
+            <div v-else class="flex flex-col lg:flex-row lg:rounded-b-lg px-0 sm:px-4 md:px-0">
                 <div class="flex flex-col w-full bg-white rounded-t-lg lg:rounded-lg justify-start lg:mr-6">
-                    <div class="flex bg-gray-900 justify-between w-full lg:rounded-t-lg">
+                    <div class="flex bg-gray-900 justify-between w-full sm:rounded-t-lg">
                         <img :src=poster class="w-1/2 lg:w-60 h-auto object-contain self-start rounded-tl-lg self-center" />
                         <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center rounded-tr-lg">
                             <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">

@@ -12,10 +12,10 @@
                     <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
                 </div>
                 <div class="ml-auto mt-4 -mr-3 sm:mr-0 xl:hidden">
-                    <button class="bg-yellow-500 text-gray-900 disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="showMenu = !showMenu"><font-awesome-icon class="mr-2" :icon="['fas', 'bars']" />Menu</button>
+                    <button class="bg-yellow-500 text-gray-900 disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="showMenu = !showMenu"><font-awesome-icon class="mr-2" :icon="['fas', 'filter']" />Filter</button>
                 </div>  
             </div>
-            <Filtermenu class="hidden xl:block mt-8" />
+            <Filtermenu class="hidden xl:block mt-4" />
             <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 sm:pb-8 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
