@@ -7,9 +7,9 @@
         </div>
         <div v-else>
             <div class="container px-4 xl:w-10/12 mx-auto flex flex-col mt-8 mb-4">
-                <div class="text-left">
+                <div class="text-left xl:hidden">
                     <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-yellow-500 ">Filme entdecken</h2>
-                        <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+                    <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
                 </div>
                 <div class="ml-auto mt-4 -mr-3 sm:mr-0 xl:hidden">
                     <button class="bg-yellow-500 text-gray-900 disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="showMenu = !showMenu"><font-awesome-icon class="mr-2" :icon="['fas', 'bars']" />Menu</button>

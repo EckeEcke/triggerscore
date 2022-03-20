@@ -54,7 +54,7 @@
         <div class="w-full lg:w-1/2 px-4">
           <h2 class="font-semibold text-lg my-4 h-14 flex items-center">Niedrigster Triggerscore</h2>
           <StatItem :scores="lowestScoreMovie" :movie="movie[0]" />
-          <h2 class="font-semibold text-lg my-4 flex items-center mt-8 border-t border-gray-300 md:border-0 pt-6 ">Am häufigsten bewertet ({{mostRatedMovie.ratings}} Bewertungen)</h2>
+          <h2 class="font-semibold text-lg my-4 h-14 flex items-center border-t border-gray-300 md:border-0 py-6 ">Am häufigsten bewertet ({{mostRatedMovie.ratings}} Bewertungen)</h2>
           <StatItem :scores="mostRatedMovie" :movie="mostRated[0]" />
         </div>
     </div>

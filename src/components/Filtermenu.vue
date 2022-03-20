@@ -1,6 +1,10 @@
 <template>
   <div class="container sm:px-4 xl:w-10/12 mx-auto px-4">
-    <div class="bg-white px-8 py-4 rounded-lg">
+    <div class="text-left px-8 py-4 rounded-t-lg" :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
+      <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-white">Filme entdecken</h2>
+                        <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+    </div>
+    <div class="bg-white px-8 py-4 rounded-b-lg">
       <div class="flex items-end justify-between">
         <div class="flex">
           <div class="w-52 mr-4">
@@ -29,7 +33,7 @@
               </div>
           </div>
         </div>
-      
+        
         <div class="flex mb-2">
           <div class="form-check text-left mb-2 h-8 mr-8">
               <input v-model="netflixFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-netflix">
@@ -146,7 +150,12 @@ export default {
         resetFilter: function() {
             this.$store.dispatch("resetFilter")
             this.$store.dispatch("filterMovies")
-        }
+        },
+        focusSearch: function() {
+            const search = document.getElementById("search")
+            search.scrollIntoView()
+            search.focus()
+        },
   }
 
 }
