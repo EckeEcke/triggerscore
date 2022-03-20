@@ -33,41 +33,45 @@
               </div>
           </div>
         </div>
-        
-        <div class="flex mb-2">
-          <div class="form-check text-left mb-2 h-8 mr-8">
+
+        <div class="flex flex-col mb-2 gap-4">
+          <h2 class="font-semibold text-left mb-2">Streaminganbieter</h2>
+          <div class="flex">
+            <div class="form-check text-left mb-1 h-8 mr-8">
               <input v-model="netflixFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-netflix">
               <label class="form-check-label inline-block text-gray-800 text-left " for="filter-netflix">
                   <img class="h-4 mt-1 mx-2" src="../assets/images/netflix-logo.svg">
               </label>
           </div>
-          <div class="form-check text-left mb-2 h-8 mr-8">
+          <div class="form-check text-left mb-1 h-8 mr-8">
               <input v-model="primeFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-amazon">
               <label class="form-check-label inline-block text-gray-800 text-left " for="filter-amazon">
               <img class="h-4 mt-1 mx-2" src="../assets/images/amazon-prime-logo.svg">
               </label>
           </div>
-          <div class="form-check text-left mb-2 h-8">
+          <div class="form-check text-left mb-1 h-8">
               <input v-model="disneyFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-disney">
               <label class="form-check-label inline-block text-gray-800 text-left " for="filter-disney">
               <img class="h-6 ml-2" src="../assets/images/disney+-logo.svg">
               </label>
           </div>
+          </div>
+          
         </div>
         <div class="flex">
-          <div class="w-1/2 mr-2 flex flex-col">
-            <label class="text-left text-sm font-semibold  mb-2" for="filter-start">Von</label>
-            <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-20 p-2 text-center my-3" min=1900 max=2010 placeholder="1900">
+          <div class="w-1/2 mr-2 flex flex-col my-3">
+            <label class="text-left font-semibold  mb-3" for="filter-start">Von</label>
+            <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="1900">
           </div>
-          <div class="w-1/2 mr-2 flex flex-col">
-            <label class="text-left text-sm font-semibold  mb-2" for="filter-end">Bis</label>
-            <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-20 p-2 text-center my-3" min=1900 max=2010 placeholder="2010">  
+          <div class="w-1/2 mr-2 flex flex-col my-3">
+            <label class="text-left font-semibold  mb-3" for="filter-end">Bis</label>
+            <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="2010">  
           </div>
         </div>
     </div>
     <hr class="mt-4 mb-2">
     <div class="flex justify-between items-center">
-      <div class="text-sm font-semibold">{{results}} Ergebnisse</div>
+      <div class="font-semibold">{{results}} Ergebnisse</div>
         <button class="font-semibold text-yellow-500 p-3 w-auto text-sm" @click="resetFilter">Filter zurücksetzen</button>
       </div>
     </div>
