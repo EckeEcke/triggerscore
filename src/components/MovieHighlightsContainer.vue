@@ -12,7 +12,9 @@
                     <button @click="scrollHighlightContainer('right')" class="bg-white rounded-full"><font-awesome-icon class="text-yellow-500 text-4xl transition transform scale-110 hover:scale-125 pointer-events-auto" :icon="['fas', 'arrow-circle-right']" /></button>
                 </div> 
             </div>
-            <div v-if="!scrolled" class="absolute bottom-0 -right-4 w-12 lg:w-16 h-full" style="background-image: linear-gradient(to right,rgba(17,24,39,0),rgba(17,24,39,0.9));"></div>
+            <transition enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
+                <div v-if="!scrolled" class="absolute bottom-0 -right-4 w-12 lg:w-16 h-full" style="background-image: linear-gradient(to right,rgba(17,24,39,0),rgba(17,24,39,0.9));"></div>
+            </transition>
         </div>      
     </div>
 </template>
@@ -32,8 +34,11 @@ export default {
   mounted: function(){
       const swiper = this.$refs.swiper
       swiper.addEventListener('scroll', this.handleScroll);
-
   },
+  beforeDestroy() {
+      const swiper = this.$refs.swiper
+       swiper.removeEventListener('scroll', this.handleScroll);
+    },
   props: {
       movies: [],
       shownScore: String,
@@ -52,6 +57,9 @@ export default {
             console.log("scrolled")
             console.log(this.scrolled)
             this.scrolled = true
+            if(this.$refs.swiper.scrollLeft == 0){
+                this.scrolled = false
+            }
         },
         scrollHighlightContainer: function(direction){
           const highlight = this.$refs.swiper //document.getElementById("highlight-container")
