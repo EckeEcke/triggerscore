@@ -1,13 +1,13 @@
 <template>
-    <main>
-        <div v-if="searchResults.length == 0 && searchError" class=" text-center font-semibold container mx-auto md:my-4  xl:w-10/12 md:px-4">
-                <div class="bg-gray-900 py-6 px-2 md:rounded-lg">
+    <main class="bg-gray-900">
+        <div v-if="searchResults.length == 0 && searchError" class=" text-center font-semibold container mx-auto my-8  xl:w-10/12 md:px-4">
+                <div class="py-6 px-2 md:rounded-lg">
                     <p class="text-white text-lg">Deine Suche nach <i>"{{searchTerm}}"</i> ergab leider keine Treffer.</p>
                     <button class="bg-yellow-500 transition hover:bg-yellow-600 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="resetSearch"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
                 </div>
             </div>
-            <div v-if="searchResults.length > 0 && !searchError" class=" text-center font-semibold container mx-auto md:my-4  xl:w-10/12 md:px-4">
-                <div class="bg-gray-900 py-6 px-2 md:rounded-lg">
+            <div v-if="searchResults.length > 0 && !searchError" class=" text-center font-semibold container mx-auto my-8  xl:w-10/12 md:px-4">
+                <div class="py-6 px-2 md:rounded-lg">
                     <p class="text-white text-lg">Deine Suche nach <i>"{{searchTerm}}"</i> ergab {{searchResults.length}} Treffer.</p>
                     <button class="bg-yellow-500 transition hover:bg-yellow-600 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="$router.go(-1)"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
                 </div>
@@ -78,3 +78,9 @@ export default {
 }
 
 </script>
+
+<style>
+    main {
+        min-height: calc(100vh - 20rem);
+    }
+</style>

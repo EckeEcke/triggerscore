@@ -73,7 +73,7 @@
                     <p class="text-sm text-white font-semibold">Statistiken für Zahlenbegeisterte</p>
                 </div> 
             </div>
-            <div class="sm:py-8 sm:px-4 container mx-auto">
+            <div class="sm:py-8 sm:px-4 container xl:w-10/12 mx-auto">
                 <Stats />
             </div>            
         </div>
