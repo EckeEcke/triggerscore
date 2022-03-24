@@ -80,6 +80,9 @@ export default {
             }
         },
         loadedMovies: function() {
+            if(this.filteredMovies.length >= 6 && this.loadMoviesAmount < 6){
+                return [...this.filteredMovies].slice(0,6)
+            }
             return [...this.filteredMovies].slice(0,this.loadMoviesAmount)
         },
         triggerscores: function() {
