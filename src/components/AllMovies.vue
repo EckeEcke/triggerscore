@@ -161,6 +161,9 @@ export default {
             if(this.loadMoviesAmount > this.filteredMovies.length){
                 this.loadMoviesAmount = this.filteredMovies.length
             }
+            if(this.filteredMovies.length >= 6 && this.loadMoviesAmount < 6){
+                this.loadMoviesAmount = 6
+            }
         }
     }
 }
