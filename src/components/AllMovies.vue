@@ -18,8 +18,9 @@
             <Filtermenu class="hidden xl:block mt-4" />
             <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 sm:pb-8 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-                <MovieListitem v-for="movie in filteredMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
+                <MovieListitem v-for="movie in loadedMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
             </transition-group>
+            <Trigger @triggerIntersected="loadMore" /> 
             <div class="py-32" v-if="!isLoading && filteredMovies.length == 0">
                 <p class="text-white text-xl font-semibold animate-bounce mb-4">Leider keine Ergebnisse</p>
                 <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
@@ -37,6 +38,7 @@ import MovieListitem from './MovieListitem.vue'
 import Searchbox from './Searchbox.vue'
 import Sidebar from './Sidebar.vue'
 import Filtermenu from './Filtermenu.vue'
+import Trigger from './Trigger.vue'
 
 export default {
     name: 'AllMovies',
@@ -44,13 +46,15 @@ export default {
         MovieListitem,
         Searchbox,
         Sidebar,
-        Filtermenu
+        Filtermenu,
+        Trigger
     },
     data() {
         return {
             showNavbar: true,
             lastScrollPosition: 0,
-            showMenu: false
+            showMenu: false,
+            loadMoviesAmount: 12
         }
     },
     mounted: function() {
@@ -74,6 +78,9 @@ export default {
             set: function(value) {
                 this.$store.commit("setFilteredMovies", value)
             }
+        },
+        loadedMovies: function() {
+            return [...this.filteredMovies].slice(0,this.loadMoviesAmount)
         },
         triggerscores: function() {
             return this.$store.getters.getTriggerscores
@@ -148,6 +155,12 @@ export default {
         resetFilter: function() {
             this.$store.dispatch("resetFilter")
             this.$store.dispatch("filterMovies")
+        },
+        loadMore: function() {
+            this.loadMoviesAmount += 12
+            if(this.loadMoviesAmount > this.filteredMovies.length){
+                this.loadMoviesAmount = this.filteredMovies.length
+            }
         }
     }
 }
