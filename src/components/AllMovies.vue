@@ -157,7 +157,7 @@ export default {
             this.$store.dispatch("filterMovies")
         },
         loadMore: function() {
-            this.loadMoviesAmount += 12
+            this.loadMoviesAmount += 6
             if(this.loadMoviesAmount > this.filteredMovies.length){
                 this.loadMoviesAmount = this.filteredMovies.length
             }

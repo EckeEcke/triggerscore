@@ -61,11 +61,11 @@
         <div class="flex">
           <div class="w-1/2 mr-2 flex flex-col my-3">
             <label class="text-left font-semibold  mb-3" for="filter-start">Von</label>
-            <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="1900">
+            <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="1900" @input="scrollToTop">
           </div>
           <div class="w-1/2 mr-2 flex flex-col my-3">
             <label class="text-left font-semibold  mb-3" for="filter-end">Bis</label>
-            <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="2010">  
+            <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="2010" @input="scrollToTop">  
           </div>
         </div>
     </div>
@@ -160,6 +160,9 @@ export default {
             search.scrollIntoView()
             search.focus()
         },
+        scrollToTop: function() {
+          window.scrollTo(0,0)
+        }
   }
 
 }

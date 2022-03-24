@@ -47,11 +47,11 @@
               <div class="flex my-4">
                 <div class="w-1/2 mr-2 flex flex-col">
                   <label class="text-left text-sm font-semibold mb-2" for="filter-start">Von</label>
-                  <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="1900">
+                  <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="1900" @input="scrollToTop">
                 </div>
                 <div class="w-1/2 mr-2 flex flex-col">
                   <label class="text-left text-sm font-semibold mb-2" for="filter-end">Bis</label>
-                  <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="2010">  
+                  <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="2010" @input="scrollToTop">  
                 </div>
               </div>
               <div class="text-sm my-5 font-semibold">{{results}} Ergebnisse</div>
@@ -136,6 +136,9 @@ export default {
         resetFilter: function() {
             this.$store.dispatch("resetFilter")
             this.$store.dispatch("filterMovies")
+        },
+        scrollToTop: function() {
+          window.scrollTo(0,0)
         }
   }
 
