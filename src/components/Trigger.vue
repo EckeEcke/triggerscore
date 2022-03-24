@@ -9,7 +9,7 @@ export default {
             observer: null,
             options: {
                 root: null,
-                threshold: "-100"
+                threshold: "0"
             }
         }
     },
