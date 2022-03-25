@@ -6,6 +6,7 @@
                 <div class="relative w-full h-full">
                     <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ scores ? score : '-' }}</span>
                 </div>
+                <div v-if="displayedScore != ''" class="bg-gray-300 rounded py-2 px-1 my-1 text-xs font-light">{{displayedScore}}</div>
             </div>
             <article class="text-left relative w-full h-full">
                 <h3 v-if="movie.title.length > 0" class="text-base w-4/5 h-12 mb-1 font-semibold overflow-hidden">{{ movie.title }}</h3>
@@ -37,6 +38,17 @@ export default {
       },
       shownScore: function() {
           return this.$store.getters.getShownScore
+      },
+      displayedScore: function(){
+          if(this.shownScore == "rating_sexism"){
+              return "Sexism"
+          } else if(this.shownScore == "rating_racism"){
+              return "Racism"
+          } else if(this.shownScore == "rating_others"){
+              return "Others"
+          } else if(this.shownScore == "rating_cringe"){
+              return "Cringe"
+          } else return ""
       },
       score: function() {
           if(this.shownScore && this.scoreAvailable){

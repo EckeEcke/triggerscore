@@ -7,6 +7,7 @@
                     <span v-if="scoreAvailable" class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ scores[shownScore] }}</span>
                     <span v-else class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">-</span>
                 </div>
+                <div v-if="displayedScore != ''" class="bg-gray-300 rounded py-2 px-1 my-1 text-xs font-light">{{displayedScore}}</div>
             </div>
         </div>
         
@@ -36,7 +37,18 @@ export default {
       },
       scoreAvailable: function() {
           return this.scores != undefined
-      }  
+      },
+      displayedScore: function(){
+          if(this.shownScore == "rating_sexism"){
+              return "Sexism"
+          } else if(this.shownScore == "rating_racism"){
+              return "Racism"
+          } else if(this.shownScore == "rating_others"){
+              return "Others"
+          } else if(this.shownScore == "rating_cringe"){
+              return "Cringe"
+          } else return ""
+      },  
   }
 }
 </script>
