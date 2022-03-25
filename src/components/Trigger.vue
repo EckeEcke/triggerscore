@@ -13,9 +13,14 @@ export default {
             }
         }
     },
+    props: {
+        current: Number,
+        maximum: Number
+    },
     mounted() {
         this.observer = new IntersectionObserver( entries => {
             this.handleIntersect(entries[0])
+            setTimeout(this.handleIntersect(entries[0],100))
         
         },this.options);
         this.observer.observe(this.$refs.trigger)
@@ -25,9 +30,9 @@ export default {
     },
     methods: {
         handleIntersect(entry) {
-            if(entry.isIntersecting){
-                this.$emit("triggerIntersected")
-            }
+            if(entry.isIntersecting && this.current != this.maximum){
+                   this.$emit("triggerIntersected")
+                }            
         }
     }
 }

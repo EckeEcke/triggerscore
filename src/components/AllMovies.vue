@@ -20,7 +20,7 @@
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <MovieListitem v-for="movie in loadedMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
             </transition-group>
-            <Trigger @triggerIntersected="loadMore" /> 
+            <Trigger @triggerIntersected="loadMore" :current="loadMoviesAmount" :maximum="filteredMovies.length" /> 
             <div class="py-32" v-if="!isLoading && filteredMovies.length == 0">
                 <p class="text-white text-xl font-semibold animate-bounce mb-4">Leider keine Ergebnisse</p>
                 <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
@@ -54,7 +54,7 @@ export default {
             showNavbar: true,
             lastScrollPosition: 0,
             showMenu: false,
-            loadMoviesAmount: 12
+            loadMoviesAmount: 24
         }
     },
     mounted: function() {
@@ -80,7 +80,7 @@ export default {
             }
         },
         loadedMovies: function() {
-            if(this.filteredMovies.length >= 6 && this.loadMoviesAmount < 6){
+            if(this.filteredMovies.length >= 24 && this.loadMoviesAmount < 24){
                 return [...this.filteredMovies].slice(0,6)
             }
             return [...this.filteredMovies].slice(0,this.loadMoviesAmount)
@@ -160,7 +160,7 @@ export default {
             this.$store.dispatch("filterMovies")
         },
         loadMore: function() {
-            this.loadMoviesAmount += 6
+            this.loadMoviesAmount +=24
             if(this.loadMoviesAmount > this.filteredMovies.length){
                 this.loadMoviesAmount = this.filteredMovies.length
             }
