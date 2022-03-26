@@ -26,11 +26,14 @@ async function filterByProvider(netflix, prime, disney, triggerscores,array,stat
         ))
         .then(()=>
             clonedArray = clonedArray.filter(movie => providerIDs.includes(movie.id)))
-        .then(()=>
-            state.commit("setFilteredMovies",clonedArray))
+        .then(()=>{
+            state.commit("setFilteredMovies",clonedArray);
+            state.commit("setIsFiltering",false)
+        })  
     }
     else {
         state.commit("setFilteredMovies",clonedArray)
+        state.commit("setIsFiltering",false)
     }
 }
 
@@ -116,7 +119,6 @@ function filterByScore(array,triggerscores,min,max,shownScore,state){
     clonedScores = clonedScores.filter(score => {
         return score[shownScore] >= min && score[shownScore] <= max
     })
-    console.log(clonedScores)
     clonedArray = clonedArray.filter(movie=>{
         return clonedScores.map(score => score.movie_id).indexOf(movie.id) > -1
     })
@@ -153,7 +155,8 @@ export default new Vuex.Store({
         top10Cringe: [],
         stats: {},
         minScore: 0,
-        maxScore: 10
+        maxScore: 10,
+        isFiltering: false
     },
     mutations: {
         setTriggerscores(state,payload) {
@@ -233,6 +236,9 @@ export default new Vuex.Store({
         },
         setMaxScore(state,payload){
             state.maxScore = payload
+        },
+        setIsFiltering(state,payload){
+            state.isFiltering = payload
         }
     },
     actions: {
@@ -250,7 +256,6 @@ export default new Vuex.Store({
         async setRecentRatings(state){
             const scores = await fetch('https://triggerscore.herokuapp.com/recentratings')
             const ratings = await scores.json()
-            console.log(ratings)
             state.commit("setRecentScores",ratings)
             const recentRatings = Promise.all(ratings.map(entry => 
                 fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=de`)
@@ -339,6 +344,7 @@ export default new Vuex.Store({
             loadedMovies.then(res => {state.commit("setBondMovies", res);state.commit("setHighlightsLoading",false)})
         },
         async filterMovies(state){
+            state.commit("setIsFiltering",true)
             sortMovies(this.state.sortingOption,this.state.movies,this.state.triggerscores,this.getters.getShownScore,state)
             filterByYear(this.state.filterMoviesByYearMax,this.state.filterMoviesByYearMin,this.state.filteredMovies,state)
             filterByScore(this.state.filteredMovies,this.state.triggerscores,this.state.minScore,this.state.maxScore,this.state.shownScore,state)  
@@ -371,6 +377,9 @@ export default new Vuex.Store({
         setMaxScore(state,payload){
             state.commit("setMaxScore",payload)
         },
+        setIsFiltering(state,payload){
+            state.commit("setIsFiltering",payload)
+        }
     },
     modules: {
 
@@ -395,6 +404,7 @@ export default new Vuex.Store({
         getTop10Others: state => state.top10Others,
         getTop10Cringe: state => state.top10Cringe,
         getRecentScores: state => state.recentScores,
-        getStats: state => state.stats
+        getStats: state => state.stats,
+        getIsFiltering: state => state.isFiltering
     }
 })

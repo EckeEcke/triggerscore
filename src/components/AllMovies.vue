@@ -16,12 +16,16 @@
                 </div>  
             </div>
             <Filtermenu class="hidden xl:block mt-4" />
-            <transition-group v-if="!isLoading && filteredMovies.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 sm:pb-8 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
+            <div v-if="isFiltering" class="py-32 lg:py-48">
+                <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
+                <p class="text-white font-semibold animate-bounce mt-8">Lädt Filme</p>
+            </div>
+            <transition-group v-if="!isLoading && filteredMovies.length > 0 && !isFiltering" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 sm:pb-8 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <MovieListitem v-for="movie in loadedMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
             </transition-group>
             <Trigger @triggerIntersected="loadMore" :current="loadMoviesAmount" :maximum="filteredMovies.length" /> 
-            <div class="py-32" v-if="!isLoading && filteredMovies.length == 0">
+            <div class="py-32" v-if="!isLoading && filteredMovies.length == 0 && !isFiltering">
                 <p class="text-white text-xl font-semibold animate-bounce mb-4">Leider keine Ergebnisse</p>
                 <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
             </div>
@@ -54,7 +58,7 @@ export default {
             showNavbar: true,
             lastScrollPosition: 0,
             showMenu: false,
-            loadMoviesAmount: 24
+            loadMoviesAmount: 24,
         }
     },
     mounted: function() {
@@ -120,6 +124,9 @@ export default {
             }
 
         },
+        isFiltering: function(){
+           return this.$store.getters.getIsFiltering
+        }
       
     },
     watch: {
@@ -163,6 +170,9 @@ export default {
             this.loadMoviesAmount +=24
             if(this.loadMoviesAmount > this.filteredMovies.length){
                 this.loadMoviesAmount = this.filteredMovies.length
+            }
+            if(this.loadMoviesAmount < 24){
+                this.loadMoviesAmount = 24
             }
         }
     }

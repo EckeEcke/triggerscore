@@ -1,7 +1,7 @@
 <template>
-    <div class="py-12 bg-cover" :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
+    <div class="bg-cover" :class="showTitle ? 'py-12' : 'py-4'" :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
         <div class="container mx-auto px-4 xl:w-10/12">
-            <h1 class="text-white text-2xl font-semibold text-left">
+            <h1 v-if="showTitle" class="text-white text-2xl font-semibold text-left">
                 Film suchen und <router-link to="/faq" class="text-yellow-500 transition hover:text-yellow-600">Triggerscore</router-link> vergeben
             </h1>
             <div class="flex flex-col md:flex-row mx-auto">
@@ -22,6 +22,9 @@
 <script>
 export default {
   name: 'Searchbox',
+  props: {
+      showTitle: Boolean,
+  },
   computed: {
     searchInput: {
           get: function() {
