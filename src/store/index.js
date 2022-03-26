@@ -110,6 +110,19 @@ function sortByTsAsc(array,key){
     }
 }
 
+function filterByScore(array,triggerscores,min,max,shownScore,state){
+    let clonedArray = [...array]
+    let clonedScores = [...triggerscores]
+    clonedScores = clonedScores.filter(score => {
+        return score[shownScore] >= min && score[shownScore] <= max
+    })
+    console.log(clonedScores)
+    clonedArray = clonedArray.filter(movie=>{
+        return clonedScores.map(score => score.movie_id).indexOf(movie.id) > -1
+    })
+    state.commit("setFilteredMovies",clonedArray)
+}
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -138,7 +151,9 @@ export default new Vuex.Store({
         top10Racism: [],
         top10Others: [],
         top10Cringe: [],
-        stats: {}
+        stats: {},
+        minScore: 0,
+        maxScore: 10
     },
     mutations: {
         setTriggerscores(state,payload) {
@@ -212,6 +227,12 @@ export default new Vuex.Store({
         },
         setStats(state,payload){
             state.stats = payload
+        },
+        setMinScore(state,payload){
+            state.minScore = payload
+        },
+        setMaxScore(state,payload){
+            state.maxScore = payload
         }
     },
     actions: {
@@ -319,7 +340,8 @@ export default new Vuex.Store({
         },
         async filterMovies(state){
             sortMovies(this.state.sortingOption,this.state.movies,this.state.triggerscores,this.getters.getShownScore,state)
-            filterByYear(this.state.filterMoviesByYearMax,this.state.filterMoviesByYearMin,this.state.filteredMovies,state)  
+            filterByYear(this.state.filterMoviesByYearMax,this.state.filterMoviesByYearMin,this.state.filteredMovies,state)
+            filterByScore(this.state.filteredMovies,this.state.triggerscores,this.state.minScore,this.state.maxScore,this.state.shownScore,state)  
             filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,this.state.filteredMovies,state)
         },
         resetFilter(state){
@@ -328,6 +350,8 @@ export default new Vuex.Store({
             state.commit("setDisneyFilter", false)
             state.commit("setMovieYearMin", null)
             state.commit("setMovieYearMax", null)
+            state.commit("setMinScore",0)
+            state.commit("setMaxScore",10)
         },
         setSortingOption(state,payload){
             state.commit("setSortingOption",payload)
@@ -340,6 +364,12 @@ export default new Vuex.Store({
         },
         setShownScore(state,payload){
             state.commit("setShownScore", payload)
+        },
+        setMinScore(state,payload){
+            state.commit("setMinScore",payload)
+        },
+        setMaxScore(state,payload){
+            state.commit("setMaxScore",payload)
         },
     },
     modules: {

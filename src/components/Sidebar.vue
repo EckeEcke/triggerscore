@@ -1,6 +1,10 @@
 <template>
-    
-              <div class="bg-white shadow-lg w-64 p-4 right-0 fixed top-0 right-0 h-screen z-20" >
+<div>
+    <div class="fixed bg-gray-900 bg-opacity-20 top-0 left-0 w-full h-full overflow-none"  @click="$emit('close')"/>
+              <div class="bg-white shadow-lg w-72 min-w-10/12 p-4 right-0 fixed top-0 right-0 h-screen z-30 xl:hidden flex flex-col">
+      
+          <div class="h-5/6 overflow-y-auto">
+              <div class="overflow-y-auto pb-12">
               <p class="text-right"><font-awesome-icon :icon="['fas', 'times']"  @click="$emit('close')" /></p>
               <h2 class="font-semibold text-left mb-2">Sortieren</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
@@ -13,8 +17,8 @@
                     <option class="py-1" value="ts-asc">Triggerscore aufsteigend</option>
                 </select>
               </div>
-              <hr class="my-3">
-              <h2 class="font-semibold text-left mb-2">Score wählen</h2>
+              <hr class="my-4">
+              <h2 class="font-semibold text-left mb-2">Angezeigter Score</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
                   <select v-model="shownScore" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
                     <option class="py-1" value="rating_total">Gesamtwertung</option>
@@ -24,8 +28,15 @@
                     <option class="py-1" value="rating_cringe">Cringe</option>
                 </select>
               </div>
-              <hr class="my-3">
-              <h2 class="font-semibold text-left mb-2">Filtern</h2>
+              <hr class="my-4">
+              <div class="mb-6">
+                <h2 class="font-semibold text-left mb-6">Nach Score filtern</h2>
+                <div class="px-3">
+                <Rangeslider />
+                </div>
+              </div>
+              <hr class="my-4">
+              <h2 class="font-semibold text-left mb-2">Nach Streaminganbietern</h2>
               <div class="form-check text-left mb-2 h-8">
                 <input v-model="netflixFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-netflix">
                 <label class="form-check-label inline-block text-gray-800 text-left" for="filter-netflix">
@@ -44,25 +55,38 @@
                   <img class="h-6 ml-2" src="../assets/images/disney+-logo.svg">
                 </label>
               </div>
-              <div class="flex my-4">
-                <div class="w-1/2 mr-2 flex flex-col">
-                  <label class="text-left text-sm font-semibold mb-2" for="filter-start">Von</label>
-                  <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="1900" @input="scrollToTop">
-                </div>
-                <div class="w-1/2 mr-2 flex flex-col">
-                  <label class="text-left text-sm font-semibold mb-2" for="filter-end">Bis</label>
-                  <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="2010" @input="scrollToTop">  
+              <hr class="my-4">
+              <div class="flex flex-col my-4">
+                <h2 class="font-semibold text-left mb-2">Nach Veröffentlichungsjahr</h2>
+                <div class="flex">
+                  <div class="w-1/2 mr-2 flex flex-col">
+                    <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="Von" @input="scrollToTop">
+                  </div>
+                  <div class="w-1/2 mr-2 flex flex-col">
+                    <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="Bis" @input="scrollToTop">  
+                  </div>
                 </div>
               </div>
+             
+          </div>
+          </div>
+          <div class="mt-auto bg-white">
+            <div class="-mt-20 h-20 w-full z-30 pointer-events-none" style="background-image: linear-gradient(to bottom,rgba(255,255,255,0.2),rgba(255,255,255,1);"/>
               <div class="text-sm my-5 font-semibold">{{results}} Ergebnisse</div>
-              <hr  class="my-3">
+              <hr  class="my-4">
               <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
+              </div>
+            </div>
             </div>
 </template>
 
 <script>
+import Rangeslider from './Rangeslider.vue'
 export default {
   name: 'Sidebar',
+  components: {
+    Rangeslider
+  },
   computed: {
     netflixFilter: {
       get: function() {

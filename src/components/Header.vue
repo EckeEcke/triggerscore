@@ -1,5 +1,5 @@
 <template>
-    <header class="w-full h-auto bg-red-800 z-10 shadow-md flex flex-col relative sticky top-0">
+    <header class="w-full h-auto bg-red-800 z-30 shadow-md flex flex-col relative sticky top-0">
         <section class="container mx-auto h-full p-4 xl:w-10/12 flex justify-between relative">
             <div class="flex">
               <router-link to="/" tag="h1" class="text-xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
@@ -40,6 +40,7 @@
             </transition>
             <transition enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
+               <div v-if="showNav" class="fixed bg-gray-900 bg-opacity-20 top-0 left-0 w-full h-full overflow-none"  @click="showNav = false"/> 
               <div v-if="showMenu" class="bg-white shadow-lg rounded-lg w-64 p-4 absolute top-full right-0 mt-2" >
               <p class="text-right"><font-awesome-icon :icon="['fas', 'times']" @click="showMenu = false" /></p>
               <h2 class="font-semibold text-left mb-2">Sortieren</h2>

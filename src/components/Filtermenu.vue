@@ -33,10 +33,28 @@
               </div>
           </div>
         </div>
-
-        <div class="flex flex-col mb-2 gap-4">
-          <h2 class="font-semibold text-left mb-2">Streaminganbieter</h2>
+        <div class="flex h-24 flex-col">
+        <h2 class="font-semibold text-left mt-2 mb-7">Nach Score filtern</h2>
+        <Rangeslider />
+        </div>
+        <div class="">
+          <h2 class="font-semibold text-left">Veröffentlichungsjahr</h2>
           <div class="flex">
+            <div class="w-1/2 mr-2 flex flex-col my-3">
+              <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="Von" @input="scrollToTop">
+            </div>
+            <div class="w-1/2 mr-2 flex flex-col my-3">
+              <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="Bis" @input="scrollToTop">  
+            </div>
+          </div>
+        </div>
+    </div>
+    
+    
+    <hr class="my-4">
+    <div class="flex justify-between items-center">
+      <div class="gap-4">
+          <div class="flex items-center -mb-3">
             <div class="form-check text-left mb-1 h-8 mr-8">
               <input v-model="netflixFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-netflix">
               <label class="form-check-label inline-block text-gray-800 text-left " for="filter-netflix">
@@ -58,29 +76,21 @@
           </div>
           
         </div>
-        <div class="flex">
-          <div class="w-1/2 mr-2 flex flex-col my-3">
-            <label class="text-left font-semibold  mb-3" for="filter-start">Von</label>
-            <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="1900" @input="scrollToTop">
-          </div>
-          <div class="w-1/2 mr-2 flex flex-col my-3">
-            <label class="text-left font-semibold  mb-3" for="filter-end">Bis</label>
-            <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="2010" @input="scrollToTop">  
-          </div>
-        </div>
-    </div>
-    <hr class="mt-4 mb-2">
-    <div class="flex justify-between items-center">
-      <div class="font-semibold">{{results}} Ergebnisse</div>
-        <button class="font-semibold text-yellow-500 p-3 w-auto text-sm" @click="resetFilter">Filter zurücksetzen</button>
+      <div class="font-semibold p-3 ml-auto mr-4">{{results}} Ergebnisse</div>
+        <button class="font-semibold text-yellow-500 p-3 w-auto" @click="resetFilter">Filter zurücksetzen</button>
       </div>
     </div>
   </div> 
 </template>
 
 <script>
+import Rangeslider from './Rangeslider.vue'
+
 export default {
   name: 'Filtermenu',
+  components: {
+    Rangeslider
+  },
   computed: {
     netflixFilter: {
       get: function() {
