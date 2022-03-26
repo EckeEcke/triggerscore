@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div class="fixed bg-gray-900 bg-opacity-20 top-0 left-0 w-full h-fit overflow-none"  @click="$emit('close')"/>
+    <div class="fixed bg-gray-900 bg-opacity-20 top-0 left-0 w-full h-screen overflow-none"  @click="$emit('close')"/>
               <div class="bg-white shadow-lg w-72 min-w-10/12 p-4 right-0 fixed top-0 right-0 h-screen z-30 xl:hidden flex flex-col">
       
           <div class="h-5/6 overflow-y-auto">
