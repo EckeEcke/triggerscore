@@ -110,13 +110,6 @@ export default {
 }
 </script>
 <style>
-    .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-    }
-    .hide-scrollbar {
-         -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;
-    }
     .rating {
         direction: rtl;
     }

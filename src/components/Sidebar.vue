@@ -3,8 +3,8 @@
     <div class="fixed bg-gray-900 bg-opacity-20 top-0 left-0 w-full h-screen overflow-none"  @click="$emit('close')"/>
               <div class="bg-white shadow-lg w-72 min-w-10/12 p-4 right-0 fixed top-0 right-0 h-screen z-30 xl:hidden flex flex-col">
       
-          <div class="h-5/6 overflow-y-auto">
-              <div class="overflow-y-auto pb-12">
+          <div class="h-5/6 overflow-y-auto hide-scrollbar">
+              <div class="overflow-y-auto pb-12 hide-scrollbar">
               <p class="text-right"><font-awesome-icon :icon="['fas', 'times']"  @click="$emit('close')" /></p>
               <h2 class="font-semibold text-left mb-2">Sortieren</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
