@@ -1,6 +1,8 @@
 <template>
     <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-white shadow-md flex relative border-b md:border-b-0 md:rounded-lg transform transition duration-300 md:hover:scale-105 container-xl cursor-pointer">
-        <img load="lazy" class="h-full md:rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" />
+        <div class="h-full w-44 bg-cover bg-center md:rounded-l-lg" load="lazy" :style="{'background-image': `url(${poster})`}">
+            <!-- <img load="lazy" class="h-full mx-auto md:rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" /> -->
+        </div>
         <div class="w-full p-3">
             <div class="absolute top-1 right-1 h-12 w-12 text-white rounded-lg font-semibold" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && score >= 7, 'bg-yellow-400': scoreAvailable && score < 7 && score >=4, 'bg-green-500': scoreAvailable && score < 4}">
                 <div class="relative w-full h-full">

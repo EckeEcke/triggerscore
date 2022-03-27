@@ -14,4 +14,9 @@
      -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;
 }
+
+.fill-available {
+    height: 100vh;
+    height: -webkit-fill-available;
+}
   
