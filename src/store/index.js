@@ -1,22 +1,26 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-async function filterByProvider(netflix, prime, disney, triggerscores,array,state){
+async function filterByProvider(netflix, prime, disney, triggerscores,array,locale,state){
     let clonedArray = [...array]
     if (netflix || prime || disney){
         let providerIDs = []
+        let providerRegion = locale.toUpperCase()
+        if(providerRegion == "EN"){
+            providerRegion = "GB"
+        }
         Promise.all(triggerscores.map(entry => 
             fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
             .then((res) => res.json())
             .then(res => {
-                if(res.results.DE && res.results.DE.flatrate !== undefined){
-                    if(netflix && res.results.DE.flatrate.some(provider => provider.provider_name == "Netflix")){
+                if(res.results[providerRegion] && res.results[providerRegion].flatrate !== undefined){
+                    if(netflix && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Netflix")){
                         providerIDs.push(entry.movie_id)
                     }
-                    if(prime && res.results.DE.flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
+                    if(prime && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
                         providerIDs.push(entry.movie_id)
                     }
-                    if(disney && res.results.DE.flatrate.some(provider => provider.provider_name == "Disney Plus")){
+                    if(disney && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Disney Plus")){
                         providerIDs.push(entry.movie_id)
                     }
                 }
@@ -352,7 +356,7 @@ export default new Vuex.Store({
             sortMovies(this.state.sortingOption,this.state.movies,this.state.triggerscores,this.getters.getShownScore,state)
             filterByYear(this.state.filterMoviesByYearMax,this.state.filterMoviesByYearMin,this.state.filteredMovies,state)
             filterByScore(this.state.filteredMovies,this.state.triggerscores,this.state.minScore,this.state.maxScore,this.state.shownScore,state)  
-            filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,this.state.filteredMovies,state)
+            filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,this.state.filteredMovies,this.state.locale,state)
         },
         resetFilter(state){
             state.commit("setPrimeFilter", false)

@@ -134,7 +134,6 @@ export default {
           if(region == "EN"){
               region = "GB"
           }
-          console.log(region)
           return region
 
       }  
@@ -156,6 +155,9 @@ export default {
           try {
               const response = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
               const providers = await response.json()
+              this.onNetflix = false
+              this.onAmazon = false
+              this.onDisney = false
               this.onNetflix = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Netflix")
               this.onAmazon = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Amazon Prime Video")
               this.onDisney = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Disney Plus")
