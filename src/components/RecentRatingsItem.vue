@@ -10,7 +10,7 @@
                    <h3 v-if="movie.title.length > 0" class="flex items-center text-base mb-1 font-semibold overflow-hidden inline-block h-12 overflow-hidden w-10/12">{{ movie.title }}</h3>
                 <h3 v-else class="text-base mb-1 font-semibold overflow-hidden w-10/12">{{ movie.original_title }}</h3>
                 </div>
-                <hr class="my-1 sm:my-3">
+                <hr class="hidden sm:block my-1 sm:my-3">
                 <div class="grid grid-cols-2 text-sm">
                     <div class="flex my-2 text-sm">
                             <div class="flex justify-center rounded-lg w-8 h-8 mr-2 bg-opacity-80"  :class="{'bg-red-700': scores.rating_sexism >= 7, 'bg-yellow-400': scores.rating_sexism < 7 && scores.rating_sexism >=4, 'bg-green-500': scores.rating_sexism < 4}">

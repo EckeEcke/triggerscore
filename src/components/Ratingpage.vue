@@ -88,8 +88,6 @@ export default {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json'
                 },
-                //mode: 'no-cors',
-                //body: JSON.stringify({"Player": "Test","Score": 10})
                 body: JSON.stringify(data)
 
             })
