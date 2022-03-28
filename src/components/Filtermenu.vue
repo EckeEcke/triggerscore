@@ -1,50 +1,50 @@
 <template>
   <div class="container sm:px-4 xl:w-10/12 mx-auto px-4">
     <div class="text-left px-8 py-4 rounded-t-lg" :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
-      <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-white">Filme entdecken</h2>
-                        <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+      <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-white">{{ $t('index.headline') }}</h2>
+      <p class="text-sm text-white ">{{ $t('index.intro1') }}<span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">{{ $t('index.search') }}</span>{{ $t('index.intro2') }}</p>
     </div>
     <div class="bg-white px-8 py-4 rounded-b-lg">
       <div class="flex items-end justify-between">
         <div class="flex">
           <div class="w-52 mr-4">
-              <h2 class="font-semibold text-left mb-2">Sortieren</h2>
+              <h2 class="font-semibold text-left mb-2">{{ $t('filter.sort') }}</h2>
                   <div class="flex w-full my-3 border border-gray-200 rounded">
                       <select v-model="sortingOption" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
-                          <option class="py-1" value="a-z">A-Z</option>
-                          <option class="py-1" value="z-a">Z-A</option>
-                          <option class="py-1" value="date-desc">Jahr absteigend</option>
-                          <option class="py-1" value="date-asc">Jahr aufsteigend</option>
-                          <option class="py-1" value="ts-desc">Triggerscore absteigend</option>
-                          <option class="py-1" value="ts-asc">Triggerscore aufsteigend</option>
+                          <option class="py-1" value="a-z">{{ $t('filter.AtoZ') }}</option>
+                          <option class="py-1" value="z-a">{{ $t('filter.ZtoA') }}</option>
+                          <option class="py-1" value="date-desc">{{ $t('filter.yearDesc') }}</option>
+                          <option class="py-1" value="date-asc">{{ $t('filter.yearAsc') }}</option>
+                          <option class="py-1" value="ts-desc">{{ $t('filter.scoreDesc') }}</option>
+                          <option class="py-1" value="ts-asc">{{ $t('filter.scoreAsc') }}</option>
                       </select>
                   </div>
           </div>
           <div class="w-52">
-              <h2 class="font-semibold text-left mb-2 ">Score wählen</h2>
+              <h2 class="font-semibold text-left mb-2 ">{{ $t('filter.chooseScore') }}</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
                   <select v-model="shownScore" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
-                      <option class="py-1" value="rating_total">Gesamtwertung</option>
-                      <option class="py-1" value="rating_sexism">Sexismus</option>
-                      <option class="py-1" value="rating_racism">Rassismus</option>
-                      <option class="py-1" value="rating_others">Sonstige</option>
-                      <option class="py-1" value="rating_cringe">Cringe</option>
+                      <option class="py-1" value="rating_total">{{ $t('categories.totalScore') }}</option>
+                      <option class="py-1" value="rating_sexism">{{ $t('categories.sexism') }}</option>
+                      <option class="py-1" value="rating_racism">{{ $t('categories.racism') }}</option>
+                      <option class="py-1" value="rating_others">{{ $t('categories.others') }}</option>
+                      <option class="py-1" value="rating_cringe">{{ $t('categories.cringe') }}</option>
                   </select>
               </div>
           </div>
         </div>
         <div class="flex h-24 flex-col">
-        <h2 class="font-semibold text-left mt-2 mb-7">Nach Score filtern</h2>
+        <h2 class="font-semibold text-left mt-2 mb-7">{{ $t('filter.filterByScore') }}</h2>
         <Rangeslider />
         </div>
         <div class="">
-          <h2 class="font-semibold text-left">Veröffentlichungsjahr</h2>
+          <h2 class="font-semibold text-left">{{ $t('filter.filterByRelease') }}</h2>
           <div class="flex">
             <div class="w-1/2 mr-2 flex flex-col my-3">
-              <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="Von" @input="scrollToTop">
+              <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 :placeholder="$t('filter.from')" @input="scrollToTop">
             </div>
             <div class="w-1/2 mr-2 flex flex-col my-3">
-              <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 placeholder="Bis" @input="scrollToTop">  
+              <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-20 p-2 text-center h-10" min=1900 max=2010 :placeholder="$t('filter.to')" @input="scrollToTop">  
             </div>
           </div>
         </div>
@@ -76,8 +76,8 @@
           </div>
           
         </div>
-      <div class="font-semibold p-3 ml-auto mr-4">{{results}} Ergebnisse</div>
-        <button class="font-semibold text-yellow-500 p-3 w-auto" @click="resetFilter">Filter zurücksetzen</button>
+      <div class="font-semibold p-3 ml-auto mr-4">{{results}} {{ $t('filter.results') }}</div>
+        <button class="font-semibold text-yellow-500 p-3 w-auto" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
       </div>
     </div>
   </div> 
@@ -92,6 +92,9 @@ export default {
     Rangeslider
   },
   computed: {
+    searchText: function(){
+      return this.$t('index.intro')
+    },
     netflixFilter: {
       get: function() {
         return this.$store.state.filterMoviesByNetflix
@@ -167,7 +170,7 @@ export default {
         },
         focusSearch: function() {
             const search = document.getElementById("search")
-            search.scrollIntoView()
+            search.scrollIntoView({block: "start"})
             search.focus()
         },
         scrollToTop: function() {

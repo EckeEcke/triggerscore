@@ -16,25 +16,25 @@
                             <div class="flex justify-center rounded-lg w-8 h-8 mr-2 bg-opacity-80"  :class="{'bg-red-700': scores.rating_sexism >= 7, 'bg-yellow-400': scores.rating_sexism < 7 && scores.rating_sexism >=4, 'bg-green-500': scores.rating_sexism < 4}">
                                 <div class="self-center text-white">{{scores.rating_sexism}}</div>
                             </div>
-                            <p class="self-center">Sexismus</p>
+                            <p class="self-center">{{ $t('categories.sexism') }}</p>
                         </div>
                         <div class="flex my-2 text-sm">
                             <div class="flex bg-red-500 rounded-lg justify-center w-8 h-8 mr-2 bg-opacity-80" :class="{'bg-red-700': scores.rating_racism >= 7, 'bg-yellow-400': scores.rating_racism < 7 && scores.rating_racism >=4, 'bg-green-500': scores.rating_racism < 4}">
                                 <div class="self-center text-white">{{scores.rating_racism}}</div>
                             </div>
-                            <p class="self-center">Rassismus</p>
+                            <p class="self-center">{{ $t('categories.racism') }}</p>
                         </div>
                         <div class="flex my-2 text-sm">
                             <div class="flex bg-red-500 rounded-lg justify-center w-8 h-8 mr-2 bg-opacity-80" :class="{'bg-red-700': scores.rating_others >= 7, 'bg-yellow-400': scores.rating_others < 7 && scores.rating_others >=4, 'bg-green-500': scores.rating_others < 4}">
                                 <div class="self-center text-white">{{scores.rating_others}}</div>
                             </div>
-                            <p class="self-center">Sonstige</p>
+                            <p class="self-center">{{ $t('categories.others') }}</p>
                         </div>
                         <div class="flex my-2 text-sm">
                             <div class="flex bg-red-500 rounded-lg justify-center w-8 h-8 mr-2 bg-opacity-80" :class="{'bg-red-700': scores.rating_cringe >= 7, 'bg-yellow-400': scores.rating_cringe < 7 && scores.rating_cringe >=4, 'bg-green-500': scores.rating_cringe < 4}">
                                 <div class="self-center text-white">{{scores.rating_cringe}}</div>
                             </div> 
-                            <p class="self-center">Cringe</p>
+                            <p class="self-center">{{ $t('categories.cringe') }}</p>
                         </div>
                 </div>
             </article>

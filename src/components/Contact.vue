@@ -1,34 +1,34 @@
 <template>
     <div class="container text-white px-4 py-6 md:py-12 text-left xl:w-10/12 mx-auto md:rounded-lg flex justify-start flex-wrap gap-12">
         <div v-if="!submitted" class="mr-8 max-w-full">
-            <h1 class="mb-4 text-xl md:text-2xl font-semibold">Feedback senden</h1>
+            <h1 class="mb-4 text-xl md:text-2xl font-semibold">{{ $t('contact.sendFeedback') }}</h1>
             <form name="contact" class="w-full p-8 bg-red-900 rounded-lg" method="post"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field" @submit.prevent="handleSubmit"
                 :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
                 <p class="hidden"><input name="bot-field"></p>
                 <div class="flex flex-col gap-1 mb-4">
-                    <label class="font-semibold mb-2 text-white">Name</label>
-                    <input v-model="form.name" type="text" name="name" class="border border-gray-300 p-2 rounded w-60 max-w-full" placeholder="Name eingeben" required />   
+                    <label class="font-semibold mb-2 text-white">{{ $t('contact.name') }}</label>
+                    <input v-model="form.name" type="text" name="name" class="border border-gray-300 p-2 rounded w-60 max-w-full" :placeholder="$t('contact.placeholderName')" required />   
                 </div>
                 <div class="flex flex-col gap-1 mb-4">
-                    <label class="font-semibold mb-2 text-white">Email-Adresse</label>
-                    <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-60 max-w-full" placeholder="Email-Adresse eingeben" required />
+                    <label class="font-semibold mb-2 text-white">{{ $t('contact.email') }}</label>
+                    <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-60 max-w-full" :placeholder="$t('contact.placeholderEmail')" required />
                 </div>
                 <div class="flex flex-col gap-1 mb-4">
-                    <label class="font-semibold mb-2 text-white">Nachricht</label>
-                    <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-60 max-w-full" placeholder="Nachricht eingeben" required></textarea>
+                    <label class="font-semibold mb-2 text-white">{{ $t('contact.message') }}</label>
+                    <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-60 max-w-full" :placeholder="$t('contact.placeholderMessage')" required></textarea>
                 </div>
                 <p class="">
-                    <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg transition hover:bg-yellow-600 font-semibold" type="submit">Absenden</button>
+                    <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg transition hover:bg-yellow-600 font-semibold" type="submit">{{ $t('contact.send') }}</button>
                 </p>
             </form>
         </div>
         <div v-else class="w-full sm:w-1/2">
-            <p class="p-4 bg-green-500 text-white rounded-lg shadow-lg font-semibold text-center">Nachricht erfolgreich versendet <font-awesome-icon :icon="['fas', 'check']" class="text-white" /></p>
+            <p class="p-4 bg-green-500 text-white rounded-lg shadow-lg font-semibold text-center">{{ $t('contact.success') }} <font-awesome-icon :icon="['fas', 'check']" class="text-white" /></p>
         </div>
         <div class="">
-            <h1 class="mb-4 text-xl md:text-2xl font-semibold">Kontakt</h1>
+            <h1 class="mb-4 text-xl md:text-2xl font-semibold">{{ $t('header.contact') }}</h1>
             <p class="font-semibold">Christian Eckardt</p>
             <p class="mb-8 font-semibold">22301 Hamburg</p>
             <p class="mb-8 font-semibold"><a href="https://eckeecke.github.io">eckeecke.github.io</a></p>

@@ -34,7 +34,7 @@
         </div>
         <div v-if="minScore > 0 || maxScore < 10" class="flex justify-around w-full mt-4 xl:mt-2">
             <span>{{minScore}}</span>
-            <span>bis</span>
+            <span>{{ $t('filter.to') }}</span>
             <span>{{maxScore}}</span>
         </div>
     </div>

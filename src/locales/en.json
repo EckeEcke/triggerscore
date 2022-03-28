@@ -1,0 +1,120 @@
+{
+    "general": {
+      "loadMovies": "Loading movies",
+      "back": "Back",
+      "rate": "Rate",
+      "noRatings": "No ratings yet",
+      "released": "Released",
+      "noDescription": "No description available",
+      "slogan": "'A new way to watch old movies.' Triggerscore is a ratingportal for movies, where users can rate how much old movies trigger viewers today.",
+      "newest": "Newest ",
+      "recentRatings": "Recently submitted ratings",
+      "top10": "TOP 10s",
+      "top10Copy": "Triggerhappy: movies with highest Triggerscores",
+      "stats": "Stats",
+      "statsCopy": "Statistics for number enthusiasts"
+      
+    },
+    "header": {
+      "home": "Home",
+      "allMovies": "All movies",
+      "about": "About",
+      "faq": "FAQ",
+      "contact": "Contact",
+      "searchPlaceholder": "Search movie..."
+    },
+    "filter": {
+      "sort": "Sort",
+      "displayedScore": "Displayed score",
+      "AtoZ": "A-Z",
+      "ZtoA": "Z-A",
+      "scoreDesc": "Triggerscore descending",
+      "scoreAsc": "Triggerscore ascending",
+      "yearDesc": "Year descending",
+      "yearAsc": "Year ascending",
+      "filterByScore": "Filter by score",
+      "filterByProvider": "By streaming provider",
+      "filterByRelease": "Year of release",
+      "resetFilter": "Reset filter",
+      "results": "reulsts",
+      "chooseScore": "Select score",
+      "from": "from",
+      "to": "to"
+    },
+    "categories": {
+      "totalScore": "Total score",
+      "sexism": "Sexism",
+      "racism": "Racism",
+      "others": "Others",
+      "cringe": "Cringe"
+    },
+    "index": {
+      "headline": "Discover movies",
+      "intro1": "Your movie is not included? Simply ",
+      "intro2": "for your movie title and submit a rating",
+      "search": "search "
+    },
+    "search": {
+      "noResults": "Unfortunately no results",
+      "searchHeadline1": "Search movie and submit a ",
+      "searchHeadline2": "",
+      "noResults1": "Unfortunately your search for ",
+      "noResults2": " had no results",
+      "results": "Your search for '{0}' has {1} results"
+    },
+    "stats": {
+      "average": "Average ",
+      "totalRatings": "Amount of submitted ratings",
+      "moviesOnTS": "Movies on Triggerscore",
+      "lowestScore": "Lowest Triggerscore",
+      "mostRatings": "Most rated ({0} ratings)"
+    },
+    "about": {
+      "headline": "Triggerscore - a new way to watch old movies",
+      "paragraph1": "The idea for Triggerscore resulted from my newly discovered guilty pleasure: zapping Netflix for old movies (especially from the 90s) and analyse how much these old movies would trigger viewers today. Triggerscore serves as a portal, where users can find and submit Triggerscore-ratings.",
+      "paragraph2": "Triggerscore is a solo project. Idea, conception, design aswell as developement of front- and backend are all done by myself. The frontend is based on the JavaScript framework Vue.js using Vuex-Store for state management and CSS framework Tailwind. The frontend of my applicaton is hosted on Netlify. For the backend I use a MySQL databse amd a NodeJS-Server, both hosted on Heroku. My backend application receives ratings from my frontend and saves them in my database. It also reads and serves ratings from my database aswell as calculates the scores. As a movie database I use the TMDB api and JustWatch api for available streaming providers."
+    },
+    "faq": {
+      "headline": "FAQs",
+      "question1": "What is Triggerscore?",
+      "answer1": "Triggerscore is a rating portal, where users can rate how much old movies would trigger viewers today. The name giving Triggerscore consists of ratings in the categories sexism, racism, others and the bonus category cringe. The cringe category is not being used for calculating the overall score.",
+      "question2": "How can I rate a movie?",
+      "answer2": "To rate a movie simply search for the title or click one of the existing titles. Give a score for every of the four categories and submit your rating. Signing in is not necessary.",
+      "question3": "Is any personal data saved when I submit a rating?",
+      "answer3": "No, in the rating database only the submitted rating and a movie id are being saved.",
+      "question4": "Where is all the movie data coming from?",
+      "answer4": "Triggerscore uses the TMDB api. Furthermore the applicaton uses the JustWatch api to receive information about availabity of movies on different streaming providers. The Triggerscore itself is only provided by and for Triggerscore."
+    },
+    "contact": {
+      "sendFeedback": "Send feedback",
+      "name": "Name",
+      "email": "Email address",
+      "message": "Message",
+      "placeholderName": "Enter name",
+      "placeholderEmail": "Enter email",
+      "placeholderMessage": "Enter message",
+      "send": "Send",
+      "success": "Message successfully send "
+    },
+    "rating": {
+      "thanks": "Thanks for your rating!",
+      "submit": "Submit rating",
+      "submitFor": "Submit rating for ",
+      "descSexism": "Are outdated role models being presented?",
+      "descRacism": "Are racist stereotypes being presented uncritically?",
+      "descOthers": "Does the movie contain other triggering elements (bodyshaming, abelism...)?",
+      "descCringe": "Does the movie contain elements making cringe?"
+    },
+    "highlights": {
+      "headline1": "James Bond Special",
+      "copy1": "License to trigger: click a movie and submit a Triggerscore",
+      "headline2": "Top 10 sexist movies",
+      "copy2": "It is a man's world: movies with highest sexism ratings",
+      "headline3": "Top 10 racist movies",
+      "copy3": "For old white men: movies with highest racism ratings",
+      "headline4": "Top 10 others movies",
+      "copy4": "These movies trigger. For reasons: movies with highest others ratings",
+      "headline5": "Top 10 cringe movies",
+      "copy5": "These movies are just cringeworthy: movies with highest cringe ratings"
+    }
+  }

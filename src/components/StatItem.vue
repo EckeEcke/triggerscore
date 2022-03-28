@@ -10,9 +10,9 @@
             <article class="text-left relative w-full h-full">
                 <h3 v-if="movie.title.length > 0" class="text-base w-4/5 h-12 mb-1 pr-3 font-semibold overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="text-base w-4/5 h-12 mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
-                <p class="text-xs w-4/5">veröffentlicht: {{ movie.release_date.substring(0,4) }}</p>
+                <p class="text-xs w-4/5">{{ $t('general.released') }}: {{ movie.release_date.substring(0,4) }}</p>
                 <p v-if="overview.length > 2" class="text-xs absolute top-1/2 italic py-3">"{{ overview }}" </p>
-                <p v-else class="text-xs absolute top-1/2 italic py-3">Keine Beschreibung verfügbar</p>
+                <p v-else class="text-xs absolute top-1/2 italic py-3">{{ $t('general.noDescription') }}</p>
             </article>
         </div>  
     </router-link>

@@ -7,11 +7,13 @@
               </router-link>
             </div>
             <div class="flex">
-              <router-link to="/all" tag="a" class="text-white font-semibold self-center mr-10 hidden md:block hover:text-yellow-500">Alle Filme</router-link>
-              <router-link to="/about" tag="a" class="text-white font-semibold self-center mr-10 hidden md:block hover:text-yellow-500">About</router-link>
-              <router-link to="/faq" tag="a" class="text-white font-semibold self-center mr-10 hidden md:block hover:text-yellow-500">FAQ</router-link>
-              <router-link to="/contact" tag="a" class="text-white font-semibold self-center mr-10 hidden md:block hover:text-yellow-500">Kontakt</router-link>
-              <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-white mr-8 md:mr-10 self-center hover:text-yellow-500" :class="{'animate-bounce': showSearch}" @click="showSearch = !showSearch; showMenu = false;showNav = false" />
+              <router-link to="/all" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500">{{ $t('header.allMovies') }}</router-link>
+              <router-link to="/about" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500">{{ $t('header.about') }}</router-link>
+              <router-link to="/faq" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500">{{ $t('header.faq') }}</router-link>
+              <router-link to="/contact" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500">{{ $t('header.contact') }}</router-link>
+              <button v-if="$root.$i18n.locale == 'en'" @click="switchLanguage('de')" class="mr-6 sm:mr-10"><img class="w-8" src="../assets/images/germany.svg"></button>
+              <button v-if="$root.$i18n.locale == 'de'" @click="switchLanguage('en')" class="mr-6 sm:mr-10"><img class="w-8" src="../assets/images/uk.svg"></button>
+              <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-white mr-6 sm:mr-10 self-center hover:text-yellow-500" :class="{'animate-bounce': showSearch}" @click="showSearch = !showSearch; showMenu = false;showNav = false" />
               <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg self-center md:hidden" @click="showNav = !showNav; showMenu = false; showSearch = false" />
             </div>
             <transition  enter-active-class="duration-300 ease-out"
@@ -26,70 +28,18 @@
                 </router-link> 
                 </div>
                 <hr>
-                <router-link to="/" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">Home</div></router-link>  
+                <router-link to="/" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.home') }}</div></router-link>  
                 <hr>
-                <router-link to="/all" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">Alle Filme</div></router-link>
+                <router-link to="/all" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.allMovies') }}</div></router-link>
                 <hr>
-                <router-link to="/faq" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">FAQ</div></router-link>
+                <router-link to="/faq" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.faq') }}</div></router-link>
                 <hr>
-                <router-link to="/about" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">About</div></router-link>
+                <router-link to="/about" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.about') }}</div></router-link>
                 <hr>
-                <router-link to="/contact" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">Kontakt</div></router-link>
+                <router-link to="/contact" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.contact') }}</div></router-link>
                 <hr>
               </nav>
             </transition>
-            <transition enter-active-class="duration-300 ease-out"
-                enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-               <div v-if="showNav" class="fixed bg-gray-900 bg-opacity-20 top-0 left-0 w-full h-full overflow-none"  @click="showNav = false"/> 
-              <div v-if="showMenu" class="bg-white shadow-lg rounded-lg w-64 p-4 absolute top-full right-0 mt-2" >
-              <p class="text-right"><font-awesome-icon :icon="['fas', 'times']" @click="showMenu = false" /></p>
-              <h2 class="font-semibold text-left mb-2">Sortieren</h2>
-              <div class="flex w-full my-3 border border-gray-200 rounded">
-                <select v-model="sortingOption" class="w-full md:w-auto h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
-                    <option class="py-1" value="a-z">A-Z</option>
-                    <option class="py-1" value="z-a">Z-A</option>
-                    <option class="py-1" value="date-desc">Jahr absteigend</option>
-                    <option class="py-1" value="date-asc">Jahr aufsteigend</option>
-                    <option class="py-1" value="ts-desc">Triggerscore absteigend</option>
-                    <option class="py-1" value="ts-asc">Triggerscore aufsteigend</option>
-                </select>
-              </div>
-              <hr class="my-3">
-              <h2 class="font-semibold text-left mb-2">Filtern</h2>
-              <div class="form-check text-left mb-2 h-8">
-                <input v-model="netflixFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-netflix">
-                <label class="form-check-label inline-block text-gray-800 text-left" for="filter-netflix">
-                  <img class="h-4 mt-1 mx-2" src="../assets/images/netflix-logo.svg">
-                </label>
-              </div>
-              <div class="form-check text-left mb-2 h-8">
-                <input v-model="primeFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-amazon">
-                <label class="form-check-label inline-block text-gray-800 text-left" for="filter-amazon">
-                  <img class="h-4 mt-1 mx-2" src="../assets/images/amazon-prime-logo.svg">
-                </label>
-              </div>
-              <div class="form-check text-left mb-2 h-8">
-                <input v-model="disneyFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-disney">
-                <label class="form-check-label inline-block text-gray-800 text-left" for="filter-disney">
-                  <img class="h-6 ml-2" src="../assets/images/disney+-logo.svg">
-                </label>
-              </div>
-              <div class="flex my-4">
-                <div class="w-1/2 mr-2 flex flex-col">
-                  <label class="text-left text-sm font-semibold" for="filter-start">Von</label>
-                  <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="1900">
-                </div>
-                <div class="w-1/2 mr-2 flex flex-col">
-                  <label class="text-left text-sm font-semibold" for="filter-end">Bis</label>
-                  <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="2010">  
-                </div>
-              </div>
-              <div class="text-sm my-5 font-semibold">{{results}} Ergebnisse</div>
-              <hr  class="my-3">
-              <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
-            </div>
-            </transition>
-            
         </section>
         <transition enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
@@ -100,7 +50,7 @@
                   <button class="flex items-center justify-center px-4 rounded-l bg-yellow-500" @click="searchMovie">
                       <font-awesome-icon :icon="['fas', 'search']" class="text-lg" />
                   </button>
-                  <input type="text" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="px-4 w-full outline-none transition" placeholder="Film suchen...">
+                  <input type="text" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="px-4 w-full outline-none transition" :placeholder="$t('header.searchPlaceholder')">
                   <div class="bg-white rounded-r h-8 w-8 flex justify-center">
                     <font-awesome-icon :icon="['fas', 'times']" class="self-center" @click="showSearch = false" />
                   </div>
@@ -205,6 +155,17 @@ export default {
       resetFilter: function(){
         this.$store.dispatch("resetFilter")
         this.$store.dispatch("filterMovies")
+      },
+      switchLanguage: function(language){
+        this.$root.$i18n.locale = language
+        this.$store.commit("setLocale",language)
+        this.$store.dispatch("setTriggerscores")
+        this.$store.dispatch("setRecentRatings")
+        this.$store.dispatch("setTop10Sexism")
+        this.$store.dispatch("setTop10Racism")
+        this.$store.dispatch("setTop10Others")
+        this.$store.dispatch("setTop10Cringe")
+        this.$store.dispatch("setBondMovies")
       }
   }
 }

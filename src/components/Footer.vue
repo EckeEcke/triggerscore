@@ -6,12 +6,12 @@
         <div class="self-center my-2 w-full md:w-auto">
           <h2 class="text-2xl font-extrabold text-center lg:text-left text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE</h2>
         <div class="flex text-white my-4 justify-center lg:justify-start">
-          <RouterLink to="/about" class="border-r border-white px-4 lg:pl-0">About</RouterLink>
-          <RouterLink to="/faq" class="border-r border-white px-4">FAQ</RouterLink>
-          <RouterLink to="/contact" class="px-4">Kontakt</RouterLink>
+          <RouterLink to="/about" class="border-r border-white px-4 lg:pl-0">{{ $t('header.about') }}</RouterLink>
+          <RouterLink to="/faq" class="border-r border-white px-4">{{ $t('header.faq') }}</RouterLink>
+          <RouterLink to="/contact" class="px-4">{{ $t('header.contact') }}</RouterLink>
         </div>
         <article class="mx-auto text-white w-96 max-w-full text-center lg:text-left text-xs">
-            <i>"Eine neue Art alte Filme zu schauen."</i> Triggerscore ist ein Bewertungsportal für Filme, bei dem User bewerten können, wie sehr alte Filme Zuschauer*innen von heute triggern.
+            {{ $t('general.slogan') }}
         </article>
         </div>
         <div class="self-center grid my-2 px-2 grid-cols-3 lg:grid-cols-3 gap-4">

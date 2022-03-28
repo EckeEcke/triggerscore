@@ -3,13 +3,13 @@
         <Searchbox />
         <div v-if="isLoading" class="py-32 lg:py-48">
             <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
-            <p class="text-white font-semibold animate-bounce mt-8">Lädt Filme</p>
+            <p class="text-white font-semibold animate-bounce mt-8">{{  $t('general.loadMovies')}}</p>
         </div>
         <div v-else>
             <div class="container px-4 xl:w-10/12 mx-auto flex flex-col mt-8 mb-4">
                 <div class="text-left xl:hidden">
-                    <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-yellow-500 ">Filme entdecken</h2>
-                    <p class="text-sm text-white ">Dein Film ist nicht dabei? Einfach über die <span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">Suche</span> nach dem gewünschten Titel suchen und eine Bewertung abgeben</p>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-yellow-500 ">{{ $t('index.headline') }}</h2>
+                    <p class="text-sm text-white ">{{ $t('index.intro1') }}<span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">{{ $t('index.search') }}</span>{{ $t('index.intro2') }}</p>
                 </div>
                 <div class="ml-auto mt-4 -mr-3 sm:mr-0 xl:hidden">
                     <button class="bg-yellow-500 text-gray-900 disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="showMenu = !showMenu"><font-awesome-icon class="mr-2" :icon="['fas', 'filter']" />Filter</button>
@@ -18,7 +18,7 @@
             <Filtermenu class="hidden xl:block mt-4" />
             <div v-if="isFiltering" class="py-32 lg:py-48">
                 <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
-                <p class="text-white font-semibold animate-bounce mt-8">Lädt Filme</p>
+                <p class="text-white font-semibold animate-bounce mt-8">{{ $t('general.loadMovies') }}</p>
             </div>
             <transition-group v-if="!isLoading && filteredMovies.length > 0 && !isFiltering" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-4 sm:pb-8 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
@@ -26,8 +26,8 @@
             </transition-group>
             <Trigger @triggerIntersected="loadMore" :current="loadMoviesAmount" :maximum="filteredMovies.length" /> 
             <div class="py-32" v-if="!isLoading && filteredMovies.length == 0 && !isFiltering">
-                <p class="text-white text-xl font-semibold animate-bounce mb-4">Leider keine Ergebnisse</p>
-                <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
+                <p class="text-white text-xl font-semibold animate-bounce mb-4">{{ $t('search.noResults') }}</p>
+                <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">{{ $t('filter.resetFilters') }}</button>
             </div>
             <transition v-if="showMenu" enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">

@@ -2,14 +2,14 @@
     <main class="bg-gray-900">
         <div v-if="searchResults.length == 0 && searchError" class=" text-center font-semibold container mx-auto my-8  xl:w-10/12 md:px-4">
                 <div class="py-6 px-2 md:rounded-lg">
-                    <p class="text-white text-lg">Deine Suche nach <i>"{{searchTerm}}"</i> ergab leider keine Treffer.</p>
-                    <button class="bg-yellow-500 transition hover:bg-yellow-600 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="resetSearch"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
+                    <p class="text-white text-lg">{{ $t('search.noResults1') }} <i>"{{searchTerm}}"</i>&nbsp; {{ $t('search.noResults2') }}</p>
+                    <button class="bg-yellow-500 transition hover:bg-yellow-600 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="resetSearch"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
                 </div>
             </div>
             <div v-if="searchResults.length > 0 && !searchError" class=" text-center font-semibold container mx-auto my-8  xl:w-10/12 md:px-4">
                 <div class="py-6 px-2 md:rounded-lg">
-                    <p class="text-white text-lg">Deine Suche nach <i>"{{searchTerm}}"</i> ergab {{searchResults.length}} Treffer.</p>
-                    <button class="bg-yellow-500 transition hover:bg-yellow-600 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="$router.go(-1)"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />Zurück</button>
+                    <p class="text-white text-lg">{{ $t('search.results',[searchTerm,searchResults.length])}}</p>
+                    <button class="bg-yellow-500 transition hover:bg-yellow-600 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold" @click="$router.go(-1)"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
                 </div>
             </div>
     <transition-group v-if="searchResults.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"

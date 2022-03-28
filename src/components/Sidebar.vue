@@ -6,37 +6,37 @@
           <div class="h-5/6 overflow-y-auto hide-scrollbar">
               <div class="overflow-y-auto pb-12 hide-scrollbar">
               <p class="text-right"><font-awesome-icon :icon="['fas', 'times']"  @click="$emit('close')" /></p>
-              <h2 class="font-semibold text-left mb-2">Sortieren</h2>
+              <h2 class="font-semibold text-left mb-2">{{ $t('filter.sort') }}</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
                 <select v-model="sortingOption" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
                     <option class="py-1" value="a-z">A-Z</option>
                     <option class="py-1" value="z-a">Z-A</option>
-                    <option class="py-1" value="date-desc">Jahr absteigend</option>
-                    <option class="py-1" value="date-asc">Jahr aufsteigend</option>
-                    <option class="py-1" value="ts-desc">Triggerscore absteigend</option>
-                    <option class="py-1" value="ts-asc">Triggerscore aufsteigend</option>
+                    <option class="py-1" value="date-desc">{{ $t('filter.yearDesc') }}</option>
+                    <option class="py-1" value="date-asc">{{ $t('filter.yearAsc') }}</option>
+                    <option class="py-1" value="ts-desc">{{ $t('filter.scoreDesc') }}</option>
+                    <option class="py-1" value="ts-asc">{{ $t('filter.scoreAsc') }}</option>
                 </select>
               </div>
               <hr class="my-4">
-              <h2 class="font-semibold text-left mb-2">Angezeigter Score</h2>
+              <h2 class="font-semibold text-left mb-2">{{ $t('filter.displayedScore') }}</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
                   <select v-model="shownScore" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
-                    <option class="py-1" value="rating_total">Gesamtwertung</option>
-                    <option class="py-1" value="rating_sexism">Sexismus</option>
-                    <option class="py-1" value="rating_racism">Rassismus</option>
-                    <option class="py-1" value="rating_others">Sonstige</option>
-                    <option class="py-1" value="rating_cringe">Cringe</option>
+                    <option class="py-1" value="rating_total">{{ $t('categories.totalScore') }}</option>
+                    <option class="py-1" value="rating_sexism">{{ $t('categories.sexism') }}</option>
+                    <option class="py-1" value="rating_racism">{{ $t('categories.racism') }}</option>
+                    <option class="py-1" value="rating_others">{{ $t('categories.others') }}</option>
+                    <option class="py-1" value="rating_cringe">{{ $t('categories.cringe') }}</option>
                 </select>
               </div>
               <hr class="my-4">
               <div class="mb-6">
-                <h2 class="font-semibold text-left mb-6">Nach Score filtern</h2>
+                <h2 class="font-semibold text-left mb-6">{{ $t('filter.filterByScore') }}</h2>
                 <div class="px-3">
                 <Rangeslider />
                 </div>
               </div>
               <hr class="my-4">
-              <h2 class="font-semibold text-left mb-2">Nach Streaminganbietern</h2>
+              <h2 class="font-semibold text-left mb-2">{{ $t('filter.filterByProvider') }}</h2>
               <div class="form-check text-left mb-2 h-8">
                 <input v-model="netflixFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-netflix">
                 <label class="form-check-label inline-block text-gray-800 text-left" for="filter-netflix">
@@ -57,13 +57,13 @@
               </div>
               <hr class="my-4">
               <div class="flex flex-col my-4">
-                <h2 class="font-semibold text-left mb-2">Nach Veröffentlichungsjahr</h2>
+                <h2 class="font-semibold text-left mb-2">{{ $t('filter.filterByRelease') }}</h2>
                 <div class="flex">
                   <div class="w-1/2 mr-2 flex flex-col">
-                    <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="Von" @input="scrollToTop">
+                    <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 :placeholder="$t('filter.from')" @input="scrollToTop">
                   </div>
                   <div class="w-1/2 mr-2 flex flex-col">
-                    <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 placeholder="Bis" @input="scrollToTop">  
+                    <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 :placeholder="$t('filter.to')" @input="scrollToTop">  
                   </div>
                 </div>
               </div>
@@ -72,9 +72,9 @@
           </div>
           <div class="mt-auto bg-white">
             <div class="-mt-20 h-20 w-full z-30 pointer-events-none" style="background-image: linear-gradient(to bottom,rgba(255,255,255,0.2),rgba(255,255,255,1);"/>
-              <div class="text-sm my-5 font-semibold">{{results}} Ergebnisse</div>
+              <div class="text-sm my-5 font-semibold">{{results}} {{ $t('filter.results') }}</div>
               <hr  class="my-4">
-              <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-gray-900 rounded-lg" @click="resetFilter">Filter zurücksetzen</button>
+              <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-gray-900 rounded-lg" @click="resetFilter">{{ $t('filter.resetFilters') }}</button>
               </div>
             </div>
             </div>

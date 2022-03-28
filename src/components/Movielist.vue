@@ -3,23 +3,23 @@
         <Searchbox showTitle />
         <div v-if="isLoading" class="py-32 lg:py-48">
             <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
-            <p class="text-white font-semibold animate-bounce mt-8">Lädt Filme</p>
+            <p class="text-white font-semibold animate-bounce mt-8">{{ $t('general.loadMovies') }}</p>
         </div>
         <div v-else>
             <MovieHighlightsContainer 
                 v-if="!isLoading" 
                 :movies="bondMovies" 
                 shownScore="rating_total"
-                title="James Bond Special" 
-                subTitle="Lizenz zum Triggern: Film anklicken und Triggerscore vergeben"
+                :title="$t('highlights.headline1')" 
+                :subTitle="$t('highlights.copy1')"
                 moreSpacing
             />
             <section class="sm:mb-12">
                 <div class="py-12 sm:mb-12" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
-                    <h2 class="text-white text-xl md:text-3xl text-left font-semibold px-4  container mx-auto xl:w-10/12 mb-2">Neueste <span class="text-xl md:text-3xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+                    <h2 class="text-white text-xl md:text-3xl text-left font-semibold px-4  container mx-auto xl:w-10/12 mb-2">{{ $t('general.newest') }} <span class="text-xl md:text-3xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RES
               </span></h2>
-              <p class="text-sm text-white font-semibold text-left px-4  container mx-auto xl:w-10/12 ">Kürzlich abgegebene Bewertungen</p>
+              <p class="text-sm text-white font-semibold text-left px-4  container mx-auto xl:w-10/12 ">{{ $t('general.recentRatings') }}</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 sm:gap-5 justify-content-start container mx-auto xl:w-10/12 sm:px-4 ">
                     <RecentRatingsItem v-for="(rating,index) in recentRatings" :key="index" :movie="rating" :scores="recentScores[index]" />
@@ -30,47 +30,47 @@
                 <div class="container px-4 xl:w-10/12 mx-auto">
                     <h2 class="text-xl md:text-3xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
-              </span> TOP 10s</h2>
-                    <p class="text-sm text-white font-semibold">Trigger-happy: Filme mit höchsten Triggerscores</p>
+              </span> {{ $t('general.top10') }}</h2>
+                    <p class="text-sm text-white font-semibold">{{ $t('general.top10Copy') }}</p>
                 </div> 
             </div>
             <MovieHighlightsContainer 
                 v-if="!isLoading" 
                 :movies="top10Sexism"  
                 shownScore="rating_sexism"
-                title="Top 10 Sexistische Filme"
-                subTitle="It is a man's world: Filme mit höchsten Sexismus-Ratings"
+                :title="$t('highlights.headline2')"
+                :subTitle="$t('highlights.copy2')"
                 showBorder
             />
             <MovieHighlightsContainer 
                 v-if="!isLoading" 
                 :movies="top10Racism"  
                 shownScore="rating_racism"
-                title="Top 10 Rassistische Filme"
-                subTitle="Für alte weiße Männer: Filme mit höchsten Rassismus-Ratings"
+                :title="$t('highlights.headline3')"
+                :subTitle="$t('highlights.copy3')"
                 showBorder
             />
             <MovieHighlightsContainer 
                 v-if="!isLoading" 
                 :movies="top10Others"  
                 shownScore="rating_others"
-                title="Top 10 Sonstige Filme "
-                subTitle="Diese Filme triggern. Aus Gründen: Filme mit höchsten Sonstige-Ratings"
+                :title="$t('highlights.headline4')"
+                :subTitle="$t('highlights.copy4')"
                 showBorder
             />
             <MovieHighlightsContainer 
                 v-if="!isLoading" 
                 :movies="top10Cringe"  
                 shownScore="rating_cringe"
-                title="Top 10 Cringe Filme"
-                subTitle="Diese Filme sind einfach nur zum Fremdschämen: Filme mit höchsten Cringe-Ratings"
+                :title="$t('highlights.headline5')"
+                :subTitle="$t('highlights.copy5')"
             />
             <div v-if="!isLoading" class="py-12 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
                 <div class="container px-4 xl:w-10/12 mx-auto">
                     <h2 class="text-xl md:text-3xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
-              </span> Stats</h2>
-                    <p class="text-sm text-white font-semibold">Statistiken für Zahlenbegeisterte</p>
+              </span> {{ $t('general.stats') }}</h2>
+                    <p class="text-sm text-white font-semibold">{{ $t('general.statsCopy') }}</p>
                 </div> 
             </div>
             <div class="sm:py-8 sm:px-4 container xl:w-10/12 mx-auto">

@@ -1,0 +1,120 @@
+{
+  "general": {
+    "loadMovies": "Lädt Filme",
+    "back": "Zurück",
+    "rate": "Bewerten",
+    "noRatings": "Bisher noch keine Bewertungen",
+    "released": "Veröffentlicht",
+    "noDescription": "Keine Beschreibung verfügbar",
+    "slogan": "'Eine neue Art alte Filme zu schauen.' Triggerscore ist ein Bewertungsportal für Filme, bei dem User bewerten können, wie sehr alte Filme Zuschauer*innen von heute triggern.",
+    "newest": "Neueste ",
+    "recentRatings": "Kürzlich abgegebene Bewertungen",
+    "top10": "TOP 10s",
+    "top10Copy": "Triggerhappy: Filme mit höchsten Triggerscores",
+    "stats": "Stats",
+    "statsCopy": "Statistiken für Zahlenbegeisterte"
+    
+  },
+  "header": {
+    "home": "Home",
+    "allMovies": "Alle Filme",
+    "about": "About",
+    "faq": "FAQ",
+    "contact": "Kontakt",
+    "searchPlaceholder": "Film suchen..."
+  },
+  "filter": {
+    "sort": "Sortieren",
+    "displayedScore": "Angezeigter Score",
+    "AtoZ": "A-Z",
+    "ZtoA": "Z-A",
+    "scoreDesc": "Triggerscore absteigend",
+    "scoreAsc": "Triggerscore aufsteigend",
+    "yearDesc": "Jahr absteigend",
+    "yearAsc": "Jahr aufsteigend",
+    "filterByScore": "Nach Score filtern",
+    "filterByProvider": "Nach Streaminganbietern",
+    "filterByRelease": "Veröffentlichungsjahr",
+    "resetFilter": "Filter zurücksetzen",
+    "results": "Ergebnisse",
+    "chooseScore": "Score wählen",
+    "from": "von",
+    "to": "bis"
+  },
+  "categories": {
+    "totalScore": "Gesamtwertung",
+    "sexism": "Sexismus",
+    "racism": "Rassismus",
+    "others": "Sonstige",
+    "cringe": "Cringe"
+  },
+  "index": {
+    "headline": "Filme entdecken",
+    "intro1": "Dein Film ist nicht dabei? Einfach über die ",
+    "intro2": "nach dem gewünschten Titel suchen und eine Bewertung abgeben",
+    "search": "Suche "
+  },
+  "search": {
+    "noResults": "Leider keine Ergebnisse",
+    "searchHeadline1": "Film suchen und ",
+    "searchHeadline2": "vergeben",
+    "noResults1": "Deine Suche nach ",
+    "noResults2": " ergab leider keine Treffer",
+    "results": "Deine Suche nach '{0}' ergab {1} Treffer"
+  },
+  "stats": {
+    "average": "Durchschnitt ",
+    "totalRatings": "Gesamtzahl abgegebene Bewertungen",
+    "moviesOnTS": "Filme auf Triggerscore",
+    "lowestScore": "Niedrigster Triggerscore",
+    "mostRatings": "Am häufigsten bewertet ({0} Bewertungen)"
+  },
+  "about": {
+    "headline": "Triggerscore - eine neue Art alte Filme zu schauen",
+    "paragraph1": "Die Idee für Triggerscore ging aus meiner neu entdeckten Guilty Pleasure hervor: Netflix nach alten Filmen durchstöbern (insbesondere 90er Jahre) und analysieren, wie sehr diese Filme Zuschauer:innen von heute triggern würden. Triggerscore dient dabei als Portal, auf dem User:innen Triigerscore-Bewertungen finden und bewerten können.",
+    "paragraph2": "Triggerscore ist ein Solo-Projekt. Von der Idee, über Konzeptionierung und Design, bis hin zur Entwicklung des Front- und Backends dieser Applikation. Das Frontend basiert auf dem JavaScript-Framework Vue.js mit Vuex-Store für das State-Management und dem CSS-Framework Tailwind. Gehostet wird mein Frontend auf Netlify. Im Backend nutze ich eine MySQL-Datenbank und einen NodeJS-Server, beide gehostet auf Heroku. Meine Backend-Applikation überträgt Bewertungen in meine Bewertungsdatenbank, sendet diese ans Frontend und berechnet die Scores. Als Filmdatenbank nutze ich die TMDB-API. Informationen über Streaminganbieter erhalte ich über die JustWatch-API."
+  },
+  "faq": {
+    "headline": "FAQs",
+    "question1": "Was ist Triggerscore?",
+    "answer1": "Triggerscore ist ein Bewertungsportal, auf dem User:innen bewerten können, wie stark alte Filme Zuschauer:innen von heute triggern. Der namensgebende Triggerscore setzt sich aus dem Mittelwert der drei Bewertungskategorien Sexismus, Rassismus und Sonstigen zusammen. Die Bonus-Kategorie Cringe fließt nicht in den Triggerscore mit ein.",
+    "question2": "Wie kann ich einen Film bewerten?",
+    "answer2": "Um einen Film zu bewerten, einfach über die Suche nach dem gewünschten Film suchen, Film anklicken, in jeder der vier Kategorien einen Score vergeben und die Bewertung absenden. Eine Anmeldung ist nicht erforderlich.",
+    "question3": "Werden personenbezogene Daten von mir erhoben, wenn ich eine Bewertung abgebe?",
+    "answer3": "Nein, in der Bewertungsdatenbank landen lediglich die vergebenen Scores und eine Film-ID.",
+    "question4": "Woher kommen die ganzen Daten zu Filmen?",
+    "answer4": "Triggerscore nutzt die API von The Movie Database. Darüber hinaus greift die Applikation auf Informationen von JustWatch zurück, um die Verfügbarkeit von Filmen auf diversen Streaminganbietern zu checken. Der Triggerscore selbst wird ausschließlich von und für Triggerscore erhoben und bereitgestellt."
+  },
+  "contact": {
+    "sendFeedback": "Feedback senden",
+    "name": "Name",
+    "email": "E-Mail-Adresse",
+    "message": "Nachricht",
+    "placeholderName": "Name eingeben",
+    "placeholderEmail": "E-Mail-Adresse eingeben",
+    "placeholderMessage": "Nachricht eingeben",
+    "send": "Absenden",
+    "success": "Nachricht erfolgreich versendet "
+  },
+  "rating": {
+    "thanks": "Danke für deine Bewertung!",
+    "submit": "Bewertung absenden",
+    "submitFor": "Bewertung abgeben für ",
+    "descSexism": "Werden veraltete Rollenbilder vermittelt?",
+    "descRacism": "Werden unkritisch rassistische Klischees bedient?",
+    "descOthers": "Enthält der Film weitere triggernde Elemente?",
+    "descCringe": "Sind Inszenierung, Dialoge oder Handlungen 'zum Fremdschämen'?"
+  },
+  "highlights": {
+    "headline1": "James Bond Special",
+    "copy1": "Lizenz zum Triggern: Film anklicken und Triggerscore vergeben",
+    "headline2": "Top 10 sexistische Filme",
+    "copy2": "It is a man's world: Filme mit höchsten Sexismus-Ratings",
+    "headline3": "Top 10 rassistische Filme",
+    "copy3": "Für alte weiße Männer: Filme mit höchsten Rassismus-Ratings",
+    "headline4": "Top 10 sonstige Filme",
+    "copy4": "Diese Filme triggern. Aus Gründen: Filme mit höchsten Sonstige-Ratings",
+    "headline5": "Top 10 Cringe Filme",
+    "copy5": "Diese Filme sind einfach nur zum Fremdschämen: Filme mit höchsten Cringe-Ratings"
+  }
+}

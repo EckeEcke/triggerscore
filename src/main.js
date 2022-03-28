@@ -16,6 +16,7 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import store from './store'
+import i18n from './i18n'
 
 library.add(fas)
 
@@ -81,5 +82,6 @@ const router = new VueRouter({
 new Vue({
   render: h => h(App),
   router: router,
-  store: store,
+  i18n,
+  store: store
 }).$mount('#app')
