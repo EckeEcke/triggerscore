@@ -369,6 +369,7 @@ export default new Vuex.Store({
             state.commit("setPrimeFilter", false)
             state.commit("setNetflixFilter", false)
             state.commit("setDisneyFilter", false)
+            state.commit("setSkyFilter", false)
             state.commit("setMovieYearMin", null)
             state.commit("setMovieYearMax", null)
             state.commit("setMinScore",0)
