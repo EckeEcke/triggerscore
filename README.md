@@ -7,12 +7,11 @@ Features included:
 - rating movies based on four categories
 - filtering and sorting by score, year and streaming provider
 - statistics with average per category, total ratings and movies
+- translation using i18n
 
 Planned features:
 - user reviews for movies
 - adding likes and dislikes to ratings
-- filter by genre
-- language switch (i18n integration)
 
 ## Project setup
 ```
