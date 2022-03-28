@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-async function filterByProvider(netflix, prime, disney, triggerscores,array,locale,state){
+async function filterByProvider(netflix, prime, disney, sky, triggerscores,array,locale,state){
     let clonedArray = [...array]
-    if (netflix || prime || disney){
+    if (netflix || prime || disney || sky){
         let providerIDs = []
         let providerRegion = locale.toUpperCase()
         if(providerRegion == "EN"){
@@ -21,6 +21,9 @@ async function filterByProvider(netflix, prime, disney, triggerscores,array,loca
                         providerIDs.push(entry.movie_id)
                     }
                     if(disney && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Disney Plus")){
+                        providerIDs.push(entry.movie_id)
+                    }
+                    if(sky && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Sky Ticket")){
                         providerIDs.push(entry.movie_id)
                     }
                 }
@@ -149,6 +152,7 @@ export default new Vuex.Store({
         filterMoviesByNetflix: false,
         filterMoviesByPrime: false,
         filterMoviesByDisney: false,
+        filterMoviesBySky: false,
         sortingOption: 'a-z',
         highlightsLoading: true,
         moviesLoading: true,
@@ -202,6 +206,9 @@ export default new Vuex.Store({
         },
         setDisneyFilter(state,payload){
             state.filterMoviesByDisney = payload
+        },
+        setSkyFilter(state,payload){
+            state.filterMoviesBySky = payload
         },
         setFilteredMovies(state,payload){
             state.filteredMovies = payload
@@ -356,7 +363,7 @@ export default new Vuex.Store({
             sortMovies(this.state.sortingOption,this.state.movies,this.state.triggerscores,this.getters.getShownScore,state)
             filterByYear(this.state.filterMoviesByYearMax,this.state.filterMoviesByYearMin,this.state.filteredMovies,state)
             filterByScore(this.state.filteredMovies,this.state.triggerscores,this.state.minScore,this.state.maxScore,this.state.shownScore,state)  
-            filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.triggerscores,this.state.filteredMovies,this.state.locale,state)
+            filterByProvider(this.state.filterMoviesByNetflix,this.state.filterMoviesByPrime,this.state.filterMoviesByDisney,this.state.filterMoviesBySky,this.state.triggerscores,this.state.filteredMovies,this.state.locale,state)
         },
         resetFilter(state){
             state.commit("setPrimeFilter", false)

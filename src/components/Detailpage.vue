@@ -71,10 +71,11 @@
                                 {{ movie.overview }}
                             </article>
                             <div class="flex justify-between my-4 align-end">
-                                <div class="streaming-services flex">
-                                    <img v-if="onNetflix" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
-                                    <img v-if="onAmazon" class="w-16 mr-1" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
-                                    <img v-if="onDisney" class="w-16 mr-1" src="../assets/images/disney+-logo.svg">
+                                <div class="streaming-services flex gap-2">
+                                    <img v-if="onNetflix" class="w-16" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
+                                    <img v-if="onAmazon" class="w-16" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
+                                    <img v-if="onDisney" class="w-16" src="../assets/images/disney+-logo.svg">
+                                    <img v-if="onSky" class="w-20 mr-1" src="../assets/images/sky.svg">
                                 </div>
                                 <button class="bg-yellow-500 text-gray-900 p-3 rounded-lg md:hidden font-semibold" @click="scrollToRating">{{ $t('general.rate') }}</button>
                             </div> 
@@ -103,6 +104,7 @@ export default {
           onNetflix: false,
           onAmazon: false,
           onDisney: false,
+          onSky: false,
           releaseDate: 1900,
           score: {},
           triggerscoreLoading: true,
@@ -155,12 +157,15 @@ export default {
           try {
               const response = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
               const providers = await response.json()
+              console.log(providers)
               this.onNetflix = false
               this.onAmazon = false
               this.onDisney = false
+              this.onSky = false
               this.onNetflix = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Netflix")
               this.onAmazon = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Amazon Prime Video")
               this.onDisney = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Disney Plus")
+              this.onSky = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Sky Ticket")
           }
           catch {
               console.log("ooops")
