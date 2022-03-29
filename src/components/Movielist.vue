@@ -15,7 +15,7 @@
                 moreSpacing
             />
             <section class="sm:mb-12">
-                <div class="py-12 sm:mb-12" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
+                <div class="py-16 md:py-20 sm:mb-12 bg-cover bg-center" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(220,0,0,0.3), rgba(220,0,0,0.4)),url(' + require('@/assets/images/backdrop-scarymovie.jpg') + ')'}">
                     <h2 class="text-white text-xl md:text-3xl text-left font-semibold px-4  container mx-auto xl:w-10/12 mb-2">{{ $t('general.newest') }} <span class="text-xl md:text-3xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RES
               </span></h2>
@@ -26,7 +26,7 @@
                 </div>
                 
             </section>
-            <div v-if="!isLoading" class="py-12 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
+            <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-cover bg-center" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(220,0,0,0.3), rgba(220,0,0,0.4)),url(' + require('@/assets/images/backdrop-backtothefuture.jpg') + ')'}">
                 <div class="container px-4 xl:w-10/12 mx-auto">
                     <h2 class="text-xl md:text-3xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
@@ -65,7 +65,7 @@
                 :title="$t('highlights.headline5')"
                 :subTitle="$t('highlights.copy5')"
             />
-            <div v-if="!isLoading" class="py-12 text-left" style="background-image: linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))">
+            <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-center bg-cover"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(220,0,0,0.3), rgba(220,0,0,0.4)),url(' + require('@/assets/images/backdrop-jurassicpark.jpg') + ')'}">
                 <div class="container px-4 xl:w-10/12 mx-auto">
                     <h2 class="text-xl md:text-3xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE

@@ -336,7 +336,7 @@ export default new Vuex.Store({
                                 .catch()
             fetchedSearchResults.then(res => {
                 let filteredResults = res.results.filter(result => {
-                    return result.poster_path && result.overview && result.release_date && parseInt(result.release_date.substring(0,4)) < 2010})
+                    return result.poster_path && result.overview && result.release_date && parseInt(result.release_date.substring(0,4)) <= 2010})
                     // filter search results to not show garbage entries
             state.commit("setSearchResults",  filteredResults)
             if(this.getters.getSearchResults.length == 0){
