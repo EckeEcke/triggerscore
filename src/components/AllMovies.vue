@@ -27,7 +27,7 @@
             <Trigger @triggerIntersected="loadMore" :current="loadMoviesAmount" :maximum="filteredMovies.length" /> 
             <div class="py-32" v-if="!isLoading && filteredMovies.length == 0 && !isFiltering">
                 <p class="text-white text-xl font-semibold animate-bounce mb-4">{{ $t('search.noResults') }}</p>
-                <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">{{ $t('filter.resetFilters') }}</button>
+                <button class="font-semibold bg-yellow-500 p-3 shadow text-gray-900 rounded-lg" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
             </div>
             <transition v-if="showMenu" enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
