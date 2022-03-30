@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-40 h-56 mx-2 bg-white shadow-md flex flex-none flex-col relative rounded-lg transform transition duration-300 md:hover:scale-105 container-xl cursor-pointer">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-40 h-56 mr-4 bg-white shadow-md flex flex-none flex-col relative rounded-lg transform transition duration-300 md:hover:scale-105 container-xl cursor-pointer">
         <div class="flex">
             <img class="h-32 flex-none w-auto rounded-tl-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" />
             <div class="mx-auto mt-3 h-12 w-12 text-white rounded-lg" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && scores[shownScore] >= 7, 'bg-yellow-400': scoreAvailable && scores[shownScore] < 7 && scores[shownScore] >=4, 'bg-green-500': scoreAvailable && scores[shownScore] < 4}">

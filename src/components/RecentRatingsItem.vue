@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white sm:rounded-lg shadow-md flex relative border-b-2 md:border-b-0 md:rounded-lg cursor-pointer min-w-sm md:hover:scale-105 transform transition duration-300">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white md:rounded-lg shadow-md flex relative border-b-2 md:border-b-0 md:rounded-lg cursor-pointer min-w-sm md:hover:scale-105 transform transition duration-300 sm:first:rounded-t-lg sm:last:rounded-b-lg">
         <div class="w-full max-w-sm p-3">
             <article class="text-left relative w-full h-full">
                 <div class="flex items-center gap-2">
