@@ -9,18 +9,18 @@
                 <p class="hidden"><input name="bot-field"></p>
                 <div class="flex flex-col gap-1 mb-4">
                     <label class="font-semibold mb-2 text-white">{{ $t('contact.name') }}</label>
-                    <input v-model="form.name" type="text" name="name" class="border border-gray-300 p-2 rounded w-60 max-w-full" :placeholder="$t('contact.placeholderName')" required />   
+                    <input v-model="form.name" type="text" name="name" class="border border-gray-300 p-2 rounded w-72 max-w-full" :placeholder="$t('contact.placeholderName')" required />   
                 </div>
                 <div class="flex flex-col gap-1 mb-4">
                     <label class="font-semibold mb-2 text-white">{{ $t('contact.email') }}</label>
-                    <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-60 max-w-full" :placeholder="$t('contact.placeholderEmail')" required />
+                    <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-72 max-w-full" :placeholder="$t('contact.placeholderEmail')" required />
                 </div>
                 <div class="flex flex-col gap-1 mb-4">
                     <label class="font-semibold mb-2 text-white">{{ $t('contact.message') }}</label>
-                    <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-60 max-w-full" :placeholder="$t('contact.placeholderMessage')" required></textarea>
+                    <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-72 max-w-full" :placeholder="$t('contact.placeholderMessage')" required></textarea>
                 </div>
                 <p class="">
-                    <button class="bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg transition hover:bg-yellow-600 font-semibold" type="submit">{{ $t('contact.send') }}</button>
+                    <button class="w-full bg-yellow-500 p-3 text-gray-900 text-semibold rounded-lg shadow-lg transition hover:bg-yellow-600 font-semibold" type="submit">{{ $t('contact.send') }}</button>
                 </p>
             </form>
         </div>

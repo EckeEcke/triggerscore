@@ -77,7 +77,6 @@
                                     <img v-if="onDisney" class="w-16" src="../assets/images/disney+-logo.svg">
                                     <img v-if="onSky" class="w-20 mr-1" src="../assets/images/sky.svg">
                                 </div>
-                                <button class="bg-yellow-500 text-gray-900 p-3 rounded-lg md:hidden font-semibold" @click="scrollToRating">{{ $t('general.rate') }}</button>
                             </div> 
                         </div>
                     </div>
@@ -176,10 +175,6 @@ export default {
           const scores = await response.json()
           this.score = scores[0]
           this.triggerscoreLoading = false
-      },
-      scrollToRating: function() {
-          const rating = document.getElementById("rating")
-          rating.scrollIntoView({behavior: 'smooth'})
       }
   },
   watch: {

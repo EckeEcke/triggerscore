@@ -15,11 +15,11 @@
                 moreSpacing
             />
             <section class="sm:mb-12 px-0 sm:px-4  container mx-auto xl:w-10/12">
-                <div class="py-16 md:py-20 sm:mb-12 bg-cover bg-center px-4 rounded-lg" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(220,0,0,0.4), rgba(220,0,0,0.5)),url(' + require('@/assets/images/backdrop-scarymovie.jpg') + ')'}">
-                    <h2 class="text-white text-xl sm:text-4xl text-left font-semibold mb-2">{{ $t('general.newest') }} <span class="text-xl sm:text-4xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+                <div class="py-16 md:py-20 sm:mb-12 bg-cover bg-center px-4 rounded-lg" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-scarymovie.jpg') + ')'}">
+                    <h2 class="text-white text-2xl sm:text-4xl text-left font-semibold mb-2">{{ $t('general.newest') }} <span class="text-2xl sm:text-4xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RES
               </span></h2>
-              <p class="text-sm md:text-lg text-white font-semibold text-left">{{ $t('general.recentRatings') }}</p>
+              <p class="text-base md:text-lg text-white font-semibold text-left">{{ $t('general.recentRatings') }}</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-5 justify-content-start">
                     <RecentRatingsItem v-for="(rating,index) in recentRatings" :key="index" :movie="rating" :scores="recentScores[index]" />
@@ -28,12 +28,12 @@
             </section>
             <section>
                 <div class="container xl:w-10/12 mx-auto sm:px-4">
-                    <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-cover bg-center px-4 rounded-lg" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(220,0,0,0.4), rgba(220,0,0,0.5)),url(' + require('@/assets/images/backdrop-backtothefuture.jpg') + ')'}">
+                    <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-cover bg-center px-4 rounded-lg" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-backtothefuture.jpg') + ')'}">
                         <div class="">
-                            <h2 class="text-xl sm:text-4xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+                            <h2 class="text-2xl sm:text-4xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                         TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                     </span> {{ $t('general.top10') }}</h2>
-                            <p class="text-sm md:text-lg text-white font-semibold">{{ $t('general.top10Copy') }}</p>
+                            <p class="text-base md:text-lg text-white font-semibold">{{ $t('general.top10Copy') }}</p>
                         </div> 
                     </div>
                 </div>
@@ -71,12 +71,12 @@
                 />
             </section>
             <section class="sm:px-4 container xl:w-10/12 mx-auto">
-                <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-center bg-cover px-4 rounded-lg"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(220,0,0,0.4), rgba(220,0,0,0.5)),url(' + require('@/assets/images/backdrop-jurassicpark.jpg') + ')'}">
+                <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-center bg-cover px-4 rounded-lg"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-jurassicpark.jpg') + ')'}">
                     <div class="">
-                        <h2 class="text-xl sm:text-4xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+                        <h2 class="text-2xl sm:text-4xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                     TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                 </span> {{ $t('general.stats') }}</h2>
-                        <p class="text-sm md:text-lg text-white font-semibold">{{ $t('general.statsCopy') }}</p>
+                        <p class="text-base md:text-lg text-white font-semibold">{{ $t('general.statsCopy') }}</p>
                     </div> 
                 </div>
                 <div class="sm:py-8">
