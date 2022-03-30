@@ -1,5 +1,5 @@
 <template>
-      <section class="bg-white py-6 md:py-8 md:px-6 text-left text-sm mx-auto md:rounded-lg flex flex-col lg:flex-row gap-x-12">
+      <section class="bg-white py-6 md:pt-4 md:pb-12 md:px-6 text-left text-sm mx-auto md:rounded-lg flex flex-col lg:flex-row gap-x-12">
         <div class="w-full lg:w-1/2 px-4">
           <div class="bg-white rounded-lg font-semibold">
           <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
@@ -51,9 +51,9 @@
         </div>
         </div>
         <div class="w-full lg:w-1/2 px-4">
-          <h2 class="font-semibold my-4 h-14 flex items-center">{{ $t('stats.lowestScore') }}</h2>
+          <h2 class="font-semibold mt-4 h-14 flex items-center">{{ $t('stats.lowestScore') }}</h2>
           <StatItem :scores="lowestScoreMovie" :movie="movie[0]" />
-          <h2 class="font-semibold my-4 h-14 flex items-center border-t border-gray-300 md:border-0 py-6 ">{{ $t('stats.mostRatings',[mostRatedMovie.ratings])}}</h2>
+          <h2 class="font-semibold mt-6 h-14 flex items-center">{{ $t('stats.mostRatings',[mostRatedMovie.ratings])}}</h2>
           <StatItem :scores="mostRatedMovie" :movie="mostRated[0]" />
         </div>
     </section>

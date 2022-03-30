@@ -84,6 +84,9 @@ export default {
     methods: {
             mintrigger: function() {  
                 if(this.minScore >= this.maxScore){this.minScore = parseInt(this.maxScore) - 1}
+                if(this.minScore == 10){
+                    this.minScore = 0
+                }
                 this.minthumb = ((parseInt(this.minScore) - this.min) / (this.max - this.min)) * 100;
             },
            

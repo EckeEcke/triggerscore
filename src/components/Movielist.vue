@@ -27,7 +27,7 @@
                 
             </section>
             <section>
-                <div class="container xl:w-10/12 mx-auto sm:px-4">
+                <div class="container xl:w-10/12 mx-auto sm:px-4 sm:mb-6">
                     <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-cover bg-center px-4 rounded-lg" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-backtothefuture.jpg') + ')'}">
                         <div class="">
                             <h2 class="text-2xl sm:text-4xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
@@ -71,7 +71,7 @@
                 />
             </section>
             <section class="sm:px-4 container xl:w-10/12 mx-auto">
-                <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-center bg-cover px-4 rounded-lg"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-jurassicpark.jpg') + ')'}">
+                <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-center bg-cover px-4 rounded-lg sm:my-6"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-jurassicpark.jpg') + ')'}">
                     <div class="">
                         <h2 class="text-2xl sm:text-4xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                     TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
@@ -79,7 +79,7 @@
                         <p class="text-base md:text-lg text-white font-semibold">{{ $t('general.statsCopy') }}</p>
                     </div> 
                 </div>
-                <div class="sm:py-8">
+                <div class="sm:pt-8 sm:pb-16">
                     <Stats />
                 </div> 
             </section>
