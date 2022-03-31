@@ -21,7 +21,7 @@
               </span></h2>
               <p class="text-base md:text-lg text-white font-semibold text-left">{{ $t('general.recentRatings') }}</p>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 md:gap-5 justify-content-start">
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 sm:gap-3 md:gap-5 justify-content-start">
                     <RecentRatingsItem v-for="(rating,index) in recentRatings" :key="index" :movie="rating" :scores="recentScores[index]" />
                 </div>
                 

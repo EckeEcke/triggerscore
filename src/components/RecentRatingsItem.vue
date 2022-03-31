@@ -1,12 +1,12 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white md:rounded-lg shadow-md flex flex-col relative border-b-2 md:border-b-0 md:rounded-lg cursor-pointer min-w-sm md:hover:scale-105 transform transition duration-300 sm:first:rounded-t-lg sm:last:rounded-b-lg">
-        <div class="hidden md:block relative w-full h-44 p-3 text-white bg-cover bg-center md:rounded-t-lg w-3/4" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(22,0,0,0.1),rgba(22,0,0,0.2)),url(' + poster + ')'}">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white sm:rounded-lg shadow-md flex flex-col relative border-b-2 md:border-b-0 cursor-pointer min-w-sm md:hover:scale-105 transform transition duration-300">
+        <div class="hidden md:block relative w-full h-44 p-3 text-white bg-cover bg-center sm:rounded-t-lg w-3/4" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(22,0,0,0.1),rgba(22,0,0,0.2)),url(' + poster + ')'}">
                  
                 <div class="flex absolute top-2 right-2 rounded-lg justify-center w-16 h-16 mr-2 bg-opacity-80" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-400': scoreTotal < 7 && scoreTotal >=4, 'bg-green-500': scoreTotal < 4}">
                     <p class="self-center text-white text-xl font-semibold">{{scoreTotal}}</p>
                 </div>
         </div>
-        <div class="md:hidden p-3 pb-0 bg-white text-inherit">
+        <div class="md:hidden sm:rounded-t-lg p-3 pb-0 bg-white text-inherit">
             <div class="flex items-center gap-2 text-left">
                  
                 <div class="flex rounded-lg justify-center w-10 h-10 mr-2" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-400': scoreTotal < 7 && scoreTotal >=4, 'bg-green-500': scoreTotal < 4}">
