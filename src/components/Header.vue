@@ -16,9 +16,12 @@
               <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-white mr-6 sm:mr-10 self-center hover:text-yellow-500" :class="{'animate-bounce': showSearch}" @click="showSearch = !showSearch; showMenu = false;showNav = false" />
               <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg self-center md:hidden" @click="showNav = !showNav; showMenu = false; showSearch = false" />
             </div>
-            <transition  enter-active-class="duration-300 ease-out"
+            
+        </section>
+        <transition-group  enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-              <nav v-if="showNav" class="w-80 bg-white h-screen absolute top-0 right-0 shadow-lg md:hidden z-40">
+                 <div v-if="showNav" key="backdrop" class="fixed bg-gray-900 bg-opacity-20 top-0 left-0 w-full h-screen overflow-none"  @click="showNav = false" />
+              <nav v-if="showNav" key="sidebar" class="w-80 bg-white h-screen absolute top-0 right-0 shadow-lg md:hidden z-40">
                 <div class="text-right text-xl p-4 bg-gray-900 text-white">
                   <font-awesome-icon :icon="['fas', 'times']" @click="showNav = false" />
                 </div>
@@ -39,8 +42,7 @@
                 <router-link to="/contact" tag="div" class="text-lg font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.contact') }}</div></router-link>
                 <hr>
               </nav>
-            </transition>
-        </section>
+            </transition-group>
         <transition enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
           <section v-if="showSearch">
