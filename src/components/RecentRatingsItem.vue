@@ -60,7 +60,10 @@ export default {
   },
   computed: {
       poster: function() {
-          return `https://image.tmdb.org/t/p/original/${this.movie.backdrop_path}`
+          if(this.movie.backdrop_path){
+              return `https://image.tmdb.org/t/p/original/${this.movie.backdrop_path}`
+          } else return require('@/assets/images/film-poster-placeholder.png')
+          
       },
       scoreAvailable: function() {
           return this.scores != undefined
