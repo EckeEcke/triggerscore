@@ -44,7 +44,6 @@
                     shownScore="rating_sexism"
                     :title="$t('highlights.headline2')"
                     :subTitle="$t('highlights.copy2')"
-                    showBorder
                 />
                 <MovieHighlightsContainer 
                     v-if="!isLoading" 
@@ -68,6 +67,7 @@
                     shownScore="rating_cringe"
                     :title="$t('highlights.headline5')"
                     :subTitle="$t('highlights.copy5')"
+                    showBorder
                 />
             </section>
             <section class="sm:px-4 container xl:w-10/12 mx-auto">
