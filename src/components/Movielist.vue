@@ -1,6 +1,6 @@
 <template>
     <div class="bg-gray-900">
-        <Searchbox showTitle />
+        <Searchbox v-if="!isLoading" showTitle />
         <div v-if="isLoading" class="py-32 lg:py-48">
             <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
             <p class="text-white font-semibold animate-bounce mt-8">{{ $t('general.loadMovies') }}</p>
