@@ -10,7 +10,7 @@
         <p class="mb-4">{{ $t('rating.descSexism') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
             <button v-for="(n,i) in 11" :key="i" @click="ratingSexism = ratingSexism == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingSexism == 10-i ? 'opacity-100' : 'opacity-40']]" class="w-16 sm:w-8  md:w-12 lg:w-8 xl:w-12 h-16 sm:h-8  md:h-12 lg:h-8 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold" >
-                <div class="w-full h-full rounded-full flex text-center justify-center font-semibold" :class="{'transform scale-110': ratingSexism == 10-i, 'bg-green-400': 10-i < 4, 'bg-yellow-400': 10-i > 2 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingSexism == 10-i }"><span class="self-center">{{10-i}}</span></div>
+                <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingSexism == 10-i, 'bg-green-400': 10-i < 4, 'bg-yellow-400': 10-i > 2 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingSexism == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
         
@@ -19,7 +19,7 @@
         <p class="mb-4">{{ $t('rating.descRacism') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
             <button v-for="(n,i) in 11" :key="i" @click="ratingRacism = ratingRacism == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingRacism == 10-i ? 'opacity-100' : 'opacity-50']]" class="w-16 sm:w-8  md:w-12 lg:w-8 xl:w-12 h-16 sm:h-8  md:h-12 lg:h-8 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold">
-                <div class="w-full h-full rounded-full flex text-center justify-center font-semibold" :class="{'transform scale-110': ratingRacism == 10-i, 'bg-green-400': 10-i < 4, 'bg-yellow-400': 10-i > 2 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingRacism == 10-i }"><span class="self-center">{{10-i}}</span></div>
+                <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingRacism == 10-i, 'bg-green-400': 10-i < 4, 'bg-yellow-400': 10-i > 2 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingRacism == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
         <hr class="lg:border-white">
@@ -27,7 +27,7 @@
         <p class="mb-4">{{ $t('rating.descOthers') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
             <button v-for="(n,i) in 11" :key="i" @click="ratingOthers = ratingOthers == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingOthers == 10-i ? 'opacity-100' : 'opacity-50']]" class="w-16 sm:w-8  md:w-12 lg:w-8 xl:w-12 h-16 sm:h-8  md:h-12 lg:h-8 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold">
-                <div class="w-full h-full rounded-full flex text-center justify-center font-semibold" :class="{'transform scale-110': ratingOthers == 10-i, 'bg-green-400': 10-i < 4, 'bg-yellow-400': 10-i > 2 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingOthers == 10-i }"><span class="self-center">{{10-i}}</span></div>
+                <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingOthers == 10-i, 'bg-green-400': 10-i < 4, 'bg-yellow-400': 10-i > 2 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingOthers == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
         
@@ -36,7 +36,7 @@
         <p class="mb-4">{{ $t('rating.descCringe') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
             <button v-for="(n,i) in 11" :key="i" @click="ratingCringe = ratingCringe == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingCringe == 10-i ? 'opacity-100' : 'opacity-50']]" class="w-16 sm:w-8  md:w-12 lg:w-8 xl:w-12 h-16 sm:h-8  md:h-12 lg:h-8 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold">
-                <div class="w-full h-full rounded-full flex text-center justify-center font-semibold" :class="{'transform scale-110': ratingCringe == 10-i, 'bg-green-400': 10-i < 4, 'bg-yellow-400': 10-i > 3 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingCringe == 10-i }"><span class="self-center">{{10-i}}</span></div>
+                <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingCringe == 10-i, 'bg-green-400': 10-i < 4, 'bg-yellow-400': 10-i > 3 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingCringe == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
         <hr class="lg:border-white">

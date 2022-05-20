@@ -64,20 +64,24 @@
                             <p class="mb-4 text-xs md:text-md">{{ $t('general.released') }}: {{ releaseDate }}</p>
                             
                             <i v-if="movie.tagline && movie.tagline.length > 1" class="text-sm md: text-md">"{{ movie.tagline }}"</i>
-                            <p class="my-4">
-                                <span class="text-xs bg-gray-400 text-white p-2 mr-1 rounded" v-for="genre in genres" :key="genre">{{ genre }}</span>
+                            <p class="my-4 flex flex-wrap gap-1">
+                                <span class="text-xs bg-gray-400 text-white p-2 rounded" v-for="genre in genres" :key="genre">{{ genre }}</span>
                             </p>
                             <article class="my-4 text-sm md:text-md">
                                 {{ movie.overview }}
                             </article>
                             <div class="flex justify-between my-4 align-end">
-                                <div class="streaming-services flex gap-2">
+                                <div class="streaming-services flex gap-2 w-full">
                                     <img v-if="onNetflix" class="w-16" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                                     <img v-if="onAmazon" class="w-16" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
                                     <img v-if="onDisney" class="w-16" src="../assets/images/disney+-logo.svg">
                                     <img v-if="onSky" class="w-20 mr-1" src="../assets/images/sky.svg">
+                                    <a class="ml-auto self-center" v-if="movie.imdb_id" :href="imdbURL" target="_blank">
+                                        <img class="w-16" src="../assets/images/imdb-logo.svg">
+                                    </a>
                                 </div>
-                            </div> 
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -137,7 +141,10 @@ export default {
           }
           return region
 
-      }  
+      },
+      imdbURL: function(){
+          return `https://www.imdb.com/title/` + this.movie.imdb_id
+      }   
   },
   methods: {
       loadMovie: async function() {
