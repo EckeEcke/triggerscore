@@ -52,7 +52,7 @@
             <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12 absolute top-0 left-1/2 transform -translate-x-1/2 bg-red-700 h-32">
               <div class="flex mx-auto mt-6 p-4 sm:px-0 h-20 self-center w-full">
                 <div class="rounded-lg flex w-full justify-start">
-                  <button class="flex items-center justify-center px-3 w-16 rounded-l-xl bg-yellow-500" @click="searchMovie">
+                  <button class="flex items-center justify-center px-3 w-16 rounded-l-xl bg-yellow-500 text-white" @click="searchMovie">
                       <font-awesome-icon :icon="['fas', 'search']" class="text-lg" />
                   </button>
                   <input type="text" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="lg:text-xl px-4 w-full outline-none transition" :placeholder="$t('header.searchPlaceholder')">

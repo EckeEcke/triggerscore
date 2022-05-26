@@ -4,7 +4,7 @@
             <!-- <img load="lazy" class="h-full mx-auto md:rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" /> -->
         </div>
         <div class="w-full p-3">
-            <div class="absolute top-2 right-2 h-12 w-12 text-white rounded-lg font-semibold" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && score >= 7, 'bg-yellow-400': scoreAvailable && score < 7 && score >=4, 'bg-green-500': scoreAvailable && score < 4}">
+            <div class="absolute top-2 right-2 h-12 w-12 text-lg text-white rounded-lg font-semibold" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && score >= 7, 'bg-yellow-500': scoreAvailable && score < 7 && score >=4, 'bg-green-600': scoreAvailable && score < 4}">
                 <div class="relative w-full h-full">
                     <span class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ scores ? score : '-' }}</span>
                 </div>

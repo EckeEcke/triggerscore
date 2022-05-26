@@ -7,7 +7,7 @@
             <div class="flex flex-col md:flex-row mx-auto">
             <div class="flex mx-auto py-4 self-center w-full opacity-95">
                 <div class="rounded-lg flex w-full justify-start focus-within:shadow-inner">
-                <button class="flex items-center justify-center px-3 w-16 rounded-l-xl bg-yellow-500 transition hover:bg-yellow-600" @click="searchMovie" :disabled="searchInput.length == 0">
+                <button class="flex items-center justify-center px-3 w-16 rounded-l-xl bg-yellow-500 transition hover:bg-yellow-600 text-white" @click="searchMovie" :disabled="searchInput.length == 0">
                     <font-awesome-icon :icon="['fas', 'search']" class="text-lg" />
                 </button>
                 <input type="text" id="search" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="px-4 py-4 w-full rounded-r-xl outline-none transition scroll-my-4 lg:text-xl" style="scroll-margin-top: 10rem;" :placeholder="$t('header.searchPlaceholder')">
