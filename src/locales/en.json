@@ -12,7 +12,8 @@
       "top10": "TOP 10s",
       "top10Copy": "Movies with highest Triggerscores",
       "stats": "Stats",
-      "statsCopy": "Statistics for number enthusiasts"
+      "statsCopy": "Statistics for number enthusiasts",
+      "minutes": "minutes"
       
     },
     "header": {
@@ -103,7 +104,8 @@
       "descSexism": "Are outdated role models being presented?",
       "descRacism": "Are racist stereotypes being presented uncritically?",
       "descOthers": "Does the movie contain other triggering elements (bodyshaming, abelism...)?",
-      "descCringe": "Does the movie contain elements making cringe?"
+      "descCringe": "Does the movie contain elements making cringe?",
+      "tmdb-rating": "TMDB-Rating"
     },
     "highlights": {
       "headline1": "James Bond Special",

@@ -6,7 +6,7 @@
                     <p class="self-center text-white text-xl font-semibold">{{scoreTotal}}</p>
                 </div>
         </div>
-        <div class="md:hidden sm:rounded-t-lg p-3 pb-0 bg-white text-inherit">
+        <div class="md:hidden sm:rounded-t-lg px-3 pt-5 sm:pt-3 pb-0 bg-white text-inherit">
             <div class="flex items-center gap-2 text-left">
                  
                 <div class="flex rounded-lg justify-center w-10 h-10 mr-2" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-400': scoreTotal < 7 && scoreTotal >=4, 'bg-green-500': scoreTotal < 4}">
@@ -16,7 +16,7 @@
                 <h3 v-else class="text-base mb-1 font-semibold overflow-hidden w-10/12">{{ movie.original_title }}</h3>
                 </div>
         </div>
-        <div class="w-full max-w-sm p-3">
+        <div class="w-full max-w-sm p-3 pb-5 sm:pb-3">
             <article class="text-left relative w-full h-full">
                 <h3 v-if="movie.title.length > 0" class="hidden md:block text-base mb-1 font-semibold overflow-hidden h-12 overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="hidden md:block text-base mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>

@@ -56,12 +56,18 @@
                     <div class="flex flex-col xl:flex-row">
                         <div class="text-left px-4 md:px-4 py-2 flex flex-col">
                             <div class="flex justify-between">
-                                <h2 class="text-xl font-semibold md:text-2xl self-center">
+                                <h2 class="text-xl font-semibold md:text-2xl self-center mb-2">
                                 {{ movie.title }}
                                 </h2>
                             </div>
                             
-                            <p class="mb-4 text-xs md:text-md">{{ $t('general.released') }}: {{ releaseDate }}</p>
+                            <p class="mb-4 text-xs md:text-md">
+                                {{ releaseDate }}
+                                <span class="mx-2">|</span>
+                                <span>{{ movie.runtime }} {{ $t('general.minutes') }}</span>
+                                <span class="mx-2">|</span>
+                                <span v-if="movie.vote_average">{{ $t('rating.tmdb-rating') }}: {{ movie.vote_average }}</span>
+                            </p>
                             
                             <i v-if="movie.tagline && movie.tagline.length > 1" class="text-sm md: text-md">"{{ movie.tagline }}"</i>
                             <p class="my-4 flex flex-wrap gap-1">
@@ -70,18 +76,20 @@
                             <article class="my-4 text-sm md:text-md">
                                 {{ movie.overview }}
                             </article>
-                            <div class="flex justify-between my-4 align-end">
+                            <div class="flex justify-between my-4 align-end">   
                                 <div class="streaming-services flex gap-2 w-full">
                                     <img v-if="onNetflix" class="w-16" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                                     <img v-if="onAmazon" class="w-16" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
                                     <img v-if="onDisney" class="w-16" src="../assets/images/disney+-logo.svg">
                                     <img v-if="onSky" class="w-20 mr-1" src="../assets/images/sky.svg">
-                                    <a class="ml-auto self-center" v-if="movie.imdb_id" :href="imdbURL" target="_blank">
+                                    <a class="ml-auto self-center" v-if="movie.id" :href="tmdbURL" target="_blank">
+                                        <img class="w-16" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg">
+                                    </a>
+                                    <a class="ml-2 self-center" v-if="movie.imdb_id" :href="imdbURL" target="_blank">
                                         <img class="w-16" src="../assets/images/imdb-logo.svg">
                                     </a>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                 </div>
@@ -144,7 +152,10 @@ export default {
       },
       imdbURL: function(){
           return `https://www.imdb.com/title/` + this.movie.imdb_id
-      }   
+      },
+      tmdbURL: function(){
+          return `https://www.themoviedb.org/movie/` + this.movie.id
+      }
   },
   methods: {
       loadMovie: async function() {
