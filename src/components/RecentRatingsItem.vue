@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white sm:rounded shadow-md flex flex-col relative border-b-2 md:border-b-0 cursor-pointer min-w-sm md:hover:scale-105 transform transition duration-300">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white sm:rounded shadow-md flex flex-col relative border-b-2 md:border-b-0 cursor-pointer min-w-sm lg:hover:scale-105 transform transition duration-300">
         <div class="hidden md:block relative w-full h-44 p-3 text-white bg-cover bg-center sm:rounded-t w-3/4" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(22,0,0,0.1),rgba(22,0,0,0.2)),url(' + poster + ')'}">
                  
                 <div class="flex absolute top-2 right-2 rounded-lg justify-center w-16 h-16 mr-2 bg-opacity-80" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-500': scoreTotal < 7 && scoreTotal >=4, 'bg-green-600': scoreTotal < 4}">
@@ -18,7 +18,7 @@
         </div>
         <div class="w-full max-w-sm p-3 pb-5 sm:pb-3">
             <article class="text-left relative w-full h-full">
-                <h3 v-if="movie.title.length > 0" class="hidden md:block text-base mb-1 font-semibold overflow-hidden h-12 overflow-hidden">{{ movie.title }}</h3>
+                <h3 v-if="movie.title.length > 0" class="hidden md:block text-base mb-1 font-semibold overflow-hidden h-8 overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="hidden md:block text-base mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
                 <div class="grid grid-cols-2 text-sm">
                     <div class="flex my-2 text-sm">

@@ -78,16 +78,16 @@
                             </article>
                             <div class="flex justify-between my-4 mb-8 align-end">   
                                 <div class="streaming-services flex gap-2 w-full">
-                                    <a  v-if="onNetflix" href="https://www.netflix.com" target="_blank">
+                                    <a  v-if="onNetflix" href="https://www.netflix.com" target="_blank" class="self-center">
                                     <img class="w-16" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                                     </a>
-                                    <a v-if="onAmazon" href="https://www.amazon.de/primevideo" target="_blank">
+                                    <a v-if="onAmazon" href="https://www.amazon.de/primevideo" target="_blank" class="self-center">
                                         <img  class="w-16" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
                                     </a>
-                                    <a v-if="onDisney" href="https://www.disneyplus.com/" target="_blank">
+                                    <a v-if="onDisney" href="https://www.disneyplus.com/" target="_blank" class="self-center">
                                         <img class="w-16" src="../assets/images/disney+-logo.svg">
                                     </a>
-                                    <a v-if="onSky" href="https://skyticket.sky.de/home/login" target="_blank">
+                                    <a v-if="onSky" href="https://skyticket.sky.de/home/login" target="_blank" class="self-center">
                                         <img class="w-20 mr-1" src="../assets/images/sky.svg">
                                     </a>
                                     <a class="ml-auto self-center" v-if="movie.id" :href="tmdbURL" target="_blank">
