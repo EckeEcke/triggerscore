@@ -21,25 +21,25 @@
                             </div>
                             <div class="text-left w-auto mx-auto text-white text-xs sm:text-base">
                                 <div class="flex my-2 md:text-lg lg:text-base">
-                                    <div class="flex rounded-lg justify-center w-6 h-6 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2"  :class="{'bg-red-700': score.rating_sexism >= 7, 'bg-yellow-500': score.rating_sexism < 7 && score.rating_sexism >=4, 'bg-green-600': score.rating_sexism < 4}">
+                                    <div class="flex rounded sm:rounded-lg justify-center w-8 h-8 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2"  :class="{'bg-red-700': score.rating_sexism >= 7, 'bg-yellow-500': score.rating_sexism < 7 && score.rating_sexism >=4, 'bg-green-600': score.rating_sexism < 4}">
                                         <div class="self-center">{{score.rating_sexism}}</div>
                                     </div>
                                     <p class="self-center">{{ $t('categories.sexism') }}</p>
                                 </div>
                                 <div class="flex my-2 md:text-lg lg:text-base">
-                                    <div class="flex bg-red-500 rounded-lg justify-center w-6 h-6 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_racism >= 7, 'bg-yellow-500': score.rating_racism < 7 && score.rating_racism >=4, 'bg-green-600': score.rating_racism < 4}">
+                                    <div class="flex bg-red-500 rounded sm:rounded-lg justify-center w-8 h-8 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_racism >= 7, 'bg-yellow-500': score.rating_racism < 7 && score.rating_racism >=4, 'bg-green-600': score.rating_racism < 4}">
                                         <div class="self-center">{{score.rating_racism}}</div>
                                     </div>
                                     <p class="self-center">{{ $t('categories.racism') }}</p>
                                 </div>
                                 <div class="flex my-2 md:text-lg lg:text-base">
-                                    <div class="flex bg-red-500 rounded-lg justify-center w-6 h-6 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_others >= 7, 'bg-yellow-500': score.rating_others < 7 && score.rating_others >=4, 'bg-green-600': score.rating_others < 4}">
+                                    <div class="flex bg-red-500 rounded sm:rounded-lg justify-center w-8 h-8 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_others >= 7, 'bg-yellow-500': score.rating_others < 7 && score.rating_others >=4, 'bg-green-600': score.rating_others < 4}">
                                         <div class="self-center">{{score.rating_others}}</div>
                                     </div>
                                     <p class="self-center">{{ $t('categories.others') }}</p>
                                 </div>
                                 <div class="flex my-2 md:text-lg lg:text-base">
-                                    <div class="flex bg-red-500 rounded-lg justify-center w-6 h-6 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_cringe >= 7, 'bg-yellow-500': score.rating_cringe < 7 && score.rating_cringe >=4, 'bg-green-600': score.rating_cringe < 4}">
+                                    <div class="flex bg-red-500 rounded sm:rounded-lg justify-center w-8 h-8 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_cringe >= 7, 'bg-yellow-500': score.rating_cringe < 7 && score.rating_cringe >=4, 'bg-green-600': score.rating_cringe < 4}">
                                         <div class="self-center">{{score.rating_cringe}}</div>
                                     </div> 
                                     <p class="self-center">{{ $t('categories.cringe') }}</p>
