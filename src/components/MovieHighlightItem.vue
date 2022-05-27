@@ -1,8 +1,10 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-40 h-56 mr-4 bg-white shadow-md flex flex-none flex-col relative rounded-lg transform transition duration-300 md:hover:scale-105 container-xl cursor-pointer">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-40 h-auto mr-2 bg-white shadow-md flex flex-none flex-col relative rounded transform transition duration-300 md:hover:scale-105 container-xl cursor-pointer">
         <div class="flex">
-            <img class="h-32 flex-none w-auto rounded-tl-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" />
-            <div class="mx-auto mt-3 h-12 w-12 text-white rounded-lg" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && scores[shownScore] >= 7, 'bg-yellow-500': scoreAvailable && scores[shownScore] < 7 && scores[shownScore] >=4, 'bg-green-600': scoreAvailable && scores[shownScore] < 4}">
+            <div class="w-full h-60 bg-cover rounded-t" :style="{backgroundImage: `url(${poster})`}">
+
+            </div>
+            <div class="absolute right-2 mx-auto mt-3 h-12 w-12 text-white rounded-lg bg-opacity-90" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && scores[shownScore] >= 7, 'bg-yellow-500': scoreAvailable && scores[shownScore] < 7 && scores[shownScore] >=4, 'bg-green-600': scoreAvailable && scores[shownScore] < 4}">
                 <div class="relative w-full h-full font-semibold">
                     <span v-if="scoreAvailable" class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ scores[shownScore] }}</span>
                     <span v-else class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">-</span>

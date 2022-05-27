@@ -1,6 +1,6 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-white shadow-md flex relative border-b md:border-b-0 md:rounded-lg transform transition duration-300 md:hover:scale-105 container-xl cursor-pointer">
-        <div class="h-full w-44 bg-cover bg-center md:rounded-l-lg" load="lazy" :style="{'background-image': `url(${poster})`}">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-white shadow-md flex relative border-b md:border-b-0 md:rounded container-xl cursor-pointer">
+        <div class="h-full w-44 bg-cover bg-center md:rounded-l" load="lazy" :style="{'background-image': `url(${poster})`}">
             <!-- <img load="lazy" class="h-full mx-auto md:rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" /> -->
         </div>
         <div class="w-full p-3">
@@ -13,7 +13,11 @@
             <article class="text-left relative w-full h-full">
                 <h3 v-if="movie.title.length > 0" class="text-base w-4/5 h-12 mb-1 font-semibold overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="text-base w-4/5 h-12 mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
-                <p class="text-xs w-4/5">{{ $t('general.released')}}: {{ movie.release_date.substring(0,4) }}</p>
+                <p class="text-xs">
+                    {{ movie.release_date.substring(0,4) }}
+                    <span v-if="movie.runtime" class="mx-2">|</span>
+                    <span v-if="movie.runtime">{{ movie.runtime }} {{ $t('general.minutes') }}</span>
+                </p>
                 <p v-if="overview.length > 2" class="text-xs absolute top-1/2 py-3">{{ overview }} </p>
                 <p v-else class="text-xs absolute top-1/2 py-3">{{ $t('general.noDescription') }}</p>
             </article>
@@ -33,7 +37,7 @@ export default {
               return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
       },
       overview: function() {
-        return  this.movie.overview.length > 100 ? this.movie.overview.substring(0, 100) + "..." : this.movie.overview
+        return  this.movie.overview.length > 100 ? this.movie.overview.substring(0, 110) + "..." : this.movie.overview
       },
       scoreAvailable: function() {
           return this.scores != undefined

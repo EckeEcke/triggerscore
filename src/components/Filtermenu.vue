@@ -1,10 +1,10 @@
 <template>
   <div class="container sm:px-4 xl:w-10/12 mx-auto px-4">
-    <div class="text-left px-8 py-4 rounded-t-lg" :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
+    <div class="text-left px-8 py-4 rounded-t" :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
       <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-white">{{ $t('index.headline') }}</h2>
       <p class="text-sm text-white ">{{ $t('index.intro1') }}<span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">{{ $t('index.search') }}</span>{{ $t('index.intro2') }}</p>
     </div>
-    <div class="bg-white px-8 py-4 rounded-b-lg">
+    <div class="bg-white px-8 py-4 rounded-b">
       <div class="flex items-end justify-between">
         <div class="flex">
           <div class="w-52 mr-4">

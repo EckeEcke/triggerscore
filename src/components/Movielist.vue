@@ -15,7 +15,7 @@
                 moreSpacing
             />
             <section class="sm:mb-12 px-0 sm:px-4  container mx-auto xl:w-10/12">
-                <div class="py-16 md:py-20 sm:mb-12 bg-cover bg-center px-4 rounded-lg" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-scarymovie.jpg') + ')'}">
+                <div class="py-16 md:py-20 sm:mb-12 bg-cover bg-center px-4 rounded" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-scarymovie.jpg') + ')'}">
                     <h2 class="text-white text-2xl sm:text-4xl text-left font-semibold mb-2">{{ $t('general.newest') }} <span class="text-2xl sm:text-4xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RES
               </span></h2>
@@ -28,7 +28,7 @@
             </section>
             <section>
                 <div class="container xl:w-10/12 mx-auto sm:px-4 sm:mb-6">
-                    <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-cover bg-center px-4 rounded-lg" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-backtothefuture.jpg') + ')'}">
+                    <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-cover bg-center px-4 rounded" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-backtothefuture.jpg') + ')'}">
                         <div class="">
                             <h2 class="text-2xl sm:text-4xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                         TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
@@ -71,7 +71,7 @@
                 />
             </section>
             <section class="sm:px-4 container xl:w-10/12 mx-auto">
-                <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-center bg-cover px-4 rounded-lg sm:my-6"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-jurassicpark.jpg') + ')'}">
+                <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-center bg-cover px-4 rounded sm:my-6"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-jurassicpark.jpg') + ')'}">
                     <div class="">
                         <h2 class="text-2xl sm:text-4xl font-semibold mb-2 text-white "><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                     TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE

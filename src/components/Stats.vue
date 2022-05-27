@@ -1,5 +1,5 @@
 <template>
-      <section class="bg-white py-6 md:pt-4 md:pb-12 md:px-6 text-left text-sm mx-auto md:rounded-lg flex flex-col lg:flex-row gap-x-12">
+      <section class="bg-white py-6 md:pt-4 md:pb-12 md:px-6 text-left text-sm mx-auto md:rounded flex flex-col lg:flex-row gap-x-12">
         <div class="w-full lg:w-1/2 px-4">
           <div class="bg-white rounded-lg font-semibold">
           <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
@@ -50,22 +50,26 @@
           </div>
         </div>
         </div>
-        <div class="w-full lg:w-1/2 px-4">
-          <h2 class="font-semibold mt-4 h-14 flex items-center">{{ $t('stats.lowestScore') }}</h2>
-          <StatItem :scores="lowestScoreMovie" :movie="movie[0]" />
-          <h2 class="font-semibold mt-6 h-14 flex items-center">{{ $t('stats.mostRatings',[mostRatedMovie.ratings])}}</h2>
-          <StatItem :scores="mostRatedMovie" :movie="mostRated[0]" />
+        <div class="w-full lg:w-1/2 px-4 flex gap-4 sm:gap-8 overflow-auto">
+          <div>
+            <h2 class="font-semibold mt-4 h-14 flex items-center w-40">{{ $t('stats.lowestScore') }}</h2>
+            <MovieHighlightItem :scores="lowestScoreMovie" :movie="movie[0]" shownScore="rating_total" />
+          </div>
+          <div>
+            <h2 class="font-semibold mt-4 h-14 flex items-center w-40">{{ $t('stats.mostRatings',[mostRatedMovie.ratings])}}</h2>
+            <MovieHighlightItem :scores="mostRatedMovie" :movie="mostRated[0]" shownScore="rating_total" />
+          </div>
         </div>
     </section>
 </template>
 
 <script>
-import StatItem from './StatItem.vue'
+import MovieHighlightItem from './MovieHighlightItem.vue'
 
 export default {
   name: 'Stats',
   components: {
-    StatItem
+    MovieHighlightItem
   },
   mounted: function(){
     this.$store.dispatch("setStats")

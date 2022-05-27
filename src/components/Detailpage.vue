@@ -8,45 +8,45 @@
                 <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
                 <p class="text-white font-semibold animate-bounce mt-8">{{ $t('general.loadMovies') }}</p>
             </div>
-            <div v-else class="flex flex-col lg:flex-row lg:rounded-b-lg px-0 sm:px-4 md:px-0">
-                <div class="flex flex-col w-full bg-white rounded-t-lg lg:rounded-lg justify-start lg:mr-6">
-                    <div class="flex bg-gray-900 justify-between w-full sm:rounded-t-lg">
-                        <img :src=poster class="w-1/2 lg:w-60 h-auto object-contain self-start rounded-tl-lg self-center" />
-                        <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center rounded-tr-lg">
+            <div v-else class="flex flex-col lg:flex-row lg:rounded-b px-0 sm:px-4 md:px-0">
+                <div class="flex flex-col w-full bg-white rounded-t lg:rounded justify-start lg:mr-6">
+                    <div class="flex bg-gray-900 justify-between w-full sm:rounded-t">
+                        <img :src=poster class="w-1/2 lg:w-76 h-auto object-contain self-start rounded-tl self-center" />
+                        <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center rounded-tr">
                             <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
                                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                             </div>
                             <div class="mx-auto bg-opacity-90 w-12 sm:w-20 md:w-24 lg:w-20 h-12 sm:h-20 md:h-24 lg:h-20 border border-gray-900 p-2 text-3xl rounded-lg flex justify-center my-3" :class="{'bg-red-700': score.rating_total >= 7, 'bg-yellow-500': score.rating_total < 7 && score.rating_total >=4, 'bg-green-600': score.rating_total < 4}">
                                 <p class="self-center text-white text-lg">{{score.rating_total}}</p>
                             </div>
-                            <div class="text-left w-36 mx-auto text-white">
+                            <div class="text-left w-auto mx-auto text-white text-xs sm:text-base">
                                 <div class="flex my-2 md:text-lg lg:text-base">
-                                    <div class="flex rounded-lg justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2"  :class="{'bg-red-700': score.rating_sexism >= 7, 'bg-yellow-500': score.rating_sexism < 7 && score.rating_sexism >=4, 'bg-green-600': score.rating_sexism < 4}">
+                                    <div class="flex rounded-lg justify-center w-6 h-6 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2"  :class="{'bg-red-700': score.rating_sexism >= 7, 'bg-yellow-500': score.rating_sexism < 7 && score.rating_sexism >=4, 'bg-green-600': score.rating_sexism < 4}">
                                         <div class="self-center">{{score.rating_sexism}}</div>
                                     </div>
                                     <p class="self-center">{{ $t('categories.sexism') }}</p>
                                 </div>
                                 <div class="flex my-2 md:text-lg lg:text-base">
-                                    <div class="flex bg-red-500 rounded-lg justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_racism >= 7, 'bg-yellow-500': score.rating_racism < 7 && score.rating_racism >=4, 'bg-green-600': score.rating_racism < 4}">
+                                    <div class="flex bg-red-500 rounded-lg justify-center w-6 h-6 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_racism >= 7, 'bg-yellow-500': score.rating_racism < 7 && score.rating_racism >=4, 'bg-green-600': score.rating_racism < 4}">
                                         <div class="self-center">{{score.rating_racism}}</div>
                                     </div>
                                     <p class="self-center">{{ $t('categories.racism') }}</p>
                                 </div>
                                 <div class="flex my-2 md:text-lg lg:text-base">
-                                    <div class="flex bg-red-500 rounded-lg justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_others >= 7, 'bg-yellow-500': score.rating_others < 7 && score.rating_others >=4, 'bg-green-600': score.rating_others < 4}">
+                                    <div class="flex bg-red-500 rounded-lg justify-center w-6 h-6 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_others >= 7, 'bg-yellow-500': score.rating_others < 7 && score.rating_others >=4, 'bg-green-600': score.rating_others < 4}">
                                         <div class="self-center">{{score.rating_others}}</div>
                                     </div>
                                     <p class="self-center">{{ $t('categories.others') }}</p>
                                 </div>
                                 <div class="flex my-2 md:text-lg lg:text-base">
-                                    <div class="flex bg-red-500 rounded-lg justify-center w-8 h-8 md:w-12 md:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_cringe >= 7, 'bg-yellow-500': score.rating_cringe < 7 && score.rating_cringe >=4, 'bg-green-600': score.rating_cringe < 4}">
+                                    <div class="flex bg-red-500 rounded-lg justify-center w-6 h-6 sm:w-12 sm:h-12 lg:w-10 lg:h-10 mr-2" :class="{'bg-red-700': score.rating_cringe >= 7, 'bg-yellow-500': score.rating_cringe < 7 && score.rating_cringe >=4, 'bg-green-600': score.rating_cringe < 4}">
                                         <div class="self-center">{{score.rating_cringe}}</div>
                                     </div> 
                                     <p class="self-center">{{ $t('categories.cringe') }}</p>
                                 </div>
                             </div>
                         </div>
-                        <div v-else class="w-full flex flex-col mx-2 self-center rounded-tr-lg">
+                        <div v-else class="w-full flex flex-col mx-2 self-center rounded-tr">
                             <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
                                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                             </div>
@@ -76,7 +76,7 @@
                             <article class="my-4 text-sm md:text-md">
                                 {{ movie.overview }}
                             </article>
-                            <div class="flex justify-between my-4 align-end">   
+                            <div class="flex justify-between my-4 mb-8 align-end">   
                                 <div class="streaming-services flex gap-2 w-full">
                                     <a  v-if="onNetflix" href="https://www.netflix.com" target="_blank">
                                     <img class="w-16" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
