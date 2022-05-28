@@ -10,7 +10,7 @@
           <RouterLink to="/faq" class="border-r border-white px-4">{{ $t('header.faq') }}</RouterLink>
           <RouterLink to="/contact" class="px-4">{{ $t('header.contact') }}</RouterLink>
         </div>
-        <article class="mx-auto text-white w-76 max-w-full text-center lg:text-left text-xs">
+        <article class="mx-auto text-white w-64 max-w-full text-center lg:text-left text-xs">
             {{ $t('general.slogan') }}
         </article>
         </div>
