@@ -7,10 +7,10 @@
               </router-link>
             </div>
             <div class="flex">
-              <router-link to="/all" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500">{{ $t('header.allMovies') }}</router-link>
-              <router-link to="/about" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500">{{ $t('header.about') }}</router-link>
-              <router-link to="/faq" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500">{{ $t('header.faq') }}</router-link>
-              <router-link to="/contact" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500">{{ $t('header.contact') }}</router-link>
+              <router-link to="/all" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.allMovies') }}</router-link>
+              <router-link to="/about" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.about') }}</router-link>
+              <router-link to="/faq" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.faq') }}</router-link>
+              <router-link to="/contact" tag="a" class="text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.contact') }}</router-link>
               <button v-if="$root.$i18n.locale == 'en'" @click="switchLanguage('de')" class="mr-6 sm:mr-10"><img class="w-6" src="../assets/images/germany.svg"></button>
               <button v-if="$root.$i18n.locale == 'de'" @click="switchLanguage('en')" class="mr-6 sm:mr-10"><img class="w-6" src="../assets/images/uk.svg"></button>
               <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-white mr-6 sm:mr-0 self-center hover:text-yellow-500" :class="{'animate-bounce': showSearch}" @click="showSearch = !showSearch; showMenu = false;showNav = false" />
@@ -31,15 +31,15 @@
                 </router-link> 
                 </div>
                 <hr>
-                <router-link to="/" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.home') }}</div></router-link>  
+                <router-link to="/" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.home') }}</div></router-link>  
                 <hr>
-                <router-link to="/all" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.allMovies') }}</div></router-link>
+                <router-link to="/all" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.allMovies') }}</div></router-link>
                 <hr>
-                <router-link to="/faq" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.faq') }}</div></router-link>
+                <router-link to="/faq" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.faq') }}</div></router-link>
                 <hr>
-                <router-link to="/about" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.about') }}</div></router-link>
+                <router-link to="/about" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.about') }}</div></router-link>
                 <hr>
-                <router-link to="/contact" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500"><div class="py-6" @click="showNav = false">{{ $t('header.contact') }}</div></router-link>
+                <router-link to="/contact" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.contact') }}</div></router-link>
                 <hr>
               </nav>
             </transition-group>

@@ -1,7 +1,7 @@
 <template>
     <div class="container text-white px-4 py-6 md:py-12 text-left xl:w-10/12 mx-auto md:rounded-lg flex justify-start flex-wrap gap-12">
         <div v-if="!submitted" class="mr-8 max-w-full">
-            <h1 class="mb-4 text-xl md:text-2xl font-semibold">{{ $t('contact.sendFeedback') }}</h1>
+            <h1 class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('contact.sendFeedback') }}</h1>
             <form name="contact" class="w-full p-8 bg-red-900 rounded-lg" method="post"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field" @submit.prevent="handleSubmit"
@@ -28,7 +28,7 @@
             <p class="p-4 bg-green-500 text-white rounded-lg shadow-lg font-semibold text-center">{{ $t('contact.success') }} <font-awesome-icon :icon="['fas', 'check']" class="text-white" /></p>
         </div>
         <div class="">
-            <h1 class="mb-4 text-xl md:text-2xl font-semibold">{{ $t('header.contact') }}</h1>
+            <h1 class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('header.contact') }}</h1>
             <p class="font-semibold">Christian Eckardt</p>
             <p class="mb-8 font-semibold">22301 Hamburg</p>
             <p class="mb-8 font-semibold"><a href="https://eckeecke.github.io">eckeecke.github.io</a></p>

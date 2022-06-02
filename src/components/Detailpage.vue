@@ -2,7 +2,7 @@
     <section class="w-full bg-center bg-cover bg-fixed" style="min-height:100vh-5rem;" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backdrop}`,minHeight: 'calc(100vh - 20rem)'}">
         <div class="container mx-auto pt-8 pb-28 xl:w-10/12 md:px-4">
             <div class="w-full mb-8 flex justify-between px-4 md:px-0">
-                <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-white font-semibold" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
+                <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
             </div>
             <div v-if="triggerscoreLoading" class="mb-8 py-32 lg:py-48">
                 <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
