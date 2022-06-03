@@ -34,12 +34,24 @@ export default {
   font-family: Lato;
   src: url("./assets/Lato-Regular.ttf");
 }
+@font-face {
+  font-family: Avenir;
+  src: url("./assets/Avenir.otf");
+}
+@font-face {
+  font-family: AvenirLight;
+  src: url("./assets/AvenirLight.otf");
+}
 #app {
-  font-family: Avenir, Lato, Helvetica, Arial, sans-serif;
+  font-family: AvenirLight, Lato, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+}
+
+.font-semibold {
+  font-family: Avenir;
 }
 
 </style>

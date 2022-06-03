@@ -52,11 +52,11 @@
         </div>
         <div class="w-full lg:w-1/2 px-4 flex gap-4 sm:gap-8 overflow-auto">
           <div>
-            <h2 class="font-semibold mt-4 h-14 flex items-center w-44 lg:text-lg lg:w-48">{{ $t('stats.lowestScore') }}</h2>
+            <h2 class="font-semibold mt-4 h-14 flex items-center w-44 lg:w-44">{{ $t('stats.lowestScore') }}</h2>
             <MovieHighlightItem :scores="lowestScoreMovie" :movie="movie[0]" shownScore="rating_total" />
           </div>
           <div>
-            <h2 class="font-semibold mt-4 h-14 flex items-center lg:text-lg lg:w-48">{{ $t('stats.mostRatings',[mostRatedMovie.ratings])}}</h2>
+            <h2 class="font-semibold mt-4 h-14 flex items-center w-44 lg:w-44">{{ $t('stats.mostRatings',[mostRatedMovie.ratings])}}</h2>
             <MovieHighlightItem :scores="mostRatedMovie" :movie="mostRated[0]" shownScore="rating_total" />
           </div>
         </div>
