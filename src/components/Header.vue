@@ -1,5 +1,5 @@
 <template>
-    <header class="w-full h-auto bg-red-800 z-30 shadow-md flex flex-col relative sticky top-0">
+    <header class="w-full h-auto bg-red-800 bg-opacity-90 z-30 shadow-md flex flex-col relative sticky top-0">
         <section class="container mx-auto h-full p-4 xl:w-10/12 flex justify-between relative">
             <div class="flex">
               <router-link to="/" tag="h1" class="text-xl md:text-2xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
