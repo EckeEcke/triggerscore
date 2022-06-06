@@ -17,6 +17,11 @@
             <article class="text-left relative w-full h-full">
                 <h3 v-if="movie.title.length > 0" class="text-sm h-14 mb-1 font-semibold overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="text-sm h-16 mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
+                <p class="mt-3 mb-1 text-xs md:text-md">
+                    <span class="self-center">{{ movie.release_date.substring(0,4) }}</span>
+                    <span class="mx-2">|</span>
+                    <span>{{ movie.runtime }} {{ $t('general.minutes') }}</span>
+                </p>
             </article>
         </div>  
     </router-link>
