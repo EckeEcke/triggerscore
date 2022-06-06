@@ -4,7 +4,7 @@
             <div class="w-full h-60 bg-cover rounded-t" :style="{backgroundImage: `url(${poster})`}">
 
             </div>
-            <div class="absolute right-2 mx-auto mt-3 h-12 w-12 text-white rounded-lg bg-opacity-90" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && scores[shownScore] >= 7, 'bg-yellow-500': scoreAvailable && scores[shownScore] < 7 && scores[shownScore] >=4, 'bg-green-600': scoreAvailable && scores[shownScore] < 4}">
+            <div class="absolute right-2 mx-auto mt-2 h-12 w-12 text-white rounded-lg bg-opacity-90" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && scores[shownScore] >= 7, 'bg-yellow-500': scoreAvailable && scores[shownScore] < 7 && scores[shownScore] >=4, 'bg-green-600': scoreAvailable && scores[shownScore] < 4}">
                 <div class="relative w-full h-full font-semibold">
                     <span v-if="scoreAvailable" class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ scores[shownScore] }}</span>
                     <span v-else class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">-</span>
