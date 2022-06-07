@@ -12,14 +12,27 @@
                 <div class="flex rounded-lg justify-center w-10 h-10 mr-2" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-500': scoreTotal < 7 && scoreTotal >=4, 'bg-green-600': scoreTotal < 4}">
                     <p class="self-center text-white text-lg font-semibold">{{scoreTotal}}</p>
                 </div>
-                   <h3 v-if="movie.title.length > 0" class="flex items-center text-base font-semibold overflow-hidden inline-block h-12 overflow-hidden w-10/12">{{ movie.title }}</h3>
-                <h3 v-else class="text-base font-semibold overflow-hidden w-10/12">{{ movie.original_title }}</h3>
+                <div class=" w-10/12">
+                    <h3 v-if="movie.title.length > 0" class="text-base font-semibold overflow-hidden h-6 overflow-hidden whitespace-nowrap custom-headline">{{ movie.title }}</h3>
+                    <h3 v-else class="text-base font-semibold overflow-hidden">{{ movie.original_title }}</h3>
+                    <div class="text-xs pt-1">
+                    <span>{{ movie.release_date.substring(0,4) }}</span>
+                    <span class="mx-2">|</span>
+                    <span>{{ movie.runtime }} {{ $t('general.minutes') }}</span>
+                </div> 
+                </div>
+                   
                 </div>
         </div>
-        <div class="w-full max-w-sm p-3 pb-5 sm:pb-3">
+        <div class="w-full max-w-sm p-3 pt-2 pb-5 sm:pb-2">
             <article class="text-left relative w-full h-full">
-                <h3 v-if="movie.title.length > 0" class="hidden md:block text-base mb-1 font-semibold overflow-hidden h-8 overflow-hidden">{{ movie.title }}</h3>
+                <h3 v-if="movie.title.length > 0" class="hidden md:block text-base mb-1 font-semibold overflow-hidden h-6 overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="hidden md:block text-base mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
+                <div class="text-xs mb-1 py-1 hidden sm:block">
+                    <span>{{ movie.release_date.substring(0,4) }}</span>
+                    <span class="mx-2">|</span>
+                    <span>{{ movie.runtime }} {{ $t('general.minutes') }}</span>
+                </div> 
                 <div class="grid grid-cols-2 text-sm">
                     <div class="flex my-2 text-sm">
                             <div class="flex justify-center rounded-lg w-8 h-8 mr-2"  :class="{'bg-red-700': scores.rating_sexism >= 7, 'bg-yellow-500': scores.rating_sexism < 7 && scores.rating_sexism >=4, 'bg-green-600': scores.rating_sexism < 4}">
@@ -77,3 +90,10 @@ export default {
   }
 }
 </script>
+
+<style>
+    .custom-headline {
+        width: calc(100% - 10px);
+        text-overflow: ellipsis;
+    }
+</style>
