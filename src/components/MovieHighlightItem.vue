@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-40 h-auto mr-2 bg-white shadow-md flex flex-none flex-col relative rounded transform transition duration-300 lg:hover:scale-105 container-xl cursor-pointer">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-40 h-auto mr-2 bg-white shadow-md flex flex-none flex-col relative rounded transform transition duration-300 lg:hover:scale-105 container-xl cursor-pointer" style="scroll-snap-align: start;">
         <div class="flex">
             <div class="w-full h-60 bg-cover rounded-t" :style="{backgroundImage: `url(${poster})`}">
 

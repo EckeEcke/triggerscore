@@ -5,7 +5,7 @@
             <p class="text-left text-white">{{subTitle}}</p>
         </div>
         <div class="relative group">
-            <div id="highlight-container" ref="swiper" class="hide-scrollbar flex flex-none flex-row  overflow-x-scroll py-4 px-0 -mr-4 md:mr-0">
+            <div id="highlight-container" ref="swiper" class="hide-scrollbar flex flex-none flex-row  overflow-x-scroll py-4 px-0 -mr-4 md:mr-0" style="scroll-snap-type: x mandatory;">
                 <MovieHighlightItem v-for="movie in movies" :key="movie.id" :movie="movie" :shownScore="shownScore" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
                 <div class="justify-between md:px-12 xl:px-8 container mx-auto xl:w-10/12 hidden  sm:group-hover:flex pointer-events-none absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                     <button @click="scrollHighlightContainer('left')" class="bg-white rounded-full"><font-awesome-icon class="text-yellow-500 text-4xl transition transform scale-110 hover:scale-125 pointer-events-auto" :icon="['fas', 'arrow-circle-left']" /></button>
