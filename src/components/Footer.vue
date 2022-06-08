@@ -4,7 +4,7 @@
       <section class="container mx-auto h-full px-1 md:px-4 xl:w-10/12 flex flex-col md:flex-row justify-around md:justify-between">
         
         <div class="self-center my-2 w-full md:w-auto">
-          <h2 class="text-2xl font-extrabold text-center lg:text-left text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE</h2>
+          <h2 class="text-2xl font-semibold text-center lg:text-left text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE</h2>
         <div class="flex text-white my-4 justify-center lg:justify-start">
           <RouterLink to="/about" class="border-r border-white px-4 lg:pl-0 uppercase">{{ $t('header.about') }}</RouterLink>
           <RouterLink to="/faq" class="border-r border-white px-4 uppercase">{{ $t('header.faq') }}</RouterLink>

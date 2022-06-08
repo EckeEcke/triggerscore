@@ -13,7 +13,7 @@
                     <div class="flex bg-gray-900 justify-between w-full sm:rounded-t">
                         <img :src=poster class="w-1/2 lg:w-76 h-auto object-contain self-start rounded-tl self-center" />
                         <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center rounded-tr">
-                            <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
+                            <div class="text-base md:text-2xl lg:text-lg self-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
                                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                             </div>
                             <div class="mx-auto bg-opacity-90 w-12 sm:w-20 md:w-24 lg:w-20 h-12 sm:h-20 md:h-24 lg:h-20 border border-gray-900 p-2 text-3xl rounded-lg flex justify-center my-3" :class="{'bg-red-700': score.rating_total >= 7, 'bg-yellow-500': score.rating_total < 7 && score.rating_total >=4, 'bg-green-600': score.rating_total < 4}">
@@ -47,7 +47,7 @@
                             </div>
                         </div>
                         <div v-else class="w-full flex flex-col mx-2 self-center rounded-tr">
-                            <div class="text-base md:text-2xl lg:text-lg self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
+                            <div class="text-base md:text-2xl lg:text-lg self-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
                                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                             </div>
                             <p class="text-white mt-4">{{ $t('general.noRatings') }}</p>
