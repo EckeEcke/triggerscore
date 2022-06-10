@@ -9,7 +9,7 @@
     "slogan": "'Eine neue Art alte Filme zu schauen.' Triggerscore ist ein Bewertungsportal für Filme, bei dem User bewerten können, wie sehr alte Filme Zuschauer*innen von heute triggern.",
     "newest": "Neueste ",
     "recentRatings": "Kürzlich abgegebene Bewertungen",
-    "top10": "TOP 10s",
+    "top10": "TOP 10",
     "top10Copy": "Filme mit höchsten Triggerscores",
     "stats": "Stats",
     "statsCopy": "Statistiken für Zahlenbegeisterte",
@@ -67,8 +67,9 @@
     "average": "Durchschnitt ",
     "totalRatings": "Gesamtzahl abgegebene Bewertungen",
     "moviesOnTS": "Filme auf Triggerscore",
-    "lowestScore": "Niedrigster Triggerscore",
-    "mostRatings": "Am häufigsten bewertet ({0} Bewertungen)"
+    "lowestScore": "Niedrigster Score",
+    "highestScore": "Höchster Score",
+    "mostRatings": "Meiste Bewertungen ({0} Bewertungen)"
   },
   "about": {
     "headline": "Triggerscore - eine neue Art alte Filme zu schauen",

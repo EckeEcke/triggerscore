@@ -17,7 +17,7 @@
                                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                             </div>
                             <div class="mx-auto bg-opacity-90 w-12 sm:w-20 md:w-24 lg:w-20 h-12 sm:h-20 md:h-24 lg:h-20 border border-gray-900 p-2 text-3xl rounded-lg flex justify-center my-3" :class="{'bg-red-700': score.rating_total >= 7, 'bg-yellow-500': score.rating_total < 7 && score.rating_total >=4, 'bg-green-600': score.rating_total < 4}">
-                                <p class="self-center text-white text-lg">{{score.rating_total}}</p>
+                                <p class="self-center text-white text-lg md:text-xl font-semibold">{{score.rating_total}}</p>
                             </div>
                             <div class="text-left w-auto mx-auto text-white text-xs sm:text-base">
                                 <div class="flex my-2 md:text-lg lg:text-base">

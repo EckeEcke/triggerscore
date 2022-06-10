@@ -187,8 +187,9 @@ export default {
   position: absolute;
   display: block;
   width: 100%;
-  height: 2px;
-  bottom: 0;
+  height: 4px;
+  bottom: -4px;
+  border-radius: 8px;
   left: 0;
   background-color: rgba(255, 255, 255);
   transform: scaleX(0);

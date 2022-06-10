@@ -1,6 +1,6 @@
 <template>
       <section class="bg-white py-6 md:pt-4 md:pb-12 md:px-6 text-left text-sm mx-auto md:rounded flex flex-col lg:flex-row gap-x-12">
-        <div class="w-full lg:w-1/2 px-4">
+        <div class="w-full lg:w-2/5 px-4">
           <div class=" font-semibold">
           <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
             <span>{{ $t('stats.totalRatings') }}</span><span class="text-lg font-semibold h-14 flex items-center">{{ stats.totalRatings }}</span>
@@ -50,13 +50,17 @@
           </div>
         </div>
         </div>
-        <div class="w-full lg:w-1/2 px-4 flex gap-4 sm:gap-8 overflow-auto">
+        <div class="w-full lg:w-1/2 px-4 flex overflow-auto hide-scrollbar">
           <div>
-            <h2 class="font-semibold mt-4 h-14 flex items-center w-44 lg:w-44">{{ $t('stats.lowestScore') }}</h2>
+            <h2 class="font-semibold mt-4 h-14 flex items-center pr-2">{{ $t('stats.lowestScore') }}</h2>
             <MovieHighlightItem :scores="lowestScoreMovie" :movie="movie[0]" shownScore="rating_total" />
           </div>
           <div>
-            <h2 class="font-semibold mt-4 h-14 flex items-center w-44 lg:w-44">{{ $t('stats.mostRatings',[mostRatedMovie.ratings])}}</h2>
+            <h2 class="font-semibold mt-4 h-14 flex items-center pr-2">{{ $t('stats.highestScore') }}</h2>
+            <MovieHighlightItem :scores="highestScoreMovie" :movie="movieHighest[0]" shownScore="rating_total" />
+          </div>
+          <div>
+            <h2 class="font-semibold mt-4 h-14 flex items-center pr-2">{{ $t('stats.mostRatings',[mostRatedMovie.ratings])}}</h2>
             <MovieHighlightItem :scores="mostRatedMovie" :movie="mostRated[0]" shownScore="rating_total" />
           </div>
         </div>
@@ -83,6 +87,11 @@ export default {
         return a.rating_total < b.rating_total ? a : b
       })
     },
+    highestScoreMovie: function(){
+      return this.$store.getters.getTriggerscores.reduce(function(a,b){
+        return a.rating_total > b.rating_total ? a : b
+      })
+    },
     mostRatedMovie: function(){
       return this.$store.getters.getTriggerscores.reduce(function(a,b){
         return a.ratings > b.ratings ? a : b
@@ -91,6 +100,11 @@ export default {
     movie: function(){
       if(this.lowestScoreMovie){
         return this.$store.getters.getMovies.filter(movie => movie.id == this.lowestScoreMovie.movie_id)
+      } else return {}
+    },
+    movieHighest: function(){
+      if(this.highestScoreMovie){
+        return this.$store.getters.getMovies.filter(movie => movie.id == this.highestScoreMovie.movie_id)
       } else return {}
     },
     mostRated: function(){
