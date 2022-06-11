@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white sm:rounded shadow-md flex flex-col relative border-b-2 md:border-b-0 cursor-pointer min-w-sm lg:hover:scale-105 transform transition duration-300">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white sm:rounded shadow-md flex flex-col relative border-b-2 md:border-b-0 cursor-pointer min-w-sm lg:hover:bg-black lg:hover:text-white transform transition duration-300">
         <div class="hidden md:block relative w-full h-44 p-3 text-white bg-cover bg-center sm:rounded-t w-3/4" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(22,0,0,0.1),rgba(22,0,0,0.2)),url(' + poster + ')'}">
                  
                 <div class="flex absolute top-2 right-2 rounded-lg justify-center w-16 h-16 mr-2 bg-opacity-80" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-500': scoreTotal < 7 && scoreTotal >=4, 'bg-green-600': scoreTotal < 4}">

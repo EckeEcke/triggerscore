@@ -30,17 +30,17 @@
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                 </router-link> 
                 </div>
-                <hr>
+                
                 <router-link to="/" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.home') }}</div></router-link>  
-                <hr>
+                
                 <router-link to="/all" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.allMovies') }}</div></router-link>
-                <hr>
+                
                 <router-link to="/faq" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.faq') }}</div></router-link>
-                <hr>
+                
                 <router-link to="/about" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.about') }}</div></router-link>
-                <hr>
+                
                 <router-link to="/contact" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.contact') }}</div></router-link>
-                <hr>
+                
               </nav>
             </transition-group>
             <div v-if="showSearch" class="fixed h-screen w-screen top-0 left-0 bg-gray-900 bg-opacity-40 overflow-none" @click="showSearch = false"></div>

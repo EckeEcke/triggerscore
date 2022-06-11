@@ -21,7 +21,7 @@
               </span></h2>
               <p class="text-base md:text-lg text-white font-semibold text-left">{{ $t('general.recentRatings') }}</p>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 sm:gap-3 md:gap-5 justify-content-start">
+                <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 sm:gap-2 justify-content-start">
                     <RecentRatingsItem v-for="(rating,index) in recentRatings" :key="index" :movie="rating" :scores="recentScores[index]" />
                 </div>
                 
@@ -79,9 +79,15 @@
                         <p class="text-base md:text-lg text-white font-semibold">{{ $t('general.statsCopy') }}</p>
                     </div> 
                 </div>
-                <div class="sm:pt-8 sm:pb-16">
+                <div class="sm:pt-8">
                     <Stats />
                 </div> 
+            </section>
+            <section class="container xl:w-10/12 mx-auto px-4 my-6">
+                <div class="bg-opacity-90 py-16">
+                    <h2 class="text-white text-xl font-semibold my-4">{{ $t('general.discoverMoreMovies') }}</h2>
+                    <router-link to="/all" tag="button" class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-white font-semibold uppercase my-4">{{ $t('header.allMovies') }}</router-link>
+                </div>  
             </section>
                        
         </div>
