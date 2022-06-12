@@ -83,7 +83,7 @@
           
         </div>
       <div class="font-semibold p-3 ml-auto mr-4">{{results}} {{ $t('filter.results') }}</div>
-        <button class="font-semibold text-yellow-500 p-3 w-auto" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
+        <button class="font-semibold text-yellow-500 p-3 w-auto text-white uppercase" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
       </div>
     </div>
   </div> 

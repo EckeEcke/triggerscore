@@ -80,7 +80,7 @@
             <div class="-mt-20 h-20 w-full z-30 pointer-events-none" style="background-image: linear-gradient(to bottom,rgba(255,255,255,0.2),rgba(255,255,255,1);"/>
               <div class="text-sm my-5 font-semibold">{{results}} {{ $t('filter.results') }}</div>
               <hr  class="my-4">
-              <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-gray-900 rounded-lg" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
+              <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-white uppercase rounded-lg" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
               </div>
             </div>
             </div>
