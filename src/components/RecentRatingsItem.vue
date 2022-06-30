@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white sm:rounded shadow-md flex flex-col relative border-b-2 md:border-b-0 cursor-pointer min-w-sm lg:hover:bg-black lg:hover:text-white transform transition duration-300">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="bg-white sm:rounded shadow-md flex flex-col relative border-b-2 md:border-b-0 cursor-pointer min-w-sm lg:hover:shadow-inner transform transition duration-300">
         <div class="hidden md:block relative w-full h-44 p-3 text-white bg-cover bg-center sm:rounded-t w-3/4" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(22,0,0,0.1),rgba(22,0,0,0.2)),url(' + poster + ')'}">
                  
                 <div class="flex absolute top-2 right-2 rounded-lg justify-center w-16 h-16 mr-2 bg-opacity-80" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-500': scoreTotal < 7 && scoreTotal >=4, 'bg-green-600': scoreTotal < 4}">
@@ -24,16 +24,17 @@
                    
                 </div>
         </div>
-        <div class="w-full max-w-sm p-3 pt-2 pb-5 sm:pb-2">
+        <div class="w-full p-3 pt-3 pb-5 sm:pb-2 flex gap-4">
+            <img class="h-36 hidden md:block rounded-sm" :alt="movie.original_title" :src="poster2">
             <article class="text-left relative w-full h-full">
                 <h3 v-if="movie.title.length > 0" class="hidden md:block text-base mb-1 font-semibold overflow-hidden h-6 overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="hidden md:block text-base mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
-                <div class="text-xs mb-1 py-1 hidden sm:block">
+                <div class="text-xs mb-1 py-1 hidden md:block">
                     <span>{{ movie.release_date.substring(0,4) }}</span>
                     <span class="mx-2">|</span>
                     <span>{{ movie.runtime }} {{ $t('general.minutes') }}</span>
                 </div> 
-                <div class="grid grid-cols-2 text-sm">
+                <div class="grid grid-cols-2 text-sm max-w-xs">
                     <div class="flex my-2 text-sm">
                             <div class="flex justify-center rounded-lg w-8 h-8 mr-2"  :class="{'bg-red-700': scores.rating_sexism >= 7, 'bg-yellow-500': scores.rating_sexism < 7 && scores.rating_sexism >=4, 'bg-green-600': scores.rating_sexism < 4}">
                                 <div class="self-center text-white">{{scores.rating_sexism}}</div>
@@ -72,6 +73,9 @@ export default {
     scores: Object
   },
   computed: {
+    poster2: function() {
+              return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
+      },
       poster: function() {
           if(this.movie.backdrop_path){
               return `https://image.tmdb.org/t/p/original/${this.movie.backdrop_path}`

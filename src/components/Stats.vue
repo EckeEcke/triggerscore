@@ -50,7 +50,7 @@
           </div>
         </div>
         </div>
-        <div class="w-full lg:w-1/2 px-4 flex overflow-auto hide-scrollbar">
+        <div class="w-full lg:w-1/2 px-4 pb-2 flex overflow-auto hide-scrollbar">
           <div>
             <h2 class="font-semibold mt-4 h-14 flex items-center pr-2">{{ $t('stats.lowestScore') }}</h2>
             <MovieHighlightItem :scores="lowestScoreMovie" :movie="movie[0]" shownScore="rating_total" />
