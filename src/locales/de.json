@@ -70,7 +70,7 @@
     "moviesOnTS": "Filme auf Triggerscore",
     "lowestScore": "Niedrigster Score",
     "highestScore": "Höchster Score",
-    "mostRatings": "Meiste Bewertungen ({0} Bewertungen)"
+    "mostRatings": "Meiste Bewertungen <br>({0} Bewertungen)"
   },
   "about": {
     "headline": "Triggerscore - eine neue Art alte Filme zu schauen",

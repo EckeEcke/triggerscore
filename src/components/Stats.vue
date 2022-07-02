@@ -60,7 +60,7 @@
             <MovieHighlightItem :scores="highestScoreMovie" :movie="movieHighest[0]" shownScore="rating_total" />
           </div>
           <div>
-            <h2 class="font-semibold mt-4 h-14 flex items-center pr-2">{{ $t('stats.mostRatings',[mostRatedMovie.ratings])}}</h2>
+            <h2 class="font-semibold mt-4 h-14 flex items-center pr-2 w-40" v-html="$t('stats.mostRatings',[mostRatedMovie.ratings])"></h2>
             <MovieHighlightItem :scores="mostRatedMovie" :movie="mostRated[0]" shownScore="rating_total" />
           </div>
         </div>
