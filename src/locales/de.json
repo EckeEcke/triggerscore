@@ -14,7 +14,9 @@
     "stats": "Stats",
     "statsCopy": "Statistiken für Zahlenbegeisterte",
     "minutes": "Minuten",
-    "discoverMoreMovies": "Du möchtest noch mehr Filme auf Triggerscore entdecken?"
+    "discoverMoreMovies": "Du möchtest noch mehr Filme auf Triggerscore entdecken?",
+    "new": "NEU!",
+    "ratings": "Bewertung(en)"
     
   },
   "header": {
@@ -107,7 +109,7 @@
     "descRacism": "Werden unkritisch rassistische Klischees bedient?",
     "descOthers": "Enthält der Film weitere triggernde Elemente?",
     "descCringe": "Sind Inszenierung, Dialoge oder Handlungen 'zum Fremdschämen'?",
-    "tmdb-rating": "TMDB-Bewertung"
+    "tmdb-rating": "TMDB"
   },
   "highlights": {
     "headline1": "James Bond Special",

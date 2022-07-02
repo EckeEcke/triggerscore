@@ -60,13 +60,15 @@
                                 {{ movie.title }}
                                 </h2>
                             </div>
-                            
                             <p class="mb-4 text-xs md:text-md">
                                 {{ releaseDate }}
                                 <span class="mx-2">|</span>
                                 <span>{{ movie.runtime }} {{ $t('general.minutes') }}</span>
-                                <span class="mx-2">|</span>
-                                <span v-if="movie.vote_average">{{ $t('rating.tmdb-rating') }}: {{ movie.vote_average }}</span>
+                                <span v-if="totalRatings[0]" class="mx-2">|</span>
+                                <span v-if="totalRatings[0]">{{ totalRatings[0].ratings }} {{ $t('general.ratings') }}</span>
+                                <span v-if="movie.vote_average" class="mx-2">|</span>
+                                <span v-if="movie.vote_average"><wbr>{{ $t('rating.tmdb-rating') }}: {{ movie.vote_average }}</span>
+                                
                             </p>
                             
                             <i v-if="movie.tagline && movie.tagline.length > 1" class="text-sm md: text-md">"{{ movie.tagline }}"</i>
@@ -133,6 +135,8 @@ export default {
     this.loadMovie()  
     this.loadProviders()
     this.loadTriggerscore()
+    this.$store.dispatch("setTriggerscores")
+    this.$store.dispatch("filterMovies")
   },
   computed: {
       poster: function() {
@@ -149,6 +153,9 @@ export default {
       },
       language: function(){
           return this.$root.$i18n.locale
+      },
+      totalRatings: function(){
+        return this.$store.getters.getTriggerscores.filter(movie => movie.movie_id == this.movie.id)
       },
       regionProvider: function(){
           let region = this.$root.$i18n.locale.toUpperCase()
@@ -182,7 +189,6 @@ export default {
           try {
               const response = await fetch(`https://api.themoviedb.org/3/movie/${this.$route.params.id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
               const providers = await response.json()
-              console.log(providers)
               this.onNetflix = false
               this.onAmazon = false
               this.onDisney = false
