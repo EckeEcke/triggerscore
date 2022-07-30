@@ -29,8 +29,30 @@ async function filterByProvider(netflix, prime, disney, sky, triggerscores,array
                 }
                     
             })
-            .catch(console.log("Something went wrong"))
-        ))
+            .catch(
+                setTimeout(()=>{
+                    fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}/watch/providers?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c`)
+                    .then((res) => res.json())
+                    .then(res => {
+                        if(res.results[providerRegion] && res.results[providerRegion].flatrate !== undefined){
+                            if(netflix && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Netflix")){
+                                providerIDs.push(entry.movie_id)
+                            }
+                            if(prime && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Amazon Prime Video")){
+                                providerIDs.push(entry.movie_id)
+                            }
+                            if(disney && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Disney Plus")){
+                                providerIDs.push(entry.movie_id)
+                            }
+                            if(sky && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Sky Ticket")){
+                                providerIDs.push(entry.movie_id)
+                            }
+                        }
+                            
+                    })
+                    .catch(error=>console.log("Something went wrong: " + error)) 
+                },1000)
+        )))
         .then(()=>
             clonedArray = clonedArray.filter(movie => providerIDs.includes(movie.id)))
         .then(()=>{
@@ -333,7 +355,7 @@ export default new Vuex.Store({
             const searchTerm = this.state.searchTerm
             const fetchedSearchResults = fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${this.getters.getLocale}&include_adult=false&query=${searchTerm}`)
                                 .then(res => res.json())
-                                .catch()
+                                .catch(error => console.log(error))
             fetchedSearchResults.then(res => {
                 let filteredResults = res.results.filter(result => {
                     return result.poster_path && result.overview && result.release_date && parseInt(result.release_date.substring(0,4)) <= 2010})
@@ -354,8 +376,12 @@ export default new Vuex.Store({
             const loadedMovies = Promise.all(this.getters.getBondMovieIDs.map(id => 
                 fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${this.getters.getLocale}`)
                 .then((res) => res.json())
-                .catch(console.log("Something went wrong"))
-            ))
+                .catch(setTimeout(()=>{
+                    fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${this.getters.getLocale}`)
+                    .then((res) => res.json())
+                    .catch(error=>console.log("Something went wrong: " + error))
+                },1000)       
+            )))
             loadedMovies.then(res => {state.commit("setBondMovies", res);state.commit("setHighlightsLoading",false)})
         },
         async filterMovies(state){
