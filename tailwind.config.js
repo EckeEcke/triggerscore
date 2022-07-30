@@ -6,9 +6,10 @@ module.exports = {
       colors: {
         gray: {
           900: 'rgb(15,15,25)'
-        }
+        },
+        white: 'rgb(250,250,250)'
       }
-    },
+    }
   },
   variants: {
     extend: {
