@@ -1,6 +1,5 @@
 <template>
-    <!-- <div class="bg-cover bg-center" :class="showTitle ? 'py-16 md:py-24' : 'py-8'"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.6), rgba(153,27,27,0.7)),url(' + require('@/assets/images/backdrop-ballermann6.jpg') + ')'}">  -->
-    <div class="bg-top bg-fixed bg-no-repeat" :class="showTitle ? 'py-16 md:py-24' : 'py-8'"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.6), rgba(153,27,27,0.7)),url(' + require('@/assets/images/backdrop-ballermann6.jpg') + ')'}">
+    <div class="bg-cover bg-center" :class="showTitle ? 'py-16 md:py-24' : 'py-8'"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.6), rgba(153,27,27,0.7)),url(' + require('@/assets/images/backdrop-ballermann6.jpg') + ')'}">
         <div class="container mx-auto px-4 xl:w-10/12">
             <h1 v-if="showTitle" class="text-white text-2xl md:text-4xl font-semibold text-left">
                 {{ $t('search.searchHeadline1') }}<router-link to="/faq" class="text-yellow-500 transition hover:text-yellow-600">Triggerscore</router-link> {{ $t('search.searchHeadline2') }}
@@ -50,9 +49,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-.bg-fixed {
-    background-size: 100% auto;
-}
-</style>
