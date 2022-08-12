@@ -12,7 +12,7 @@
                     <button class="bg-yellow-500 transition hover:bg-yellow-600 py-2 px-3 mt-3 text-gray-900 rounded-lg font-semibold text-white uppercase" @click="$router.go(-1)"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
                 </div>
             </div>
-    <transition-group v-if="searchResults.length > 0" tag="section" class="movielist grid gap-0 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
+    <transition-group v-if="searchResults.length > 0" tag="section" class="movielist grid gap-0 md:gap-2 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
         enter-active-class="duration-500 ease-out"
         enter-class="opacity-0"
         enter-to-class="opacity-100"

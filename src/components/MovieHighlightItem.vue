@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-40 h-auto mr-2 bg-white shadow-md flex flex-none flex-col relative rounded transform transition duration-300 lg:hover:scale-105 lg:hover-shadow-inner container-xl cursor-pointer" style="scroll-snap-align: start;">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-40 h-auto mr-3 bg-transparent shadow-md flex flex-none flex-col relative rounded transform transition duration-300 lg:hover:scale-105 lg:hover-shadow-inner container-xl cursor-pointer" style="scroll-snap-align: start;">
         <div class="flex">
             <div class="w-full h-60 bg-cover rounded-t" :style="{backgroundImage: `url(${poster})`}">
 
@@ -13,11 +13,11 @@
             </div>
         </div>
         
-        <div class="w-full p-3">
+        <div class="w-full py-3 text-white">
             <article class="text-left relative w-full h-full">
-                <h3 v-if="movie.title.length > 0" class="text-sm h-14 mb-1 font-semibold overflow-hidden">{{ movie.title }}</h3>
+                <h3 v-if="movie.title.length > 0" class="text-sm max-h-14 mb-1 font-semibold overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="text-sm h-16 mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
-                <p class="mt-3 mb-1 text-xs md:text-md">
+                <p class="mt-3 mb-1 text-xs md:text-md text-gray-300">
                     <span class="self-center">{{ movie.release_date.substring(0,4) }}</span>
                     <span class="mx-2">|</span>
                     <span>{{ movie.runtime }} {{ $t('general.minutes') }}</span>

@@ -1,5 +1,5 @@
 <template>
-<div :class="{'bg-opacity-0': submitted}" class="w-full bg-white rounded-b  lg:rounded-t">
+<div :class="{'bg-opacity-0': submitted}" class="w-full bg-gray-900 text-white rounded-b  lg:rounded-t">
     <div v-if="submitted" class="bg-green-500 text-white text-center text-2xl p-6 rounded-b lg:rounded lg:h-auto lg:sticky lg:bottom-0">
         <img src="../assets/images/thanks.gif" ref="thanks" class="mx-auto hidden lg:block mt-16 mb-8 rounded-lg shadow-lg" />
         <p class="font-bold">{{ $t('rating.thanks') }}</p>
@@ -14,7 +14,7 @@
             </button>
         </div>
         
-        <hr class="lg:border-white">
+        <hr class="border-gray-700">
         <label class="my-3 block text-lg font-semibold">{{ $t('categories.racism') }}</label>
         <p class="mb-4">{{ $t('rating.descRacism') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
@@ -22,7 +22,7 @@
                 <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingRacism == 10-i, 'bg-green-600': 10-i < 4, 'bg-yellow-500': 10-i > 2 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingRacism == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
-        <hr class="lg:border-white">
+        <hr class="border-gray-700">
         <label class="my-3 block text-lg font-semibold">{{ $t('categories.others') }}</label>
         <p class="mb-4">{{ $t('rating.descOthers') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
@@ -31,7 +31,7 @@
             </button>
         </div>
         
-        <hr class="lg:border-white">
+        <hr class="border-gray-700">
         <label class="my-3 block text-lg font-semibold">{{ $t('categories.cringe') }}</label>
         <p class="mb-4">{{ $t('rating.descCringe') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
@@ -39,8 +39,8 @@
                 <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingCringe == 10-i, 'bg-green-600': 10-i < 4, 'bg-yellow-500': 10-i > 3 && 10-i < 7, 'bg-red-500': 10-i > 6, 'opacity-100': ratingCringe == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
-        <hr class="lg:border-white">
-        <div class="flex justify-center py-4 pb-8 bg-white rounded-b-lg">
+        <hr class="border-gray-700">
+        <div class="flex justify-center py-4 pb-8 bg-gray-900 rounded-b-lg">
             <button :disabled="!(ratingSexism != null && ratingRacism != null && ratingOthers != null && ratingCringe != null)" class="bg-yellow-500 text-white disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600 uppercase" @click="submitRating">{{ $t('rating.submit') }}</button>
         </div>
     </div>                    

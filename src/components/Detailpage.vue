@@ -9,7 +9,7 @@
                 <p class="text-white font-semibold animate-bounce mt-8">{{ $t('general.loadMovies') }}</p>
             </div>
             <div v-else class="flex flex-col lg:flex-row lg:rounded-b px-0 sm:px-4 md:px-0">
-                <div class="flex flex-col w-full bg-white rounded-t lg:rounded justify-start lg:mr-6">
+                <div class="flex flex-col w-full bg-gray-900 text-white rounded-t lg:rounded justify-start lg:mr-6">
                     <div class="flex bg-gray-900 justify-between w-full sm:rounded-t">
                         <img :src=poster class="w-1/2 lg:w-76 h-auto object-contain self-start rounded-tl self-center" />
                         <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center rounded-tr">
@@ -60,7 +60,7 @@
                                 {{ movie.title }}
                                 </h2>
                             </div>
-                            <p class="mb-4 text-xs md:text-md">
+                            <p class="mb-4 text-xs md:text-md text-gray-400">
                                 {{ releaseDate }}
                                 <span class="mx-2">|</span>
                                 <span>{{ movie.runtime }} {{ $t('general.minutes') }}</span>
@@ -84,10 +84,10 @@
                                     <img class="w-16" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                                     </a>
                                     <a v-if="onAmazon" href="https://www.amazon.de/primevideo" target="_blank" class="self-center">
-                                        <img  class="w-16" src="https://image.tmdb.org/t/p/original/68MNrwlkpF7WnmNPXLah69CR5cb.jpg">
+                                        <img  class="w-16" src="../assets/images/amazon-prime-logo3.svg">
                                     </a>
                                     <a v-if="onDisney" href="https://www.disneyplus.com/" target="_blank" class="self-center">
-                                        <img class="w-16" src="../assets/images/disney+-logo.svg">
+                                        <img class="w-16" src="../assets/images/disney+-logo2.svg">
                                     </a>
                                     <a v-if="onSky" href="https://skyticket.sky.de/home/login" target="_blank" class="self-center">
                                         <img class="w-20 mr-1" src="../assets/images/sky.svg">

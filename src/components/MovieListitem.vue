@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-white shadow-md flex relative border-b md:border-b-0 md:rounded container-xl cursor-pointer">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-transparent text-white border border-gray-700 shadow-md flex relative border-b md:rounded container-xl cursor-pointer">
         <div class="h-full w-44 bg-cover bg-center md:rounded-l" load="lazy" :style="{'background-image': `url(${poster})`}">
             <!-- <img load="lazy" class="h-full mx-auto md:rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" /> -->
         </div>
@@ -13,13 +13,13 @@
             <article class="text-left relative w-full h-full">
                 <h3 v-if="movie.title.length > 0" class="text-base w-4/5 h-12 mb-1 font-semibold overflow-hidden">{{ movie.title }}</h3>
                 <h3 v-else class="text-base w-4/5 h-12 mb-1 font-semibold overflow-hidden">{{ movie.original_title }}</h3>
-                <p class="text-xs">
+                <p class="text-xs text-gray-300">
                     {{ movie.release_date.substring(0,4) }}
                     <span v-if="movie.runtime" class="mx-2">|</span>
                     <span v-if="movie.runtime">{{ movie.runtime }} {{ $t('general.minutes') }}</span>
                 </p>
-                <p v-if="overview.length > 2" class="text-xs absolute top-1/2 py-3">{{ overview }} </p>
-                <p v-else class="text-xs absolute top-1/2 py-3">{{ $t('general.noDescription') }}</p>
+                <p v-if="overview.length > 2" class="text-xs absolute top-1/2 py-3 text-gray-300">{{ overview }} </p>
+                <p v-else class="text-xs absolute top-1/2 py-3 text-gray-300">{{ $t('general.noDescription') }}</p>
             </article>
         </div>  
     </router-link>

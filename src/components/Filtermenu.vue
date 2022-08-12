@@ -1,10 +1,10 @@
 <template>
-  <div class="container sm:px-4 xl:w-10/12 mx-auto px-4">
+  <div class="container sm:px-4 xl:w-10/12 mx-auto">
     <div class="text-left px-8 py-4 rounded-t" :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
       <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-white">{{ $t('index.headline') }}</h2>
       <p class="text-sm text-white ">{{ $t('index.intro1') }}<span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">{{ $t('index.search') }}</span>{{ $t('index.intro2') }}</p>
     </div>
-    <div class="bg-white px-8 py-4 rounded-b">
+    <div class="bg-gray-900 px-0 py-4 rounded-b text-white">
       <div class="flex items-end justify-between">
         <div class="flex">
           <div class="w-52 mr-4">
@@ -64,13 +64,13 @@
           <div class="form-check text-left mb-1 h-8 mr-8">
               <input v-model="primeFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-amazon">
               <label class="form-check-label inline-block text-gray-800 text-left " for="filter-amazon">
-              <img class="h-4 mt-1 mx-2" src="../assets/images/amazon-prime-logo.svg">
+              <img class="h-5 mt-1 mx-2" src="../assets/images/amazon-prime-logo3.png">
               </label>
           </div>
           <div class="form-check text-left mb-1 mr-8 h-8">
               <input v-model="disneyFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer" type="checkbox" id="filter-disney">
               <label class="form-check-label inline-block text-gray-800 text-left " for="filter-disney">
-              <img class="h-6 ml-2 mb-1" src="../assets/images/disney+-logo.svg">
+              <img class="h-7 ml-2 mb-1" src="../assets/images/disney+-logo2.svg">
               </label>
           </div>
           <div class="form-check text-left mb-1 h-8">

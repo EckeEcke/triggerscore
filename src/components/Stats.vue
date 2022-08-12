@@ -1,14 +1,14 @@
 <template>
-      <section class="bg-white py-6 md:pt-4 md:pb-12 md:px-6 text-left text-sm mx-auto md:rounded flex flex-col lg:flex-row gap-x-12">
-        <div class="w-full lg:w-2/5 px-4">
+      <section class="bg-transparent text-white py-6 md:pt-4 md:pb-12 md:px-0 text-left text-sm mx-auto md:rounded flex flex-col lg:flex-row gap-x-12">
+        <div class="w-full lg:w-2/5 px-4 sm:px-0">
           <div class=" font-semibold">
-          <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
+          <div class="flex justify-between items-center border-b border-gray-700 py-4 gap-4">
             <span>{{ $t('stats.totalRatings') }}</span><span class="text-lg font-semibold h-14 flex items-center">{{ stats.totalRatings }}</span>
           </div>
-          <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
+          <div class="flex justify-between items-center border-b border-gray-700 py-4 gap-4">
             <span>{{ $t('stats.moviesOnTS') }}</span><span class="text-lg font-semibold h-14 flex items-center">{{ stats.amountMovies }}</span>
           </div>
-          <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
+          <div class="flex justify-between items-center border-b border-gray-700 py-4 gap-4">
             <span>{{ $t('stats.average') }} Triggerscore</span>
             <div class="h-12 w-12 text-white rounded-lg font-semibold text-lg" :class="{'bg-red-700': stats.averageScoreTotal >= 7, 'bg-yellow-500':  stats.averageScoreTotal < 7 &&  stats.averageScoreTotal >=4, 'bg-green-600':  stats.averageScoreTotal < 4}">
                 <div class="relative w-full h-full">
@@ -16,7 +16,7 @@
                 </div>
             </div>
           </div>
-          <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
+          <div class="flex justify-between items-center border-b border-gray-700 py-4 gap-4">
             <span>{{ $t('stats.average') }} {{ $t('categories.sexism') }}</span>
             <div class="h-12 w-12 text-white rounded-lg font-semibold text-lg" :class="{'bg-red-700': stats.averageScoreSexism >= 7, 'bg-yellow-500':  stats.averageScoreSexism < 7 &&  stats.averageScoreSexism >=4, 'bg-green-600':  stats.averageScoreSexism < 4}">
                 <div class="relative w-full h-full">
@@ -24,7 +24,7 @@
                 </div>
             </div>
           </div>
-          <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
+          <div class="flex justify-between items-center border-b border-gray-700 py-4 gap-4">
             <span>{{ $t('stats.average') }} {{ $t('categories.racism') }}</span>
             <div class="h-12 w-12 text-white rounded-lg font-semibold text-lg" :class="{'bg-red-700': stats.averageScoreRacism >= 7, 'bg-yellow-500':  stats.averageScoreRacism < 7 &&  stats.averageScoreRacism >=4, 'bg-green-600':  stats.averageScoreRacism < 4}">
                 <div class="relative w-full h-full">
@@ -32,7 +32,7 @@
                 </div>
             </div>
           </div>
-          <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
+          <div class="flex justify-between items-center border-b border-gray-700 py-4 gap-4">
             <span>{{ $t('stats.average') }} {{ $t('categories.others') }}</span>
             <div class="h-12 w-12 text-white rounded-lg font-semibold text-lg" :class="{'bg-red-700': stats.averageScoreOthers >= 7, 'bg-yellow-500':  stats.averageScoreOthers < 7 &&  stats.averageScoreOthers >=4, 'bg-green-600':  stats.averageScoreOthers < 4}">
                 <div class="relative w-full h-full">
@@ -40,7 +40,7 @@
                 </div>
             </div>
           </div>
-          <div class="flex justify-between items-center border-b border-gray-300 py-4 gap-4">
+          <div class="flex justify-between items-center border-b border-gray-700 py-4 gap-4">
             <span>{{ $t('stats.average') }} {{ $t('categories.cringe') }}</span>
             <div class="h-12 w-12 text-white rounded-lg font-semibold text-lg" :class="{'bg-red-700': stats.averageScoreCringe >= 7, 'bg-yellow-500':  stats.averageScoreCringe < 7 &&  stats.averageScoreCringe >=4, 'bg-green-600':  stats.averageScoreCringe < 4}">
                 <div class="relative w-full h-full">
@@ -50,7 +50,7 @@
           </div>
         </div>
         </div>
-        <div class="w-full lg:w-1/2 px-4 pb-2 flex overflow-auto hide-scrollbar">
+        <div class="w-full lg:w-1/2 px-4 sm:px-0 pb-2 flex overflow-auto hide-scrollbar">
           <div>
             <h2 class="font-semibold mt-4 h-14 flex items-center pr-2">{{ $t('stats.lowestScore') }}</h2>
             <MovieHighlightItem :scores="lowestScoreMovie" :movie="movie[0]" shownScore="rating_total" />
