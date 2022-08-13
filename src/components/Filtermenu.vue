@@ -1,6 +1,6 @@
 <template>
   <div class="container sm:px-4 xl:w-10/12 mx-auto">
-    <div class="text-left px-8 py-4 rounded-t" :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
+    <div class="text-left pt-4 pb-5">
       <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-white">{{ $t('index.headline') }}</h2>
       <p class="text-sm text-white ">{{ $t('index.intro1') }}<span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">{{ $t('index.search') }}</span>{{ $t('index.intro2') }}</p>
     </div>
