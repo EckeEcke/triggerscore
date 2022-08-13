@@ -8,7 +8,7 @@
               <p class="text-right"><font-awesome-icon :icon="['fas', 'times']"  @click="$emit('close')" /></p>
               <h2 class="font-semibold text-left mb-2">{{ $t('filter.sort') }}</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
-                <select v-model="sortingOption" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
+                <select v-model="sortingOption" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base text-black">
                     <option class="py-1" value="a-z">A-Z</option>
                     <option class="py-1" value="z-a">Z-A</option>
                     <option class="py-1" value="date-desc">{{ $t('filter.yearDesc') }}</option>
@@ -20,7 +20,7 @@
               <hr class="my-4 border-gray-700">
               <h2 class="font-semibold text-left mb-2">{{ $t('filter.displayedScore') }}</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
-                  <select v-model="shownScore" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base">
+                  <select v-model="shownScore" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base text-black">
                     <option class="py-1" value="rating_total">{{ $t('categories.totalScore') }}</option>
                     <option class="py-1" value="rating_sexism">{{ $t('categories.sexism') }}</option>
                     <option class="py-1" value="rating_racism">{{ $t('categories.racism') }}</option>
@@ -66,10 +66,10 @@
                 <h2 class="font-semibold text-left mb-2">{{ $t('filter.filterByRelease') }}</h2>
                 <div class="flex">
                   <div class="w-1/2 mr-2 flex flex-col">
-                    <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 :placeholder="$t('filter.from')" @input="scrollToTop">
+                    <input v-model="filterMin" type="number" id="filter-start" class="border border-gray-200 rounded w-24 p-2 text-center text-black" min=1900 max=2010 :placeholder="$t('filter.from')" @input="scrollToTop">
                   </div>
                   <div class="w-1/2 mr-2 flex flex-col">
-                    <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center" min=1900 max=2010 :placeholder="$t('filter.to')" @input="scrollToTop">  
+                    <input v-model="filterMax" type="number" id="filter-end" class="border border-gray-200 rounded w-24 p-2 text-center text-black" min=1900 max=2010 :placeholder="$t('filter.to')" @input="scrollToTop">  
                   </div>
                 </div>
               </div>
