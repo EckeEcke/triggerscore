@@ -53,15 +53,15 @@
         <div class="w-full lg:w-1/2 px-4 sm:px-0 pb-2 flex overflow-auto hide-scrollbar">
           <div>
             <h2 class="font-semibold mt-4 h-14 flex items-center pr-2">{{ $t('stats.lowestScore') }}</h2>
-            <MovieHighlightItem :scores="lowestScoreMovie" :movie="movie[0]" shownScore="rating_total" />
+            <MovieHighlightItem :scores="lowestScoreMovie" :movie="movie[0]" shownScore="rating_total" :loadItem=true />
           </div>
           <div>
             <h2 class="font-semibold mt-4 h-14 flex items-center pr-2">{{ $t('stats.highestScore') }}</h2>
-            <MovieHighlightItem :scores="highestScoreMovie" :movie="movieHighest[0]" shownScore="rating_total" />
+            <MovieHighlightItem :scores="highestScoreMovie" :movie="movieHighest[0]" shownScore="rating_total"  :loadItem=true />
           </div>
           <div>
             <h2 class="font-semibold mt-4 h-14 flex items-center pr-2 w-40" v-html="$t('stats.mostRatings',[mostRatedMovie.ratings])"></h2>
-            <MovieHighlightItem :scores="mostRatedMovie" :movie="mostRated[0]" shownScore="rating_total" />
+            <MovieHighlightItem :scores="mostRatedMovie" :movie="mostRated[0]" shownScore="rating_total" :loadItem=true />
           </div>
         </div>
     </section>

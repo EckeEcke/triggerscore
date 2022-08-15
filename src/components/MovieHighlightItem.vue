@@ -1,7 +1,7 @@
 <template>
     <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-40 h-auto mr-3 bg-transparent shadow-md flex flex-none flex-col relative rounded transform transition duration-300 lg:hover:scale-105 lg:hover-shadow-inner container-xl cursor-pointer" style="scroll-snap-align: start;">
         <div class="flex">
-            <div class="w-full h-60 bg-cover rounded-t" :style="{backgroundImage: `url(${poster})`}">
+            <div class="w-full h-60 bg-cover rounded-t" :style="[loadItem ? {'backgroundImage': `url(${poster})`} : '']">
 
             </div>
             <div class="absolute right-2 mx-auto mt-2 h-12 w-12 text-white rounded-lg bg-opacity-90" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && scores[shownScore] >= 7, 'bg-yellow-500': scoreAvailable && scores[shownScore] < 7 && scores[shownScore] >=4, 'bg-green-600': scoreAvailable && scores[shownScore] < 4}">
@@ -33,7 +33,8 @@ export default {
   props: {
     movie: Object,
     scores: Object,
-    shownScore: String
+    shownScore: String,
+    loadItem: Boolean
   },
   computed: {
       poster: function() {
