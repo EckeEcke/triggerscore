@@ -24,16 +24,27 @@
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <MovieListitem v-for="movie in loadedMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
             </transition-group>
-            <Trigger @triggerIntersected="loadMore" :current="loadMoviesAmount" :maximum="filteredMovies.length" /> 
             <div class="py-32" v-if="!isLoading && filteredMovies.length == 0 && !isFiltering">
                 <p class="text-white text-xl font-semibold animate-bounce mb-4">{{ $t('search.noResults') }}</p>
                 <button class="font-semibold bg-yellow-500 p-3 shadow text-white uppercase rounded-lg" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
             </div>
-            <transition v-if="showMenu" enter-active-class="duration-300 ease-out"
-                enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
+            <transition v-if="showMenu" enter-active-class="duration-100 ease-out"
+                enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-100 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                 <Sidebar @close="showMenu = !showMenu"/>
             </transition>
         </div>
+        <div v-if="totalPages > 1" class="flex gap-2 justify-center my-8 md:mt-0">
+            <button 
+                v-for="index in totalPages" 
+                v-bind:key="index" 
+                @click="setPage((index-1)*24,(index-1)*24+24)"
+                class="text-xl p-4 font-semibold bg-opacity-90 hover:text-yellow-700 hover:bg-white"
+                :class="start == Math.round((index-1)*24) ? 'bg-white' : 'bg-gray-500'"
+                >
+                {{index}}
+            </button>
+        </div>
+        
     </div>
 </template>
 
@@ -42,7 +53,6 @@ import MovieListitem from './MovieListitem.vue'
 import Searchbox from './Searchbox.vue'
 import Sidebar from './Sidebar.vue'
 import Filtermenu from './Filtermenu.vue'
-import Trigger from './Trigger.vue'
 
 export default {
     name: 'AllMovies',
@@ -50,8 +60,7 @@ export default {
         MovieListitem,
         Searchbox,
         Sidebar,
-        Filtermenu,
-        Trigger
+        Filtermenu
     },
     data() {
         return {
@@ -59,6 +68,8 @@ export default {
             lastScrollPosition: 0,
             showMenu: false,
             loadMoviesAmount: 24,
+            start: 0,
+            end: 24
         }
     },
     mounted: function() {
@@ -66,12 +77,11 @@ export default {
         this.$store.dispatch("filterMovies")
         this.$store.dispatch("setRecentRatings")
         this.$store.dispatch("setBondMovies")
-        window.addEventListener('scroll', this.onScroll)
-    },
-    beforeDestroy() {
-        window.removeEventListener('scroll', this.onScroll)
     },
     computed: {
+        totalPages: function() {
+            return Math.round(this.filteredMovies.length / 24)
+        },
         isLoading: function() {
             return this.$store.getters.getHighlightsLoading || this.$store.getters.getMoviesLoading || this.triggerscores.length == 0
         },
@@ -84,10 +94,7 @@ export default {
             }
         },
         loadedMovies: function() {
-            if(this.filteredMovies.length >= 24 && this.loadMoviesAmount < 24){
-                return [...this.filteredMovies].slice(0,6)
-            }
-            return [...this.filteredMovies].slice(0,this.loadMoviesAmount)
+            return [...this.filteredMovies].filter((movie,index) => index >= this.start && index < this.end)
         },
         triggerscores: function() {
             return this.$store.getters.getTriggerscores
@@ -96,14 +103,14 @@ export default {
             return this.$store.getters.getMovies
         },
         shownScore: {
-      get: function(){
-        return this.$store.state.shownScore
-      },
-      set: function(value){
-        this.$store.commit("setShownScore",value)
-        this.$store.dispatch("filterMovies")
-      }
-    },
+            get: function(){
+                return this.$store.state.shownScore
+            },
+            set: function(value){
+                this.$store.commit("setShownScore",value)
+                this.$store.dispatch("filterMovies")
+            }
+        },
         searchInput: {
             get: function() {
                 return this.$store.state.searchInput
@@ -166,14 +173,9 @@ export default {
             this.$store.dispatch("resetFilter")
             this.$store.dispatch("filterMovies")
         },
-        loadMore: function() {
-            this.loadMoviesAmount +=24
-            if(this.loadMoviesAmount > this.filteredMovies.length){
-                this.loadMoviesAmount = this.filteredMovies.length
-            }
-            if(this.loadMoviesAmount < 24){
-                this.loadMoviesAmount = 24
-            }
+        setPage(start,end) {
+            this.start = start
+            this.end = end
         }
     }
 }
