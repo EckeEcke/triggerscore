@@ -19,5 +19,7 @@ module.exports = {
       borderRadius: ["first","last"]
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-accent-color')(),
+  ],
 }
