@@ -17,7 +17,7 @@
                     <option class="py-1" value="ts-asc">{{ $t('filter.scoreAsc') }}</option>
                 </select>
               </div>
-              <hr class="my-4 border-gray-700">
+              <hr class="my-4 border-gray-800">
               <h2 class="font-semibold text-left mb-2">{{ $t('filter.displayedScore') }}</h2>
               <div class="flex w-full my-3 border border-gray-200 rounded">
                   <select v-model="shownScore" class="w-full h-8 md:h-10 bg-white rounded p-2 outline-none text-sm md:text-base text-black">
@@ -28,14 +28,14 @@
                     <option class="py-1" value="rating_cringe">{{ $t('categories.cringe') }}</option>
                 </select>
               </div>
-              <hr class="my-4 border-gray-700">
+              <hr class="my-4 border-gray-800">
               <div class="mb-6">
                 <h2 class="font-semibold text-left mb-6">{{ $t('filter.filterByScore') }}</h2>
                 <div class="px-3">
                 <Rangeslider />
                 </div>
               </div>
-              <hr class="my-4 border-gray-700">
+              <hr class="my-4 border-gray-800">
               <h2 class="font-semibold text-left mb-2">{{ $t('filter.filterByProvider') }}</h2>
               <div class="form-check text-left mb-2 h-8">
                 <input v-model="netflixFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer accent-yellow-500" type="checkbox" id="filter-netflix">
@@ -61,7 +61,7 @@
                   <img class="h-4 mt-1 ml-2" src="../assets/images/sky.svg">
                 </label>
               </div>
-              <hr class="my-4 border-gray-700">
+              <hr class="my-4 border-gray-800">
               <div class="flex flex-col my-4">
                 <h2 class="font-semibold text-left mb-2">{{ $t('filter.filterByRelease') }}</h2>
                 <div class="flex">
@@ -79,7 +79,7 @@
           <div class="mt-auto bg-gray-900">
             <div class="-mt-20 h-20 w-full z-30 pointer-events-none" style="background-image: linear-gradient(to bottom,rgba(15,15,25,0),rgba(15,15,25,1));"/>
               <div class="text-sm my-5 font-semibold">{{results}} {{ $t('filter.results') }}</div>
-              <hr  class="my-4 border-gray-700">
+              <hr  class="my-4 border-gray-800">
               <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-white uppercase rounded-lg" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
               </div>
             </div>

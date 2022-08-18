@@ -73,9 +73,12 @@
             <section class="sm:px-4 container xl:w-10/12 mx-auto">
                 <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-center bg-cover px-4 rounded sm:my-6"  :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-jurassicpark.jpg') + ')'}">
                     <div class="">
-                        <h2 class="text-2xl sm:text-4xl font-semibold mb-2 text-white uppercase"><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
-                    TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
-                </span> {{ $t('general.stats') }}</h2>
+                        <h2 class="text-2xl sm:text-4xl font-semibold mb-2 text-white uppercase">
+                            <span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+                                TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
+                            </span> 
+                            {{ $t('general.stats') }}
+                        </h2>
                         <p class="text-base md:text-lg text-white font-semibold">{{ $t('general.statsCopy') }}</p>
                     </div> 
                 </div>

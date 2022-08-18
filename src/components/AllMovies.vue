@@ -20,10 +20,9 @@
                 <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
                 <p class="text-white font-semibold animate-bounce mt-8">{{ $t('general.loadMovies') }}</p>
             </div>
-            <transition-group v-if="!isLoading && filteredMovies.length > 0 && !isFiltering" tag="section" class="movielist grid gap-0 md:gap-2 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-2 sm:pb-8 md:px-4 xl:w-10/12" enter-active-class="duration-100 ease-out"
-                enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
+            <section v-if="!isLoading && filteredMovies.length > 0 && !isFiltering" class="movielist grid gap-0 md:gap-2 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-2 sm:pb-8 md:px-4 xl:w-10/12">
                 <MovieListitem v-for="movie in loadedMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
-            </transition-group>
+            </section>
             <div class="py-32" v-if="!isLoading && filteredMovies.length == 0 && !isFiltering">
                 <p class="text-white text-xl font-semibold animate-bounce mb-4">{{ $t('search.noResults') }}</p>
                 <button class="font-semibold bg-yellow-500 p-3 shadow text-white uppercase rounded-lg" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
@@ -33,12 +32,12 @@
                 <Sidebar @close="showMenu = !showMenu"/>
             </transition>
         </div>
-        <div v-if="totalPages > 1" class="flex gap-2 justify-center my-8 md:mt-0">
+        <div v-if="totalPages > 1" class="flex gap-1 justify-center my-8 md:mt-0">
             <button 
                 v-for="index in totalPages" 
                 v-bind:key="index" 
                 @click="setPage((index-1)*24,(index-1)*24+24)"
-                class="text-xl p-4 font-semibold bg-opacity-90 hover:text-yellow-700 hover:bg-white"
+                class="text-lg text-black px-4 py-2 font-semibold bg-opacity-90 hover:text-yellow-700 hover:bg-white"
                 :class="start == Math.round((index-1)*24) ? 'bg-white' : 'bg-gray-500'"
                 >
                 {{index}}
