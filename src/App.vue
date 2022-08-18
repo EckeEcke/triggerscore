@@ -2,6 +2,7 @@
   <div id="app" class="flex flex-col bg-gray-900 h-auto min-h-screen min-h-screen relative bg-no-repeat bg-center bg-cover bg-fixed"> <!-- :style="{'background-image': 'linear-gradient(rgba(10, 0, 0, 0.7), rgba(10, 0, 0, 0.7)),' + 'url(' + require('./assets/images/arnold.jpg') + ')'}"  just add it back in within tag-->
     <Header />
     <transition tag="section" class="movielist grid gap-2 md:gap-5 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative"
+            mode="out-in"
             enter-active-class="duration-100 ease-out"
             enter-class="opacity-0"
             enter-to-class="opacity-100"
