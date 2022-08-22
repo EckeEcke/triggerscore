@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-transparent text-white sm:border border-t border-b border-gray-800 shadow-md flex relative border-b md:rounded container-xl cursor-pointer">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-transparent md:bg-gray-950 text-white sm:border border-t border-b border-gray-800 md:border-0 shadow-md flex relative border-b md:rounded container-xl cursor-pointer">
         <div class="h-full w-44 bg-cover bg-center md:rounded-l" load="lazy" :style="{'background-image': `url(${poster})`}">
             <!-- <img load="lazy" class="h-full mx-auto md:rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" /> -->
         </div>
