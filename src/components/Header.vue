@@ -2,7 +2,7 @@
     <header class="w-full h-auto bg-red-800 bg-opacity-90 z-30 shadow-md flex flex-col relative sticky top-0">
         <section class="container mx-auto h-full p-4 xl:w-10/12 flex justify-between relative">
             <div class="flex">
-              <router-link to="/" tag="h1" class="text-xl md:text-2xl self-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
+              <router-link to="/" tag="h1" class="leading-5 text-xl md:leading-6 md:text-2xl self-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
               </router-link>
             </div>
