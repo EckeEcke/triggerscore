@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         gray: {
-          900: 'rgb(15,15,25)',
+          900: 'rgb(5,5,15)',
           950: 'rgb(30,30,40)'
         },
         white: 'rgb(250,250,250)',
