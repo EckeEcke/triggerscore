@@ -13,7 +13,7 @@
                 </div> 
             </div>
             <transition enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-                <div v-if="!scrolled" class="absolute bottom-0 -right-4 w-12 lg:w-20 h-full pointer-events-none" style="background-image: linear-gradient(to right,rgba(15,15,25,0),rgba(15,15,25,1));"></div>
+                <div v-if="!scrolled" class="absolute bottom-0 -right-4 w-12 lg:w-20 h-full pointer-events-none" style="background-image: linear-gradient(to right,rgba(5,5,15,0),rgba(5,5,15,1));"></div>
             </transition>
         </div>      
     </div>
