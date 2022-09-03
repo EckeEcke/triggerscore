@@ -82,7 +82,7 @@ export default {
                     window.scrollTo({top:0})
                 }},1000)
             const data = { movieID: this.id, sexism: this.ratingSexism, racism: this.ratingRacism, others: this.ratingOthers, cringe: this.ratingCringe };
-            fetch('https://triggerscore.herokuapp.com/post', {
+            fetch('https://triggerscore-backend2.onrender.com/post', {
                 method: "post",
                 headers: {
                 'Content-Type': 'application/json',

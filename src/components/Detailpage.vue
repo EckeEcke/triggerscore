@@ -203,7 +203,7 @@ export default {
           }
       },
       loadTriggerscore: async function(){
-          const response = await fetch(`https://triggerscore.herokuapp.com/movie/${this.$route.params.id}`)
+          const response = await fetch(`https://triggerscore-backend2.onrender.com/movie/${this.$route.params.id}`)
           const scores = await response.json()
           this.score = scores[0]
           this.triggerscoreLoading = false

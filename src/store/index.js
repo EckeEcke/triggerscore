@@ -280,7 +280,7 @@ export default new Vuex.Store({
     },
     actions: {
         async setTriggerscores(state){                                                  //also loads movies for now
-            const scores = await fetch('https://triggerscore.herokuapp.com/')
+            const scores = await fetch('https://triggerscore-backend2.onrender.com/')
             const triggerscores = await scores.json()
             state.commit("setTriggerscores", triggerscores)
             const loadedMovies = Promise.all(triggerscores.map(entry => 
@@ -291,7 +291,7 @@ export default new Vuex.Store({
             
         },
         async setRecentRatings(state){
-            const scores = await fetch('https://triggerscore.herokuapp.com/recentratings')
+            const scores = await fetch('https://triggerscore-backend2.onrender.com/recentratings')
             const ratings = await scores.json()
             state.commit("setRecentScores",ratings)
             const recentRatings = Promise.all(ratings.map(entry => 
@@ -302,7 +302,7 @@ export default new Vuex.Store({
         } )
         },
         async setTop10Sexism(state){
-            const scores = await fetch('https://triggerscore.herokuapp.com/top10-sexism')
+            const scores = await fetch('https://triggerscore-backend2.onrender.com/top10-sexism')
             const top10 = await scores.json()
             const loadedTop10 = Promise.all(top10.map(entry => 
                 fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${this.getters.getLocale}`)
@@ -311,7 +311,7 @@ export default new Vuex.Store({
             loadedTop10.then(res => {state.commit("setTop10Sexism", res)} )
         },
         async setTop10Racism(state){
-            const scores = await fetch('https://triggerscore.herokuapp.com/top10-racism')
+            const scores = await fetch('https://triggerscore-backend2.onrender.com/top10-racism')
             const top10 = await scores.json()
             const loadedTop10 = Promise.all(top10.map(entry => 
                 fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${this.getters.getLocale}`)
@@ -320,7 +320,7 @@ export default new Vuex.Store({
             loadedTop10.then(res => {state.commit("setTop10Racism", res)} )
         },
         async setTop10Others(state){
-            const scores = await fetch('https://triggerscore.herokuapp.com/top10-others')
+            const scores = await fetch('https://triggerscore-backend2.onrender.com/top10-others')
             const top10 = await scores.json()
             const loadedTop10 = Promise.all(top10.map(entry => 
                 fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${this.getters.getLocale}`)
@@ -329,7 +329,7 @@ export default new Vuex.Store({
             loadedTop10.then(res => {state.commit("setTop10Others", res)} )
         },
         async setTop10Cringe(state){
-            const scores = await fetch('https://triggerscore.herokuapp.com/top10-cringe')
+            const scores = await fetch('https://triggerscore-backend2.onrender.com/top10-cringe')
             const top10 = await scores.json()
             const loadedTop10 = Promise.all(top10.map(entry => 
                 fetch(`https://api.themoviedb.org/3/movie/${entry.movie_id}?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${this.getters.getLocale}`)
@@ -338,7 +338,7 @@ export default new Vuex.Store({
             loadedTop10.then(res => {state.commit("setTop10Cringe", res)} )
         },
         async setStats(state){
-            const response = await fetch('https://triggerscore.herokuapp.com/stats')
+            const response = await fetch('https://triggerscore-backend2.onrender.com/stats')
             const stats = await response.json()
             state.commit("setStats",stats)
         },
