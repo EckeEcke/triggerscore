@@ -7,7 +7,7 @@
         <p class="mt-2 leading-7">{{ $t('about.paragraph1') }}</p>
         <p class="mt-2 leading-7">{{ $t('about.paragraph2') }}</p>
       </section>
-      <div class="w-full my-8 flex justify-between px-4 md:px-0">
+      <div class="w-full my-8 flex justify-between">
           <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
       </div>
     </div>
