@@ -19,4 +19,11 @@
     height: 100vh;
     height: -webkit-fill-available;
 }
+
+.movie-poster {
+    transition: transform 300ms;
+}
+.movie-highlight-item:hover .movie-poster {
+    transform: scale(1.05);
+}
   

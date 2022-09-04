@@ -1,7 +1,7 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="w-full h-44 bg-transparent md:bg-gray-950 text-white sm:border border-t border-b border-gray-800 md:border-0 shadow-md flex relative border-b md:rounded container-xl cursor-pointer">
-        <div class="h-full w-44 bg-cover bg-center md:rounded-l" load="lazy" :style="{'background-image': `url(${poster})`}">
-            <!-- <img load="lazy" class="h-full mx-auto md:rounded-l-lg" :src=poster @error="$event.target.src='http://www.theprintworks.com/wp-content/themes/psBella/assets/img/film-poster-placeholder.png'" /> -->
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="movie-highlight-item transition-300 w-full h-44 bg-transparent md:bg-gray-950 md:hover:bg-gray-900 text-white sm:border border-t border-b border-gray-800 md:border-0 shadow-md flex relative border-b md:rounded container-xl cursor-pointer">
+        <div class="h-full w-44 md:rounded-l overflow-hidden" load="lazy">
+            <div class="movie-poster w-full h-full bg-cover bg-center" :style="{'background-image': `url(${poster})`}" />
         </div>
         <div class="w-full p-3">
             <div class="absolute top-2 right-2 h-12 w-12 text-lg text-white rounded-lg font-semibold" :class="{'bg-gray-200': !scoreAvailable, 'bg-red-700': scoreAvailable && score >= 7, 'bg-yellow-500': scoreAvailable && score < 7 && score >=4, 'bg-green-600': scoreAvailable && score < 4}">
