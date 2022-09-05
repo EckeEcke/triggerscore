@@ -77,7 +77,7 @@
           </div>
           </div>
           <div class="mt-auto bg-gray-900">
-            <div class="-mt-20 h-20 w-full z-30 pointer-events-none" style="background-image: linear-gradient(to bottom,rgba(15,15,25,0),rgba(15,15,25,1));"/>
+            <div class="-mt-20 h-20 w-full z-30 pointer-events-none" style="background-image: linear-gradient(to bottom,rgba(5,5,15,0),rgba(5,5,15,1));"/>
               <div class="text-sm my-5 font-semibold">{{results}} {{ $t('filter.results') }}</div>
               <hr  class="my-4 border-gray-800">
               <button class="font-semibold bg-yellow-500 py-3 w-full shadow text-white uppercase rounded-lg" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
