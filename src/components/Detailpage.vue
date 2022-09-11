@@ -88,7 +88,7 @@
                                         <img class="w-16" src="../assets/images/disney+-logo2.svg">
                                     </a>
                                     <a v-if="onSky" href="https://skyticket.sky.de/home/login" target="_blank" class="self-center">
-                                        <img class="w-20 mr-1" src="../assets/images/sky.svg">
+                                        <img class="w-16 mr-1" src="../assets/images/sky-logo.svg">
                                     </a>
                                     <a class="ml-auto self-center" v-if="movie.id" :href="tmdbURL" target="_blank">
                                         <img class="w-16" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg">
@@ -197,7 +197,7 @@ export default {
               this.onNetflix = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Netflix")
               this.onAmazon = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Amazon Prime Video")
               this.onDisney = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Disney Plus")
-              this.onSky = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "Sky Ticket")
+              this.onSky = providers.results[this.regionProvider].flatrate.some(provider => provider.provider_name == "WOW")
           }
           catch {
               console.log("ooops")
