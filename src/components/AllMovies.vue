@@ -53,7 +53,6 @@
                 <font-awesome-icon :icon="['fas', 'chevron-right']" class="text-white hover:text-yellow-700" />
             </button>
         </div>
-        {{ isLoading }}
     </div>
 </template>
 
