@@ -26,18 +26,33 @@
                 <Sidebar @close="showMenu = !showMenu"/>
             </transition>
         </div>
-        <div v-if="totalPages > 1" class="flex gap-1 justify-center my-8 md:mt-0">
+        <div v-if="totalPages > 1" class="flex gap-1 justify-center my-8 md:mt-0 flex-wrap"> 
             <button 
                 v-for="index in totalPages" 
                 v-bind:key="index" 
                 @click="setPage((index-1)*24,(index-1)*24+24)"
-                class="text-lg text-black px-4 py-2 font-semibold bg-opacity-90 hover:text-yellow-700 hover:bg-white"
-                :class="start == Math.round((index-1)*24) ? 'bg-white' : 'bg-gray-500'"
+                class="text-sm sm:text-lg text-black px-4 py-2 font-semibold bg-opacity-90 hover:text-yellow-700 hover:bg-white"
+                :class="[start == Math.round((index-1)*24) ? 'bg-white' : 'bg-gray-500']"
                 >
                 {{index}}
             </button>
         </div>
-        
+        <div v-if="totalPages > 1" class="flex gap-1 justify-center mb-8 -mt-6 flex-wrap">
+            <button 
+                @click="setPage(start-24,end-24)"
+                class="text-lg px-4 py-2 font-semibold hover:text-yellow-700 bg-transparent"
+                :disabled="currentPage == 1"
+                >
+                <font-awesome-icon :icon="['fas', 'chevron-left']" class="text-white" />
+            </button>
+            <button 
+                @click="setPage(start+24,end+24)"
+                class="text-lg px-4 py-2 font-semibold bg-opacity-90 hover:text-yellow-700 bg-transparent"
+                :disabled="currentPage == totalPages"
+                >
+                <font-awesome-icon :icon="['fas', 'chevron-right']" class="text-white hover:text-yellow-700" />
+            </button>
+        </div>
     </div>
 </template>
 
@@ -75,7 +90,7 @@ export default {
     },
     computed: {
         totalPages: function() {
-            return Math.round(this.filteredMovies.length / 24)
+            return Math.ceil(this.filteredMovies.length / 24)
         },
         isLoading: function() {
             return this.$store.getters.getHighlightsLoading || this.$store.getters.getMoviesLoading || this.triggerscores.length == 0
@@ -128,6 +143,9 @@ export default {
         },
         isFiltering: function(){
            return this.$store.getters.getIsFiltering
+        },
+        currentPage: function() {
+            return this.start / 24 + 1
         }
       
     },
@@ -185,3 +203,8 @@ export default {
     }
 }
 </script>
+<style scoped>
+button:disabled {
+    opacity: 0.3;
+}
+</style>
