@@ -26,7 +26,7 @@
                 <Sidebar @close="showMenu = !showMenu"/>
             </transition>
         </div>
-        <div v-if="totalPages > 1" class="flex gap-1 justify-center my-8 md:mt-0 flex-wrap"> 
+        <div v-if="totalPages > 1 && !isLoading" class="flex gap-1 justify-center my-8 md:mt-0 flex-wrap"> 
             <button 
                 v-for="index in totalPages" 
                 v-bind:key="index" 
@@ -37,7 +37,7 @@
                 {{index}}
             </button>
         </div>
-        <div v-if="totalPages > 1" class="flex gap-1 justify-center mb-8 -mt-6 flex-wrap">
+        <div v-if="totalPages > 1 && !isLoading" class="flex gap-1 justify-center mb-8 -mt-6 flex-wrap">
             <button 
                 @click="setPage(start-24,end-24)"
                 class="text-lg px-4 py-2 font-semibold hover:text-yellow-700 bg-transparent"
