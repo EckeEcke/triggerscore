@@ -76,7 +76,7 @@
           <div class="form-check text-left mb-1 h-8">
               <input v-model="skyFilter" class="h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer accent-yellow-500" type="checkbox" id="filter-disney">
               <label class="form-check-label inline-block text-gray-800 text-left " for="filter-disney">
-              <img class="h-4 mt-1 ml-2" src="../assets/images/sky.svg">
+              <img class="h-4 mt-1 ml-2" src="../assets/images/sky-logo.svg">
               </label>
           </div>
           </div>

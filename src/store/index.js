@@ -14,6 +14,7 @@ async function filterByProvider(netflix, prime, disney, sky, triggerscores,array
             .then((res) => res.json())
             .then(res => {
                 if(res.results[providerRegion] && res.results[providerRegion].flatrate !== undefined){
+                    console.log(res.results)
                     if(netflix && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Netflix")){
                         providerIDs.push(entry.movie_id)
                     }
@@ -23,7 +24,7 @@ async function filterByProvider(netflix, prime, disney, sky, triggerscores,array
                     if(disney && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Disney Plus")){
                         providerIDs.push(entry.movie_id)
                     }
-                    if(sky && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Sky Ticket")){
+                    if(sky && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "WOW")){
                         providerIDs.push(entry.movie_id)
                     }
                 }
@@ -44,7 +45,7 @@ async function filterByProvider(netflix, prime, disney, sky, triggerscores,array
                             if(disney && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Disney Plus")){
                                 providerIDs.push(entry.movie_id)
                             }
-                            if(sky && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "Sky Ticket")){
+                            if(sky && res.results[providerRegion].flatrate.some(provider => provider.provider_name == "WOW")){
                                 providerIDs.push(entry.movie_id)
                             }
                         }

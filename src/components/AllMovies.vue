@@ -145,7 +145,7 @@ export default {
            return this.$store.getters.getIsFiltering
         },
         currentPage: function() {
-            return this.start / 24 + 1
+            return Math.floor(this.start / 24) + 1
         }
       
     },
@@ -157,7 +157,7 @@ export default {
             if(this.end > this.filteredMovies.length){
                 this.end = this.filteredMovies.length
                 this.start = this.end - 24
-                if(this.start <= 0){
+                if(this.start <= 0 || this.start % 24 != 0){
                     this.start = 0
                     this.end = 24
                 }
