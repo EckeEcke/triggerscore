@@ -1,10 +1,7 @@
 <template>
     <div class="bg-gray-900">
         <Searchbox v-if="!isLoading" showTitle />
-        <div v-if="isLoading" class="py-32 lg:py-48">
-            <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
-            <p class="text-white font-semibold animate-bounce mt-8">{{ $t('general.loadMovies') }}</p>
-        </div>
+        <LoadingAnimation v-if="isLoading" />
         <div v-else>
             <MovieHighlightsContainer 
                 v-if="!isLoading" 
@@ -102,15 +99,17 @@ import MovieHighlightsContainer from './MovieHighlightsContainer.vue'
 import Searchbox from './Searchbox.vue'
 import RecentRatingsItem from './RecentRatingsItem.vue'
 import Stats from './Stats.vue'
+import LoadingAnimation from './LoadingAnimation.vue'
 
 export default {
     name: 'Movielist',
     components: {
-        MovieHighlightsContainer,
-        Searchbox,
-        RecentRatingsItem,
-        Stats
-    },
+    MovieHighlightsContainer,
+    Searchbox,
+    RecentRatingsItem,
+    Stats,
+    LoadingAnimation
+},
     data() {
         return {
             movieIDs: [620, 744, 2978, 9527, 1915, 4232, 9279, 9876, 4247, 4248, 9336, 9622, 2105, 4327, 7916, 11806, 9602, 9657, 9595, 37136, 10112, 14164, 11667, 9607, 9742],

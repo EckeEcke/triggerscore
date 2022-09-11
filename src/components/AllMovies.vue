@@ -1,11 +1,8 @@
 <template>
     <div class="bg-gray-900">
-        <Searchbox />
-        <div v-if="isLoading" class="py-32 lg:py-48">
-            <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
-            <p class="text-white font-semibold animate-bounce mt-8">{{  $t('general.loadMovies')}}</p>
-        </div>
-        <div v-else>
+        <LoadingAnimation v-if="isLoading" />
+        <Searchbox v-if="!isLoading" />
+        <div v-if="!isLoading">
             <div class="container px-4 xl:w-10/12 mx-auto flex flex-col mt-8 mb-4">
                 <div class="text-left xl:hidden">
                     <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-yellow-500 ">{{ $t('index.headline') }}</h2>
@@ -16,10 +13,7 @@
                 </div>  
             </div>
             <Filtermenu class="hidden xl:block mt-4" />
-            <div v-if="isFiltering" class="py-32 lg:py-48">
-                <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
-                <p class="text-white font-semibold animate-bounce mt-8">{{ $t('general.loadMovies') }}</p>
-            </div>
+            <LoadingAnimation v-if="isFiltering" />
             <section v-if="!isLoading && filteredMovies.length > 0 && !isFiltering" class="movielist grid gap-0 md:gap-2 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full relative container mx-auto md:mt-2 sm:pb-8 md:px-4 xl:w-10/12">
                 <MovieListitem v-for="movie in loadedMovies" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
             </section>
@@ -52,6 +46,7 @@ import MovieListitem from './MovieListitem.vue'
 import Searchbox from './Searchbox.vue'
 import Sidebar from './Sidebar.vue'
 import Filtermenu from './Filtermenu.vue'
+import LoadingAnimation from './LoadingAnimation.vue'
 
 export default {
     name: 'AllMovies',
@@ -59,7 +54,8 @@ export default {
         MovieListitem,
         Searchbox,
         Sidebar,
-        Filtermenu
+        Filtermenu,
+        LoadingAnimation
     },
     data() {
         return {
@@ -138,6 +134,16 @@ export default {
     watch: {
         movies: function() {
             this.$store.dispatch("filterMovies")
+        },
+        filteredMovies: function() {
+            if(this.end > this.filteredMovies.length){
+                this.end = this.filteredMovies.length
+                this.start = this.end - 24
+                if(this.start < 0){
+                    this.start = 0
+                }
+            }
+            
         }
     },
     methods: {

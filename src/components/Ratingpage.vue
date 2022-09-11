@@ -40,6 +40,11 @@
             </button>
         </div>
         <hr class="border-gray-800">
+        <p class="mb-4">Hat dir der Film gefallen?</p>
+        <input  name="like-buttons" id="like" type="radio">
+        <label for="like"><font-awesome-icon :icon="['fas', 'poo']" class="text-brown-500" /></label>
+        <input name="like-buttons" id="dislike" type="radio">
+        <label for="dislike"></label>
         <div class="flex justify-center py-4 pb-8 bg-gray-900 rounded-b-lg">
             <button :disabled="!(ratingSexism != null && ratingRacism != null && ratingOthers != null && ratingCringe != null)" class="bg-yellow-500 text-white disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600 uppercase" @click="submitRating">{{ $t('rating.submit') }}</button>
         </div>

@@ -4,10 +4,8 @@
             <div class="hidden sm:flex w-full mb-8 flex justify-between px-4 md:px-0">
                 <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
             </div>
-            <div v-if="triggerscoreLoading" class="mb-8 py-32 lg:py-48">
-                <font-awesome-icon :icon="['fas', 'angry']" class="text-white text-5xl animate-spin transform scale-150" />
-                <p class="text-white font-semibold animate-bounce mt-8">{{ $t('general.loadMovies') }}</p>
-            </div>
+
+            <LoadingAnimation v-if="triggerscoreLoading"/>
             <div v-else class="flex flex-col lg:flex-row lg:rounded-b px-0 sm:px-4 md:px-0">
                 <div class="flex flex-col w-full bg-gray-900 text-white rounded-t lg:rounded justify-start lg:mr-6">
                     <div class="flex bg-gray-900 justify-between w-full sm:rounded-t">
@@ -111,10 +109,13 @@
 
 <script>
 import Ratingpage from './Ratingpage.vue'
+import LoadingAnimation from './LoadingAnimation.vue'
+
 export default {
   name: 'Detailpage',
   components: {
-      Ratingpage
+      Ratingpage,
+      LoadingAnimation
   },
   data(){
       return {
