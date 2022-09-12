@@ -2,8 +2,8 @@
     <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="movie-highlight-item bg-transparent text-white sm:rounded shadow-md flex flex-col relative border-b md:border-b-0 border-gray-800 cursor-pointer min-w-sm lg:hover:shadow-inner transform transition duration-300">
         <div class="hidden md:block relative w-full h-44 p-2 text-white sm:rounded-t w-3/4 overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center movie-poster" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(22,0,0,0.1),rgba(22,0,0,0.2)),url(' + poster + ')'}" />
-            <div v-if="totalRatings[0].ratings == 1" class="flex items-center w-16 h-16 bg-gradient-to-br from-black to-gray-900 bg-opacity-80 text-yellow-500 rounded-full justify-center drop-shadow">
-                <span class="font-semibold  transform -rotate-12 italic">{{ $t('general.new') }}</span>
+            <div v-if="totalRatings[0].ratings == 1" class="flex items-center w-16 h-16 relative rounded-full justify-center drop-shadow">
+                <NewAnimation />
             </div>  
             <div class="flex absolute top-2 right-2 rounded-lg justify-center w-16 h-16 bg-opacity-80" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-500': scoreTotal < 7 && scoreTotal >=4, 'bg-green-600': scoreTotal < 4}">
                 <p class="self-center text-white text-xl font-semibold">{{scoreTotal}}</p>
@@ -69,35 +69,39 @@
 </template>
 
 <script>
+import NewAnimation from './NewAnimation.vue'
 export default {
-  name: 'RecentRatingsItem',
-  props: {
-    movie: Object,
-    scores: Object
-  },
-  computed: {
-    poster2: function() {
-              return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
-      },
-      poster: function() {
-          if(this.movie.backdrop_path){
-              return `https://image.tmdb.org/t/p/original/${this.movie.backdrop_path}`
-          } else return require('@/assets/images/film-poster-placeholder.png')
-          
-      },
-      scoreAvailable: function() {
-          return this.scores != undefined
-      },
-      scoreTotal: function() {
-          if(this.scores){
-              return Math.floor((this.scores.rating_sexism + this.scores.rating_racism + this.scores.rating_others) / 3 * 10) / 10
-          } else return "-"
-          
-      },
-      totalRatings: function(){
-        return this.$store.getters.getTriggerscores.filter(movie => movie.movie_id == this.movie.id)
-      },
-  }
+    name: "RecentRatingsItem",
+    props: {
+        movie: Object,
+        scores: Object
+    },
+    computed: {
+        poster2: function () {
+            return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`;
+        },
+        poster: function () {
+            if (this.movie.backdrop_path) {
+                return `https://image.tmdb.org/t/p/original/${this.movie.backdrop_path}`;
+            }
+            else
+                return require("@/assets/images/film-poster-placeholder.png");
+        },
+        scoreAvailable: function () {
+            return this.scores != undefined;
+        },
+        scoreTotal: function () {
+            if (this.scores) {
+                return Math.floor((this.scores.rating_sexism + this.scores.rating_racism + this.scores.rating_others) / 3 * 10) / 10;
+            }
+            else
+                return "-";
+        },
+        totalRatings: function () {
+            return this.$store.getters.getTriggerscores.filter(movie => movie.movie_id == this.movie.id);
+        },
+    },
+    components: { NewAnimation }
 }
 </script>
 
@@ -107,6 +111,6 @@ export default {
         text-overflow: ellipsis;
     }
     .drop-shadow {
-        filter: drop-shadow(0 0 2px orange)
+        filter: drop-shadow(0 1px 0px white) drop-shadow(1px 0px 0px white) drop-shadow(-1px 0px 0px white) drop-shadow(0 -1px 0px white);
     }
 </style>
