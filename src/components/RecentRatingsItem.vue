@@ -5,7 +5,7 @@
             <div v-if="totalRatings[0].ratings == 1" class="flex items-center w-16 h-16 bg-gradient-to-br from-black to-gray-900 bg-opacity-80 text-yellow-500 rounded-full justify-center drop-shadow">
                 <span class="font-semibold  transform -rotate-12 italic">{{ $t('general.new') }}</span>
             </div>  
-            <div class="flex absolute top-2 right-2 rounded-lg justify-center w-16 h-16 mr-2 bg-opacity-80" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-500': scoreTotal < 7 && scoreTotal >=4, 'bg-green-600': scoreTotal < 4}">
+            <div class="flex absolute top-2 right-2 rounded-lg justify-center w-16 h-16 bg-opacity-80" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-500': scoreTotal < 7 && scoreTotal >=4, 'bg-green-600': scoreTotal < 4}">
                 <p class="self-center text-white text-xl font-semibold">{{scoreTotal}}</p>
             </div>
         </div>
