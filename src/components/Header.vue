@@ -47,13 +47,13 @@
               <div class="fixed top-0 left-0 w-full h-full" @click="showSearch = false"></div>
               <transition enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-                  <div v-if="showSearch"  class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12 absolute top-1/3 left-1/2 transform -translate-x-1/2 h-32">
+                  <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12 absolute top-1/3 left-1/2 transform -translate-x-1/2 h-32">
                     <div class="flex mx-auto mt-6 p-4 sm:px-0 h-24 self-center w-full" style="max-width: 40rem">
                       <div class="rounded-lg flex w-full justify-start">
                         <button class="flex items-center justify-center px-3 w-16 rounded-l-xl bg-yellow-500 text-white" @click="searchMovie">
                             <font-awesome-icon :icon="['fas', 'search']" class="text-lg" />
                         </button>
-                        <input type="text" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="lg:text-xl px-4 w-full outline-none transition" id="search" :placeholder="$t('header.searchPlaceholder')">
+                        <input type="text" v-model="searchInput" v-on:keyup.enter="searchMovie" @input="resetSearchResults" class="lg:text-xl px-4 w-full outline-none transition" id="search-header" :placeholder="$t('header.searchPlaceholder')">
                         <div class="bg-white rounded-r-xl h-full w-8 flex justify-center">
                           <font-awesome-icon :icon="['fas', 'times']" class="self-center" @click="showSearch = false" />
                         </div>
@@ -171,12 +171,14 @@ export default {
         this.$store.dispatch("setTop10Cringe")
         this.$store.dispatch("setBondMovies")
       },
+      focusSearch: function(){
+        document.getElementById("search-header").focus()
+      },
       openSearch: function(){
         this.showSearch = !this.showSearch; 
         this.showMenu = false;
         this.showNav = false;
-        console.log(document.getElementById("search"))
-        document.getElementById("search").focus()
+        setTimeout(this.focusSearch,200)
       }
   }
 }
