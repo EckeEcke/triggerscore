@@ -109,7 +109,8 @@
     "descRacism": "Werden unkritisch rassistische Klischees bedient?",
     "descOthers": "Enthält der Film weitere triggernde Elemente?",
     "descCringe": "Sind Inszenierung, Dialoge oder Handlungen 'zum Fremdschämen'?",
-    "tmdb-rating": "TMDB"
+    "tmdb-rating": "TMDB",
+    "share": "Film teilen"
   },
   "highlights": {
     "headline1": "James Bond Special",

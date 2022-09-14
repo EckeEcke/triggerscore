@@ -114,7 +114,7 @@
                     <a :href="'whatsapp://send?text=' + 'Triggerscore - ' + movie.title + ' ' + currentURL"
                             class="pb-0 text-white font-semibold text-lg self-center"       
                             data-action="share/whatsapp/share"  
-                            target="_blank">Film teilen</a> 
+                            target="_blank">{{ $t('rating.share') }}</a> 
                 </div>      
             </div>            
         </div>
