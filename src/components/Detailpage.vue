@@ -103,6 +103,7 @@
                     </div>
                 </div>
                 <Ratingpage :title="movie.title" :id="movie.id" />
+                <hr class="border-gray-800 md:hidden">
                 <div class="md:hidden flex justify-center gap-2 py-8 px-2 bg-gray-900">
                     <a :href="'whatsapp://send?text=' + 'Triggerscore - ' + movie.title + ' ' + currentURL"
                             class=""       
