@@ -43,7 +43,7 @@
                 
               </nav>
             </transition-group>
-            <div v-if="showSearch" class="fixed h-screen w-screen top-0 left-0 bg-gray-900 bg-opacity-90 overflow-none">
+            <div v-if="showSearch" class="fixed h-screen w-screen top-0 left-0 bg-gray-900 bg-opacity-90 overflow-none backdrop-blur">
               <div class="fixed top-0 left-0 w-full h-full" @click="showSearch = false"></div>
               <transition enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
