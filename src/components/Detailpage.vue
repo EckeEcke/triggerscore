@@ -96,7 +96,16 @@
                                     <a class="ml-2 self-center" v-if="movie.imdb_id" :href="imdbURL" target="_blank">
                                         <img class="w-16" src="../assets/images/imdb-logo.svg">
                                     </a>
+                                    
                                 </div>
+                            </div>
+                            <div class="md:hidden flex mb-8">
+                                <a href="whatsapp://send?text=This is WhatsApp sharing example using link"
+                                        class="ml-auto"       
+                                        data-action="share/whatsapp/share"  
+                                        target="_blank"> 
+                                        <img class="w-10" src="../assets/images/WhatsApp.svg">
+                                    </a> 
                             </div>
                         </div>
                     </div>
