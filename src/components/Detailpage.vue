@@ -182,7 +182,7 @@ export default {
           return `https://www.themoviedb.org/movie/` + this.movie.id
       },
       currentURL: function(){
-        return this.$route.query.page
+        return window.location.href
       }
   },
   methods: {
