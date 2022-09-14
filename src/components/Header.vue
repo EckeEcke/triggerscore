@@ -1,5 +1,5 @@
 <template>
-    <header class="w-full h-auto bg-red-800 bg-opacity-90 z-30 shadow-md flex flex-col sticky top-0">
+    <header class="w-full h-auto bg-red-800 bg-opacity-95 z-30 shadow-md flex flex-col sticky top-0">
         <section class="container mx-auto h-full p-4 xl:w-10/12 flex justify-between relative">
             <div class="flex">
               <router-link to="/" tag="h1" class="leading-5 text-xl md:leading-6 md:text-2xl self-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
@@ -13,7 +13,7 @@
               <router-link to="/contact" tag="a" class="animated-link text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.contact') }}</router-link>
               <button v-if="$root.$i18n.locale == 'en'" @click="switchLanguage('de')" class="mr-6 sm:mr-10"><img class="w-6" src="../assets/images/germany.svg"></button>
               <button v-if="$root.$i18n.locale == 'de'" @click="switchLanguage('en')" class="mr-6 sm:mr-10"><img class="w-6" src="../assets/images/uk.svg"></button>
-              <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-white mr-6 sm:mr-0 self-center hover:text-yellow-500" :class="{'animate-bounce': showSearch}" @click="openSearch" />
+              <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-white mr-6 sm:mr-10 md:mr-0 self-center hover:text-yellow-500" :class="{'animate-bounce': showSearch}" @click="openSearch" />
               <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg self-center md:hidden" @click="showNav = !showNav; showMenu = false; showSearch = false" />
             </div>
             
@@ -21,11 +21,11 @@
         <transition-group  enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                  <div v-if="showNav" key="backdrop" class="fixed bg-gray-900 bg-opacity-40 top-0 left-0 w-full h-screen overflow-none"  @click="showNav = false" />
-              <nav v-if="showNav" key="sidebar" class="w-80 bg-gray-900 h-screen absolute top-0 right-0 shadow-lg md:hidden z-40">
-                <div class="text-right text-xl p-4 bg-gray-900 text-white">
+              <nav v-if="showNav" key="sidebar" class="w-80 bg-gray-900 bg-opacity-90 backdrop-blur h-screen absolute top-0 right-0 shadow-lg md:hidden z-40">
+                <div class="text-right text-xl p-4 text-white">
                   <font-awesome-icon :icon="['fas', 'times']" @click="showNav = false" />
                 </div>
-                <div class="bg-gray-900">
+                <div class="">
                   <router-link to="/" tag="div" class="text-2xl md:text-2xl self-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer pb-12" @click="showNav = false">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
                 </router-link> 
@@ -207,5 +207,9 @@ export default {
 .animated-link:hover::before {
   transform: scaleX(1);
   background-color: rgba(245, 158, 11);
+}
+
+.backdrop-blur {
+  backdrop-filter: blur(0.5rem);
 }
 </style>

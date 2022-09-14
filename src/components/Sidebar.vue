@@ -1,7 +1,7 @@
 <template>
 <div>
-    <div class="fixed bg-gray-900 bg-opacity-20 top-0 left-0 w-full h-screen overflow-none"  @click="$emit('close')"/>
-              <div class="bg-gray-900 text-white shadow-lg w-72 min-w-10/12 p-4 right-0 fixed top-0 right-0 fill-available z-30 xl:hidden flex flex-col">
+    <div class="fixed bg-gray-900 bg-opacity-40 top-0 left-0 w-full h-screen overflow-none"  @click="$emit('close')"/>
+              <div class="bg-gray-900 bg-opacity-90 background-blur text-white shadow-lg w-72 min-w-10/12 p-4 right-0 fixed top-0 right-0 fill-available z-30 xl:hidden flex flex-col">
       
           <div class="h-5/6 overflow-y-auto hide-scrollbar">
               <div class="overflow-y-auto pb-12 hide-scrollbar">
