@@ -100,7 +100,7 @@
                                 </div>
                             </div>
                             <div class="md:hidden flex mb-8">
-                                <a href="whatsapp://send?text=This is WhatsApp sharing example using link"
+                                <a :href="'whatsapp://send?text=' + 'Triggerscore - ' + movie.title + ' ' + currentURL"
                                         class="ml-auto"       
                                         data-action="share/whatsapp/share"  
                                         target="_blank"> 
@@ -180,6 +180,9 @@ export default {
       },
       tmdbURL: function(){
           return `https://www.themoviedb.org/movie/` + this.movie.id
+      },
+      currentURL: function(){
+        return this.$route.query.page
       }
   },
   methods: {
