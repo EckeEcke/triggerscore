@@ -99,19 +99,23 @@
                                     
                                 </div>
                             </div>
-                            <div class="md:hidden flex mb-8">
-                                <a :href="'whatsapp://send?text=' + 'Triggerscore - ' + movie.title + ' ' + currentURL"
-                                        class="ml-auto"       
-                                        data-action="share/whatsapp/share"  
-                                        target="_blank"> 
-                                        <img class="w-10" src="../assets/images/WhatsApp.svg">
-                                    </a> 
-                            </div>
                         </div>
                     </div>
                 </div>
                 <Ratingpage :title="movie.title" :id="movie.id" />
-            </div>      
+                <div class="md:hidden flex justify-center gap-2 py-8 px-2 bg-gray-900">
+                    <a :href="'whatsapp://send?text=' + 'Triggerscore - ' + movie.title + ' ' + currentURL"
+                            class=""       
+                            data-action="share/whatsapp/share"  
+                            target="_blank"> 
+                            <img class="w-10" src="../assets/images/WhatsApp.svg">
+                        </a>
+                    <a :href="'whatsapp://send?text=' + 'Triggerscore - ' + movie.title + ' ' + currentURL"
+                            class="pb-0 text-white font-semibold text-lg self-center"       
+                            data-action="share/whatsapp/share"  
+                            target="_blank">Film teilen</a> 
+                </div>      
+            </div>            
         </div>
     </section>   
 </template>

@@ -1,5 +1,5 @@
 <template>
-<div :class="{'bg-opacity-0': submitted}" class="w-full bg-gray-900 text-white rounded-b  lg:rounded-t">
+<div :class="{'bg-opacity-0': submitted}" class="w-full bg-gray-900 text-white md:rounded-b  lg:rounded-t">
     <div v-if="submitted" class="bg-green-500 text-white text-center text-2xl p-6 rounded-b lg:rounded lg:h-auto lg:sticky lg:bottom-0">
         <img src="../assets/images/thanks.gif" ref="thanks" class="mx-auto hidden lg:block mt-16 mb-8 rounded-lg shadow-lg" />
         <p class="font-bold">{{ $t('rating.thanks') }}</p>
@@ -40,7 +40,7 @@
             </button>
         </div>
         <hr class="border-gray-800">
-        <div class="flex justify-center py-4 pb-8 bg-gray-900 rounded-b-lg">
+        <div class="flex justify-center py-8 bg-gray-900 rounded-b-lg">
             <button :disabled="!(ratingSexism != null && ratingRacism != null && ratingOthers != null && ratingCringe != null)" class="bg-yellow-500 text-white disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600 uppercase" @click="submitRating">{{ $t('rating.submit') }}</button>
         </div>
     </div>                    
