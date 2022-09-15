@@ -40,7 +40,7 @@
             </button>
         </div>
         <hr class="border-transparent">
-        <div class="flex justify-center py-8 md:pb-12 bg-gray-900 rounded-b-lg">
+        <div class="flex justify-center py-8 pb-12 bg-gray-900 rounded-b-lg">
             <button :disabled="!(ratingSexism != null && ratingRacism != null && ratingOthers != null && ratingCringe != null)" class="bg-yellow-500 text-white disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600 uppercase" @click="submitRating">{{ $t('rating.submit') }}</button>
         </div>
     </div>                    
