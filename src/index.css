@@ -26,4 +26,8 @@
 .movie-highlight-item:hover .movie-poster {
     transform: scale(1.05);
 }
+
+.backdrop-blur {
+    backdrop-filter: blur(4px);
+  }
   

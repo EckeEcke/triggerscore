@@ -21,7 +21,7 @@
         <transition-group  enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                  <div v-if="showNav" key="backdrop" class="fixed bg-gray-900 bg-opacity-40 top-0 left-0 w-full h-screen overflow-none"  @click="showNav = false" />
-              <nav v-if="showNav" key="sidebar" class="w-80 bg-gray-900 bg-opacity-90 backdrop-blur h-screen absolute top-0 right-0 shadow-lg md:hidden z-40">
+              <nav v-if="showNav" key="sidebar" class="w-80 bg-gray-900 bg-opacity-80 backdrop-blur h-screen absolute top-0 right-0 shadow-lg md:hidden z-40">
                 <div class="text-right text-xl p-4 text-white">
                   <font-awesome-icon :icon="['fas', 'times']" @click="showNav = false" />
                 </div>
@@ -209,7 +209,4 @@ export default {
   background-color: rgba(245, 158, 11);
 }
 
-.backdrop-blur {
-  backdrop-filter: blur(0.5rem);
-}
 </style>
