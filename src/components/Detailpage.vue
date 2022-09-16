@@ -116,10 +116,14 @@
                             target="_blank"> 
                             <img class="w-10" src="../assets/images/WhatsApp.svg">
                         </a>
+                        <a :href="'https://www.reddit.com/submit?url=' + currentURL"
+                            target="_blank">
+                            <img class="w-10" src="../assets/images/reddit-logo.svg">
+                        </a>
                         <a :href="'mailto:?subject= ' + movie.title + ' on Triggerscore&body=Check out ' + movie.title + ' on Triggerscore: ' + currentURL"
                             title="Share by Email">
                             <font-awesome-icon :icon="['fas', 'envelope']" class="text-white" style="width:auto;height:2.5rem"/>
-                        </a>
+                        </a> 
                     </div> 
                 </div>     
             </div>            
