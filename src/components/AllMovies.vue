@@ -8,7 +8,7 @@
                     <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-yellow-500 ">{{ $t('index.headline') }}</h2>
                     <p class="text-sm text-white ">{{ $t('index.intro1') }}<span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">{{ $t('index.search') }}</span>{{ $t('index.intro2') }}</p>
                 </div>
-                <div class="ml-auto mt-4 -mr-3 sm:mr-0 xl:hidden">
+                <div class="ml-auto mt-4 -mr-2 sm:mr-0 xl:hidden">
                     <button class="bg-yellow-500 text-white uppercase disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="showMenu = !showMenu"><font-awesome-icon class="mr-2" :icon="['fas', 'filter']" />Filter</button>
                 </div>  
             </div>
