@@ -40,6 +40,11 @@
             </button>
         </div>
         <hr class="border-transparent">
+        <p class="mb-4" @click="showCommentBox = !showCommentBox">Want to also leave a comment on this movie?</p>
+        <div class="w-full px-4">
+            <textarea v-if="showCommentBox" rows="3" class="w-full h-24 bg-gray-950 p-2 resize-none rounded-lg" maxlength="100" v-model="comment"></textarea>
+        </div>
+        <hr class="border-transparent">
         <div class="flex justify-center py-8 pb-12 bg-gray-900 rounded-b-lg">
             <button :disabled="!(ratingSexism != null && ratingRacism != null && ratingOthers != null && ratingCringe != null)" class="bg-yellow-500 text-white disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600 uppercase" @click="submitRating">{{ $t('rating.submit') }}</button>
         </div>
@@ -56,7 +61,9 @@ export default {
           ratingRacism: null,
           ratingOthers: null,
           ratingCringe: null,
-          submitted: false
+          comment: '',
+          submitted: false,
+          showCommentBox: false
       }
   },
   props: {
@@ -81,7 +88,7 @@ export default {
                 if(this.$refs.thanks){
                     window.scrollTo({top:0})
                 }},1000)
-            const data = { movieID: this.id, sexism: this.ratingSexism, racism: this.ratingRacism, others: this.ratingOthers, cringe: this.ratingCringe };
+            const data = { movieID: this.id, sexism: this.ratingSexism, racism: this.ratingRacism, others: this.ratingOthers, cringe: this.ratingCringe, comment: this.comment };
             fetch('https://triggerscore-backend2.onrender.com/post', {
                 method: "post",
                 headers: {

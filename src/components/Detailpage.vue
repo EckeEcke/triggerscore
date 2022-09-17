@@ -1,5 +1,5 @@
 <template>
-    <section class="w-full bg-center bg-cover bg-fixed" style="min-height:100vh-5rem;" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), ${backdrop}`,minHeight: 'calc(100vh - 20rem)'}">
+    <section class="w-full bg-center bg-cover bg-fixed" style="min-height:100vh-5rem;" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), ${backdrop}`,minHeight: 'calc(100vh - 20rem)'}">
         <div class="container mx-auto sm:pt-8 sm:pb-28 xl:w-10/12 md:px-4">
             <div class="hidden sm:flex w-full mb-8 flex justify-between px-4 md:px-0">
                 <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
@@ -234,6 +234,7 @@ export default {
           const response = await fetch(`https://triggerscore-backend2.onrender.com/movie/${this.$route.params.id}`)
           const scores = await response.json()
           this.score = scores[0]
+          console.log(scores[1])
           this.triggerscoreLoading = false
       }
   },
