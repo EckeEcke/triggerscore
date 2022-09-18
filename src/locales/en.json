@@ -113,7 +113,9 @@
       "descOthers": "Does the movie contain other triggering elements (bodyshaming, abelism...)?",
       "descCringe": "Does the movie contain elements making cringe?",
       "tmdb-rating": "TMDB",
-      "share": "Share movie"
+      "share": "Share movie",
+      "leaveComment": "Want to also leave a comment for this movie?",
+      "placeholder": "Write a comment..."
     },
     "highlights": {
       "headline1": "James Bond Special",
