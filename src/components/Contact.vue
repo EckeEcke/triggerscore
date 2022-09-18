@@ -42,7 +42,7 @@
         </div>  
     </div>
     <div class="container px-4 xl:w-10/12 mx-auto text-left">
-          <button class="transition hover:text-yellow-500 py-3 px-0 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'chevron-left']" class="mr-2" />{{ $t('general.back') }}</button>
+          <button class="transition hover:text-yellow-500 pt-3 pb-16 px-0 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'chevron-left']" class="mr-2" />{{ $t('general.back') }}</button>
       </div>
     </div>
     
