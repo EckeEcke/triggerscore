@@ -30,4 +30,7 @@
 .backdrop-blur {
     backdrop-filter: blur(4px);
   }
-  
+
+.radial-background {
+    background: radial-gradient(rgb(5,5,15),rgb(5,5,20));
+}

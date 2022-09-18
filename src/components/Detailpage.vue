@@ -7,9 +7,9 @@
 
             <LoadingAnimation v-if="triggerscoreLoading"/>
             <div v-else class="flex flex-col lg:flex-row lg:rounded-b px-0 sm:px-4 md:px-0">
-                <div class="flex flex-col w-full bg-gray-900 text-white rounded-t lg:rounded justify-start lg:mr-6">
-                    <div class="flex bg-gray-900 justify-between w-full sm:rounded-t">
-                        <img :src=poster class="w-1/2 lg:w-76 h-auto object-contain self-start rounded-tl self-center" />
+                <div class="flex flex-col w-full radial-background text-white rounded-t lg:rounded justify-start lg:mr-6">
+                    <div class="flex justify-between w-full sm:rounded-t p-4 pr-0">
+                        <img :src=poster class="w-1/2 lg:w-76 h-auto object-contain self-start rounded self-center" />
                         <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center rounded-tr">
                             <div class="text-base md:text-2xl lg:text-lg self-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200">
                                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
@@ -103,16 +103,16 @@
                     </div>
                     <div v-if="comments.length > 0" class="px-4 mb-12">
                         <h2 class="text-white font-semibold text-left mb-4">{{ $t('general.comments') }}</h2>
-                        <p v-for="(comment,index) in comments" :key="index" class="max-w-md text-white text-left text-sm p-4 md:p-6 bg-gray-950 italic rounded mb-2" :class="{'hidden': index >= 1 && !showMoreComments}">
+                        <p v-for="(comment,index) in comments" :key="comment" class="max-w-md text-white text-left text-sm p-4 md:p-6 bg-gradient-to-r from-gray-950 to-gray-800 italic rounded mb-2" :class="{'hidden': index >= 1 && !showMoreComments}">
                             "{{ comment }}"
                         </p>
-                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4 cursor-pointer">{{ $t('general.showMore') }}</p>
-                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4 cursor-pointer">{{ $t('general.showLess') }}</p>
+                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4 cursor-pointer">{{ $t('general.showMore') }} <font-awesome-icon :icon="['fas', 'caret-down']" class="text-white" /></p>
+                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4 cursor-pointer">{{ $t('general.showLess') }} <font-awesome-icon :icon="['fas', 'caret-up']" class="text-white" /></p>
                     </div>
                 </div>
                 <Ratingpage :title="movie.title" :id="movie.id" />
                 <hr class="border-gray-800 md:hidden">
-                <div class="md:hidden flex flex-col justify-center gap-4 py-12 px-2 bg-gray-900">
+                <div class="md:hidden flex flex-col justify-center gap-4 py-12 px-2">
                     <h3
                         class="pb-0 text-white font-semibold text-lg self-center"       
                         target="_blank">{{ $t('rating.share') }}

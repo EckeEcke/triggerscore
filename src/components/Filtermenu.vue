@@ -4,7 +4,7 @@
       <h2 class="text-2xl md:text-3xl font-semibold mb-2 text-white">{{ $t('index.headline') }}</h2>
       <p class="text-sm text-white ">{{ $t('index.intro1') }}<span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">{{ $t('index.search') }}</span>{{ $t('index.intro2') }}</p>
     </div>
-    <div class="bg-gray-900 px-0 py-4 rounded-b text-white">
+    <div class="px-0 py-4 rounded-b text-white">
       <div class="flex items-end justify-between">
         <div class="flex">
           <div class="w-52 mr-4">

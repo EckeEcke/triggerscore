@@ -1,5 +1,5 @@
 <template>
-<div :class="{'bg-opacity-0': submitted}" class="w-full bg-gray-900 text-white md:rounded-b  lg:rounded-t">
+<div :class="{'bg-opacity-0': submitted}" class="w-full radial-background text-white md:rounded-b  lg:rounded-t">
     <div v-if="submitted" class="bg-green-500 text-white text-center text-2xl p-6 rounded-b lg:rounded lg:h-auto lg:sticky lg:bottom-0">
         <img src="../assets/images/thanks.gif" ref="thanks" class="mx-auto hidden lg:block mt-16 mb-8 rounded-lg shadow-lg" />
         <p class="font-bold">{{ $t('rating.thanks') }}</p>
@@ -9,7 +9,7 @@
         <label class="my-3 mt-6 block text-lg font-semibold">{{ $t('categories.sexism') }}</label>
         <p class="mb-4">{{ $t('rating.descSexism') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
-            <button v-for="(n,i) in 11" :key="i" @click="ratingSexism = ratingSexism == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingSexism == 10-i ? 'opacity-100' : 'opacity-40']]" class="w-16 sm:w-12 lg:w-10 xl:w-12 h-16 sm:h-12 lg:h-10 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold text-white" >
+            <button v-for="(n,i) in 11" :key="i" @click="ratingSexism = ratingSexism == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingSexism == 10-i ? 'opacity-100' : 'opacity-40']]" class="w-12 sm:w-12 lg:w-10 xl:w-12 h-12 sm:h-12 lg:h-10 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold text-white" >
                 <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingSexism == 10-i, 'bg-green-600': 10-i < 4, 'bg-yellow-500': 10-i > 2 && 10-i < 7, 'bg-red-700': 10-i > 6, 'opacity-100': ratingSexism == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
@@ -18,7 +18,7 @@
         <label class="my-3 block text-lg font-semibold">{{ $t('categories.racism') }}</label>
         <p class="mb-4">{{ $t('rating.descRacism') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
-            <button v-for="(n,i) in 11" :key="i" @click="ratingRacism = ratingRacism == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingRacism == 10-i ? 'opacity-100' : 'opacity-50']]" class="w-16 sm:w-12 lg:w-10 xl:w-12 h-16 sm:h-12 lg:h-10 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold text-white">
+            <button v-for="(n,i) in 11" :key="i" @click="ratingRacism = ratingRacism == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingRacism == 10-i ? 'opacity-100' : 'opacity-50']]" class="w-12 sm:w-12 lg:w-10 xl:w-12 h-12 sm:h-12 lg:h-10 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold text-white">
                 <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingRacism == 10-i, 'bg-green-600': 10-i < 4, 'bg-yellow-500': 10-i > 2 && 10-i < 7, 'bg-red-700': 10-i > 6, 'opacity-100': ratingRacism == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
@@ -26,7 +26,7 @@
         <label class="my-3 block text-lg font-semibold">{{ $t('categories.others') }}</label>
         <p class="mb-4">{{ $t('rating.descOthers') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
-            <button v-for="(n,i) in 11" :key="i" @click="ratingOthers = ratingOthers == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingOthers == 10-i ? 'opacity-100' : 'opacity-50']]" class="w-16 sm:w-12 lg:w-10 xl:w-12 h-16 sm:h-12 lg:h-10 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold text-white">
+            <button v-for="(n,i) in 11" :key="i" @click="ratingOthers = ratingOthers == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingOthers == 10-i ? 'opacity-100' : 'opacity-50']]" class="w-12 sm:w-12 lg:w-10 xl:w-12 h-12 sm:h-12 lg:h-10 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold text-white">
                 <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingOthers == 10-i, 'bg-green-600': 10-i < 4, 'bg-yellow-500': 10-i > 2 && 10-i < 7, 'bg-red-700': 10-i > 6, 'opacity-100': ratingOthers == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
@@ -35,12 +35,12 @@
         <label class="my-3 block text-lg font-semibold">{{ $t('categories.cringe') }}</label>
         <p class="mb-4">{{ $t('rating.descCringe') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
-            <button v-for="(n,i) in 11" :key="i" @click="ratingCringe = ratingCringe == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingCringe == 10-i ? 'opacity-100' : 'opacity-50']]" class="w-16 sm:w-12 lg:w-10 xl:w-12 h-16 sm:h-12 lg:h-10 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold text-white">
+            <button v-for="(n,i) in 11" :key="i" @click="ratingCringe = ratingCringe == 10-i ? null : 10-i " :class="[['rating' + (10-i)], [ratingCringe == 10-i ? 'opacity-100' : 'opacity-50']]" class="w-12 sm:w-12 lg:w-10 xl:w-12 h-12 sm:h-12 lg:h-10 xl:h-12 p-1 text-center text-sm flex-none opacity-50 font-semibold text-white">
                 <div class="w-full h-full rounded-lg flex text-center justify-center font-semibold" :class="{'transform scale-110 text-lg': ratingCringe == 10-i, 'bg-green-600': 10-i < 4, 'bg-yellow-500': 10-i > 3 && 10-i < 7, 'bg-red-700': 10-i > 6, 'opacity-100': ratingCringe == 10-i }"><span class="self-center">{{10-i}}</span></div>
             </button>
         </div>
         <hr class="border-transparent">
-        <p class="my-4 text-lg font-semibold">{{ $t('rating.leaveComment') }}</p>
+        <p class="my-4 text-lg font-semibold px-4">{{ $t('rating.leaveComment') }}</p>
         <div class="w-full px-4">
             <textarea rows="3" class="w-full max-w-lg bg-gray-950 p-2 resize-none rounded-lg" maxlength="100" v-model="comment" :placeholder="$t('rating.placeholder')"></textarea>
         </div>
