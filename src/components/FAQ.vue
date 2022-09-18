@@ -1,27 +1,29 @@
 <template>
-
-<div class="container text-white py-6 px-4 md:py-12 xl:w-10/12 text-left text-sm md:text-base mx-auto md:rounded-lg">
-        <h2 class="font-semibold text-xl md:text-2xl mb-2">{{ $t('faq.headline') }}</h2>
-        <hr class="my-4">
-        <section class="mt-4 lg:w-3/4 leading-6 md:leading-7">
-            <p class="mb-2"><b>{{ $t('faq.question1') }}</b></p>
-            <p>{{ $t('faq.answer1') }}</p>
-        </section>
-        <section class="mt-4 lg:w-3/4 leading-6 md:leading-7">
-            <p class="mb-2"><b>{{ $t('faq.question2') }}</b></p>
-            <p>{{ $t('faq.answer2') }}</p>
-        </section>
-        <section class="mt-4 lg:w-3/4 leading-6 md:leading-7">
-            <p class="mb-2"><b>{{ $t('faq.question3') }}</b></p>
-            <p>{{ $t('faq.answer3') }}</p>
-        </section>
-        <section class="mt-4 lg:w-3/4 leading-6 md:leading-7">
-            <p class="mb-2"><b>{{ $t('faq.question4') }}</b></p>
-            <p>{{ $t('faq.answer4') }}</p>
-        </section>
-        <div class="w-full my-8 flex justify-between">
-            <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
-        </div>
+    <div class="container text-white py-6 px-4 md:py-12 xl:w-10/12 text-left text-sm md:text-base mx-auto md:rounded-lg">
+        <div class="lg:w-3/4">
+            <h2 class="font-semibold text-xl md:text-2xl mb-2">{{ $t('faq.headline') }}</h2>
+            <p class="font-semibold">{{ $t('faq.subheadline') }}</p>
+            <hr class="my-4">
+            <section class="mt-4 leading-6 md:leading-7">
+                <p class="mb-2"><b>{{ $t('faq.question1') }}</b></p>
+                <p>{{ $t('faq.answer1') }}</p>
+            </section>
+            <section class="mt-4 leading-6 md:leading-7">
+                <p class="mb-2"><b>{{ $t('faq.question2') }}</b></p>
+                <p>{{ $t('faq.answer2') }}</p>
+            </section>
+            <section class="mt-4 leading-6 md:leading-7">
+                <p class="mb-2"><b>{{ $t('faq.question3') }}</b></p>
+                <p>{{ $t('faq.answer3') }}</p>
+            </section>
+            <section class="mt-4 leading-6 md:leading-7">
+                <p class="mb-2"><b>{{ $t('faq.question4') }}</b></p>
+                <p>{{ $t('faq.answer4') }}</p>
+            </section>
+            <div class="w-full mt-8 mb-2 flex justify-between">
+                <button class="transition hover:text-yellow-500 py-3 px-0 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'chevron-left']" class="mr-2" />{{ $t('general.back') }}</button>
+            </div>
+        </div>    
     </div>
 </template>
 

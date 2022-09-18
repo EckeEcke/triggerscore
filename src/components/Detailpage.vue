@@ -1,10 +1,6 @@
 <template>
     <section class="w-full bg-center bg-cover bg-fixed" style="min-height:100vh-5rem;" :style="{ backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), ${backdrop}`,minHeight: 'calc(100vh - 20rem)'}">
-        <div class="container mx-auto sm:pt-8 sm:pb-28 xl:w-10/12 md:px-4">
-            <div class="hidden sm:flex w-full mb-8 flex justify-between px-4 md:px-0">
-                <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
-            </div>
-
+        <div class="container mx-auto sm:pt-6 sm:pb-12 xl:w-10/12 md:px-4">
             <LoadingAnimation v-if="triggerscoreLoading"/>
             <div v-else class="flex flex-col lg:flex-row lg:rounded-b px-0 sm:px-4 md:px-0">
                 <div class="flex flex-col w-full radial-background text-white rounded-t lg:rounded justify-start lg:mr-6">
@@ -138,6 +134,9 @@
                         </a> 
                     </div> 
                 </div>     
+            </div>
+            <div class="hidden sm:flex w-full mt-8 flex justify-between px-4">
+                <button class="transition hover:text-yellow-500 py-3 px-0 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'chevron-left']" class="mr-2" />{{ $t('general.back') }}</button>
             </div>            
         </div>
     </section>   
