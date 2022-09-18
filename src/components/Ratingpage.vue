@@ -43,10 +43,11 @@
         <p class="my-4 text-lg font-semibold px-4">{{ $t('rating.leaveComment') }}</p>
         <div class="w-full px-4">
             <textarea rows="3" class="w-full max-w-lg bg-gray-950 p-2 resize-none rounded-lg" maxlength="100" v-model="comment" :placeholder="$t('rating.placeholder')"></textarea>
+            <p v-if="comment.length > 0" class="text-right text-xs">{{ comment.length}}/100 Zeichen</p>
         </div>
         <hr class="border-transparent">
-        <div class="flex justify-center py-8 pb-12 bg-gray-900 rounded-b-lg">
-            <button :disabled="!(ratingSexism != null && ratingRacism != null && ratingOthers != null && ratingCringe != null)" class="bg-yellow-500 text-white disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600 uppercase" @click="submitRating">{{ $t('rating.submit') }}</button>
+        <div class="flex justify-center pt-8 pb-12 px-4 bg-gray-900 rounded-b-lg">
+            <button :disabled="!(ratingSexism != null && ratingRacism != null && ratingOthers != null && ratingCringe != null)" class="max-w-lg w-full bg-yellow-500 text-white disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600 uppercase" @click="submitRating">{{ $t('rating.submit') }}</button>
         </div>
     </div>                    
 </div>
