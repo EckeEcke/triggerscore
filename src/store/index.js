@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
-// const url = "https://triggerscore-backend2.onrender.com/"
-const url = "http://localhost:3000/"
+const url = "https://triggerscore-backend2.onrender.com/"
+// const url = "http://localhost:3000/"
 
 async function filterByProvider(netflix, prime, disney, sky, triggerscores,array,locale,state){
     let clonedArray = [...array]
