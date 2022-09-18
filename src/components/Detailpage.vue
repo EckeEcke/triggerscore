@@ -102,12 +102,12 @@
                         </div>
                     </div>
                     <div v-if="comments.length > 0" class="px-4 mb-12">
-                        <h2 class="text-white text-lg text-left mb-4">Comments</h2>
-                        <p v-for="(comment,index) in comments" :key="index" class="max-w-md text-white text-left p-4 md:p-6 bg-gray-950 italic rounded mb-2" :class="{'hidden': index >= 1 && !showMoreComments}">
+                        <h2 class="text-white font-semibold text-left mb-4">{{ $t('general.comments') }}</h2>
+                        <p v-for="(comment,index) in comments" :key="index" class="max-w-md text-white text-left text-sm p-4 md:p-6 bg-gray-950 italic rounded mb-2" :class="{'hidden': index >= 1 && !showMoreComments}">
                             "{{ comment }}"
                         </p>
-                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4">Show more</p>
-                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4">Show less</p>
+                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4 cursor-pointer">{{ $t('general.showMore') }}</p>
+                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4 cursor-pointer">{{ $t('general.showLess') }}</p>
                     </div>
                 </div>
                 <Ratingpage :title="movie.title" :id="movie.id" />
@@ -209,7 +209,7 @@ export default {
         return window.location.href
       },
       comments: function(){
-        return this.score.comments
+        return this.score.comments.filter(comment => {return comment.length > 3})
       }
   },
   methods: {

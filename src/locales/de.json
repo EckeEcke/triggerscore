@@ -16,7 +16,10 @@
     "minutes": "Minuten",
     "discoverMoreMovies": "Du möchtest noch mehr Filme auf Triggerscore entdecken?",
     "new": "NEU!",
-    "ratings": "Bewertung(en)"
+    "ratings": "Bewertung(en)",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen",
+    "comments": "Kommentare"
     
   },
   "header": {
