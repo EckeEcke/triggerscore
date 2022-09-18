@@ -52,7 +52,7 @@
                         </div>
                     </div>
                     <div class="flex flex-col xl:flex-row">
-                        <div class="text-left px-4 md:px-4 py-2 flex flex-col">
+                        <div class="w-full text-left px-4 py-2 flex flex-col">
                             <div class="flex justify-between">
                                 <h2 class="text-xl font-semibold md:text-2xl self-center mb-2">
                                 {{ movie.title }}
@@ -100,6 +100,14 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                    <div v-if="comments.length > 0" class="px-4 mb-12">
+                        <h2 class="text-white text-lg text-left mb-4">Comments</h2>
+                        <p v-for="(comment,index) in comments" :key="index" class="max-w-md text-white text-left p-4 md:p-6 bg-gray-950 italic rounded mb-2" :class="{'hidden': index >= 1 && !showMoreComments}">
+                            "{{ comment }}"
+                        </p>
+                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4">Show more</p>
+                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4">Show less</p>
                     </div>
                 </div>
                 <Ratingpage :title="movie.title" :id="movie.id" />
@@ -154,6 +162,7 @@ export default {
           releaseDate: 1900,
           score: {},
           triggerscoreLoading: true,
+          showMoreComments: false
       }
   },
   mounted: function() {
@@ -198,6 +207,9 @@ export default {
       },
       currentURL: function(){
         return window.location.href
+      },
+      comments: function(){
+        return this.score.comments
       }
   },
   methods: {
@@ -234,7 +246,7 @@ export default {
           const response = await fetch(`https://triggerscore-backend2.onrender.com/movie/${this.$route.params.id}`)
           const scores = await response.json()
           this.score = scores[0]
-          console.log(scores[1])
+          console.log(this.score)
           this.triggerscoreLoading = false
       }
   },

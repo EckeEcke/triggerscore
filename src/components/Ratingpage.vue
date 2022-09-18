@@ -42,7 +42,7 @@
         <hr class="border-transparent">
         <p class="mb-4" @click="showCommentBox = !showCommentBox">Want to also leave a comment on this movie?</p>
         <div class="w-full px-4">
-            <textarea v-if="showCommentBox" rows="3" class="w-full h-24 bg-gray-950 p-2 resize-none rounded-lg" maxlength="100" v-model="comment"></textarea>
+            <textarea v-if="showCommentBox" rows="3" class="w-full max-w-lg bg-gray-950 p-2 resize-none rounded-lg" maxlength="100" v-model="comment" placeholder="Schreibe deinen Kommentar"></textarea>
         </div>
         <hr class="border-transparent">
         <div class="flex justify-center py-8 pb-12 bg-gray-900 rounded-b-lg">
