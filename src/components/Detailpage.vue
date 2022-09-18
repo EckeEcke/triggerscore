@@ -101,17 +101,17 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="comments.length > 0" class="px-4 mb-12 mt-4">
+                    <div v-if="comments && comments.length > 0" class="px-4 mb-12 mt-4">
                         <h2 class="text-white font-semibold text-lg text-left mb-6">{{ $t('general.comments') }}</h2>
                         <div v-for="(comment,index) in comments" :key="comment" class="max-w-md text-white text-left text-sm p-4 md:p-6 pb-10 md:pb-8 bg-gradient-to-r from-gray-950 to-gray-800 italic rounded mb-2 relative" :class="{'hidden': index >= 1 && !showMoreComments}">
                             <p>"{{ comment }}"</p>
-                            <p class="text-gray-500 absolute bottom-2 right-3 hover:text-yellow-500" @click="pushToContact(comment)">
+                            <p class="text-gray-500 absolute bottom-2 right-3 transition hover:text-yellow-500 cursor-pointer" @click="pushToContact(comment)">
                                 <font-awesome-icon :icon="['fas', 'flag']" class="mr-1" />
                                 {{ $t('rating.report') }}
                             </p>
                         </div>
-                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-3 cursor-pointer">{{ $t('general.showMore') }} <font-awesome-icon :icon="['fas', 'caret-down']" class="text-white" /></p>
-                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-3 cursor-pointer">{{ $t('general.showLess') }} <font-awesome-icon :icon="['fas', 'caret-up']" class="text-white" /></p>
+                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-3 cursor-pointer transition hover:text-yellow-500">{{ $t('general.showMore') }} <font-awesome-icon :icon="['fas', 'caret-down']" class="" /></p>
+                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-3 cursor-pointer transition hover:text-yellow-500">{{ $t('general.showLess') }} <font-awesome-icon :icon="['fas', 'caret-up']" class="" /></p>
                     </div>
                 </div>
                 <Ratingpage :title="movie.title" :id="movie.id" />
@@ -213,7 +213,7 @@ export default {
         return window.location.href
       },
       comments: function(){
-        return this.score.comments.filter(comment => {return comment.length > 3})
+        return this.score ? this.score.comments.filter(comment => {return comment.length > 3}) : null
       }
   },
   methods: {
@@ -250,7 +250,6 @@ export default {
           const response = await fetch(`https://triggerscore-backend2.onrender.com/movie/${this.$route.params.id}`)
           const scores = await response.json()
           this.score = scores[0]
-          console.log(this.score)
           this.triggerscoreLoading = false
       },
       pushToContact: function(comment){
