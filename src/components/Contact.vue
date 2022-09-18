@@ -1,8 +1,9 @@
 <template>
     <div class="container text-white px-4 py-6 md:py-12 text-left xl:w-10/12 mx-auto md:rounded-lg flex justify-start flex-wrap gap-12">
         <div v-if="!submitted" class="mr-8 max-w-full">
-            <h1 class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('contact.sendFeedback') }}</h1>
-            <form name="contact" class="w-full p-8 bg-red-900 rounded" method="post"
+            <h1 v-if="$route.query.comment" class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('contact.reportHeadline') }}</h1>
+            <h1 v-else class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('contact.sendFeedback') }}</h1>
+            <form name="contact" class="w-full p-8 bg-red-900 rounded text-gray-900" method="post"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field" @submit.prevent="handleSubmit"
                 :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
@@ -55,6 +56,11 @@ export default {
           submitted: false
       }
   },
+  computed: {
+    reportedMovie: function(){
+        return this.$route.params.id
+    }
+  },
   methods: {
       encode (data) {
       return Object.keys(data)
@@ -78,6 +84,12 @@ export default {
       .then(this.submitted = true)
       .catch((error)=>console.log(error))
     }
+  },
+  mounted(){
+    if(this.$route.query.comment){
+            this.form.message = this.$t("contact.report") + this.$route.query.id + " - '" + this.$route.query.comment + "...'"
+        }
+    console.log(this.form.message)
   }
   
 }

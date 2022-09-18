@@ -102,7 +102,9 @@
       "placeholderEmail": "Enter email",
       "placeholderMessage": "Enter message",
       "send": "Send",
-      "success": "Message successfully send "
+      "success": "Message successfully send ",
+      "report": "Hello, I want to report the following comment: ",
+      "reportHeadline": "Report comment"
     },
     "rating": {
       "thanks": "Thanks for your rating!",
@@ -115,7 +117,8 @@
       "tmdb-rating": "TMDB",
       "share": "Share movie",
       "leaveComment": "Want to also leave a comment for this movie?",
-      "placeholder": "Write a comment..."
+      "placeholder": "Write a comment...",
+      "report": "Report"
     },
     "highlights": {
       "headline1": "James Bond Special",

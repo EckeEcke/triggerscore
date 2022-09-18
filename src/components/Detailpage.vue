@@ -101,18 +101,22 @@
                             </div>
                         </div>
                     </div>
-                    <div v-if="comments.length > 0" class="px-4 mb-12">
-                        <h2 class="text-white font-semibold text-left mb-4">{{ $t('general.comments') }}</h2>
-                        <p v-for="(comment,index) in comments" :key="comment" class="max-w-md text-white text-left text-sm p-4 md:p-6 bg-gradient-to-r from-gray-950 to-gray-800 italic rounded mb-2" :class="{'hidden': index >= 1 && !showMoreComments}">
-                            "{{ comment }}"
-                        </p>
-                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4 cursor-pointer">{{ $t('general.showMore') }} <font-awesome-icon :icon="['fas', 'caret-down']" class="text-white" /></p>
-                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-4 cursor-pointer">{{ $t('general.showLess') }} <font-awesome-icon :icon="['fas', 'caret-up']" class="text-white" /></p>
+                    <div v-if="comments.length > 0" class="px-4 mb-12 mt-4">
+                        <h2 class="text-white font-semibold text-lg text-left mb-6">{{ $t('general.comments') }}</h2>
+                        <div v-for="(comment,index) in comments" :key="comment" class="max-w-md text-white text-left text-sm p-4 md:p-6 pb-10 md:pb-8 bg-gradient-to-r from-gray-950 to-gray-800 italic rounded mb-2 relative" :class="{'hidden': index >= 1 && !showMoreComments}">
+                            <p>"{{ comment }}"</p>
+                            <p class="text-gray-500 absolute bottom-2 right-3 hover:text-yellow-500" @click="pushToContact(comment)">
+                                <font-awesome-icon :icon="['fas', 'flag']" class="mr-1" />
+                                {{ $t('rating.report') }}
+                            </p>
+                        </div>
+                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-3 cursor-pointer">{{ $t('general.showMore') }} <font-awesome-icon :icon="['fas', 'caret-down']" class="text-white" /></p>
+                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="max-w-md text-right mt-3 cursor-pointer">{{ $t('general.showLess') }} <font-awesome-icon :icon="['fas', 'caret-up']" class="text-white" /></p>
                     </div>
                 </div>
                 <Ratingpage :title="movie.title" :id="movie.id" />
                 <hr class="border-gray-800 md:hidden">
-                <div class="md:hidden flex flex-col justify-center gap-4 py-12 px-2">
+                <div class="md:hidden flex flex-col justify-center gap-4 py-12 px-2 radial-background">
                     <h3
                         class="pb-0 text-white font-semibold text-lg self-center"       
                         target="_blank">{{ $t('rating.share') }}
@@ -248,6 +252,9 @@ export default {
           this.score = scores[0]
           console.log(this.score)
           this.triggerscoreLoading = false
+      },
+      pushToContact: function(comment){
+        this.$router.push({ path: '/contact', query: { id: this.$route.params.id, comment: comment.substring(0,Math.min(20,comment.length)) } })
       }
   },
   watch: {

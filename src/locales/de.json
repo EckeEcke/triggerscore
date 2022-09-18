@@ -102,7 +102,9 @@
     "placeholderEmail": "E-Mail-Adresse eingeben",
     "placeholderMessage": "Nachricht eingeben",
     "send": "Absenden",
-    "success": "Nachricht erfolgreich versendet "
+    "success": "Nachricht erfolgreich versendet ",
+    "report": "Hallo, ich möchte den folgenden Kommentar melden: ",
+    "reportHeadline": "Kommentar melden"
   },
   "rating": {
     "thanks": "Danke für deine Bewertung!",
@@ -115,7 +117,8 @@
     "tmdb-rating": "TMDB",
     "share": "Film teilen",
     "leaveComment": "Möchtest du noch einen Kommentar zum Film verfassen?",
-    "placeholder": "Schreibe einen Kommentar..."
+    "placeholder": "Schreibe einen Kommentar...",
+    "report": "Melden"
   },
   "highlights": {
     "headline1": "James Bond Special",
