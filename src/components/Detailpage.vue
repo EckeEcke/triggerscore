@@ -77,7 +77,7 @@
                                 {{ movie.overview }}
                             </article>
                             <div class="flex justify-between my-4 mb-8 align-end">   
-                                <div class="streaming-services flex gap-2 w-full">
+                                <div class="streaming-services flex gap-3 w-full">
                                     <a  v-if="onNetflix" href="https://www.netflix.com" target="_blank" class="self-center">
                                     <img class="w-16" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                                     </a>
@@ -88,12 +88,12 @@
                                         <img class="w-16" src="../assets/images/disney+-logo2.svg">
                                     </a>
                                     <a v-if="onSky" href="https://skyticket.sky.de/home/login" target="_blank" class="self-center">
-                                        <img class="w-16 mr-1" src="../assets/images/sky-logo.svg">
+                                        <img class="w-16" src="../assets/images/sky-logo.svg">
                                     </a>
-                                    <a class="ml-auto self-center" v-if="movie.id" :href="tmdbURL" target="_blank">
+                                    <a class="self-center" v-if="movie.id" :href="tmdbURL" target="_blank">
                                         <img class="w-16" src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_1-5bdc75aaebeb75dc7ae79426ddd9be3b2be1e342510f8202baf6bffa71d7f5c4.svg">
                                     </a>
-                                    <a class="ml-2 self-center" v-if="movie.imdb_id" :href="imdbURL" target="_blank">
+                                    <a class="self-center" v-if="movie.imdb_id" :href="imdbURL" target="_blank">
                                         <img class="w-16" src="../assets/images/imdb-logo.svg">
                                     </a>
                                     

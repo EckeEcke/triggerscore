@@ -40,9 +40,9 @@
             </button>
         </div>
         <hr class="border-transparent">
-        <p class="my-4 text-lg font-semibold" @click="showCommentBox = !showCommentBox">{{ $t('rating.leaveComment') }}</p>
+        <p class="my-4 text-lg font-semibold">{{ $t('rating.leaveComment') }}</p>
         <div class="w-full px-4">
-            <textarea v-if="showCommentBox" rows="3" class="w-full max-w-lg bg-gray-950 p-2 resize-none rounded-lg" maxlength="100" v-model="comment" :placeholder="$t('rating.placeholder')"></textarea>
+            <textarea rows="3" class="w-full max-w-lg bg-gray-950 p-2 resize-none rounded-lg" maxlength="100" v-model="comment" :placeholder="$t('rating.placeholder')"></textarea>
         </div>
         <hr class="border-transparent">
         <div class="flex justify-center py-8 pb-12 bg-gray-900 rounded-b-lg">
@@ -62,8 +62,7 @@ export default {
           ratingOthers: null,
           ratingCringe: null,
           comment: '',
-          submitted: false,
-          showCommentBox: false
+          submitted: false
       }
   },
   props: {
