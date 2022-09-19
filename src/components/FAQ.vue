@@ -20,6 +20,10 @@
                 <p class="mb-2"><b>{{ $t('faq.question4') }}</b></p>
                 <p>{{ $t('faq.answer4') }}</p>
             </section>
+            <section class="mt-4 leading-6 md:leading-7">
+                <p class="mb-2"><b>{{ $t('faq.question5') }}</b></p>
+                <p>{{ $t('faq.answer5') }}</p>
+            </section>
         </div>    
     </div>
 </template>

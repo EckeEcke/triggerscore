@@ -1,6 +1,6 @@
 <template>
-    <div class="lg:flex lg:justify-center w-full radial-background ">
-        <div :class="{'bg-opacity-0': submitted}" class="text-white md:rounded-b  lg:rounded-t lg:px-4">
+    <div class="lg:flex lg:justify-center w-full radial-background md:pt-4">
+        <div :class="{'bg-opacity-0': submitted}" class="text-white md:rounded-b  lg:rounded-t md:px-4">
     <div v-if="submitted" class="bg-green-500 text-white text-center text-2xl p-6 rounded-b lg:rounded lg:h-auto lg:sticky lg:bottom-0">
         <img src="../assets/images/thanks.gif" ref="thanks" class="mx-auto hidden lg:block mt-16 mb-8 rounded-lg shadow-lg" />
         <p class="font-bold">{{ $t('rating.thanks') }}</p>

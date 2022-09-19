@@ -72,15 +72,17 @@
   "stats": {
     "average": "Durchschnitt ",
     "totalRatings": "Gesamtzahl abgegebene Bewertungen",
+    "totalComments": "Gesamtzahl abgegebene Kommentare",
     "moviesOnTS": "Filme auf Triggerscore",
     "lowestScore": "Niedrigster Score",
     "highestScore": "Höchster Score",
-    "mostRatings": "Meiste Bewertungen <br>({0} Bewertungen)"
+    "mostRatings": "Meiste Bewertungen <br>({0} Bewertungen)",
+    "mostComments": "Meiste Kommentare <br>({0} Kommentare)"
   },
   "about": {
     "headline": "Triggerscore - eine neue Art alte Filme zu schauen",
     "paragraph1": "Die Idee für Triggerscore ging aus meiner neu entdeckten Guilty Pleasure hervor: Netflix nach alten Filmen durchstöbern (insbesondere 90er Jahre) und analysieren, wie sehr diese Filme Zuschauer:innen von heute triggern würden. Triggerscore dient dabei als Portal, auf dem User:innen Triigerscore-Bewertungen finden und bewerten können.",
-    "paragraph2": "Triggerscore ist ein Solo-Projekt. Von der Idee, über Konzeptionierung und Design, bis hin zur Entwicklung des Front- und Backends dieser Applikation. Das Frontend basiert auf dem JavaScript-Framework Vue.js mit Vuex-Store für das State-Management und dem CSS-Framework Tailwind. Gehostet wird mein Frontend auf Netlify. Im Backend nutze ich eine MySQL-Datenbank und einen NodeJS-Server, beide gehostet auf Heroku. Meine Backend-Applikation überträgt Bewertungen in meine Bewertungsdatenbank, sendet diese ans Frontend und berechnet die Scores. Als Filmdatenbank nutze ich die TMDB-API. Informationen über Streaminganbieter erhalte ich über die JustWatch-API."
+    "paragraph2": "Triggerscore ist ein Solo-Projekt. Von der Idee, über Konzeptionierung und Design, bis hin zur Entwicklung des Front- und Backends dieser Applikation. Das Frontend basiert auf dem JavaScript-Framework Vue.js mit Vuex-Store für das State-Management und dem CSS-Framework Tailwind für Stylings. Gehostet wird mein Frontend auf Netlify. Im Backend nutze ich eine MySQL-Datenbank, die ich über AWS hoste, und einen NodeJS-Server, den ich bei Render.com gdeployed habe. Meine Backend-Applikation überträgt Bewertungen in meine Bewertungsdatenbank, sendet diese ans Frontend und berechnet die Scores. Darüber hinaus stellt das Backend Top 10s und Statistiken zusammen. Als Filmdatenbank nutze ich die TMDB-API. Informationen über Streaminganbieter erhalte ich über die JustWatch-API."
   },
   "faq": {
     "headline": "FAQs",
@@ -92,7 +94,9 @@
     "question3": "Werden personenbezogene Daten von mir erhoben, wenn ich eine Bewertung abgebe?",
     "answer3": "Nein, in der Bewertungsdatenbank landen lediglich die vergebenen Scores und eine Film-ID.",
     "question4": "Woher kommen die ganzen Daten zu Filmen?",
-    "answer4": "Triggerscore nutzt die API von The Movie Database. Darüber hinaus greift die Applikation auf Informationen von JustWatch zurück, um die Verfügbarkeit von Filmen auf diversen Streaminganbietern zu checken. Der Triggerscore selbst wird ausschließlich von und für Triggerscore erhoben und bereitgestellt."
+    "answer4": "Triggerscore nutzt die API von The Movie Database. Darüber hinaus greift die Applikation auf Informationen von JustWatch zurück, um die Verfügbarkeit von Filmen auf diversen Streaminganbietern zu checken. Der Triggerscore selbst wird ausschließlich von und für Triggerscore erhoben und bereitgestellt.",
+    "question5": "Warum dauert es manchmal so lange, bis die Seite geladen ist?",
+    "answer5": "Mein Backend läuft bei einem kostenlosen Anbieter. Um Ressourcen zu sparen, werden Backend-Anwendungen schlafen gelegt, wenn sie eine Zeit lang nicht genutzt werden. Wenn die Seite etwas länger lädt, liegt das in der Regel daran, dass das Backend erst 'aufgeweckt' werden muss." 
   },
   "contact": {
     "sendFeedback": "Feedback senden",

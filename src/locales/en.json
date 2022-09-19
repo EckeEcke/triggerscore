@@ -72,15 +72,17 @@
     "stats": {
       "average": "Average ",
       "totalRatings": "Amount of submitted ratings",
+      "totalComments": "Amount of submitted comments",
       "moviesOnTS": "Movies on Triggerscore",
       "lowestScore": "Lowest Score",
       "highestScore": "Highest Score",
-      "mostRatings": "Most rated movie <br> ({0} ratings)"
+      "mostRatings": "Most rated movie <br> ({0} ratings)",
+      "mostComments": "Most comments <br> ({0} comments)"
     },
     "about": {
       "headline": "Triggerscore - a new way to watch old movies",
       "paragraph1": "The idea for Triggerscore resulted from my newly discovered guilty pleasure: zapping Netflix for old movies (especially from the 90s) and analyse how much these old movies would trigger viewers today. Triggerscore serves as a portal, where users can find and submit Triggerscore-ratings.",
-      "paragraph2": "Triggerscore is a solo project. Idea, conception, design aswell as developement of front- and backend are all done by myself. The frontend is based on the JavaScript framework Vue.js using Vuex-Store for state management and CSS framework Tailwind. The frontend of my applicaton is hosted on Netlify. For the backend I use a MySQL databse amd a NodeJS-Server, both hosted on Heroku. My backend application receives ratings from my frontend and saves them in my database. It also reads and serves ratings from my database aswell as calculates the scores. As a movie database I use the TMDB api and JustWatch api for available streaming providers."
+      "paragraph2": "Triggerscore is a solo project. Idea, conception, design aswell as developement of front- and backend are all done by myself. The frontend is based on the JavaScript framework Vue.js using Vuex-Store for state management and CSS framework Tailwind for stylings. The frontend of my applicaton is hosted on Netlify. For the backend I use a MySQL databse, hosted on AWS, and a NodeJS-Server running on Render.com. My backend application receives ratings from my frontend and saves them in my database. It also reads and serves ratings from my database aswell as calculates the scores. Furthermore my backend provides Top 10s and statistics. As a movie database I use the TMDB api and JustWatch api for available streaming providers."
     },
     "faq": {
       "headline": "FAQs",
@@ -92,7 +94,9 @@
       "question3": "Is any personal data saved when I submit a rating?",
       "answer3": "No, in the rating database only the submitted rating and a movie id are being saved.",
       "question4": "Where is all the movie data coming from?",
-      "answer4": "Triggerscore uses the TMDB api. Furthermore the applicaton uses the JustWatch api to receive information about availabity of movies on different streaming providers. The Triggerscore itself is only provided by and for Triggerscore."
+      "answer4": "Triggerscore uses the TMDB api. Furthermore the applicaton uses the JustWatch api to receive information about availabity of movies on different streaming providers. The Triggerscore itself is only provided by and for Triggerscore.",
+      "question5": "Why does it sometimes take so long for the page to load?",
+      "answer5": "My backend is running on a free provider. To save ressources backend services are set to sleep atfer a whuile without usage. So when the page takes a bit longer to load, in most cases it is due to the backend needing to 'wake up' first." 
     },
     "contact": {
       "sendFeedback": "Send feedback",
