@@ -3,7 +3,7 @@
         <div class="container mx-auto sm:pt-6 sm:pb-12 xl:w-10/12 md:px-4">
             <LoadingAnimation v-if="triggerscoreLoading"/>
             <div v-else class="flex flex-col lg:flex-row lg:rounded-b px-0 sm:px-4 md:px-0">
-                <div class="flex flex-col w-full radial-background text-white rounded-t lg:rounded justify-start lg:mr-6">
+                <div class="flex flex-col w-full radial-background text-white rounded-t lg:rounded justify-start lg:mr-6 lg:p-4">
                     <div class="flex justify-between w-full sm:rounded-t p-4 pr-0">
                         <img :src=poster class="w-1/2 lg:w-76 h-auto object-contain self-start rounded self-center" />
                         <div v-if="scoreAvailable" class="w-full flex flex-col mx-2 self-center rounded-tr">
