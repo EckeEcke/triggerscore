@@ -12,7 +12,7 @@
                 moreSpacing
             />
             <section class="sm:mb-12 px-0 sm:px-4  container mx-auto xl:w-10/12">
-                <div class="py-16 md:py-20 sm:mb-12 bg-cover bg-center px-4 rounded" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-ballermann6.jpg') + ')'}">
+                <div class="py-16 md:py-20 sm:mb-12 bg-cover bg-center px-4 rounded" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(80,7,7,0.7), rgba(80,7,7,0.8)),url(' + require('@/assets/images/backdrop-ballermann6.jpg') + ')'}">
                     <h2 class="text-white text-2xl sm:text-4xl text-left font-semibold mb-2 uppercase">{{ $t('general.newest') }} <span class="text-2xl sm:text-4xl self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RES
               </span></h2>

@@ -42,13 +42,21 @@
             </button>
         </div>
         <hr class="border-transparent">
-        <p class="my-4 text-lg font-semibold px-4 max-w-lg">{{ $t('rating.leaveComment') }}</p>
+        <p class="my-4 text-lg font-semibold px-4 max-w-lg">{{ $t('rating.leaveComment') }} (optional)</p>
         <div class="w-full px-4">
             <textarea rows="3" class="w-full max-w-lg bg-gray-950 p-2 resize-none rounded-lg" maxlength="100" v-model="comment" :placeholder="$t('rating.placeholder')"></textarea>
-            <p v-if="comment.length > 0" class="text-right text-xs">{{ comment.length}}/100 Zeichen</p>
+            <p v-if="comment.length > 0" class="text-right text-xs">{{ comment.length}}/100 {{ $t('rating.characters') }}</p>
         </div>
         <hr class="border-transparent">
-        <div class="flex justify-start pt-8 pb-12 px-4 bg-gray-900 rounded-b-lg">
+        <div class="w-full">
+            <p class="my-4 text-lg font-semibold px-4 max-w-lg">Hat dir der Film gefallen? (optional)</p>
+            <div class="flex justify-center md:justify-center gap-4 mx-4 my-4 max-w-lg">
+                    <LikeAnimation :dislikeClicked="disliked" @likeClicked="handleLike" :class="{'opacity-30': !liked}" />
+                    <DislikeAnimation :likeClicked="liked" @dislikeClicked="handleDislike" :class="{'opacity-30': !disliked}" />
+            </div>
+        </div>
+        <hr class="border-transparent">
+        <div class="flex justify-start pt-8 pb-12 px-4 rounded-b-lg">
             <button :disabled="!(ratingSexism != null && ratingRacism != null && ratingOthers != null && ratingCringe != null)" class="max-w-lg w-full bg-yellow-500 text-white disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600 uppercase" @click="submitRating">{{ $t('rating.submit') }}</button>
         </div>
     </div>                    
@@ -58,65 +66,84 @@
 </template>
 
 <script>
+import LikeAnimation from "./LikeAnimation.vue";
+import DislikeAnimation from "./DislikeAnimation.vue";
 export default {
-  name: 'Ratingpage',
-  data(){
-      return {
-          ratingSexism: null,
-          ratingRacism: null,
-          ratingOthers: null,
-          ratingCringe: null,
-          comment: '',
-          submitted: false
-      }
-  },
-  props: {
-    title: String,
-    id: Number
-  },
-  mounted: function() {
-      this.scrollRatings()
-  },
-  methods: {
-      scrollRatings: function() {
-          const ratings = document.getElementsByClassName("rating") // for fixing issues with flex-end and overflow-hidden
-          for (let i = 0; i < ratings.length; i++) {
-              ratings[i].scrollLeft -= 500
-              console.log(ratings[i])
-          }
-      },
-      submitRating: function(event) {
-
+    name: "Ratingpage",
+    data() {
+        return {
+            ratingSexism: null,
+            ratingRacism: null,
+            ratingOthers: null,
+            ratingCringe: null,
+            comment: "",
+            submitted: false,
+            liked: false,
+            disliked: false
+        };
+    },
+    props: {
+        title: String,
+        id: Number
+    },
+    mounted: function () {
+        this.scrollRatings();
+    },
+    methods: {
+        scrollRatings: function () {
+            const ratings = document.getElementsByClassName("rating"); // for fixing issues with flex-end and overflow-hidden
+            for (let i = 0; i < ratings.length; i++) {
+                ratings[i].scrollLeft -= 500;
+                console.log(ratings[i]);
+            }
+        },
+        submitRating: function (event) {
             event.preventDefault();
-            this.submitted = true
-            setTimeout(()=>{
-                if(this.$refs.thanks){
-                    window.scrollTo({top:0})
-                }},1000)
-            const data = { movieID: this.id, sexism: this.ratingSexism, racism: this.ratingRacism, others: this.ratingOthers, cringe: this.ratingCringe, comment: this.comment };
-            fetch('https://triggerscore-backend2.onrender.com/post', {
+            this.submitted = true;
+            setTimeout(() => {
+                if (this.$refs.thanks) {
+                    window.scrollTo({ top: 0 });
+                }
+            }, 1000);
+            const data = { movieID: this.id, sexism: this.ratingSexism, racism: this.ratingRacism, others: this.ratingOthers, cringe: this.ratingCringe, comment: this.comment, like: this.liked, dislike: this.disliked };
+            fetch("https://triggerscore-backend2.onrender.com/post", {
                 method: "post",
                 headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
                 },
                 body: JSON.stringify(data)
-
             })
                 .then(response => response.json())
                 .then(data => console.log(data))
                 .catch(err => console.log(err));
+        },
+        handleLike: function (value) {
+            console.log(value)
+            this.liked = value
+            console.log(this.liked)
+            if(this.liked){
+                this.disliked = false
             }
-
-  },
-  computed: {
-      poster: function() {
-          return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`
-      },
-      overview: function() {
-        return  this.movie.overview.length > 100 ? this.movie.overview.substring(0, 100) + "..." : this.movie.overview
-      } 
-  }
+        },
+        handleDislike: function(value){
+            console.log(value)
+            this.disliked = value
+            console.log(this.disliked)
+            if(this.disliked){
+                this.liked = false
+            }
+        }
+    },
+    computed: {
+        poster: function () {
+            return `https://image.tmdb.org/t/p/original/${this.movie.poster_path}`;
+        },
+        overview: function () {
+            return this.movie.overview.length > 100 ? this.movie.overview.substring(0, 100) + "..." : this.movie.overview;
+        }
+    },
+    components: { LikeAnimation, DislikeAnimation }
 }
 </script>
 <style>

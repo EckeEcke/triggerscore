@@ -50,11 +50,11 @@
                     <div class="flex flex-col xl:flex-row">
                         <div class="w-full text-left px-4 py-2 flex flex-col">
                             <div class="flex justify-between">
-                                <h2 class="text-xl font-semibold md:text-2xl self-center mb-2">
+                                <h2 class="text-xl font-semibold md:text-2xl self-center mb-1 sm:mb-2">
                                 {{ movie.title }}
                                 </h2>
                             </div>
-                            <p class="mb-4 text-xs md:text-md text-gray-400">
+                            <div class="mb-4 text-xs md:text-md text-gray-400">
                                 {{ releaseDate }}
                                 <span class="mx-2">|</span>
                                 <span>{{ movie.runtime }} {{ $t('general.minutes') }}</span>
@@ -62,8 +62,14 @@
                                 <span v-if="totalRatings[0]">{{ totalRatings[0].ratings }} {{ $t('general.ratings') }}</span>
                                 <span v-if="movie.vote_average" class="mx-2">|</span>
                                 <span v-if="movie.vote_average"><wbr>{{ $t('rating.tmdb-rating') }}: {{ movie.vote_average.toFixed(2) }}</span>
-                                
-                            </p>
+                                <span class="mx-2 mb-2">|</span>
+                                <div class="inline-block mt-2 sm:mt-0">
+                                    <font-awesome-icon :icon="['fas', 'thumbs-up']" class="mr-1" />
+                                    <span class="mr-3">{{ score.likes }}</span>
+                                    <font-awesome-icon :icon="['fas', 'thumbs-down']" class="mr-1" />
+                                    <span>{{ score.dislikes }}</span>
+                                </div>
+                            </div>
                             
                             <i v-if="movie.tagline && movie.tagline.length > 1" class="text-sm md: text-md">"{{ movie.tagline }}"</i>
                             <p class="my-4 flex flex-wrap gap-1">
@@ -71,6 +77,7 @@
                             </p>
                             <article class="my-4 text-sm md:text-md">
                                 {{ movie.overview }}
+                                <h1>{{ score.dislikes}}</h1>
                             </article>
                             <div class="flex justify-between my-4 mb-8 align-end">   
                                 <div class="streaming-services flex gap-4 w-full">

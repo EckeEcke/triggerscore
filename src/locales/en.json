@@ -13,7 +13,7 @@
       "top10Copy": "Movies with highest Triggerscores",
       "stats": "Stats",
       "statsCopy": "Statistics for number enthusiasts",
-      "minutes": "minutes",
+      "minutes": "min.",
       "discoverMoreMovies": "Want to discover more movies on Triggerscore?",
       "new": "NEW!",
       "ratings": "rating(s)",
@@ -123,7 +123,8 @@
       "share": "Share movie",
       "leaveComment": "Want to leave a comment for this movie?",
       "placeholder": "Write a comment...",
-      "report": "Report"
+      "report": "Report",
+      "characters": "characters"
     },
     "highlights": {
       "headline1": "James Bond Special",
