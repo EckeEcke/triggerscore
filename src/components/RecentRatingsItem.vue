@@ -9,7 +9,7 @@
                 <p class="self-center text-white text-xl font-semibold">{{scoreTotal}}</p>
             </div>
         </div>
-        <div class="md:hidden sm:rounded-t p-3 pt-5 sm:pt-3 pb-0 bg-transparent text-inherit">
+        <div class="md:hidden sm:rounded-t p-3 pt-6 sm:pt-3 pb-0 bg-transparent text-inherit">
             <div class="flex items-center gap-2 text-left">
                  
                 <div class="flex rounded-lg justify-center w-10 h-10 mr-2" :class="{'bg-red-700': scoreTotal >= 7, 'bg-yellow-500': scoreTotal < 7 && scoreTotal >=4, 'bg-green-600': scoreTotal < 4}">
@@ -27,7 +27,7 @@
                    
                 </div>
         </div>
-        <div class="w-full px-3 md:px-0 py-3 pt-3 pb-5 sm:pb-2 flex gap-4">
+        <div class="w-full px-3 md:px-0 py-3 pt-3 pb-6 sm:pb-2 flex gap-4">
             <img class="h-36 hidden md:block rounded-sm" :alt="movie.original_title" :src="poster2">
             <article class="text-left relative w-full h-full">
                 <h3 v-if="movie.title.length > 0" class="hidden md:block text-base mb-1 font-semibold overflow-hidden h-6 overflow-hidden">{{ movie.title }}</h3>

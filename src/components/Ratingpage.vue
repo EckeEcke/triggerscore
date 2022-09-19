@@ -5,7 +5,8 @@
         <p class="font-bold">{{ $t('rating.thanks') }}</p>
     </div>
     <div v-else class="mx-auto overflow-hidden">
-        <h2 class="bg-red-900 bg-opacity-90 text-xl text-white py-4  lg:rounded-t" id="rating">{{ $t('rating.submitFor') }}<br><i class="font-semibold">"{{ title }}"</i></h2>
+        <h2 class="font-semibold text-xl text-white py-6 px-4 lg:rounded-t" id="rating">{{ $t('rating.submitFor') }}<br>"{{ title }}"</h2>
+        <hr class="border-gray-800 hidden md:block">
         <label class="my-3 mt-6 block text-lg font-semibold">{{ $t('categories.sexism') }}</label>
         <p class="mb-4">{{ $t('rating.descSexism') }}</p>
         <div class="rating hide-scrollbar flex w-fit sm:justify-center overflow-y-scroll sm:overflow-hidden mb-5">
@@ -40,7 +41,7 @@
             </button>
         </div>
         <hr class="border-transparent">
-        <p class="my-4 text-lg font-semibold px-4">{{ $t('rating.leaveComment') }}</p>
+        <p class="my-4 text-lg font-semibold px-4 max-w-lg">{{ $t('rating.leaveComment') }}</p>
         <div class="w-full px-4">
             <textarea rows="3" class="w-full max-w-lg bg-gray-950 p-2 resize-none rounded-lg" maxlength="100" v-model="comment" :placeholder="$t('rating.placeholder')"></textarea>
             <p v-if="comment.length > 0" class="text-right text-xs">{{ comment.length}}/100 Zeichen</p>

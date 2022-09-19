@@ -1,6 +1,5 @@
 <template>
-    <div>
-        <div class="container text-white px-4 py-6 md:py-12 md:pb-8 text-left xl:w-10/12 mx-auto md:rounded-lg flex justify-start flex-wrap gap-12">
+    <div class="container text-white px-4 py-6 md:py-12 md:pb-8 text-left xl:w-10/12 mx-auto md:rounded-lg flex justify-start flex-wrap gap-12">
         <div v-if="!submitted" class="mr-8 max-w-full">
             <h1 v-if="$route.query.comment" class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('contact.reportHeadline') }}</h1>
             <h1 v-else class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('contact.sendFeedback') }}</h1>
@@ -41,11 +40,6 @@
             </p>
         </div>  
     </div>
-    <div class="container px-4 xl:w-10/12 mx-auto text-left">
-          <button class="transition hover:text-yellow-500 pt-3 pb-16 px-0 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'chevron-left']" class="mr-2" />{{ $t('general.back') }}</button>
-      </div>
-    </div>
-    
 </template>
 
 <script>

@@ -20,9 +20,6 @@
                 <p class="mb-2"><b>{{ $t('faq.question4') }}</b></p>
                 <p>{{ $t('faq.answer4') }}</p>
             </section>
-            <div class="w-full mt-8 mb-2 flex justify-between">
-                <button class="transition hover:text-yellow-500 py-3 px-0 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'chevron-left']" class="mr-2" />{{ $t('general.back') }}</button>
-            </div>
         </div>    
     </div>
 </template>

@@ -73,11 +73,11 @@
                                 {{ movie.overview }}
                             </article>
                             <div class="flex justify-between my-4 mb-8 align-end">   
-                                <div class="streaming-services flex gap-3 w-full">
+                                <div class="streaming-services flex gap-4 w-full">
                                     <a  v-if="onNetflix" href="https://www.netflix.com" target="_blank" class="self-center">
                                     <img class="w-16" src="https://image.tmdb.org/t/p/original/wwemzKWzjKYJFfCeiB57q3r4Bcm.svg">
                                     </a>
-                                    <a v-if="onAmazon" href="https://www.amazon.de/primevideo" target="_blank" class="self-center">
+                                    <a v-if="onAmazon" href="https://www.amazon.de/primevideo" target="_blank" class="self-center -mx-2">
                                         <img  class="w-16" src="../assets/images/amazon-prime-logo3.svg">
                                     </a>
                                     <a v-if="onDisney" href="https://www.disneyplus.com/" target="_blank" class="self-center">
@@ -134,10 +134,7 @@
                         </a> 
                     </div> 
                 </div>     
-            </div>
-            <div class="hidden sm:flex w-full mt-8 flex justify-between px-4">
-                <button class="transition hover:text-yellow-500 py-3 px-0 rounded-lg text-white font-semibold uppercase" @click="$router.back()"> <font-awesome-icon :icon="['fas', 'chevron-left']" class="mr-2" />{{ $t('general.back') }}</button>
-            </div>            
+            </div>          
         </div>
     </section>   
 </template>

@@ -24,7 +24,7 @@
                 
             </section>
             <section>
-                <div class="container xl:w-10/12 mx-auto sm:px-4 sm:mb-6">
+                <div class="container xl:w-10/12 mx-auto sm:px-4 mb-3 sm:mb-6">
                     <div v-if="!isLoading" class="py-16 md:py-20 text-left bg-cover bg-center px-4 rounded" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(153,27,27,0.5), rgba(153,27,27,0.6)),url(' + require('@/assets/images/backdrop-backtothefuture.jpg') + ')'}">
                         <div class="">
                             <h2 class="text-2xl sm:text-4xl font-semibold mb-2 text-white uppercase"><span class="self-center font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
