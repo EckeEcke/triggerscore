@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-gray-900">
+    <div>
         <Searchbox v-if="!isLoading" showTitle />
         <LoadingAnimation v-if="isLoading" />
         <div v-else>
