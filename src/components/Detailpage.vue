@@ -61,7 +61,7 @@
                                 <span v-if="totalRatings[0]" class="mx-2">|</span>
                                 <span v-if="totalRatings[0]">{{ totalRatings[0].ratings }} {{ $t('general.ratings') }}</span>
                                 <span v-if="movie.vote_average" class="mx-2">|</span>
-                                <span v-if="movie.vote_average"><wbr>{{ $t('rating.tmdb-rating') }}: {{ movie.vote_average }}</span>
+                                <span v-if="movie.vote_average"><wbr>{{ $t('rating.tmdb-rating') }}: {{ movie.vote_average.toFixed(2) }}</span>
                                 
                             </p>
                             
