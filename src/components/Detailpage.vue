@@ -62,8 +62,8 @@
                                 <span v-if="totalRatings[0]">{{ totalRatings[0].ratings }} {{ $t('general.ratings') }}</span>
                                 <span v-if="movie.vote_average" class="mx-2">|</span>
                                 <span v-if="movie.vote_average"><wbr>{{ $t('rating.tmdb-rating') }}: {{ movie.vote_average.toFixed(2) }}</span>
-                                <span class="mx-2 mb-2">|</span>
-                                <div class="inline-block mt-2 sm:mt-0">
+                                <span v-if="score.likes" class="mx-2 mb-2">|</span>
+                                <div v-if="score.likes" class="inline-block mt-2 sm:mt-0">
                                     <font-awesome-icon :icon="['fas', 'thumbs-up']" class="mr-1" />
                                     <span class="mr-3">{{ score.likes }}</span>
                                     <font-awesome-icon :icon="['fas', 'thumbs-down']" class="mr-1" />
