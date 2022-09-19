@@ -77,7 +77,6 @@
                             </p>
                             <article class="my-4 text-sm md:text-md">
                                 {{ movie.overview }}
-                                <h1>{{ score.dislikes}}</h1>
                             </article>
                             <div class="flex justify-between my-4 mb-8 align-end">   
                                 <div class="streaming-services flex gap-4 w-full">
