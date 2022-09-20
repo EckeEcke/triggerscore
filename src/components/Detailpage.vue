@@ -124,7 +124,7 @@
                         target="_blank">{{ $t('rating.share') }}
                     </h3>
                     <div class="flex justify-center gap-6">
-                        <a :href="'whatsapp://send?text=' + 'Triggerscore - ' + movie.title + ' ' + currentURL"
+                        <a :href="'whatsapp://send?text=' + 'Triggerscore - ' + movie.title.replace('&','and') + ' ' + currentURL"
                             class=""       
                             data-action="share/whatsapp/share"  
                             target="_blank"> 
