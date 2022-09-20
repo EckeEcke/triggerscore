@@ -3,7 +3,7 @@
         <section class="container mx-auto h-full p-4 xl:w-10/12 flex justify-between relative">
             <div class="flex">
               <router-link to="/" tag="h1" class="leading-5 text-xl md:leading-6 md:text-2xl self-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
-                TRIGGERSC<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />RE
+                TRIGGERSC<angry-animation />RE  <!--<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />-->
               </router-link>
             </div>
             <div class="flex">
@@ -69,118 +69,120 @@
 </template>
 
 <script>
+import AngryAnimation from './AngryAnimation.vue'
 export default {
-  name: 'Header',
-  data(){
-    return {
-      showSearch: false,
-      showMenu: false,
-      showNav: false,
-    }
-  },
-  computed: {
-    searchInput: {
-          get: function() {
-              return this.$store.state.searchInput
-          },
-          set: function(value) {
-              this.$store.commit("setSearchInput", value)
-          }
+    name: "Header",
+    data() {
+        return {
+            showSearch: false,
+            showMenu: false,
+            showNav: false,
+        };
     },
-    netflixFilter: {
-      get: function() {
-        return this.$store.state.filterMoviesByNetflix
-      },
-      set: function(value) {
-        this.$store.commit("setNetflixFilter", value)
-        this.$store.dispatch("filterMovies")
-      }
+    computed: {
+        searchInput: {
+            get: function () {
+                return this.$store.state.searchInput;
+            },
+            set: function (value) {
+                this.$store.commit("setSearchInput", value);
+            }
+        },
+        netflixFilter: {
+            get: function () {
+                return this.$store.state.filterMoviesByNetflix;
+            },
+            set: function (value) {
+                this.$store.commit("setNetflixFilter", value);
+                this.$store.dispatch("filterMovies");
+            }
+        },
+        primeFilter: {
+            get: function () {
+                return this.$store.state.filterMoviesByPrime;
+            },
+            set: function (value) {
+                this.$store.commit("setPrimeFilter", value);
+                this.$store.dispatch("filterMovies");
+            }
+        },
+        disneyFilter: {
+            get: function () {
+                return this.$store.state.filterMoviesByDisney;
+            },
+            set: function (value) {
+                this.$store.commit("setDisneyFilter", value);
+                this.$store.dispatch("filterMovies");
+            }
+        },
+        sortingOption: {
+            get: function () {
+                return this.$store.state.sortingOption;
+            },
+            set: function (value) {
+                this.$store.commit("setSortingOption", value);
+                this.$store.dispatch("filterMovies");
+            }
+        },
+        filterMin: {
+            get: function () {
+                return this.$store.state.filterMoviesByYearMin;
+            },
+            set: function (value) {
+                this.$store.commit("setMovieYearMin", value);
+                this.$store.dispatch("filterMovies");
+            }
+        },
+        filterMax: {
+            get: function () {
+                return this.$store.state.filterMoviesByYearMax;
+            },
+            set: function (value) {
+                this.$store.commit("setMovieYearMax", value);
+                this.$store.dispatch("filterMovies");
+            }
+        },
+        results: function () {
+            return this.$store.getters.getFilteredMovies.length;
+        }
     },
-    primeFilter: {
-      get: function() {
-        return this.$store.state.filterMoviesByPrime
-      },
-      set: function(value) {
-        this.$store.commit("setPrimeFilter", value)
-        this.$store.dispatch("filterMovies")
-      }
+    methods: {
+        searchMovie: function () {
+            if (this.searchInput.length > 0) {
+                this.$store.dispatch("setSearchResults");
+                this.showSearch = false;
+                this.$router.push("/search");
+            }
+        },
+        resetSearchResults: function () {
+            this.$store.dispatch("resetSearch");
+        },
+        resetFilter: function () {
+            this.$store.dispatch("resetFilter");
+            this.$store.dispatch("filterMovies");
+        },
+        switchLanguage: function (language) {
+            this.$root.$i18n.locale = language;
+            this.$store.commit("setLocale", language);
+            this.$store.dispatch("setTriggerscores");
+            this.$store.dispatch("setRecentRatings");
+            this.$store.dispatch("setTop10Sexism");
+            this.$store.dispatch("setTop10Racism");
+            this.$store.dispatch("setTop10Others");
+            this.$store.dispatch("setTop10Cringe");
+            this.$store.dispatch("setBondMovies");
+        },
+        focusSearch: function () {
+            document.getElementById("search-header").focus();
+        },
+        openSearch: function () {
+            this.showSearch = !this.showSearch;
+            this.showMenu = false;
+            this.showNav = false;
+            setTimeout(this.focusSearch, 200);
+        }
     },
-    disneyFilter: {
-      get: function() {
-        return this.$store.state.filterMoviesByDisney
-      },
-      set: function(value) {
-        this.$store.commit("setDisneyFilter", value)
-        this.$store.dispatch("filterMovies")
-      }
-    },
-    sortingOption: {
-      get: function(){
-        return this.$store.state.sortingOption
-      },
-      set: function(value){
-        this.$store.commit("setSortingOption",value)
-        this.$store.dispatch("filterMovies")
-      }
-    },
-    filterMin: {
-      get: function(){
-        return this.$store.state.filterMoviesByYearMin
-      },
-      set: function(value){
-        this.$store.commit("setMovieYearMin",value)
-        this.$store.dispatch("filterMovies")
-      }
-    },
-    filterMax: {
-      get: function(){
-        return this.$store.state.filterMoviesByYearMax
-      },
-      set: function(value){
-        this.$store.commit("setMovieYearMax",value)
-        this.$store.dispatch("filterMovies")
-      }
-    },
-    results: function(){
-      return this.$store.getters.getFilteredMovies.length
-    }
-  },
-  methods: {
-    searchMovie: function(){
-        if(this.searchInput.length > 0){
-          this.$store.dispatch("setSearchResults")
-          this.showSearch = false
-          this.$router.push('/search')
-        }  
-      },
-      resetSearchResults: function() {
-          this.$store.dispatch("resetSearch")
-      },
-      resetFilter: function(){
-        this.$store.dispatch("resetFilter")
-        this.$store.dispatch("filterMovies")
-      },
-      switchLanguage: function(language){
-        this.$root.$i18n.locale = language
-        this.$store.commit("setLocale",language)
-        this.$store.dispatch("setTriggerscores")
-        this.$store.dispatch("setRecentRatings")
-        this.$store.dispatch("setTop10Sexism")
-        this.$store.dispatch("setTop10Racism")
-        this.$store.dispatch("setTop10Others")
-        this.$store.dispatch("setTop10Cringe")
-        this.$store.dispatch("setBondMovies")
-      },
-      focusSearch: function(){
-        document.getElementById("search-header").focus()
-      },
-      openSearch: function(){
-        this.showSearch = !this.showSearch; 
-        this.showMenu = false;
-        this.showNav = false;
-        setTimeout(this.focusSearch,200)
-      }
-  }
+    components: { AngryAnimation }
 }
 </script>
 
