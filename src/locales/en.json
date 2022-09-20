@@ -77,7 +77,16 @@
       "lowestScore": "Lowest Score",
       "highestScore": "Highest Score",
       "mostRatings": "Most rated movie <br> ({0} ratings)",
-      "mostComments": "Most comments <br> ({0} comments)"
+      "mostComments": "Most comments <br> ({0} comments)",
+      "mostLiked": "Most likes <br>({0} Likes)",
+      "mostDisliked": "Most dislikes <br>({0} Dislikes)",
+      "totalLikes": "Amount of submitted likes",
+      "totalDislikes": "Amount of submitted dislikes",
+      "averageRatings": "Average ratings per movie",
+      "averageComments": "Average comments per movie",
+      "averageLikes": "Average likes per movie",
+      "averageDislikes": "Average dislikes per movie",
+      "launch": "Year of launch Triggerscore"
     },
     "about": {
       "headline": "Triggerscore - a new way to watch old movies",
