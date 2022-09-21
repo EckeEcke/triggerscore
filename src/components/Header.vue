@@ -13,7 +13,7 @@
               <router-link to="/contact" tag="a" class="animated-link text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.contact') }}</router-link>
               <button v-if="$root.$i18n.locale == 'en'" @click="switchLanguage('de')" class="mr-6 sm:mr-10"><img class="w-6" src="../assets/images/germany.svg"></button>
               <button v-if="$root.$i18n.locale == 'de'" @click="switchLanguage('en')" class="mr-6 sm:mr-10"><img class="w-6" src="../assets/images/uk.svg"></button>
-              <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-white mr-6 sm:mr-10 md:mr-0 self-center hover:text-yellow-500" :class="{'animate-bounce': showSearch}" @click="openSearch" />
+              <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-white mr-6 sm:mr-10 md:mr-0 self-center hover:text-yellow-500" @click="openSearch" />
               <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg self-center md:hidden" @click="showNav = !showNav; showMenu = false; showSearch = false" />
             </div>
             

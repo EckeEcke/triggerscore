@@ -1,9 +1,17 @@
 <template>
     <div class="lg:flex lg:justify-center w-full radial-background md:pt-4">
-        <div :class="{'bg-opacity-0': submitted}" class="text-white md:rounded-b  lg:rounded-t md:px-4">
-    <div v-if="submitted" class="bg-green-500 text-white text-center text-2xl p-6 rounded-b lg:rounded lg:h-auto lg:sticky lg:bottom-0">
-        <img src="../assets/images/thanks.gif" ref="thanks" class="mx-auto hidden lg:block mt-16 mb-8 rounded-lg shadow-lg" />
-        <p class="font-bold">{{ $t('rating.thanks') }}</p>
+        <div :class="{'bg-opacity-0 w-full': submitted}" class="text-white w-full md:rounded-b  lg:rounded-t md:px-4">
+    <div v-if="submitted" class="bg-green-500 text-white text-center text-2xl px-6 py-16 rounded-b lg:rounded h-72 lg:sticky lg:bottom-0">
+        <Transition name="fade" mode="out-in">
+            <ThankyouAnimation v-if="!animCompleted" @complete="animCompleted = true" key="animation" />
+            <div v-if="animCompleted" class="font-bold pt-8" key="text">
+                <p>{{ $t('rating.thanks') }}</p>
+                <button class="text-base bg-yellow-500 transition hover:bg-yellow-600 p-3 mt-6 text-white rounded font-semibold text-white uppercase" @click="$router.go(-1)"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
+
+            </div>
+        </Transition>
+        
+        
     </div>
     <div v-else class="mx-auto overflow-hidden text-left">
         <h2 class="font-semibold text-xl text-white py-6 px-4 lg:rounded-t" id="rating">{{ $t('rating.submitFor') }}<br>"{{ title }}"</h2>
@@ -68,6 +76,7 @@
 <script>
 import LikeAnimation from "./LikeAnimation.vue";
 import DislikeAnimation from "./DislikeAnimation.vue";
+import ThankyouAnimation from "./ThankyouAnimation.vue";
 export default {
     name: "Ratingpage",
     data() {
@@ -79,7 +88,8 @@ export default {
             comment: "",
             submitted: false,
             liked: false,
-            disliked: false
+            disliked: false,
+            animCompleted: false
         };
     },
     props: {
@@ -143,7 +153,7 @@ export default {
             return this.movie.overview.length > 100 ? this.movie.overview.substring(0, 100) + "..." : this.movie.overview;
         }
     },
-    components: { LikeAnimation, DislikeAnimation }
+    components: { LikeAnimation, DislikeAnimation, ThankyouAnimation }
 }
 </script>
 <style>
@@ -169,6 +179,13 @@ export default {
             opacity: 1
         }
     }
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
     
     
 </style>
