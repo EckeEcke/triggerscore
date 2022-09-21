@@ -3,9 +3,9 @@
         <div v-if="searchResults.length == 0 && searchError" class=" text-center font-semibold container mx-auto my-8  xl:w-10/12 md:px-4">
                 <div class="py-6 px-2 md:rounded-lg">
                     <p class="text-white text-lg">{{ $t('search.noResults1') }} <i>"{{searchTerm}}"</i>&nbsp; {{ $t('search.noResults2') }}</p>
+                    <NoResultsAnimation />
                     <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 my-6 rounded font-semibold text-white uppercase" @click="resetSearch"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
                 </div>
-                <img class="w-96 max-w-full h-auto mx-auto" src="@/assets/images/nothing-found.gif">
             </div>
             <div v-if="searchResults.length > 0 && !searchError" class=" text-center font-semibold container mx-auto my-8  xl:w-10/12 md:px-4">
                 <div class="py-6 px-2 md:rounded">
@@ -30,11 +30,13 @@
 
 <script>
 import MovieListitem from './MovieListitem.vue'
+import NoResultsAnimation from './NoResultsAnimation.vue'
 
 export default {
   name: 'search',
   components: {
       MovieListitem,
+      NoResultsAnimation
   },
   mounted: function() {
     this.redirectToHome()
