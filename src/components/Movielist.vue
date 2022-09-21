@@ -83,7 +83,7 @@
                     <Stats />
                 </div> 
             </section>
-            <section class="container xl:w-10/12 mx-auto px-4 my-6">
+            <section class="container xl:w-10/12 mx-auto px-4 my-12 sm:my-24">
                 <div class="bg-opacity-90 py-16">
                     <h2 class="text-white text-xl font-semibold my-4">{{ $t('general.discoverMoreMovies') }}</h2>
                     <router-link to="/all" tag="button" class="bg-yellow-500 transition hover:bg-yellow-600 p-3 rounded-lg text-white font-semibold uppercase my-4">{{ $t('header.allMovies') }}</router-link>

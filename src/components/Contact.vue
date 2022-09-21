@@ -3,10 +3,10 @@
         <div v-if="!submitted" class="mr-8 max-w-full">
             <h1 v-if="$route.query.comment" class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('contact.reportHeadline') }}</h1>
             <h1 v-else class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('contact.sendFeedback') }}</h1>
-            <form name="contact" class="w-full p-8 bg-red-900 rounded text-gray-900" method="post"
+            <form name="contact" class="w-full p-8 bg-gradient-to-r from-gray-950 to-gray-800 rounded text-gray-900" method="post"
                 data-netlify="true"
                 data-netlify-honeypot="bot-field" @submit.prevent="handleSubmit"
-                :style="{'background-image': 'linear-gradient(rgba(220, 0, 0, 0.6), rgba(220, 0, 100, 0.6))'}">
+            >
                 <p class="hidden"><input name="bot-field"></p>
                 <div class="flex flex-col gap-1 mb-4">
                     <label class="font-semibold mb-2 text-white">{{ $t('contact.name') }}</label>
@@ -16,17 +16,18 @@
                     <label class="font-semibold mb-2 text-white">{{ $t('contact.email') }}</label>
                     <input v-model="form.mail" type="email" name="mail" class="border border-gray-300 p-2 rounded w-72 max-w-full" :placeholder="$t('contact.placeholderEmail')" required />
                 </div>
-                <div class="flex flex-col gap-1 mb-4">
+                <div class="flex flex-col gap-1 mb-6">
                     <label class="font-semibold mb-2 text-white">{{ $t('contact.message') }}</label>
                     <textarea v-model="form.message" name="message" class="border border-gray-300 p-2 rounded w-72 max-w-full" :placeholder="$t('contact.placeholderMessage')" required></textarea>
                 </div>
-                <p class="mt-2">
+                <p>
                     <button class="w-full text-white bg-yellow-500 p-3 text-semibold rounded-lg shadow-lg transition hover:bg-yellow-600 font-semibold uppercase" type="submit">{{ $t('contact.send') }}</button>
                 </p>
             </form>
         </div>
-        <div v-else class="w-full sm:w-1/2">
-            <p class="p-4 bg-green-500 text-white rounded-lg shadow-lg font-semibold text-center">{{ $t('contact.success') }} <font-awesome-icon :icon="['fas', 'check']" class="text-white" /></p>
+        <div v-else class="w-full sm:w-1/2 lg:w-1/4 h-64 bg-green-500 rounded-lg flex flex-col align-center justify-center">
+            <SuccessAnimation />
+            <p class="p-4 text-white font-semibold text-center self-center -mt-8">{{ $t('contact.success') }}</p>
         </div>
         <div class="">
             <h1 class="mb-4 text-xl md:text-2xl font-semibold uppercase">{{ $t('header.contact') }}</h1>
@@ -44,8 +45,12 @@
 
 <script>
 import axios from "axios";
+import SuccessAnimation from "./SuccessAnimation.vue";
 export default {
   name: 'Contact',
+  components: {
+    SuccessAnimation
+  },
   data(){
       return {
           form: {
