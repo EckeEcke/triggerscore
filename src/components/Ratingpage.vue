@@ -1,6 +1,6 @@
 <template>
     <div class="lg:flex lg:justify-center w-full radial-background md:pt-4">
-        <div :class="{'bg-opacity-0 w-full': submitted}" class="text-white w-full md:rounded-b  lg:rounded-t md:px-4">
+        <div :class="{'bg-opacity-0 w-full': submitted}" class="text-white md:rounded-b  lg:rounded-t md:px-4">
     <div v-if="submitted" class="bg-green-500 text-white text-center text-2xl px-6 py-16 rounded-b lg:rounded h-72 lg:sticky lg:bottom-0">
         <Transition name="fade" mode="out-in">
             <ThankyouAnimation v-if="!animCompleted" @complete="animCompleted = true" key="animation" />
