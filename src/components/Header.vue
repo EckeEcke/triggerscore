@@ -6,7 +6,7 @@
                 TRIGGERSC<angry-animation />RE  <!--<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />-->
               </router-link>
             </div>
-            <div class="flex">
+            <div class="flex sm:text-sm">
               <router-link to="/all" tag="a" class="animated-link text-white font-semibold self-center mr-6 md:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.allMovies') }}</router-link>
               <router-link to="/about" tag="a" class="animated-link text-white font-semibold self-center mr-6 md:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.about') }}</router-link>
               <router-link to="/faq" tag="a" class="animated-link text-white font-semibold self-center mr-6 md:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.faq') }}</router-link>

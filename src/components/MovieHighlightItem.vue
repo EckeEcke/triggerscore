@@ -11,7 +11,7 @@
                     <span v-if="scoreAvailable" class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">{{ scores[shownScore] }}</span>
                     <span v-else class="absolute top-1/2 left-1/2 transform  -translate-x-1/2 -translate-y-1/2">-</span>
                 </div>
-                <div v-if="displayedScore != ''" class="bg-gray-900 bg-opacity-80 rounded py-2 px-1 my-1 text-xs font-light">{{displayedScore}}</div>
+                <div v-if="displayedScore != ''" class="bg-gray-400 opacity-90 rounded p-1 my-1 text-xs font-light">{{displayedScore}}</div>
             </div>
         </div>
         
