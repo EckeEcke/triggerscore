@@ -30,15 +30,15 @@
                 </router-link> 
                 </div>
                 
-                <router-link to="/" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.home') }}</div></router-link>  
+                <router-link to="/" tag="a" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.home') }}</div></router-link>  
                 
-                <router-link to="/all" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.allMovies') }}</div></router-link>
+                <router-link to="/all" tag="a" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.allMovies') }}</div></router-link>
                 
-                <router-link to="/faq" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.faq') }}</div></router-link>
+                <router-link to="/faq" tag="a" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.faq') }}</div></router-link>
                 
-                <router-link to="/about" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.about') }}</div></router-link>
+                <router-link to="/about" tag="a" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.about') }}</div></router-link>
                 
-                <router-link to="/contact" tag="div" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.contact') }}</div></router-link>
+                <router-link to="/contact" tag="a" class="text-lg text-white font-semibold self-center hover:text-yellow-500 uppercase"><div class="py-6" @click="showNav = false">{{ $t('header.contact') }}</div></router-link>
                 
               </nav>
             </transition-group>
