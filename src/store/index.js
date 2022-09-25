@@ -191,7 +191,7 @@ export default new Vuex.Store({
         minScore: 0,
         maxScore: 10,
         isFiltering: false,
-        locale: "de"
+        locale: "us"
     },
     mutations: {
         setTriggerscores(state,payload) {
