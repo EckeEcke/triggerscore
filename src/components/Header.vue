@@ -7,10 +7,10 @@
               </router-link>
             </div>
             <div class="flex">
-              <router-link to="/all" tag="a" class="animated-link text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.allMovies') }}</router-link>
-              <router-link to="/about" tag="a" class="animated-link text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.about') }}</router-link>
-              <router-link to="/faq" tag="a" class="animated-link text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.faq') }}</router-link>
-              <router-link to="/contact" tag="a" class="animated-link text-white font-semibold self-center mr-6 sm:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.contact') }}</router-link>
+              <router-link to="/all" tag="a" class="animated-link text-white font-semibold self-center mr-6 md:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.allMovies') }}</router-link>
+              <router-link to="/about" tag="a" class="animated-link text-white font-semibold self-center mr-6 md:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.about') }}</router-link>
+              <router-link to="/faq" tag="a" class="animated-link text-white font-semibold self-center mr-6 md:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.faq') }}</router-link>
+              <router-link to="/contact" tag="a" class="animated-link text-white font-semibold self-center mr-6 md:mr-10 hidden md:block hover:text-yellow-500 uppercase">{{ $t('header.contact') }}</router-link>
               <language-select />
               <font-awesome-icon :icon="['fas', 'search']" class="text-lg text-white mr-6 sm:mr-10 md:mr-0 self-center hover:text-yellow-500" @click="openSearch" />
               <font-awesome-icon :icon="['fas', 'bars']" class="text-white text-lg self-center md:hidden" @click="showNav = !showNav; showMenu = false; showSearch = false" />

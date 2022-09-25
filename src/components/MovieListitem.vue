@@ -1,5 +1,5 @@
 <template>
-    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="movie-highlight-item transition-300 w-full h-44 bg-transparent md:bg-gradient-to-r from-gray-950 to-gray-800 md:hover:from-gray-900 text-white sm:border border-t border-b border-gray-800 border-opacity- md:border-0 shadow-md flex relative border-b md:rounded container-xl cursor-pointer">
+    <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="movie-highlight-item transition-300 w-full h-44 bg-transparent sm:bg-gradient-to-r from-gray-950 to-gray-800 md:hover:from-gray-900 text-white sm:border border-t border-b sm:border-r-0 border-gray-950 border-opacity- md:border-0 shadow-md flex relative border-b md:rounded container-xl cursor-pointer">
         <div class="h-full w-44 md:rounded-l overflow-hidden" load="lazy">
             <div class="movie-poster w-full h-full bg-cover bg-center" :style="{'background-image': `url(${poster})`}" />
         </div>
