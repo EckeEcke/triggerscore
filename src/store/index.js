@@ -158,6 +158,13 @@ function filterByScore(array,triggerscores,min,max,shownScore,state){
     state.commit("setFilteredMovies",clonedArray)
 }
 
+function adjustLocale(locale){
+    if(locale == "us"){
+        return "en"
+    }
+    return locale
+}
+
 Vue.use(Vuex)
 
 export default new Vuex.Store({
@@ -357,7 +364,8 @@ export default new Vuex.Store({
             state.commit("setSearchError",false)
             state.commit("setSearchTerm",this.getters.getSearchInput)
             const searchTerm = this.state.searchTerm
-            const fetchedSearchResults = fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${this.getters.getLocale}&include_adult=false&query=${searchTerm}`)
+            const adjustedLocale = adjustLocale(this.getters.getLocale) // turns US locale into EN for search request
+            const fetchedSearchResults = fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${adjustedLocale}&include_adult=false&query=${searchTerm}`)
                                 .then(res => res.json())
                                 .catch(error => console.log(error))
             fetchedSearchResults.then(res => {

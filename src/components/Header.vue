@@ -1,6 +1,6 @@
 <template>
-    <header class="w-full h-auto bg-gradient-to-b from-red-900 via-red-800 to-red-900 bg-opacity-95 z-30 shadow-md flex flex-col sticky top-0">
-        <section class="container mx-auto h-full p-4 xl:w-10/12 flex justify-between relative">
+    <header class="w-full h-auto bg-red-800 bg-opacity-95 z-30 shadow-md flex flex-col sticky top-0">
+        <section class="container mx-auto h-full p-4 xl:w-10/12 flex justify-between">
             <div class="flex">
               <router-link to="/" tag="h1" class="leading-5 text-xl md:leading-6 md:text-2xl self-center font-semibold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-yellow-200 cursor-pointer">
                 TRIGGERSC<angry-animation />RE  <!--<font-awesome-icon :icon="['fas', 'angry']" class="text-white" />-->
@@ -19,7 +19,7 @@
         </section>
         <transition-group  enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-                 <div v-if="showNav" key="backdrop" class="fixed bg-gray-900 bg-opacity-40 top-0 left-0 w-full h-screen overflow-none"  @click="showNav = false" />
+                 <div v-if="showNav" key="backdrop" class="absolute bg-gray-900 bg-opacity-40 top-0 left-0 w-full h-screen overflow-none"  @click="showNav = false" />
               <nav v-if="showNav" key="sidebar" class="w-80 bg-gray-900 bg-opacity-80 backdrop-blur h-screen absolute top-0 right-0 shadow-lg md:hidden z-40">
                 <div class="text-right text-xl p-4 text-white">
                   <font-awesome-icon :icon="['fas', 'times']" @click="showNav = false" />
@@ -42,8 +42,9 @@
                 
               </nav>
             </transition-group>
-            <div v-if="showSearch" class="fixed h-screen w-screen top-0 left-0 bg-gray-900 bg-opacity-90 overflow-none backdrop-blur">
-              <div class="fixed top-0 left-0 w-full h-full" @click="showSearch = false"></div>
+            <div v-if="showSearch" class="absolute top-0 left-0">
+            <div class="relative h-screen w-screen bg-gray-900 bg-opacity-90 overflow-none backdrop-blur">
+                <div class="absolute top-0 left-0 w-full h-full" @click="showSearch = false"></div>
               <transition enter-active-class="duration-300 ease-out"
                 enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-500 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
                   <div class="container flex flex-col md:flex-row mx-auto md:px-4 xl:w-10/12 absolute top-1/3 left-1/2 transform -translate-x-1/2 h-32">
@@ -61,15 +62,15 @@
                   </div>
               </transition>
             </div>
-        
-        
-        
+              
+            </div>
     </header>
 </template>
 
 <script>
 import AngryAnimation from './AngryAnimation.vue'
-import LanguageSelect from './LanguageSelect.vue';
+import LanguageSelect from './LanguageSelect.vue'
+
 export default {
     name: "Header",
     data() {

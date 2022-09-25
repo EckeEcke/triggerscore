@@ -1,5 +1,9 @@
 <template>
     <div class="bg-gray-900">
+        <transition v-if="showMenu" enter-active-class="duration-100 ease-out"
+                enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-100 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
+                <Sidebar @close="handleMenu"/>
+            </transition>
         <LoadingAnimation v-if="isLoading" />
         <Searchbox v-if="!isLoading" />
         <div v-if="!isLoading">
@@ -9,7 +13,7 @@
                     <p class="text-sm text-white ">{{ $t('index.intro1') }}<span class="text-yellow-500 transition hover:text-yellow-600 font-semibold cursor-pointer" @click="focusSearch">{{ $t('index.search') }}</span>{{ $t('index.intro2') }}</p>
                 </div>
                 <div class="ml-auto mt-4 -mr-2 sm:mr-0 xl:hidden">
-                    <button class="bg-yellow-500 text-white uppercase disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="showMenu = !showMenu"><font-awesome-icon class="mr-2" :icon="['fas', 'filter']" />Filter</button>
+                    <button class="bg-yellow-500 text-white uppercase disabled:opacity-50 font-semibold p-3 rounded-lg shadow-lg transition duration-300 hover:scale-105 hover:bg-yellow-600" @click="handleMenu"><font-awesome-icon class="mr-2" :icon="['fas', 'filter']" />Filter</button>
                 </div>  
             </div>
             <Filtermenu class="hidden xl:block mt-4" />
@@ -21,10 +25,6 @@
                 <p class="text-white text-xl font-semibold animate-bounce mb-4">{{ $t('search.noResults') }}</p>
                 <button class="font-semibold bg-yellow-500 p-3 shadow text-white uppercase rounded-lg" @click="resetFilter">{{ $t('filter.resetFilter') }}</button>
             </div>
-            <transition v-if="showMenu" enter-active-class="duration-100 ease-out"
-                enter-class="opacity-0" enter-to-class="opacity-100" leave-active-class="duration-100 ease-in" leave-class="opacity-100" leave-to-class="opacity-0">
-                <Sidebar @close="showMenu = !showMenu"/>
-            </transition>
         </div>
         <div v-if="totalPages > 1 && !isFiltering" class="flex gap-1 justify-center my-8 md:mt-0 flex-wrap"> 
             <button 
@@ -167,6 +167,10 @@ export default {
     },
     methods: {
  
+        handleMenu: function(){
+            this.showMenu = !this.showMenu
+
+        },
         searchMovie: function() {
             this.$store.dispatch("setSearchResults")
         },
