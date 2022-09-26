@@ -23,7 +23,7 @@
     >       
             <MovieListitem v-for="movie in searchResults" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
     </transition-group>
-    <button v-if="searchResults.length > 0 && !hideLoadMore" @click="searchMore" class="bg-yellow-500 transition hover:bg-yellow-600 p-3 my-6 rounded font-semibold text-white uppercase -mt-8 mb-20">Mehr suchen</button>
+    <button v-if="searchResults.length > 0 && !hideLoadMore" @click="searchMore" class="bg-yellow-500 transition hover:bg-yellow-600 p-3 my-6 rounded font-semibold text-white uppercase -mt-8 mb-20">{{ $t('search.searchMore') }}</button>
     </main>
     
 

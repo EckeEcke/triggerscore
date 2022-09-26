@@ -67,7 +67,8 @@
       "searchHeadline2": "",
       "noResults1": "Unfortunately your search for ",
       "noResults2": " had no results",
-      "results": "Your search for '{0}' has {1} results"
+      "results": "Your search for '{0}' has {1} results",
+      "searchMore": "Search more"
     },
     "stats": {
       "average": "Average ",

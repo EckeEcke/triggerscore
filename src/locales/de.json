@@ -67,7 +67,8 @@
     "searchHeadline2": "vergeben",
     "noResults1": "Deine Suche nach ",
     "noResults2": " ergab leider keine Treffer",
-    "results": "Deine Suche nach '{0}' ergab {1} Treffer"
+    "results": "Deine Suche nach '{0}' ergab {1} Treffer",
+    "searchMore": "Mehr suchen"
   },
   "stats": {
     "average": "Durchschnitt ",
