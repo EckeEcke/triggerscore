@@ -365,14 +365,32 @@ export default new Vuex.Store({
             state.commit("setSearchTerm",this.getters.getSearchInput)
             const searchTerm = this.state.searchTerm
             const adjustedLocale = adjustLocale(this.getters.getLocale) // turns US locale into EN for search request
-            const fetchedSearchResults = fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${adjustedLocale}&include_adult=false&query=${searchTerm}`)
+            const fetchedSearchResults = fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${adjustedLocale}&include_adult=false&page=1&query=${searchTerm}`)
                                 .then(res => res.json())
                                 .catch(error => console.log(error))
             fetchedSearchResults.then(res => {
                 let filteredResults = res.results.filter(result => {
-                    return result.poster_path && result.overview && result.release_date && parseInt(result.release_date.substring(0,4)) <= 2010})
+                    return result.poster_path && result.overview && result.release_date && parseInt(result.release_date.substring(0,4)) <= 2017})
                     // filter search results to not show garbage entries
             state.commit("setSearchResults",  filteredResults)
+            if(this.getters.getSearchResults.length == 0){
+              state.commit("setSearchError",true)
+            }
+            })
+        },
+        searchMore(state,page){
+            const searchTerm = this.state.searchTerm
+            const adjustedLocale = adjustLocale(this.getters.getLocale) // turns US locale into EN for search request
+            const fetchedSearchResults = fetch(`https://api.themoviedb.org/3/search/movie?api_key=3e92da81c3e5cfc7c33a33d6aa2bad8c&language=${adjustedLocale}&include_adult=false&page=${page}&query=${searchTerm}`)
+                                .then(res => res.json())
+                                .catch(error => console.log(error))
+            fetchedSearchResults.then(res => {
+                let filteredResults = res.results.filter(result => {
+                    return result.poster_path && result.overview && result.release_date && parseInt(result.release_date.substring(0,4)) <= 2017})
+                    // filter search results to not show garbage entries
+                let currentSearchResults = this.getters.getSearchResults
+                filteredResults.map(entry => currentSearchResults.push(entry))
+            state.commit("setSearchResults",  currentSearchResults)
             if(this.getters.getSearchResults.length == 0){
               state.commit("setSearchError",true)
             }

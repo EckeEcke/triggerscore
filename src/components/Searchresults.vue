@@ -13,7 +13,7 @@
                     <button class="bg-yellow-500 transition hover:bg-yellow-600 p-3 mt-3 text-white rounded font-semibold text-white uppercase" @click="$router.go(-1)"><font-awesome-icon :icon="['fas', 'arrow-circle-left']" class="mr-2" />{{ $t('general.back') }}</button>
                 </div>
             </div>
-    <transition-group v-if="searchResults.length > 0" tag="section" class="movielist grid gap-0 md:gap-2 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-16 md:px-4 xl:w-10/12"
+    <transition-group v-if="searchResults.length > 0" tag="section" class="movielist grid gap-0 md:gap-2 grid-cols-1 md:grid-cols-2 xl:grid-cols-3 w-full mx-auto relative container mx-auto md:mt-4 mb-24 md:px-4 xl:w-10/12"
         enter-active-class="duration-500 ease-out"
         enter-class="opacity-0"
         enter-to-class="opacity-100"
@@ -23,6 +23,7 @@
     >       
             <MovieListitem v-for="movie in searchResults" :key="movie.id" :movie="movie" :scores="triggerscores[triggerscores.map(score => score.movie_id).indexOf(movie.id)]" />
     </transition-group>
+    <button v-if="searchResults.length > 0 && !hideLoadMore" @click="searchMore" class="bg-yellow-500 transition hover:bg-yellow-600 p-3 my-6 rounded font-semibold text-white uppercase -mt-8 mb-20">Mehr suchen</button>
     </main>
     
 
@@ -37,6 +38,12 @@ export default {
   components: {
       MovieListitem,
       NoResultsAnimation
+  },
+  data(){
+    return {
+        page: 2,
+        hideLoadMore: false
+    }
   },
   mounted: function() {
     this.redirectToHome()
@@ -76,6 +83,15 @@ export default {
             if(this.$store.getters.getSearchTerm == ""){
                 this.$router.push("/")
             }
+        },
+        searchMore: function(){
+            const lengthBeforeLoad = this.searchResults.length.valueOf()
+            this.$store.dispatch("searchMore",this.page)
+            this.page += 1
+            setTimeout(()=>{if(lengthBeforeLoad == this.searchResults.length){
+                this.hideLoadMore = true
+                console.log("nothing to load")
+            }},2000)
         }
   }
 }

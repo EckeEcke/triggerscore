@@ -161,6 +161,12 @@ export default {
         direction: rtl;
     }
 
+    @media(min-width: 530px){
+        .rating {
+            justify-content: flex-end;
+        }
+    }
+
     @media (min-width: 576px){
         .rating button:hover {
         opacity: 1

@@ -115,8 +115,8 @@
                             </div>
                         </div>
                         
-                        <p v-if="comments.length > 1 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="text-right mt-3 cursor-pointer transition hover:text-yellow-500">{{ $t('general.showMore') }} <font-awesome-icon :icon="['fas', 'caret-down']" class="" /></p>
-                        <p v-if="comments.length > 1 && showMoreComments" @click="showMoreComments = !showMoreComments" class="text-right mt-3 cursor-pointer transition hover:text-yellow-500">{{ $t('general.showLess') }} <font-awesome-icon :icon="['fas', 'caret-up']" class="" /></p>
+                        <p v-if="comments.length > 2 && !showMoreComments" @click="showMoreComments = !showMoreComments" class="text-right mt-3 cursor-pointer transition hover:text-yellow-500">{{ $t('general.showMore') }} <font-awesome-icon :icon="['fas', 'caret-down']" class="" /></p>
+                        <p v-if="comments.length > 2 && showMoreComments" @click="showMoreComments = !showMoreComments" class="text-right mt-3 cursor-pointer transition hover:text-yellow-500">{{ $t('general.showLess') }} <font-awesome-icon :icon="['fas', 'caret-up']" class="" /></p>
                     </div>
                 </div>
                 <Ratingpage :title="movie.title" :id="movie.id" />
