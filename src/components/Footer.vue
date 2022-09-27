@@ -1,6 +1,6 @@
 <template>
     <footer class="w-full h-72 lg:h-64 py-2
-    bg-gradient-to-t from-red-800 via-red-800 to-red-900 bg-opacity-90 shadow-md">
+    bg-red-950 bg-opacity-90 shadow-md">
       <section class="container mx-auto h-full px-1 md:px-4 xl:w-10/12 flex flex-col md:flex-row justify-around md:justify-between">
         
         <div class="self-center my-2 w-full md:w-auto">
