@@ -2,7 +2,7 @@
 <div class="sticky w-full h-0 z-50 top-0 left-0 -mt-14">
   <div class="relative">
     <div class="absolute bg-gray-900 bg-opacity-40 top-0 left-0 w-full h-screen overflow-none"  @click="$emit('close')"/>
-              <div class="bg-gray-900 bg-opacity-80 backdrop-blur text-white shadow-lg w-72 min-w-10/12 p-4 right-0 absolute top-0 right-0 h-screen z-30 xl:hidden flex flex-col">
+              <div class="bg-gray-900 bg-opacity-80 backdrop-blur text-white shadow-lg w-72 min-w-10/12 p-4 right-0 absolute top-6 right-1 z-30 xl:hidden flex flex-col" style="height: calc(100vh - 3rem)">
       
           <div class="h-5/6 overflow-y-auto hide-scrollbar">
               <div class="overflow-y-auto pb-12 hide-scrollbar">
