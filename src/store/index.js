@@ -1,5 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import placeholderMovies from '../assets/allMovies.json'
+import placeholderStats from '../assets/stats.json'
+import placeholderRecentRatings from '../assets/recentRatings.json'
 
 const url = "https://triggerscore-backend2.onrender.com/"
 // const url = "http://localhost:3000/"
@@ -170,8 +173,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         triggerscores: [],
-        movies: [],
-        recentRatings: [],
+        movies: placeholderMovies,
+        recentRatings: placeholderRecentRatings,
         recentScores: [],
         filteredMovies: [],
         searchInput: '',
@@ -188,13 +191,13 @@ export default new Vuex.Store({
         filterMoviesBySky: false,
         sortingOption: 'a-z',
         highlightsLoading: true,
-        moviesLoading: true,
+        moviesLoading: false,
         shownScore: "rating_total",
         top10Sexism: [],
         top10Racism: [],
         top10Others: [],
         top10Cringe: [],
-        stats: {},
+        stats: placeholderStats,
         minScore: 0,
         maxScore: 10,
         isFiltering: false,

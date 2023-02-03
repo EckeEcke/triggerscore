@@ -1,0 +1,68 @@
+[
+    {
+        "id": 300,
+        "movie_id": 2169,
+        "rating_sexism": 7,
+        "rating_racism": 4,
+        "rating_others": 1,
+        "rating_cringe": 6,
+        "comment": "Nacktbilder von einer 14-jährigen (?)",
+        "liked": 1,
+        "disliked": 0
+    },
+    {
+        "id": 299,
+        "movie_id": 274167,
+        "rating_sexism": 2,
+        "rating_racism": 0,
+        "rating_others": 0,
+        "rating_cringe": 1,
+        "comment": "It's alright.",
+        "liked": 1,
+        "disliked": 0
+    },
+    {
+        "id": 298,
+        "movie_id": 9988,
+        "rating_sexism": 8,
+        "rating_racism": 7,
+        "rating_others": 7,
+        "rating_cringe": 9,
+        "comment": "",
+        "liked": 0,
+        "disliked": 1
+    },
+    {
+        "id": 297,
+        "movie_id": 700,
+        "rating_sexism": 9,
+        "rating_racism": 7,
+        "rating_others": 6,
+        "rating_cringe": 7,
+        "comment": "",
+        "liked": 1,
+        "disliked": 0
+    },
+    {
+        "id": 296,
+        "movie_id": 9604,
+        "rating_sexism": 6,
+        "rating_racism": 6,
+        "rating_others": 4,
+        "rating_cringe": 4,
+        "comment": "",
+        "liked": 0,
+        "disliked": 1
+    },
+    {
+        "id": 295,
+        "movie_id": 4436,
+        "rating_sexism": 8,
+        "rating_racism": 6,
+        "rating_others": 3,
+        "rating_cringe": 6,
+        "comment": "",
+        "liked": 0,
+        "disliked": 1
+    }
+]
