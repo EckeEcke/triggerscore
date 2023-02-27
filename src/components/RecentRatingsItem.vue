@@ -1,6 +1,6 @@
 <template>
     <router-link :to="{name: 'movie', params: {id: movie.id}}" tag="div" class="movie-highlight-item bg-transparent text-white sm:rounded shadow-md flex flex-col relative border-b md:border-b-0 border-gray-800 cursor-pointer min-w-sm lg:hover:shadow-inner transform transition duration-300">
-        <div class="hidden md:block relative w-full h-44 p-2 text-white sm:rounded-t w-3/4 overflow-hidden">
+        <div class="hidden md:block relative w-full h-52 p-2 text-white sm:rounded-t w-3/4 overflow-hidden">
             <div class="absolute top-0 left-0 w-full h-full bg-cover bg-center movie-poster" :style="{ backgroundImage: 'linear-gradient(to bottom, rgba(22,0,0,0.1),rgba(22,0,0,0.2)),url(' + poster + ')'}" />
             <div v-if="totalRatings[0].ratings == 1" class="flex items-center w-16 h-16 relative rounded-full justify-center drop-shadow">
                 <NewAnimation />
